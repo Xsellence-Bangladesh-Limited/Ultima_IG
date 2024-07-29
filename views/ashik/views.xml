@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<odoo>
+    <record id="ultima_ig_test_tree_view_id" model="ir.ui.view">
+        <field name="name">Ultima IG Test Tree</field>
+        <field name="model">ultima.ig.test</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="ultima_ig_test_form_view_id" model="ir.ui.view">
+        <field name="name">Ultima IG Test Form</field>
+        <field name="model">ultima.ig.test</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="ultima_ig_test_action_id" model="ir.actions.act_window">
+        <field name="name">Ultima IG Test</field>
+        <field name="res_model">ultima.ig.test</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <record id="ultima_ig_test_raz_tree_view_id" model="ir.ui.view">
+        <field name="name">Ultima IG Test Raz Tree</field>
+        <field name="model">ultima.ig.test.raz</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="ultima_ig_test_raz_form_view_id" model="ir.ui.view">
+        <field name="name">Ultima IG Test Raz Form</field>
+        <field name="model">ultima.ig.test.raz</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="ultima_ig_test_raz_action_id" model="ir.actions.act_window">
+        <field name="name">Ultima IG Test Raz</field>
+        <field name="res_model">ultima.ig.test.raz</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+</odoo>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<odoo>
+    <menuitem id="ultima_root_menu_id" name="Ultima Service" sequence="0"/>
+    <menuitem id="ultima_test_menu_id"
+              name="Ultima Test"
+              parent="ultima_root_menu_id"
+              action="ultima_ig_test_action_id"
+              sequence="0"
+    />
+</odoo>
