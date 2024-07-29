@@ -1,7 +1,7 @@
 {
-    'name' : 'Ultima IG',
+    'name' : 'Ultima',
     'version' : '1.0',
-    'summary': 'Ultima IG website module',
+    'summary': 'Ultima website module',
     'sequence': 200,
     'description': """Developed by Xsellence Bangladesh Limited.""",
     'category': '',
