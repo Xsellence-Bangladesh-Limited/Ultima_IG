@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<odoo>
+    <template id="ultima_base_layout_template">
+        <!-- <h5>Header</h5>-->
+
+        <t t-out="0"/>
+
+        <!-- <h5>Footer</h5>-->
+    </template>
+</odoo>

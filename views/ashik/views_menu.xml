@@ -1,11 +1,22 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 
 <odoo>
-    <menuitem id="ultima_root_menu_id" name="Ultima Service" sequence="0"/>
-    <menuitem id="ultima_test_menu_id"
-              name="Ultima Test"
-              parent="ultima_root_menu_id"
-              action="ultima_ig_test_action_id"
+    <menuitem id="ultima_root_menu_id" name="Ultima Service" sequence="200"/>
+
+    <menuitem id="ultima_contact_us_menu_id"
+              name="Contact Us"
               sequence="0"
-    />
+              parent="ultima_root_menu_id"/>
+
+    <menuitem id="ultima_users_message_menu_id"
+              name="Messages"
+              sequence="1"
+              parent="ultima_contact_us_menu_id"
+              action="ultima_users_message_form"/>
+
+    <menuitem id="ultima_contact_us_page_settings_menu_id"
+              name="Settings"
+              sequence="2"
+              parent="ultima_contact_us_menu_id"
+              action="ultima_contact_us_page_settings_form"/>
 </odoo>

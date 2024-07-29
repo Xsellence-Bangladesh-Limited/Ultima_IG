@@ -1,63 +1,103 @@
 <?xml version="1.0" encoding="utf-8" ?>
 
 <odoo>
-    <record id="ultima_ig_test_tree_view_id" model="ir.ui.view">
-        <field name="name">Ultima IG Test Tree</field>
-        <field name="model">ultima.ig.test</field>
+    <!-- Ultima users message tree view (start)-->
+    <record id="ultima_users_message_view_tree" model="ir.ui.view">
+        <field name="name">Ultima users message tree view</field>
+        <field name="model">ultima.users.message</field>
         <field name="arch" type="xml">
             <tree>
-                <field name="name"/>
+                <field name="first_name"/>
+                <field name="last_name"/>
+                <field name="email"/>
+                <field name="phone_number"/>
+                <field name="date" readonly="True"/>
             </tree>
         </field>
     </record>
+    <!-- Ultima users message tree view (end)-->
 
-    <record id="ultima_ig_test_form_view_id" model="ir.ui.view">
-        <field name="name">Ultima IG Test Form</field>
-        <field name="model">ultima.ig.test</field>
+    <!-- Ultima users message form view (start)-->
+    <record id="ultima_users_message_view_form" model="ir.ui.view">
+        <field name="name">Ultima users message form view</field>
+        <field name="model">ultima.users.message</field>
         <field name="arch" type="xml">
             <form>
                 <sheet>
                     <group>
-                        <field name="name"/>
+                        <group>
+                            <field name="first_name" required="True"/>
+                            <field name="last_name"/>
+                            <field name="email" required="True"/>
+                            <field name="phone_number"/>
+                            <field name="date" readonly="True"/>
+                        </group>
+                    </group>
+
+                    <notebook>
+                        <page string="Message" name="message">
+                            <field name="message"/>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <!-- Ultima users message form view (end)-->
+
+    <!-- Ultima users message action (start)-->
+    <record id="ultima_users_message_form" model="ir.actions.act_window">
+        <field name="name">User's message</field>
+        <field name="res_model">ultima.users.message</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                No available messages!
+            </p>
+        </field>
+    </record>
+    <!-- Ultima users message action (end)-->
+
+    <!-- Ultima contact us page settings tree view (start)-->
+    <record id="ultima_contact_us_page_settings_view_tree" model="ir.ui.view">
+        <field name="name">Ultima contact us page settings tree view</field>
+        <field name="model">ultima.contact.us.page.settings</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="form_illustration"/>
+            </tree>
+        </field>
+    </record>
+    <!-- Ultima contact us page settings tree view (end)-->
+
+    <!-- Ultima contact us page settings form view (start)-->
+    <record id="ultima_contact_us_page_settings_view_form" model="ir.ui.view">
+        <field name="name">Ultima contact us page settings form view</field>
+        <field name="model">ultima.contact.us.page.settings</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="form_illustration" widget="image" class="oe_avatar"/>
+                        </group>
                     </group>
                 </sheet>
             </form>
         </field>
     </record>
+    <!-- Ultima contact us page settings form view (end)-->
 
-    <record id="ultima_ig_test_action_id" model="ir.actions.act_window">
-        <field name="name">Ultima IG Test</field>
-        <field name="res_model">ultima.ig.test</field>
+    <!-- Ultima contact us page settings action (start)-->
+    <record id="ultima_contact_us_page_settings_form" model="ir.actions.act_window">
+        <field name="name">Settings</field>
+        <field name="res_model">ultima.contact.us.page.settings</field>
         <field name="view_mode">tree,form</field>
-    </record>
-
-    <record id="ultima_ig_test_raz_tree_view_id" model="ir.ui.view">
-        <field name="name">Ultima IG Test Raz Tree</field>
-        <field name="model">ultima.ig.test.raz</field>
-        <field name="arch" type="xml">
-            <tree>
-                <field name="name"/>
-            </tree>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                No available settings!
+            </p>
         </field>
     </record>
-
-    <record id="ultima_ig_test_raz_form_view_id" model="ir.ui.view">
-        <field name="name">Ultima IG Test Raz Form</field>
-        <field name="model">ultima.ig.test.raz</field>
-        <field name="arch" type="xml">
-            <form>
-                <sheet>
-                    <group>
-                        <field name="name"/>
-                    </group>
-                </sheet>
-            </form>
-        </field>
-    </record>
-
-    <record id="ultima_ig_test_raz_action_id" model="ir.actions.act_window">
-        <field name="name">Ultima IG Test Raz</field>
-        <field name="res_model">ultima.ig.test.raz</field>
-        <field name="view_mode">tree,form</field>
-    </record>
+    <!-- Ultima contact us page settings action (end)-->
 </odoo>

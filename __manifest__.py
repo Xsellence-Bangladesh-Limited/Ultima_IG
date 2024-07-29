@@ -13,6 +13,10 @@
         'views/razzak/views.xml',
         'views/ashik/views_menu.xml',
         'views/razzak/views_menu.xml',
+
+        # Templates
+        'templates/base_layout.xml',
+        'templates/ashik/contact_us.xml',
     ],
     'demo': [],
     'installable': True,
