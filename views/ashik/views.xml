@@ -1,12 +1,63 @@
 <?xml version="1.0" encoding="utf-8" ?>
 
 <odoo>
+
+    <!-- Ultima contact way tree view (start)-->
+    <record id="ultima_contact_way_view_tree" model="ir.ui.view">
+        <field name="name">Ultima contact way tree view</field>
+        <field name="model">ultima.contact.way</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name" readonly="True"/>
+                <field name="title"/>
+                <field name="sub_title"/>
+                <field name="contact_details"/>
+            </tree>
+        </field>
+    </record>
+    <!-- Ultima contact way tree view (end)-->
+
+    <!-- Ultima contact ways form view (start)-->
+    <record id="ultima_contact_way_view_form" model="ir.ui.view">
+        <field name="name">Ultima contact way tree view</field>
+        <field name="model">ultima.contact.way</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <div class="oe_title">
+                        <h1>
+                            <field name="name" readonly="True"/>
+                        </h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="title"/>
+                            <field name="sub_title"/>
+                            <field name="contact_details"/>
+                            <field name="contact_way_icon" widget="image" class="oe_avatar"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <!-- Ultima contact ways form view (end)-->
+
+    <!-- Ultima contact ways action (start)-->
+    <record id="ultima_contact_way_form" model="ir.actions.act_window">
+        <field name="name">Contact ways</field>
+        <field name="res_model">ultima.contact.way</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+    <!-- Ultima contact ways action (end)-->
+
     <!-- Ultima users message tree view (start)-->
     <record id="ultima_users_message_view_tree" model="ir.ui.view">
         <field name="name">Ultima users message tree view</field>
         <field name="model">ultima.users.message</field>
         <field name="arch" type="xml">
             <tree>
+                <field name="name" readonly="True"/>
                 <field name="first_name"/>
                 <field name="last_name"/>
                 <field name="email"/>
@@ -24,6 +75,11 @@
         <field name="arch" type="xml">
             <form>
                 <sheet>
+                    <div class="oe_title">
+                        <h1>
+                            <field name="name" readonly="True"/>
+                        </h1>
+                    </div>
                     <group>
                         <group>
                             <field name="first_name" required="True"/>
@@ -47,7 +103,7 @@
 
     <!-- Ultima users message action (start)-->
     <record id="ultima_users_message_form" model="ir.actions.act_window">
-        <field name="name">User's message</field>
+        <field name="name">Users' messages</field>
         <field name="res_model">ultima.users.message</field>
         <field name="view_mode">tree,form</field>
         <field name="help" type="html">
@@ -64,6 +120,7 @@
         <field name="model">ultima.contact.us.page.settings</field>
         <field name="arch" type="xml">
             <tree>
+                <field name="name" readonly="True"/>
                 <field name="form_illustration"/>
             </tree>
         </field>
@@ -77,6 +134,11 @@
         <field name="arch" type="xml">
             <form>
                 <sheet>
+                    <div class="oe_title">
+                        <h1>
+                            <field name="name" readonly="True"/>
+                        </h1>
+                    </div>
                     <group>
                         <group>
                             <field name="form_illustration" widget="image" class="oe_avatar"/>

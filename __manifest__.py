@@ -9,13 +9,17 @@
     'depends': [],
     'data': [
         'security/ir.model.access.csv',
+        'data/ashik/contact_way_sequence.xml',
+        'data/ashik/user_message_sequence.xml',
+        'data/ashik/contact_us_settings_sequence.xml',
         'views/ashik/views.xml',
         'views/razzak/views.xml',
+        'views/root_menu/root_menu.xml',
         'views/ashik/views_menu.xml',
         'views/razzak/views_menu.xml',
 
         # Templates
-        'templates/base_layout.xml',
+        'templates/base_templates/base_layout.xml',
         'templates/ashik/contact_us.xml',
     ],
     'demo': [],

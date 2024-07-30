@@ -1,0 +1,13 @@
+<?xml version='1.0' encoding='utf-8' ?>
+
+<odoo>
+    <data noupdate="1">
+        <record id="ultima_contact_way_seq" model="ir.sequence">
+            <field name="name">Ultima contact way sequence</field>
+            <field name="code">ultima.contact.way.seq</field>
+            <field name="prefix">ULCW</field>
+            <field name="padding">5</field>
+            <field name="number_next">1</field>
+        </record>
+    </data>
+</odoo>
