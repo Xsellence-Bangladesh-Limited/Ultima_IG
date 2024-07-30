@@ -1,12 +1,13 @@
 from odoo import fields, models, api
 
 
+# Models for contact us page (start)
 class ContactWay(models.Model):
     _name = 'ultima.contact.way'
     _description = 'ultima.contact.way'
     _order = 'id desc'
 
-    name = fields.Char(string='Name')
+    name = fields.Char(string='Sequence')
     title = fields.Char(string='Title')
     sub_title = fields.Char(string='Sub-title')
     contact_details = fields.Char(string='Contact details')
@@ -23,7 +24,7 @@ class UsersMessage(models.Model):
     _description = 'ultima.users.message'
     _order = 'id desc'
 
-    name = fields.Char(string='Name')
+    name = fields.Char(string='Sequence')
 
     first_name = fields.Char(string='First name')
     last_name = fields.Char(string='Last name')
@@ -54,6 +55,23 @@ class ContactUsPageSettings(models.Model):
         vals['name'] = self.env['ir.sequence'].sudo().next_by_code('ultima.contact.us.settings.seq')
         return super(ContactUsPageSettings, self).create(vals)
 
+# Models for contact us page (end)
 
+# Models for AMC service page (start)
+
+class AMCServiceBannerSlider(models.Model):
+    _name = 'ultima.amc.service.banner.slider'
+    _description = 'ultima.amc.service.banner.slider'
+    _order = 'id desc'
+
+    name = fields.Char(string='Name')
+    slider_image = fields.Image(string='Slider image')
+
+    @api.model
+    def create(self, vals):
+        vals['name'] = self.env['ir.sequence'].sudo().next_by_code('ultima.amc.service.banner.slider.seq')
+        return super(AMCServiceBannerSlider, self).create(vals)
+
+# Models for AMC service page (end)
 
 

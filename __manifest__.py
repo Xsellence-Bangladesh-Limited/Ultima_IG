@@ -9,6 +9,7 @@
     'depends': [],
     'data': [
         'security/ir.model.access.csv',
+        'data/ashik/amc_service_banner_slider_sequence.xml',
         'data/ashik/contact_way_sequence.xml',
         'data/ashik/user_message_sequence.xml',
         'data/ashik/contact_us_settings_sequence.xml',
@@ -21,6 +22,7 @@
         # Templates
         'templates/base_templates/base_layout.xml',
         'templates/ashik/contact_us.xml',
+        'templates/ashik/AMC_service.xml',
     ],
     'demo': [],
     'installable': True,

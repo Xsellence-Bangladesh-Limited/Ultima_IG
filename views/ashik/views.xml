@@ -162,4 +162,53 @@
         </field>
     </record>
     <!-- Ultima contact us page settings action (end)-->
+
+    <!-- Ultima AMC service banner slider tree view (start)-->
+    <record id="ultima_amc_service_banner_slider_view_tree" model="ir.ui.view">
+        <field name="name">Ultima AMC service banner slider tree view</field>
+        <field name="model">ultima.amc.service.banner.slider</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name" readonly="True"/>
+                <field name="slider_image"/>
+            </tree>
+        </field>
+    </record>
+    <!-- Ultima AMC service banner slider tree view (end)-->
+
+    <!-- Ultima AMC service banner slider form view (start)-->
+    <record id="ultima_amc_service_banner_slider_view_form" model="ir.ui.view">
+        <field name="name">Ultima AMC service banner slider form view</field>
+        <field name="model">ultima.amc.service.banner.slider</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <div class="oe_title">
+                        <h1>
+                            <field name="name" readonly="True"/>
+                        </h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="slider_image" widget="image" class="oe_avatar"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <!-- Ultima AMC service banner slider form view (end)-->
+
+    <!-- Ultima AMC service banner slider action (start)-->
+    <record id="ultima_amc_service_banner_slider_form" model="ir.actions.act_window">
+        <field name="name">Banner Slides</field>
+        <field name="res_model">ultima.amc.service.banner.slider</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Add a new slide!
+            </p>
+        </field>
+    </record>
+    <!-- Ultima AMC service banner slider action (end)-->
 </odoo>
