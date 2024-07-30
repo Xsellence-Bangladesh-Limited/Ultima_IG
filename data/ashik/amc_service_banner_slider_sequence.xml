@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<odoo>
+    <data noupdate="1">
+        <record id="ultima_amc_service_banner_slider_seq" model="ir.sequence">
+            <field name="name">Ultima amc service banner slider sequence</field>
+            <field name="code">ultima.amc.service.banner.slider.seq</field>
+            <field name="prefix">SLIDER</field>
+            <field name="padding">5</field>
+            <field name="number_next">1</field>
+        </record>
+    </data>
+</odoo>
