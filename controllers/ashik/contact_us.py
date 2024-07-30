@@ -9,6 +9,10 @@ class ContactUs(http.Controller):
         page_settings = req.env['ultima.contact.us.page.settings'].sudo().search([], order='id desc', limit=1)
         # Retrieving the page settings (end)
 
+        # Retrieving contact ways (start)
+        contact_ways = req.env['ultima.contact.way'].sudo().search([], order='id asc')
+        # Retrieving contact ways (end)
+
         if req.httprequest.method == 'POST':
 
             # Retrieving form data (start)
@@ -30,10 +34,12 @@ class ContactUs(http.Controller):
 
             return req.render('ultima.ultima_contact_us_template', {
                 'message_sent_successful': True,
+                'contact_ways': contact_ways,
                 'page_settings': page_settings
             })
             # Creating a new record in the ultima.users.message table (end)
 
         return req.render('ultima.ultima_contact_us_template', {
+            'contact_ways': contact_ways,
             'page_settings': page_settings
         })
