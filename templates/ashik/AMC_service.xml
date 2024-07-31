@@ -6,7 +6,7 @@
             <head>
                 <meta charset="UTF-8"/>
                 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-                <title>AMC Service | Ultima IG</title>
+                <title>AMC Service | Ultima</title>
 
                 <!-- Bootstrap (start) -->
                 <link rel="stylesheet" href="/ultima/static/third_party_UI_library/Bootstrap/css/bootstrap.min.css"/>
@@ -21,7 +21,7 @@
                 <!-- Splide CSS (end) -->
 
                 <!-- Custom CSS (start) -->
-                <link rel="stylesheet" href="/ultima/static/ashik/AMC_service/css/styles.css"/>
+                <link rel="stylesheet" href="/ultima/static/ashik/AMC_service/css/styles.css?v=1.0"/>
                 <!-- Custom CSS (end) -->
 
                 <!-- Fontawesome CDN (start) -->
@@ -35,27 +35,27 @@
                 <!-- Fontawesome CDN (end) -->
 
                 <!-- Jquery (start) -->
-                <script src="/ultima/static/third_party_UI_library/jQuery/jquery.min.js" defer="1"></script>
+                <script src="/ultima/static/third_party_UI_library/jQuery/jquery.min.js" defer="1"/>
                 <!-- Jquery (end) -->
 
                 <!-- Popper JS (start) -->
-                <script src="/ultima/static/third_party_UI_library/Bootstrap/js/popper.min.js" defer="1"></script>
+                <script src="/ultima/static/third_party_UI_library/Bootstrap/js/popper.min.js" defer="1"/>
                 <!-- Popper JS (end) -->
 
                 <!-- Bootstrap JS (start) -->
-                <script src="/ultima/static/third_party_UI_library/Bootstrap/js/bootstrap.min.js" defer="1"></script>
+                <script src="/ultima/static/third_party_UI_library/Bootstrap/js/bootstrap.min.js" defer="1"/>
                 <!-- Bootstrap JS (end) -->
 
                 <!-- Swiper JS (start) -->
-                <script src="/ultima/static/third_party_UI_library/Swiper_JS/swiper-bundle.min.js"></script>
+                <script src="/ultima/static/third_party_UI_library/Swiper_JS/swiper-bundle.min.js"/>
                 <!-- Swiper JS (end) -->
 
                 <!-- Splide JS (start) -->
-                <script src="/ultima/static/third_party_UI_library/splide/dist/js/splide.min.js"></script>
+                <script src="/ultima/static/third_party_UI_library/splide/dist/js/splide.min.js"/>
                 <!-- Splide JS (end) -->
 
                 <!-- Custom JS (start) -->
-                <script src="/ultima/static/ashik/AMC_service/JS/script.js" defer="1"></script>
+                <script src="/ultima/static/ashik/AMC_service/JS/script.js?v=1.0" defer="1"/>
                 <!-- Custom JS (end) -->
             </head>
             <body>
@@ -67,7 +67,8 @@
                                 <t t-foreach="amc_banner_slider_images" t-as="amc_banner_slider_image">
                                     <div class="swiper-slide">
                                         <div class="banner-slide">
-                                            <img t-att-src="image_data_uri(amc_banner_slider_image.slider_image)" alt="Banner Slide Image"/>
+                                            <img t-att-src="image_data_uri(amc_banner_slider_image.slider_image)"
+                                                 alt="Banner Slide Image"/>
                                         </div>
                                     </div>
                                 </t>
@@ -346,28 +347,32 @@
 
                                     <div class="single-offers-container mt-2">
                                         <div class="single-offer">
-                                            <img src="/ultima/static/ashik/AMC_service/images/offer-icon.png" alt="Offer icon"/>
+                                            <img src="/ultima/static/ashik/AMC_service/images/offer-icon.png"
+                                                 alt="Offer icon"/>
                                             <p class="single-offer-short-description">
                                                 Various analysis options.
                                             </p>
                                         </div>
 
                                         <div class="single-offer">
-                                            <img src="/ultima/static/ashik/AMC_service/images/offer-icon.png" alt="Offer icon"/>
+                                            <img src="/ultima/static/ashik/AMC_service/images/offer-icon.png"
+                                                 alt="Offer icon"/>
                                             <p class="single-offer-short-description">
                                                 Page Load (time, size, number of requests).
                                             </p>
                                         </div>
 
                                         <div class="single-offer">
-                                            <img src="/ultima/static/ashik/AMC_service/images/offer-icon.png" alt="Offer icon"/>
+                                            <img src="/ultima/static/ashik/AMC_service/images/offer-icon.png"
+                                                 alt="Offer icon"/>
                                             <p class="single-offer-short-description">
                                                 Big data analysis.
                                             </p>
                                         </div>
 
                                         <div class="single-offer">
-                                            <img src="/ultima/static/ashik/AMC_service/images/offer-icon.png" alt="Offer icon"/>
+                                            <img src="/ultima/static/ashik/AMC_service/images/offer-icon.png"
+                                                 alt="Offer icon"/>
                                             <p class="single-offer-short-description">
                                                 Various analysis options.
                                             </p>
@@ -377,11 +382,13 @@
                                 <div class="offers-main-content-right-side">
                                     <div class="offer-image-1-container">
                                         <div class="offer-image-1">
-                                            <img src="/ultima/static/ashik/AMC_service/images/advantage_image_02.png" alt="Offer image"/>
+                                            <img src="/ultima/static/ashik/AMC_service/images/advantage_image_02.png"
+                                                 alt="Offer image"/>
                                         </div>
 
                                         <div class="offer-image-2">
-                                            <img src="/ultima/static/ashik/AMC_service/images/advantage_image_01.png" alt="Offer image"/>
+                                            <img src="/ultima/static/ashik/AMC_service/images/advantage_image_01.png"
+                                                 alt="Offer image"/>
                                         </div>
                                     </div>
                                 </div>
@@ -414,7 +421,8 @@
                             <div class="features-container mt-4">
                                 <div class="feature">
                                     <div class="feature-logo mb-3">
-                                        <img src="/ultima/static/ashik/AMC_service/images/feature_icon_1.png" alt="Feature Icon"/>
+                                        <img src="/ultima/static/ashik/AMC_service/images/feature_icon_1.png"
+                                             alt="Feature Icon"/>
                                     </div>
                                     <h6 class="feature-title mb-1">Qualified Engineers</h6>
                                     <p class="feature-text-description">
@@ -424,7 +432,8 @@
 
                                 <div class="feature">
                                     <div class="feature-logo mb-3">
-                                        <img src="/ultima/static/ashik/AMC_service/images/feature_icon_2.png" alt="Feature Icon"/>
+                                        <img src="/ultima/static/ashik/AMC_service/images/feature_icon_2.png"
+                                             alt="Feature Icon"/>
                                     </div>
                                     <h6 class="feature-title mb-1">Genuine Spare Parts</h6>
                                     <p class="feature-text-description">
@@ -435,7 +444,8 @@
 
                                 <div class="feature">
                                     <div class="feature-logo mb-3">
-                                        <img src="/ultima/static/ashik/AMC_service/images/feature_icon_3.png" alt="Feature Icon"/>
+                                        <img src="/ultima/static/ashik/AMC_service/images/feature_icon_3.png"
+                                             alt="Feature Icon"/>
                                     </div>
                                     <h6 class="feature-title mb-1">Pocket Friendly AMC Plans</h6>
                                     <p class="feature-text-description">
@@ -462,61 +472,31 @@
                             <div class="testimonial-slider">
                                 <div class="swiper mySwiper">
                                     <div class="swiper-wrapper">
-                                        <div class="swiper-slide">
-                                            <div class="testimonial-slide">
-                                                <div class="client-image">
-                                                    <img
-                                                            src="/ultima/static/ashik/AMC_service/images/testimonial-client-image.jpeg"
-                                                            alt="Testimonial Client Image"
-                                                    />
-                                                </div>
-                                                <div class="client-comment">
-                                                    <img
-                                                            src="/ultima/static/ashik/AMC_service/images/testimonial_icon.png"
-                                                            class="testimonial-icon mb-3"
-                                                            alt="Testimonial Icon"
-                                                    />
+                                        <t t-foreach="amc_testimonial_slides" t-as="amc_testimonial_slide">
+                                            <div class="swiper-slide">
+                                                <div class="testimonial-slide">
+                                                    <div class="client-image">
+                                                        <img
+                                                                t-att-src="image_data_uri(amc_testimonial_slide.client_image)"
+                                                                alt="Testimonial Client Image"
+                                                        />
+                                                    </div>
+                                                    <div class="client-comment">
+                                                        <img
+                                                                src="/ultima/static/ashik/AMC_service/images/testimonial_icon.png"
+                                                                class="testimonial-icon mb-3"
+                                                                alt="Testimonial Icon"
+                                                        />
 
-                                                    <p class="client-comment-text">
-                                                        Through our years of experience, we've also learned that
-                                                        while each channel has its own set of advantages, they
-                                                        all work best when strategically paired with other
-                                                        channels. This is the main factor that sets us apart
-                                                        from our competition. Through our years of experience.
-                                                    </p>
-                                                    <h5 class="client-name mb-1">David Jhon</h5>
-                                                    <p class="client-designation">CEO of ABC Company</p>
+                                                        <p class="client-comment-text">
+                                                           <t t-esc="amc_testimonial_slide.client_comment"/>
+                                                        </p>
+                                                        <h5 class="client-name mb-1"><t t-esc="amc_testimonial_slide.client_name"/></h5>
+                                                        <p class="client-designation"><t t-esc="amc_testimonial_slide.client_designation"/></p>
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
-
-                                        <div class="swiper-slide">
-                                            <div class="testimonial-slide">
-                                                <div class="client-image">
-                                                    <img
-                                                            src="/ultima/static/ashik/AMC_service/images/blog_creator.jpg"
-                                                            alt="Testimonial Client Image"
-                                                    />
-                                                </div>
-                                                <div class="client-comment">
-                                                    <img
-                                                            src="/ultima/static/ashik/AMC_service/images/testimonial_icon.png"
-                                                            class="testimonial-icon mb-3"
-                                                            alt="Testimonial Icon"
-                                                    />
-
-                                                    <p class="client-comment-text">
-                                                        Through our years of experience, we've also learned that
-                                                        while each channel has its own set of advantages, they
-                                                        all work best when strategically paired with other
-                                                        channels. This is the main factor that sets us apart
-                                                        from our competition. Through our years of experience.
-                                                    </p>
-                                                    <h5 class="client-name mb-1">Marco Moore</h5>
-                                                    <p class="client-designation">Designer of ABC Company</p>
-                                                </div>
-                                            </div>
-                                        </div>
+                                        </t>
                                     </div>
                                     <div class="swiper-button-next"></div>
                                     <div class="swiper-button-prev"></div>

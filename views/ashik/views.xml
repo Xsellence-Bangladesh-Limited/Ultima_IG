@@ -190,7 +190,7 @@
                     </div>
                     <group>
                         <group>
-                            <field name="slider_image" widget="image" class="oe_avatar"/>
+                            <field name="slider_image" widget="image" class="oe_avatar" required="True"/>
                         </group>
                     </group>
                 </sheet>
@@ -201,14 +201,116 @@
 
     <!-- Ultima AMC service banner slider action (start)-->
     <record id="ultima_amc_service_banner_slider_form" model="ir.actions.act_window">
-        <field name="name">Banner Slides</field>
+        <field name="name">Banner slides</field>
         <field name="res_model">ultima.amc.service.banner.slider</field>
         <field name="view_mode">tree,form</field>
         <field name="help" type="html">
             <p class="o_view_nocontent_smiling_face">
-                Add a new slide!
+                Add a new banner slide!
             </p>
         </field>
     </record>
     <!-- Ultima AMC service banner slider action (end)-->
+
+    <!-- Ultima AMC service testimonial slider tree view (start)-->
+    <record id="ultima_amc_service_testimonial_slider_view_tree" model="ir.ui.view">
+        <field name="name">Ultima amc service testimonial slider tree view</field>
+        <field name="model">ultima.amc.service.testimonial.slider</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name" readonly="True"/>
+            </tree>
+        </field>
+    </record>
+    <!-- Ultima AMC service testimonial slider tree view (end)-->
+
+    <!-- Ultima AMC service testimonial slider form view (start)-->
+    <record id="ultima_amc_service_testimonial_slider_view_form" model="ir.ui.view">
+        <field name="name">Ultima amc service testimonial slider form view</field>
+        <field name="model">ultima.amc.service.testimonial.slider</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <div class="oe_title">
+                        <h1>
+                            <field name="name" readonly="True"/>
+                        </h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="client_image" widget="image" class="oe_avatar" required="True"/>
+                            <field name="client_comment" required="True"/>
+                            <field name="client_name" required="True"/>
+                            <field name="client_designation" required="True" />
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <!-- Ultima AMC service testimonial slider form view (end)-->
+
+    <!-- Ultima AMC service testimonial slider action (start)-->
+    <record id="ultima_amc_service_testimonial_slider_form" model="ir.actions.act_window">
+        <field name="name">Testimonial slides</field>
+        <field name="res_model">ultima.amc.service.testimonial.slider</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Add a new testimonial slide!
+            </p>
+        </field>
+    </record>
+    <!-- Ultima AMC service testimonial slider action (end)-->
+
+     <!-- Ultima service request testimonial slider tree view (start)-->
+    <record id="ultima_service_request_testimonial_slider_view_tree" model="ir.ui.view">
+        <field name="name">Ultima service request testimonial slider tree view</field>
+        <field name="model">ultima.service.request.testimonial.slider</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name" readonly="True"/>
+            </tree>
+        </field>
+    </record>
+    <!-- Ultima service request testimonial slider tree view (end)-->
+
+    <!-- Ultima service request testimonial slider form view (start)-->
+    <record id="ultima_service_request_testimonial_slider_view_form" model="ir.ui.view">
+        <field name="name">Ultima service request testimonial slider form view</field>
+        <field name="model">ultima.service.request.testimonial.slider</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <div class="oe_title">
+                        <h1>
+                            <field name="name" readonly="True"/>
+                        </h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="client_image" widget="image" class="oe_avatar" required="True"/>
+                            <field name="client_comment" required="True"/>
+                            <field name="client_name" required="True"/>
+                            <field name="client_designation" required="True" />
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <!-- Ultima service request testimonial slider form view (end)-->
+
+    <!-- Ultima service request testimonial slider action (start)-->
+    <record id="ultima_service_request_testimonial_slider_form" model="ir.actions.act_window">
+        <field name="name">Testimonial slides</field>
+        <field name="res_model">ultima.service.request.testimonial.slider</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Add a new testimonial slide!
+            </p>
+        </field>
+    </record>
+    <!-- Ultima service request testimonial slider action (end)-->
 </odoo>

@@ -39,9 +39,26 @@
               parent="ultima_ro_service_menu_id"/>
 
     <menuitem id="ultima_amc_service_banner_slider_menu_id"
-              name="Banner Slider"
+              name="Banner slider"
               sequence="0"
               parent="ultima_amc_service_menu_id"
               action="ultima_amc_service_banner_slider_form"/>
+
+    <menuitem id="ultima_amc_service_testimonial_slider_menu_id"
+              name="Testimonial slider"
+              sequence="1"
+              parent="ultima_amc_service_menu_id"
+              action="ultima_amc_service_testimonial_slider_form"/>
+
+    <menuitem id="ultima_service_request_menu_id"
+              name="Service Request"
+              sequence="1"
+              parent="ultima_ro_service_menu_id"/>
+
+    <menuitem id="ultima_service_request_testimonial_slider_menu_id"
+              name="Testimonial slider"
+              sequence="0"
+              parent="ultima_service_request_menu_id"
+              action="ultima_service_request_testimonial_slider_form"/>
     <!-- Menu items for RO service pages (end)-->
 </odoo>

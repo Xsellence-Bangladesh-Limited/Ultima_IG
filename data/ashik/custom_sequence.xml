@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<odoo>
+    <data noupdate="1">
+        <record id="ultima_amc_service_banner_slider_seq" model="ir.sequence">
+            <field name="name">Ultima amc service banner slider sequence</field>
+            <field name="code">ultima.amc.service.banner.slider.seq</field>
+            <field name="prefix">SLIDER</field>
+            <field name="padding">5</field>
+            <field name="number_next">1</field>
+        </record>
+
+         <record id="ultima_amc_service_testimonial_slider_seq" model="ir.sequence">
+            <field name="name">Ultima amc service testimonial slider sequence</field>
+            <field name="code">ultima.amc.service.testimonial.slider.seq</field>
+            <field name="prefix">SLIDER</field>
+            <field name="padding">5</field>
+            <field name="number_next">1</field>
+        </record>
+
+        <record id="ultima_service_request_testimonial_slider_seq" model="ir.sequence">
+            <field name="name">Ultima service request testimonial slider sequence</field>
+            <field name="code">ultima.service.request.testimonial.slider.seq</field>
+            <field name="prefix">SLIDER</field>
+            <field name="padding">5</field>
+            <field name="number_next">1</field>
+        </record>
+
+        <record id="ultima_contact_way_seq" model="ir.sequence">
+            <field name="name">Ultima contact way sequence</field>
+            <field name="code">ultima.contact.way.seq</field>
+            <field name="prefix">ULCW</field>
+            <field name="padding">5</field>
+            <field name="number_next">1</field>
+        </record>
+
+        <record id="ultima_user_message_seq" model="ir.sequence">
+            <field name="name">Ultima user message sequence</field>
+            <field name="code">ultima.user.message.seq</field>
+            <field name="prefix">ULUM</field>
+            <field name="padding">5</field>
+            <field name="number_next">1</field>
+        </record>
+
+        <record id="ultima_contact_us_settings_seq" model="ir.sequence">
+            <field name="name">Ultima contact us settings sequence</field>
+            <field name="code">ultima.contact.us.settings.seq</field>
+            <field name="prefix">ULST</field>
+            <field name="padding">5</field>
+            <field name="number_next">1</field>
+        </record>
+    </data>
+</odoo>

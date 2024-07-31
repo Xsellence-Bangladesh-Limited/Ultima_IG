@@ -1,0 +1,269 @@
+<?xml version='1.0' encoding='utf-8'?>
+
+<odoo>
+    <template id="ultima_service_request_template">
+        <t t-call="ultima.ultima_base_layout_template">
+            <head>
+                <meta charset="UTF-8"/>
+                <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+                <title>Service Request | Ultima IG</title>
+
+                <!-- Bootstrap (start) -->
+                <link rel="stylesheet" href="/ultima/static/third_party_UI_library/Bootstrap/css/bootstrap.min.css"/>
+                <!-- Bootstrap (end) -->
+
+                <!-- Swiper CSS (start) -->
+                <link rel="stylesheet" href="/ultima/static/third_party_UI_library/Swiper_JS/swiper-bundle.min.css"/>
+                <!-- Swiper CSS (end) -->
+
+                <!-- Splide CSS (start) -->
+                <link rel="stylesheet" href="/ultima/static/third_party_UI_library/splide/dist/css/splide.min.css"/>
+                <!-- Splide CSS (end) -->
+
+                <!-- Custom CSS (start) -->
+                <link rel="stylesheet" href="/ultima/static/ashik/service_request/css/styles.css?v=1.0"/>
+                <!-- Custom CSS (end) -->
+
+                <!-- Fontawesome CDN (start) -->
+                <link
+                        rel="stylesheet"
+                        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+                        integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+                        crossorigin="anonymous"
+                        referrerpolicy="no-referrer"
+                />
+                <!-- Fontawesome CDN (end) -->
+
+                <!-- Jquery (start) -->
+                <script src="/ultima/static/third_party_UI_library/jQuery/jquery.min.js" defer="1"/>
+                <!-- Jquery (end) -->
+
+                <!-- Popper JS (start) -->
+                <script src="/ultima/static/third_party_UI_library/Bootstrap/js/popper.min.js" defer="1"/>
+                <!-- Popper JS (end) -->
+
+                <!-- Bootstrap JS (start) -->
+                <script src="/ultima/static/third_party_UI_library/Bootstrap/js/bootstrap.min.js" defer="1"/>
+                <!-- Bootstrap JS (end) -->
+
+                <!-- Swiper JS (start) -->
+                <script src="/ultima/static/third_party_UI_library/Swiper_JS/swiper-bundle.min.js"/>
+                <!-- Swiper JS (end) -->
+
+                <!-- Splide JS (start) -->
+                <script src="/ultima/static/third_party_UI_library/splide/dist/js/splide.min.js"/>
+                <!-- Splide JS (end) -->
+
+                <!-- Custom JS (start) -->
+                <script src="/ultima/static/ashik/service_request/JS/script.js?v=1.0" defer="1"/>
+                <!-- Custom JS (end) -->
+            </head>
+            <body>
+                <div class="main-content mt-4">
+                    <!-- Main Banner Section (start) -->
+                    <div
+                            class="main-banner"
+                            style="background-image: url('/ultima/static/ashik/service_request/images/blog_image_5.jpg')"
+                    >
+                        <div class="service-request-form-container">
+                            <form class="service-request-form">
+                                <h5 class="text-center mb-3">Enter Your Details</h5>
+                                <input
+                                        type="text"
+                                        name="requester_name"
+                                        class="service-request-form-input mb-3"
+                                        id="input-requester-name-id"
+                                        placeholder="Full Name*"
+                                        required="true"
+                                />
+
+                                <input
+                                        type="text"
+                                        name="requester_mobile_number"
+                                        class="service-request-form-input mb-3"
+                                        id="input-requester-mobile-number-id"
+                                        placeholder="Registered Mobile Number*"
+                                        required="true"
+                                />
+
+                                <input
+                                        type="text"
+                                        name="requester_preferred_date"
+                                        class="service-request-form-input mb-3"
+                                        id="input-requester-preferred-date-id"
+                                        placeholder="Preferred Date*"
+                                        required="true"
+                                        onfocus="(this.type='date')"
+                                        onblur="(this.type='text')"
+                                />
+
+                                <input
+                                        type="text"
+                                        name="requester_preferred_time"
+                                        class="service-request-form-input mb-3"
+                                        id="input-requester-preferred-time-id"
+                                        placeholder="Preferred Time*"
+                                        required="true"
+                                        onfocus="(this.type='time')"
+                                        onblur="(this.type='text')"
+                                />
+
+                                <button class="request-form-submit-btn mb-3">
+                                    Request a Call Back
+                                </button>
+
+                                <div class="service-features">
+                                    <div class="single-service-feature">
+                                        <p>1000+</p>
+                                        <p>Certified</p>
+                                        <p>Engineers</p>
+                                    </div>
+
+                                    <div class="single-service-feature">
+                                        <p>365 days</p>
+                                        <p>All year</p>
+                                        <p>support</p>
+                                    </div>
+
+                                    <div class="single-service-feature">
+                                        <p>PAN</p>
+                                        <p style="font-weight: bold">INDIA</p>
+                                        <p>Network</p>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <!-- Main Banner Section (end) -->
+
+                    <!-- Features Section (start)  -->
+                    <div class="features">
+                        <div class="my-container">
+                            <div class="features-title-container text-center">
+                                <p class="features-title">Features</p>
+                            </div>
+
+                            <h3 class="features-heading text-center mb-2">
+                                Our Service Features
+                            </h3>
+                            <p class="features-short-description text-center">
+                                Every year many people close to us are affected by water borne
+                                diseases.
+                            </p>
+                            <p class="features-short-description text-center">
+                                Sometimes our loved ones are lost to the horrors of deadly germs
+                                like Typhoid.
+                            </p>
+
+                            <div class="features-container mt-4">
+                                <div class="feature">
+                                    <div class="feature-logo mb-3">
+                                        <img src="/ultima/static/ashik/service_request/images/feature-image-1.png"
+                                             alt="Feature Icon"/>
+                                    </div>
+                                    <h6 class="feature-title mb-1">Best Product</h6>
+                                    <p class="feature-text-description">
+                                        Every year many people close to us are affected by water borne
+                                        diseases. Sometimes our loved ones are lost to the horrors of
+                                        deadly germs like Typhoid, Jaundice, Cholera, Diarrhea etc.
+                                    </p>
+                                </div>
+
+                                <div class="feature">
+                                    <div class="feature-logo mb-3">
+                                        <img src="/ultima/static/ashik/service_request/images/feature-image-2.png"
+                                             alt="Feature Icon"/>
+                                    </div>
+                                    <h6 class="feature-title mb-1">100% Satisfaction</h6>
+                                    <p class="feature-text-description">
+                                        Every year many people close to us are affected by water borne
+                                        diseases. Sometimes our loved ones are lost to the horrors of
+                                        deadly germs like Typhoid, Jaundice, Cholera, Diarrhea etc.
+                                    </p>
+                                </div>
+
+                                <div class="feature">
+                                    <div class="feature-logo mb-3">
+                                        <img src="/ultima/static/ashik/service_request/images/feature-image-3.png"
+                                             alt="Feature Icon"/>
+                                    </div>
+                                    <h6 class="feature-title mb-1">After Sales Service</h6>
+                                    <p class="feature-text-description">
+                                        Every year many people close to us are affected by water borne
+                                        diseases. Sometimes our loved ones are lost to the horrors of
+                                        deadly germs like Typhoid, Jaundice, Cholera, Diarrhea etc.
+                                    </p>
+                                </div>
+
+                                <div class="feature">
+                                    <div class="feature-logo mb-3">
+                                        <img src="/ultima/static/ashik/service_request/images/feature-image-4.png"
+                                             alt=""/>
+                                    </div>
+                                    <h6 class="feature-title mb-1">Quick Delivery</h6>
+                                    <p class="feature-text-description">
+                                        Every year many people close to us are affected by water borne
+                                        diseases. Sometimes our loved ones are lost to the horrors of
+                                        deadly germs like Typhoid, Jaundice, Cholera, Diarrhea etc.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Features Section (end) -->
+
+                    <!-- Testimonial Section (start) -->
+                    <div class="testimonial">
+                        <div class="my-container">
+                            <div class="testimonial-title-container text-center">
+                                <p class="testimonial-title">Testimonials</p>
+                            </div>
+
+                            <h3 class="testimonial-heading text-center">
+                                What People Think
+                                <br/>
+                                About Us
+                            </h3>
+                            <div class="testimonial-slider">
+                                <div class="swiper mySwiper">
+                                    <div class="swiper-wrapper">
+                                        <t t-foreach="service_request_testimonial_slides"
+                                           t-as="service_request_testimonial_slide">
+                                            <div class="swiper-slide">
+                                                <div class="testimonial-slide">
+                                                    <div class="client-image">
+                                                        <img
+                                                                t-att-src="image_data_uri(service_request_testimonial_slide.client_image)"
+                                                                alt="Testimonial Client Image"
+                                                        />
+                                                    </div>
+                                                    <div class="client-comment">
+                                                        <img
+                                                                src="/ultima/static/ashik/service_request/images/testimonial_icon.png"
+                                                                class="testimonial-icon mb-3"
+                                                                alt="Testimonial Icon"
+                                                        />
+
+                                                        <p class="client-comment-text">
+                                                            <t t-esc="service_request_testimonial_slide.client_comment"/>
+                                                        </p>
+                                                        <h5 class="client-name mb-1"><t t-esc="service_request_testimonial_slide.client_name"/></h5>
+                                                        <p class="client-designation"><t t-esc="service_request_testimonial_slide.client_designation"/></p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </t>
+                                    </div>
+                                    <div class="swiper-button-next"></div>
+                                    <div class="swiper-button-prev"></div>
+                                    <div class="swiper-pagination"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Testimonial Section (end) -->
+                </div>
+            </body>
+        </t>
+    </template>
+</odoo>
