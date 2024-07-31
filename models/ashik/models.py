@@ -72,6 +72,43 @@ class AMCServiceBannerSlider(models.Model):
         vals['name'] = self.env['ir.sequence'].sudo().next_by_code('ultima.amc.service.banner.slider.seq')
         return super(AMCServiceBannerSlider, self).create(vals)
 
+
+class AMCServiceTestimonialSlider(models.Model):
+    _name = 'ultima.amc.service.testimonial.slider'
+    _description = 'ultima.amc.service.testimonial.slider'
+    _order = 'id desc'
+
+    name = fields.Char('Name')
+    client_image = fields.Image(string='Client image')
+    client_comment = fields.Text(string='Client comment')
+    client_name = fields.Char(string='Client name')
+    client_designation = fields.Char(string='Client designation')
+
+    @api.model
+    def create(self, vals):
+        vals['name'] = self.env['ir.sequence'].sudo().next_by_code('ultima.amc.service.testimonial.slider.seq')
+        return super(AMCServiceTestimonialSlider, self).create(vals)
+
 # Models for AMC service page (end)
+
+# Models for service request page (start)
+
+class ServiceRequestTestimonialSlide(models.Model):
+    _name = 'ultima.service.request.testimonial.slider'
+    _description = 'ultima.service.request.testimonial.slider'
+    _order = 'id desc'
+
+    name = fields.Char('Name')
+    client_image = fields.Image(string='Client image')
+    client_comment = fields.Text(string='Client comment')
+    client_name = fields.Char(string='Client name')
+    client_designation = fields.Char(string='Client designation')
+
+    @api.model
+    def create(self, vals):
+        vals['name'] = self.env['ir.sequence'].sudo().next_by_code('ultima.service.request.testimonial.slider.seq')
+        return super(ServiceRequestTestimonialSlide, self).create(vals)
+
+# Models for service request page (end)
 
 
