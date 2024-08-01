@@ -233,7 +233,7 @@
                                                 <div class="testimonial-slide">
                                                     <div class="client-image">
                                                         <img
-                                                                t-att-src="image_data_uri(service_request_testimonial_slide.client_image)"
+                                                                t-if="service_request_testimonial_slide.client_image" t-att-src="image_data_uri(service_request_testimonial_slide.client_image)"
                                                                 alt="Testimonial Client Image"
                                                         />
                                                     </div>

@@ -203,12 +203,36 @@ p{
     padding: 5px 10px;
     border: 1px solid #E6E6E6;
     border-radius: 5px;
+    position: relative;
 }
 
-.country-select-item{
+.country-dropdown{
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 5px 0px, rgba(0, 0, 0, 0.1) 0px 0px 1px 0px;
+    position: absolute;
+    width: 100%;
+    background-color: #fff;
+    border-radius: 0.313rem;
+    left: 0;
+    top: 100%;
+    margin-top: 0.313rem;
+    max-height: 13.75rem;
+    overflow-y: scroll;
+    display: none;
+}
+
+.country-dropdown-item{
+    padding: 0.313rem 0.5rem;
+}
+
+.country-dropdown-item:not(:last-of-type){
+    border-bottom: 0.063rem solid #E6E6E6;
+}
+
+.country-select-item, .country-dropdown-item{
     font-family: var(--inter-font-family);
     font-weight: var(--normal-title-font-weight);
-    font-size: 12px;
+    font-size: 0.813rem;
+    cursor: pointer;
 }
 
 #phone-number-input-id{
@@ -223,6 +247,18 @@ p{
     font-family: var(--inter-font-family);
     font-size: var(--normal-title-font-weight);
     font-size: 13px;
+}
+
+.invalid-phone-number-warning{
+    width: 100%;
+    font-family: var(--inter-font-family);
+    font-weight: var(--normal-title-font-weight);
+    font-size: 0.813rem;
+    padding: 0.313rem 0.625rem;
+    background-color: #FFEAF8;
+    color: #E10505;
+    border-radius: 0.313rem;
+    display: none;
 }
 
 #message-input-id{

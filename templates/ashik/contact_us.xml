@@ -30,6 +30,10 @@
                         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
                 <!-- Jquery CDN (end) -->
 
+                <!-- Libphonenumber JS (start)-->
+                <script src="/ultima/static/ashik/contact_us/JS/libphonenumber-js.min.js?" defer="1"></script>
+                <!-- Libphonenumber JS (end)-->
+
                 <!-- Custom JS (start) -->
                 <script src="/ultima/static/ashik/contact_us/JS/script.js?v=1.0"></script>
                 <!-- Custom JS (end) -->
@@ -50,13 +54,15 @@
 
                     <div class="feature mt-4">
                         <div class="contact-us-tag mb-1">Contact us</div>
-                        <h3 class="feature-title mb-1">We'd love to hear from you</h3>
-                        <p class="feature-short-description">Our friendly team is always here to chat.</p>
+
+                        <h3 class="feature-title mb-1"><t t-esc="page_settings.main_headline"/></h3>
+
+                        <p class="feature-short-description"><t t-esc="page_settings.main_sub_headline"/></p>
 
                         <div class="all-features-container mt-4">
                             <t t-foreach="contact_ways" t-as="contact_way">
                                 <div class="single-feature">
-                                    <img t-att-src="image_data_uri(contact_way.contact_way_icon)"
+                                    <img t-if="contact_way.contact_way_icon" t-att-src="image_data_uri(contact_way.contact_way_icon)"
                                          class="single-feature-logo" alt="Feature Logo"/>
 
                                     <h6 class="feature-title mt-4"><t t-esc="contact_way.title"/></h6>
@@ -73,20 +79,23 @@
 
                     <div class="get-in-touch mb-4">
                         <div class="get-in-touch-left-side">
-                            <img t-att-src="image_data_uri(page_settings.form_illustration)"
+                            <img t-if="page_settings.form_illustration" t-att-src="image_data_uri(page_settings.form_illustration)"
                                  class="get-in-touch-form-image"
                                  alt="Get in touch form image"/>
                         </div>
                         <div class="get-in-touch-right-side">
-                            <h3 class="get-in-touch-form-title mb-2">Get in Touch</h3>
-                            <p class="get-in-touch-short-info">Our friendly team would love to hear from you.</p>
+
+                            <h3 class="get-in-touch-form-title mb-2"><t t-esc="page_settings.form_headline"/></h3>
+
+                            <p class="get-in-touch-short-info"><t t-esc="page_settings.form_sub_headline"/></p>
+
                             <form action="/contact-us" method="POST" class="mt-3">
                                 <div class="name-input mb-2">
                                     <div class="first-name">
                                         <label for="first-name-input-id" class="input-label">First name</label>
                                         <div>
                                             <input type="text" id="first-name-input-id" class="get-in-touch-input"
-                                                   name="first_name_input" placeholder="First name"/>
+                                                   name="first_name_input" placeholder="First name" required="1"/>
                                         </div>
                                     </div>
                                     <div class="last-name">
@@ -102,7 +111,7 @@
                                     <label for="email-input-id" class="input-label">Email</label>
                                     <div>
                                         <input type="email" id="email-input-id" class="get-in-touch-input"
-                                               name="email_input" placeholder="you@company.com"/>
+                                               name="email_input" placeholder="you@company.com" required="1"/>
                                     </div>
                                 </div>
 
@@ -110,28 +119,36 @@
                                     <label for="phone-number-input-id" class="input-label">Phone number</label>
                                     <div class="phone-number-input-container">
                                         <div class="country-select">
-                                            <div class="country-select-item">BD
-                                                <i class="fa-solid fa-chevron-down"></i>
+                                            <div class="country-select-item"><span class="initial-country-code">BD</span>
+                                                <i class="fa-solid fa-chevron-down country-dropdown-icon"></i>
                                             </div>
                                         </div>
                                         <input type="text" id="phone-number-input-id" name="phone_number_input"
-                                               placeholder="+1 (555) 000-0000"/>
+                                               placeholder="+1 (555) 000-0000" required="1"/>
+
+                                        <div class="country-dropdown">
+                                            <t t-foreach="all_default_countries" t-as="country">
+                                                <p class="country-dropdown-item" t-att-data-value="country.code"><t t-esc="country.name"/></p>
+                                            </t>
+                                        </div>
                                     </div>
                                 </div>
+
+                                <p class="invalid-phone-number-warning mb-2"><i class="fa-solid fa-circle-exclamation"></i> Invalid phone number.</p>
 
                                 <div class="message-input mb-1">
                                     <label for="message-input-id" class="input-label">Message</label>
                                     <div>
                                         <textarea name="message_input" id="message-input-id" rows="5"
                                                   class="get-in-touch-input"
-                                                  placeholder="Leave us a message..."></textarea>
+                                                  placeholder="Leave us a message..." required="1"></textarea>
                                     </div>
                                 </div>
 
                                 <div class="form-check form-check-inline privacy-policy-agreement-input-container mb-2">
                                     <input type="checkbox" class="form-check-input"
                                            id="privacy-policy-agreement-input-id" name="privacy_policy_agreement"
-                                           value=""/>
+                                           value="" required="1"/>
                                     <label for="privacy-policy-agreement-input-id" class="privacy-policy-input-label">
                                         You agree to our friendly
                                         <a href="#">privacy policy</a>

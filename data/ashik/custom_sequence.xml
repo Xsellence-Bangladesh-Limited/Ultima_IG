@@ -10,10 +10,50 @@
             <field name="number_next">1</field>
         </record>
 
+        <record id="ultima_amc_service_plan_feature_seq" model="ir.sequence">
+            <field name="name">Ultima amc service plan feature sequence</field>
+            <field name="code">ultima.amc.service.plan.feature.seq</field>
+            <field name="prefix">PLANFTR</field>
+            <field name="padding">5</field>
+            <field name="number_next">1</field>
+        </record>
+
+        <record id="ultima_amc_service_plan_seq" model="ir.sequence">
+            <field name="name">Ultima amc service plan sequence</field>
+            <field name="code">ultima.amc.service.plan.seq</field>
+            <field name="prefix">PLAN</field>
+            <field name="padding">5</field>
+            <field name="number_next">1</field>
+        </record>
+
+        <record id="ultima_amc_service_advantage_seq" model="ir.sequence">
+            <field name="name">Ultima amc service advantage sequence</field>
+            <field name="code">ultima.amc.service.advantage.seq</field>
+            <field name="prefix">ADVANTAGE</field>
+            <field name="padding">5</field>
+            <field name="number_next">1</field>
+        </record>
+
+        <record id="ultima_amc_service_feature_seq" model="ir.sequence">
+            <field name="name">Ultima amc service feature sequence</field>
+            <field name="code">ultima.amc.service.feature.seq</field>
+            <field name="prefix">FEATURE</field>
+            <field name="padding">5</field>
+            <field name="number_next">1</field>
+        </record>
+
          <record id="ultima_amc_service_testimonial_slider_seq" model="ir.sequence">
             <field name="name">Ultima amc service testimonial slider sequence</field>
             <field name="code">ultima.amc.service.testimonial.slider.seq</field>
             <field name="prefix">SLIDER</field>
+            <field name="padding">5</field>
+            <field name="number_next">1</field>
+        </record>
+
+        <record id="ultima_amc_service_settings_seq" model="ir.sequence">
+            <field name="name">Ultima amc service settings sequence</field>
+            <field name="code">ultima.amc.service.settings.seq</field>
+            <field name="prefix">SETTINGS</field>
             <field name="padding">5</field>
             <field name="number_next">1</field>
         </record>
@@ -29,7 +69,7 @@
         <record id="ultima_contact_way_seq" model="ir.sequence">
             <field name="name">Ultima contact way sequence</field>
             <field name="code">ultima.contact.way.seq</field>
-            <field name="prefix">ULCW</field>
+            <field name="prefix">WAY</field>
             <field name="padding">5</field>
             <field name="number_next">1</field>
         </record>
@@ -37,7 +77,7 @@
         <record id="ultima_user_message_seq" model="ir.sequence">
             <field name="name">Ultima user message sequence</field>
             <field name="code">ultima.user.message.seq</field>
-            <field name="prefix">ULUM</field>
+            <field name="prefix">MESSAGE</field>
             <field name="padding">5</field>
             <field name="number_next">1</field>
         </record>
@@ -45,7 +85,7 @@
         <record id="ultima_contact_us_settings_seq" model="ir.sequence">
             <field name="name">Ultima contact us settings sequence</field>
             <field name="code">ultima.contact.us.settings.seq</field>
-            <field name="prefix">ULST</field>
+            <field name="prefix">SETTINGS</field>
             <field name="padding">5</field>
             <field name="number_next">1</field>
         </record>

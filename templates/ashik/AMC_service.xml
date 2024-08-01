@@ -67,7 +67,8 @@
                                 <t t-foreach="amc_banner_slider_images" t-as="amc_banner_slider_image">
                                     <div class="swiper-slide">
                                         <div class="banner-slide">
-                                            <img t-att-src="image_data_uri(amc_banner_slider_image.slider_image)"
+                                            <img t-if="amc_banner_slider_image.slider_image"
+                                                 t-att-src="image_data_uri(amc_banner_slider_image.slider_image)"
                                                  alt="Banner Slide Image"/>
                                         </div>
                                     </div>
@@ -86,244 +87,99 @@
                             </div>
 
                             <h3 class="plans-heading text-center">
-                                Water Purifier Servicing
-                                <br/>
-                                &amp; Repair Plans
+                                <t t-if="'&lt;br&gt;' in amc_page_settings.plan_title">
+                                    <t t-set="plan_titles" t-value="amc_page_settings.plan_title.split('&lt;br&gt;')"/>
+                                    <t t-foreach="plan_titles" t-as="plan_title">
+                                        <t t-esc="plan_title"/><br/>
+                                    </t>
+                                </t>
+
+                                <t t-else="">
+                                    <t t-esc="amc_page_settings.plan_title"/>
+                                </t>
                             </h3>
 
                             <p class="plans-short-intro text-center">
-                                Every year many people close to us are affected by water borne
-                                <br/>
-                                diseases. Sometimes our loved ones are lost to the horrors.
+                                <t t-if="'&lt;br&gt;' in amc_page_settings.plan_short_description">
+                                    <t t-set="plan_short_descriptions"
+                                       t-value="amc_page_settings.plan_short_description.split('&lt;br&gt;')"/>
+                                    <t t-foreach="plan_short_descriptions" t-as="plan_short_description">
+                                        <t t-esc="plan_short_description"/><br/>
+                                    </t>
+                                </t>
+                                <t t-else="">
+                                    <t t-esc="amc_page_settings.plan_short_description"/>
+                                </t>
                             </p>
 
                             <div class="all-plans">
-                                <div class="single-plan">
-                                    <div class="single-plan-main-icon-container">
-                                        <img
-                                                src="/ultima/static/ashik/AMC_service/images/plan_image_1.png"
-                                                alt="Sinlge Plan Main Icon"
-                                                class="single-plan-main-icon"
-                                        />
-                                    </div>
-                                    <h5 class="single-plan-heading text-center">Service AMC</h5>
-
-                                    <div class="single-plan-services mb-3">
-                                        <div class="single-plan-service">
+                                <t t-foreach="amc_plans" t-as="amc_plan">
+                                    <div class="single-plan">
+                                        <div class="single-plan-main-icon-container">
                                             <img
-                                                    src="/ultima/static/ashik/AMC_service/images/offer-icon.png"
-                                                    alt="Single Plan Service Icon"
-                                                    class="single-plan-service-icon"
+                                                    t-if="amc_plan.icon" t-att-src="image_data_uri(amc_plan.icon)"
+                                                    alt="Sinlge Plan Main Icon"
+                                                    class="single-plan-main-icon"
                                             />
-                                            <p class="single-plan-text">Free Services</p>
+                                        </div>
+                                        <h5 class="single-plan-heading text-center">
+                                            <t t-esc="amc_plan.title"/>
+                                        </h5>
+
+                                        <div class="single-plan-services mb-3">
+                                            <t t-foreach="amc_plan.plan_feature_ids[::-1]" t-as="plan_feature">
+                                                <div class="single-plan-service">
+                                                    <img
+                                                            t-if="plan_feature.icon"
+                                                            t-att-src="image_data_uri(plan_feature.icon)"
+                                                            alt="Single Plan Service Icon"
+                                                            class="single-plan-service-icon"
+                                                    />
+                                                    <t t-if="plan_feature.short_description[-1] == '*'">
+                                                        <p class="single-plan-text">
+                                                            <t t-esc="plan_feature.short_description[:-1] + ' '"/>
+                                                            <span class="single-plan-discount-or-free">*</span>
+                                                        </p>
+                                                    </t>
+                                                    <t t-else="">
+                                                        <p class="single-plan-text">
+                                                            <t t-esc="plan_feature.short_description"/>
+                                                        </p>
+                                                    </t>
+                                                </div>
+                                            </t>
+                                            <div class="single-plan-service">
+                                                <img
+                                                        t-if="amc_plan.discount_icon"
+                                                        t-att-src="image_data_uri(amc_plan.discount_icon)"
+                                                        alt="Single Plan Service Icon"
+                                                        class="single-plan-service-icon"
+                                                />
+                                                <p class="single-plan-text">
+                                                    <t t-esc="amc_plan.discount_description"/>
+                                                    -
+                                                    <t t-if="amc_plan.discount_type == 'not_available'">
+                                                        <span class="single-plan-no-discount">No</span>
+                                                    </t>
+
+                                                    <t t-elif="amc_plan.discount_type == 'free'">
+                                                        <span class="single-plan-discount-or-free">Free</span>
+                                                    </t>
+
+                                                    <t t-elif="amc_plan.discount_type == 'percentage'">
+                                                        <span class="single-plan-discount-or-free"><t
+                                                                t-esc="amc_plan.discount_percentage"/>%
+                                                        </span>
+                                                    </t>
+                                                </p>
+                                            </div>
                                         </div>
 
-                                        <div class="single-plan-service">
-                                            <img
-                                                    src="/ultima/static/ashik/AMC_service/images/offer-icon.png"
-                                                    alt="Single Plan Service Icon"
-                                                    class="single-plan-service-icon"
-                                            />
-                                            <p class="single-plan-text">Expert Advice from Engineer</p>
-                                        </div>
-
-                                        <div class="single-plan-service">
-                                            <img
-                                                    src="/ultima/static/ashik/AMC_service/images/offer-icon.png"
-                                                    alt="Single Plan Service Icon"
-                                                    class="single-plan-service-icon"
-                                            />
-                                            <p class="single-plan-text">Preventive Maintenance</p>
-                                        </div>
-
-                                        <div class="single-plan-service">
-                                            <img
-                                                    src="/ultima/static/ashik/AMC_service/images/offer-icon.png"
-                                                    alt="Single Plan Service Icon"
-                                                    class="single-plan-service-icon"
-                                            />
-                                            <p class="single-plan-text">
-                                                Spare Discount -
-                                                <span class="single-plan-discount-or-free">10%</span>
-                                            </p>
-                                        </div>
-                                    </div>
-
-                                    <div class="single-plan-buy-now-btn-container">
-                                        <a href="#" class="single-plan-buy-now-btn">Buy Now</a>
-                                    </div>
-                                </div>
-
-                                <div class="single-plan">
-                                    <div class="single-plan-main-icon-container">
-                                        <img
-                                                src="/ultima/static/ashik/AMC_service/images/plan_image_1.png"
-                                                alt="Sinlge Plan Main Icon"
-                                                class="single-plan-main-icon"
-                                        />
-                                    </div>
-                                    <h5 class="single-plan-heading text-center">Preventive AMC</h5>
-
-                                    <div class="single-plan-services mb-3">
-                                        <div class="single-plan-service">
-                                            <img
-                                                    src="/ultima/static/ashik/AMC_service/images/offer-icon.png"
-                                                    alt="Single Plan Service Icon"
-                                                    class="single-plan-service-icon"
-                                            />
-                                            <p class="single-plan-text">Free Services</p>
-                                        </div>
-
-                                        <div class="single-plan-service">
-                                            <img
-                                                    src="/ultima/static/ashik/AMC_service/images/offer-icon.png"
-                                                    alt="Single Plan Service Icon"
-                                                    class="single-plan-service-icon"
-                                            />
-                                            <p class="single-plan-text">Expert Advice from Engineer</p>
-                                        </div>
-
-                                        <div class="single-plan-service">
-                                            <img
-                                                    src="/ultima/static/ashik/AMC_service/images/offer-icon.png"
-                                                    alt="Single Plan Service Icon"
-                                                    class="single-plan-service-icon"
-                                            />
-                                            <p class="single-plan-text">Preventive Maintenance</p>
-                                        </div>
-
-                                        <div class="single-plan-service">
-                                            <img
-                                                    src="/ultima/static/ashik/AMC_service/images/offer-icon.png"
-                                                    alt="Single Plan Service Icon"
-                                                    class="single-plan-service-icon"
-                                            />
-                                            <p class="single-plan-text">Filter Change</p>
-                                        </div>
-
-                                        <div class="single-plan-service">
-                                            <img
-                                                    src="/ultima/static/ashik/AMC_service/images/offer-icon.png"
-                                                    alt="Single Plan Service Icon"
-                                                    class="single-plan-service-icon"
-                                            />
-                                            <p class="single-plan-text">Activate Carbon</p>
-                                        </div>
-
-                                        <div class="single-plan-service">
-                                            <img
-                                                    src="/ultima/static/ashik/AMC_service/images/offer-icon.png"
-                                                    alt="Single Plan Service Icon"
-                                                    class="single-plan-service-icon"
-                                            />
-                                            <p class="single-plan-text">
-                                                Spare Discount -
-                                                <span class="single-plan-no-discount">No</span>
-                                            </p>
+                                        <div class="single-plan-buy-now-btn-container">
+                                            <a href="#" class="single-plan-buy-now-btn">Buy Now</a>
                                         </div>
                                     </div>
-
-                                    <div class="single-plan-buy-now-btn-container">
-                                        <a href="#" class="single-plan-buy-now-btn">Buy Now</a>
-                                    </div>
-                                </div>
-
-                                <div class="single-plan">
-                                    <div class="single-plan-main-icon-container">
-                                        <img
-                                                src="/ultima/static/ashik/AMC_service/images/plan_image_1.png"
-                                                alt="Sinlge Plan Main Icon"
-                                                class="single-plan-main-icon"
-                                        />
-                                    </div>
-                                    <h5 class="single-plan-heading text-center">
-                                        Comprehensive ACMC
-                                    </h5>
-
-                                    <div class="single-plan-services mb-3">
-                                        <div class="single-plan-service">
-                                            <img
-                                                    src="/ultima/static/ashik/AMC_service/images/offer-icon.png"
-                                                    alt="Single Plan Service Icon"
-                                                    class="single-plan-service-icon"
-                                            />
-                                            <p class="single-plan-text">Free Services</p>
-                                        </div>
-
-                                        <div class="single-plan-service">
-                                            <img
-                                                    src="/ultima/static/ashik/AMC_service/images/offer-icon.png"
-                                                    alt="Single Plan Service Icon"
-                                                    class="single-plan-service-icon"
-                                            />
-                                            <p class="single-plan-text">Expert Advice from Engineer</p>
-                                        </div>
-
-                                        <div class="single-plan-service">
-                                            <img
-                                                    src="/ultima/static/ashik/AMC_service/images/offer-icon.png"
-                                                    alt="Single Plan Service Icon"
-                                                    class="single-plan-service-icon"
-                                            />
-                                            <p class="single-plan-text">Preventive Maintenance</p>
-                                        </div>
-
-                                        <div class="single-plan-service">
-                                            <img
-                                                    src="/ultima/static/ashik/AMC_service/images/offer-icon.png"
-                                                    alt="Single Plan Service Icon"
-                                                    class="single-plan-service-icon"
-                                            />
-                                            <p class="single-plan-text">Filter Change</p>
-                                        </div>
-
-                                        <div class="single-plan-service">
-                                            <img
-                                                    src="/ultima/static/ashik/AMC_service/images/offer-icon.png"
-                                                    alt="Single Plan Service Icon"
-                                                    class="single-plan-service-icon"
-                                            />
-                                            <p class="single-plan-text">Activate Carbon</p>
-                                        </div>
-
-                                        <div class="single-plan-service">
-                                            <img
-                                                    src="/ultima/static/ashik/AMC_service/images/offer-icon.png"
-                                                    alt="Single Plan Service Icon"
-                                                    class="single-plan-service-icon"
-                                            />
-                                            <p class="single-plan-text">
-                                                Electric &amp; Electronics Spares
-                                                <span class="single-plan-discount-or-free">*</span>
-                                            </p>
-                                        </div>
-
-                                        <div class="single-plan-service">
-                                            <img
-                                                    src="/ultima/static/ashik/AMC_service/images/offer-icon.png"
-                                                    alt="Single Plan Service Icon"
-                                                    class="single-plan-service-icon"
-                                            />
-                                            <p class="single-plan-text">Sediment Change</p>
-                                        </div>
-
-                                        <div class="single-plan-service">
-                                            <img
-                                                    src="/ultima/static/ashik/AMC_service/images/offer-icon.png"
-                                                    alt="Single Plan Service Icon"
-                                                    class="single-plan-service-icon"
-                                            />
-                                            <p class="single-plan-text">
-                                                Spare Discount -
-                                                <span class="single-plan-discount-or-free">Free</span>
-                                            </p>
-                                        </div>
-                                    </div>
-
-                                    <div class="single-plan-buy-now-btn-container">
-                                        <a href="#" class="single-plan-buy-now-btn">Buy Now</a>
-                                    </div>
-                                </div>
+                                </t>
                             </div>
                         </div>
                     </div>
@@ -334,60 +190,58 @@
                         <div class="my-container">
                             <div class="offers-main-content">
                                 <div class="offers-main-content-left-side">
-                                    <p class="offers-title">Advantage</p>
+                                    <p class="offers-title">Advantages</p>
                                     <h3 class="offers-heading mb-3">
-                                        Advantage of Ultima RO Maintenance Cover
+                                        <t t-if="'&lt;br&gt;' in amc_page_settings.advantage_title">
+                                            <t t-set="advantage_titles"
+                                               t-value="amc_page_settings.advantage_title.split('&lt;br&gt;')"/>
+                                            <t t-foreach="advantage_titles" t-as="advantage_title">
+                                                <t t-esc="advantage_title"/><br/>
+                                            </t>
+                                        </t>
+                                        <t t-else="">
+                                            <t t-esc="amc_page_settings.advantage_title"/>
+                                        </t>
+
                                     </h3>
                                     <p class="offers-short-description">
-                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                                        eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-                                        enim ad minim veniam, quis nostrud exercitation ullamco laboris
-                                        nisi.
+                                        <t t-if="'&lt;br&gt;' in amc_page_settings.advantage_description">
+                                            <t t-set="advantage_descriptions"
+                                               t-value="amc_page_settings.advantage_description.split('&lt;br&gt;')"/>
+                                            <t t-foreach="advantage_descriptions" t-as="advantage_description">
+                                                <t t-esc="advantage_description"/><br/>
+                                            </t>
+                                        </t>
+                                        <t t-else="">
+                                            <t t-esc="amc_page_settings.advantage_description"/>
+                                        </t>
+
                                     </p>
 
                                     <div class="single-offers-container mt-2">
-                                        <div class="single-offer">
-                                            <img src="/ultima/static/ashik/AMC_service/images/offer-icon.png"
-                                                 alt="Offer icon"/>
-                                            <p class="single-offer-short-description">
-                                                Various analysis options.
-                                            </p>
-                                        </div>
-
-                                        <div class="single-offer">
-                                            <img src="/ultima/static/ashik/AMC_service/images/offer-icon.png"
-                                                 alt="Offer icon"/>
-                                            <p class="single-offer-short-description">
-                                                Page Load (time, size, number of requests).
-                                            </p>
-                                        </div>
-
-                                        <div class="single-offer">
-                                            <img src="/ultima/static/ashik/AMC_service/images/offer-icon.png"
-                                                 alt="Offer icon"/>
-                                            <p class="single-offer-short-description">
-                                                Big data analysis.
-                                            </p>
-                                        </div>
-
-                                        <div class="single-offer">
-                                            <img src="/ultima/static/ashik/AMC_service/images/offer-icon.png"
-                                                 alt="Offer icon"/>
-                                            <p class="single-offer-short-description">
-                                                Various analysis options.
-                                            </p>
-                                        </div>
+                                        <t t-foreach="amc_advantages" t-as="amc_avtange">
+                                            <div class="single-offer">
+                                                <img t-if="amc_avtange.icon"
+                                                     t-att-src="image_data_uri(amc_avtange.icon)"
+                                                     alt="Offer icon"/>
+                                                <p class="single-offer-short-description">
+                                                    <t t-esc="amc_avtange.short_description"/>
+                                                </p>
+                                            </div>
+                                        </t>
                                     </div>
                                 </div>
                                 <div class="offers-main-content-right-side">
                                     <div class="offer-image-1-container">
                                         <div class="offer-image-1">
-                                            <img src="/ultima/static/ashik/AMC_service/images/advantage_image_02.png"
+                                            <img t-if="amc_page_settings.advantage_lower_image"
+                                                 t-att-src="image_data_uri(amc_page_settings.advantage_lower_image)"
                                                  alt="Offer image"/>
                                         </div>
 
                                         <div class="offer-image-2">
-                                            <img src="/ultima/static/ashik/AMC_service/images/advantage_image_01.png"
+                                            <img t-if="amc_page_settings.advantage_upper_image"
+                                                 t-att-src="image_data_uri(amc_page_settings.advantage_upper_image)"
                                                  alt="Offer image"/>
                                         </div>
                                     </div>
@@ -405,53 +259,44 @@
                             </div>
 
                             <h3 class="features-heading text-center mb-2">
-                                Why Choose Ultima
-                                <br/>
-                                Service &amp; Repair
+                                <t t-if="'&lt;br&gt;' in amc_page_settings.feature_title">
+                                    <t t-set="feature_titles"
+                                       t-value="amc_page_settings.feature_title.split('&lt;br&gt;')"/>
+                                    <t t-foreach="feature_titles" t-as="feature_title">
+                                        <t t-esc="feature_title"/><br/>
+                                    </t>
+                                </t>
+                                <t t-else="">
+                                    <t t-esc="amc_page_settings.feature_title"/>
+                                </t>
                             </h3>
                             <p class="features-short-description text-center">
-                                Every year many people close to us are affected by water borne
-                                diseases.
+                                <t t-if="'&lt;br&gt;' in amc_page_settings.feature_short_description">
+                                    <t t-set="feature_short_descriptions"
+                                       t-value="amc_page_settings.feature_short_description.split('&lt;br&gt;')"/>
+                                    <t t-foreach="feature_short_descriptions" t-as="feature_short_description">
+                                        <t t-esc="feature_short_description"/><br/>
+                                    </t>
+                                </t>
+                                <t t-else="">
+                                    <t t-esc="amc_page_settings.feature_short_description"/>
+                                </t>
                             </p>
-                            <p class="features-short-description text-center">
-                                Sometimes our loved ones are lost to the horrors of deadly germs
-                                like Typhoid.
-                            </p>
-
                             <div class="features-container mt-4">
-                                <div class="feature">
-                                    <div class="feature-logo mb-3">
-                                        <img src="/ultima/static/ashik/AMC_service/images/feature_icon_1.png"
-                                             alt="Feature Icon"/>
+                                <t t-foreach="amc_features" t-as="amc_feature">
+                                    <div class="feature">
+                                        <div class="feature-logo mb-3">
+                                            <img t-if="amc_feature.icon" t-att-src="image_data_uri(amc_feature.icon)"
+                                                 alt="Feature Icon"/>
+                                        </div>
+                                        <h6 class="feature-title mb-1">
+                                            <t t-esc="amc_feature.title"/>
+                                        </h6>
+                                        <p class="feature-text-description">
+                                            <t t-esc="amc_feature.short_description"/>
+                                        </p>
                                     </div>
-                                    <h6 class="feature-title mb-1">Qualified Engineers</h6>
-                                    <p class="feature-text-description">
-                                        Advanced USA based RO Technology that ensures 100% Safe Water.
-                                    </p>
-                                </div>
-
-                                <div class="feature">
-                                    <div class="feature-logo mb-3">
-                                        <img src="/ultima/static/ashik/AMC_service/images/feature_icon_2.png"
-                                             alt="Feature Icon"/>
-                                    </div>
-                                    <h6 class="feature-title mb-1">Genuine Spare Parts</h6>
-                                    <p class="feature-text-description">
-                                        RO+MF and additional UV treatment at 6-10 stages removing
-                                        harmful germs.
-                                    </p>
-                                </div>
-
-                                <div class="feature">
-                                    <div class="feature-logo mb-3">
-                                        <img src="/ultima/static/ashik/AMC_service/images/feature_icon_3.png"
-                                             alt="Feature Icon"/>
-                                    </div>
-                                    <h6 class="feature-title mb-1">Pocket Friendly AMC Plans</h6>
-                                    <p class="feature-text-description">
-                                        Minimum purification capacity of 100 GPD ensuring more power.
-                                    </p>
-                                </div>
+                                </t>
                             </div>
                         </div>
                     </div>
@@ -465,9 +310,16 @@
                             </div>
 
                             <h3 class="testimonial-heading text-center">
-                                What People Think
-                                <br/>
-                                About Us
+                                <t t-if="'&lt;br&gt;' in amc_page_settings.testimonial_title">
+                                    <t t-set="testimonial_titles"
+                                       t-value="amc_page_settings.testimonial_title.split('&lt;br&gt;')"/>
+                                    <t t-foreach="testimonial_titles" t-as="testimonial_title">
+                                        <t t-esc="testimonial_title"/><br/>
+                                    </t>
+                                </t>
+                                <t t-else="">
+                                    <t t-esc="amc_page_settings.testimonial_title"/>
+                                </t>
                             </h3>
                             <div class="testimonial-slider">
                                 <div class="swiper mySwiper">
@@ -477,6 +329,7 @@
                                                 <div class="testimonial-slide">
                                                     <div class="client-image">
                                                         <img
+                                                                t-if="amc_testimonial_slide.client_image"
                                                                 t-att-src="image_data_uri(amc_testimonial_slide.client_image)"
                                                                 alt="Testimonial Client Image"
                                                         />
@@ -489,10 +342,14 @@
                                                         />
 
                                                         <p class="client-comment-text">
-                                                           <t t-esc="amc_testimonial_slide.client_comment"/>
+                                                            <t t-esc="amc_testimonial_slide.client_comment"/>
                                                         </p>
-                                                        <h5 class="client-name mb-1"><t t-esc="amc_testimonial_slide.client_name"/></h5>
-                                                        <p class="client-designation"><t t-esc="amc_testimonial_slide.client_designation"/></p>
+                                                        <h5 class="client-name mb-1">
+                                                            <t t-esc="amc_testimonial_slide.client_name"/>
+                                                        </h5>
+                                                        <p class="client-designation">
+                                                            <t t-esc="amc_testimonial_slide.client_designation"/>
+                                                        </p>
                                                     </div>
                                                 </div>
                                             </div>
