@@ -141,6 +141,10 @@
                     </div>
                     <group>
                         <group>
+                            <field name="main_headline"/>
+                            <field name="main_sub_headline"/>
+                            <field name="form_headline"/>
+                            <field name="form_sub_headline"/>
                             <field name="form_illustration" widget="image" class="oe_avatar"/>
                         </group>
                     </group>
@@ -212,6 +216,217 @@
     </record>
     <!-- Ultima AMC service banner slider action (end)-->
 
+    <!-- Ultima AMC Service plan feature tree view (start)-->
+    <record id="ultima_amc_service_plan_feature_view_tree" model="ir.ui.view">
+        <field name="name">Ultima amc service plan feature tree view</field>
+        <field name="model">ultima.amc.service.plan.feature</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name" readonly="True"/>
+                <field name="short_description"/>
+            </tree>
+        </field>
+    </record>
+    <!-- Ultima AMC Service plan feature tree view (end)-->
+
+    <!-- Ultima AMC Service plan feature form view (start)-->
+    <record id="ultima_amc_service_plan_feature_view_form" model="ir.ui.view">
+        <field name="name">Ultima amc service plan feature form view</field>
+        <field name="model">ultima.amc.service.plan.feature</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <div class="oe_title">
+                        <h1>
+                            <field name="name" readonly="True"/>
+                        </h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="icon" widget="image" class="oe_avatar" required="True"/>
+                            <field name="short_description" required="True"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <!-- Ultima AMC Service plan feature form view (end)-->
+
+    <!-- Ultima AMC Service plan feature action (start)-->
+    <record id="ultima_amc_service_plan_feature_form" model="ir.actions.act_window">
+        <field name="name">Plan features</field>
+        <field name="res_model">ultima.amc.service.plan.feature</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Add a new plan feature!
+            </p>
+        </field>
+    </record>
+    <!-- Ultima AMC Service plan feature action (end)-->
+
+    <!-- Ultima AMC Service plan tree view (start)-->
+    <record id="ultima_amc_service_plan_view_tree" model="ir.ui.view">
+        <field name="name">Ultima amc service plan tree view</field>
+        <field name="model">ultima.amc.service.plan</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name" readonly="True"/>
+                <field name="title"/>
+                <field name="plan_feature_ids" widget="many2many_tags"/>
+                <field name="discount_type"/>
+                <field name="discount_percentage"
+                       invisible="discount_type == 'not_available' or discount_type == 'free'"/>
+            </tree>
+        </field>
+    </record>
+    <!-- Ultima AMC Service plan tree view (end)-->
+
+    <!-- Ultima AMC Service plan form view (start)-->
+    <record id="ultima_amc_service_plan_view_form" model="ir.ui.view">
+        <field name="name">Ultima amc service plan form view</field>
+        <field name="model">ultima.amc.service.plan</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <div class="oe_title">
+                        <h1>
+                            <field name="name" readonly="True"/>
+                        </h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="icon" widget="image" class="oe_avatar" required="True"/>
+                            <field name="title" required="True"/>
+                            <field name="plan_feature_ids" widget="many2many_tags" required="True"/>
+                            <separator string="Discount"/>
+                            <field name="discount_icon" widget="image" class="oe_avatar" required="True"/>
+                            <field name="discount_description" required="True"/>
+                            <field name="discount_type"/>
+                            <field name="discount_percentage"
+                                   invisible="discount_type == 'not_available' or discount_type == 'free'"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <!-- Ultima AMC Service plan form view (end)-->
+
+    <!-- Ultima AMC Service plan action (start)-->
+    <record id="ultima_amc_service_plan_form" model="ir.actions.act_window">
+        <field name="name">Plans</field>
+        <field name="res_model">ultima.amc.service.plan</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Add a new plan!
+            </p>
+        </field>
+    </record>
+    <!-- Ultima AMC Service plan action (end)-->
+
+    <!-- Ultima AMC Service advantage tree view (start)-->
+    <record id="ultima_amc_service_advantage_view_tree" model="ir.ui.view">
+        <field name="name">Ultima amc service advantage tree view</field>
+        <field name="model">ultima.amc.service.advantage</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name" readonly="True"/>
+            </tree>
+        </field>
+    </record>
+    <!-- Ultima AMC Service advantage tree view (end)-->
+
+    <!-- Ultima AMC Service advantage form view (start)-->
+    <record id="ultima_amc_service_advantage_view_form" model="ir.ui.view">
+        <field name="name">Ultima amc service advantage form view</field>
+        <field name="model">ultima.amc.service.advantage</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <div class="oe_title">
+                        <h1>
+                            <field name="name" readonly="True"/>
+                        </h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="icon" widget="image" class="oe_avatar" required="True"/>
+                            <field name="short_description" required="True"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <!-- Ultima AMC Service advantage form view (end)-->
+
+    <!-- Ultima AMC Service advantage action (start)-->
+    <record id="ultima_amc_service_advantage_form" model="ir.actions.act_window">
+        <field name="name">Advantages</field>
+        <field name="res_model">ultima.amc.service.advantage</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Add a new advantage!
+            </p>
+        </field>
+    </record>
+    <!-- Ultima AMC Service advantage action (end)-->
+
+    <!-- Ultima AMC Service feature tree view (start)-->
+    <record id="ultima_amc_service_feature_view_tree" model="ir.ui.view">
+        <field name="name">Ultima amc service feature tree view</field>
+        <field name="model">ultima.amc.service.feature</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name" readonly="True"/>
+                <field name="title"/>
+            </tree>
+        </field>
+    </record>
+    <!-- Ultima AMC Service feature tree view (end)-->
+
+    <!-- Ultima AMC Service feature form view (start)-->
+    <record id="ultima_amc_service_feature_view_form" model="ir.ui.view">
+        <field name="name">Ultima amc service feature form view</field>
+        <field name="model">ultima.amc.service.feature</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <div class="oe_title">
+                        <h1>
+                            <field name="name" readonly="True"/>
+                        </h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="icon" widget="image" class="oe_avatar" required="True"/>
+                            <field name="title" required="True"/>
+                            <field name="short_description" required="True"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <!-- Ultima AMC Service feature form view (end)-->
+
+    <!-- Ultima AMC Service feature action (start)-->
+    <record id="ultima_amc_service_feature_form" model="ir.actions.act_window">
+        <field name="name">Features</field>
+        <field name="res_model">ultima.amc.service.feature</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Add a new feature!
+            </p>
+        </field>
+    </record>
+    <!-- Ultima AMC Service feature action (end)-->
+
     <!-- Ultima AMC service testimonial slider tree view (start)-->
     <record id="ultima_amc_service_testimonial_slider_view_tree" model="ir.ui.view">
         <field name="name">Ultima amc service testimonial slider tree view</field>
@@ -241,7 +456,7 @@
                             <field name="client_image" widget="image" class="oe_avatar" required="True"/>
                             <field name="client_comment" required="True"/>
                             <field name="client_name" required="True"/>
-                            <field name="client_designation" required="True" />
+                            <field name="client_designation" required="True"/>
                         </group>
                     </group>
                 </sheet>
@@ -263,7 +478,70 @@
     </record>
     <!-- Ultima AMC service testimonial slider action (end)-->
 
-     <!-- Ultima service request testimonial slider tree view (start)-->
+    <!-- Ultima AMC service settings tree view (start)-->
+    <record id="ultima_amc_service_settings_view_tree" model="ir.ui.view">
+        <field name="name">Ultima amc service settings tree view</field>
+        <field name="model">ultima.amc.service.settings</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name" readonly="True"/>
+            </tree>
+        </field>
+    </record>
+    <!-- Ultima AMC service settings tree view (end)-->
+
+    <!-- Ultima AMC service settings form view (start)-->
+    <record id="ultima_amc_service_settings_view_form" model="ir.ui.view">
+        <field name="name">Ultima amc service settings form view</field>
+        <field name="model">ultima.amc.service.settings</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <div class="oe_title">
+                        <h1>
+                            <field name="name" readonly="True"/>
+                        </h1>
+                    </div>
+                    <group>
+                        <group>
+                            <separator string="Plans"/>
+                            <field name="plan_title" required="True"/>
+                            <field name="plan_short_description"/>
+
+                            <separator string="Advantages"/>
+                            <field name="advantage_title" required="True"/>
+                            <field name="advantage_description"/>
+                            <field name="advantage_upper_image" widget="image" class="oe_avatar"/>
+                            <field name="advantage_lower_image" widget="image" class="oe_avatar"/>
+
+                            <separator string="Features"/>
+                            <field name="feature_title" required="True"/>
+                            <field name="feature_short_description"/>
+
+                            <separator string="Testimonials"/>
+                            <field name="testimonial_title" required="True"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <!-- Ultima AMC service settings form view (end)-->
+
+    <!-- Ultima AMC service settings action (start)-->
+    <record id="ultima_amc_service_settings_form" model="ir.actions.act_window">
+        <field name="name">Settings</field>
+        <field name="res_model">ultima.amc.service.settings</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                No available settings!
+            </p>
+        </field>
+    </record>
+    <!-- Ultima AMC service settings action (end)-->
+
+    <!-- Ultima service request testimonial slider tree view (start)-->
     <record id="ultima_service_request_testimonial_slider_view_tree" model="ir.ui.view">
         <field name="name">Ultima service request testimonial slider tree view</field>
         <field name="model">ultima.service.request.testimonial.slider</field>
@@ -292,7 +570,7 @@
                             <field name="client_image" widget="image" class="oe_avatar" required="True"/>
                             <field name="client_comment" required="True"/>
                             <field name="client_name" required="True"/>
-                            <field name="client_designation" required="True" />
+                            <field name="client_designation" required="True"/>
                         </group>
                     </group>
                 </sheet>

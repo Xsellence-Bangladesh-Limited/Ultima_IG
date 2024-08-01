@@ -13,6 +13,10 @@ class ContactUs(http.Controller):
         contact_ways = req.env['ultima.contact.way'].sudo().search([], order='id asc')
         # Retrieving contact ways (end)
 
+        # Retrieving default country data (start)
+        all_default_countries = req.env['res.country'].sudo().search([])
+        # Retrieving default country data (end)
+
         if req.httprequest.method == 'POST':
 
             # Retrieving form data (start)
@@ -35,11 +39,14 @@ class ContactUs(http.Controller):
             return req.render('ultima.ultima_contact_us_template', {
                 'message_sent_successful': True,
                 'contact_ways': contact_ways,
-                'page_settings': page_settings
+                'page_settings': page_settings,
+                'all_default_countries': all_default_countries
             })
             # Creating a new record in the ultima.users.message table (end)
 
         return req.render('ultima.ultima_contact_us_template', {
             'contact_ways': contact_ways,
-            'page_settings': page_settings
+            'page_settings': page_settings,
+            'all_default_countries': all_default_countries
         })
+
