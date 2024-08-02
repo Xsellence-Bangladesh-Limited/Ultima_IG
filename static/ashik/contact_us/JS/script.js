@@ -83,7 +83,7 @@ $(document).ready(function(){
         $('.country-dropdown-icon').removeClass('fa-chevron-up')
 
         const countryCode = $('.initial-country-code').text()
-        let phoneNumber = $('#phone-number-input-id').val()
+        let phoneNumber = $('#phone-number-input-id').val().trim()
 
         validatePhoneNumber(phoneNumber, countryCode)
     })
@@ -93,7 +93,7 @@ $(document).ready(function(){
     // Extracting phone number input value and validating the number (start)
     $('#phone-number-input-id').on('input', function(e){
         const countryCode = $('.initial-country-code').text()
-        let phoneNumber = e.target.value
+        let phoneNumber = e.target.value.trim()
 
         validatePhoneNumber(phoneNumber, countryCode)
     })
