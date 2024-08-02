@@ -20,11 +20,11 @@ class ContactUs(http.Controller):
         if req.httprequest.method == 'POST':
 
             # Retrieving form data (start)
-            first_name = form_data.get('first_name_input')
-            last_name = form_data.get('last_name_input')
-            email = form_data.get('email_input')
-            phone_number = form_data.get('phone_number_input')
-            message = form_data.get('message_input')
+            first_name = form_data.get('first_name_input').strip() if form_data.get('first_name_input') else ''
+            last_name = form_data.get('last_name_input').strip() if form_data.get('last_name_input') else ''
+            email = form_data.get('email_input').strip() if form_data.get('email_input') else ''
+            phone_number = form_data.get('phone_number_input').strip() if form_data.get('phone_number_input') else ''
+            message = form_data.get('message_input').strip() if form_data.get('message_input') else ''
             # Retrieving form data(end)
 
             # Creating a new record in the ultima.users.message table (start)
