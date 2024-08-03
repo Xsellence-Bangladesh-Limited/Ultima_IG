@@ -60,14 +60,38 @@
             </head>
             <body>
                 <div class="main-content mt-4">
+                    <div class="my-container">
+                        <t t-if="request_sent_successful">
+                            <div class="alert alert-success mb-2 message-sent-successful-alert">
+                                <p>Request sent successfully!</p>
+                                <span class="message-sent-successful-alert-cancel-btn">
+                                    <i class="fa-solid fa-xmark"></i>
+                                </span>
+                            </div>
+                        </t>
+                    </div>
                     <!-- Main Banner Section (start) -->
                     <div
                             class="main-banner"
                             style="background-image: url('/ultima/static/ashik/service_request/images/blog_image_5.jpg')"
                     >
                         <div class="service-request-form-container">
-                            <form class="service-request-form">
-                                <h5 class="text-center mb-3">Enter Your Details</h5>
+                            <form action="/service-request" method="POST" class="service-request-form">
+                                <h5 class="text-center mb-3">
+                                    <t t-if="'&lt;br&gt;' in service_request_settings.form_title">
+                                        <t t-set="form_titles"
+                                           t-value="service_request_settings.form_title.split('&lt;br&gt;')"/>
+
+                                        <t t-foreach="form_titles" t-as="form_title">
+                                            <t t-esc="form_title"/>
+                                            <br/>
+                                        </t>
+
+                                    </t>
+                                    <t t-else="">
+                                        <t t-esc="service_request_settings.form_title"/>
+                                    </t>
+                                </h5>
                                 <input
                                         type="text"
                                         name="requester_name"
@@ -108,28 +132,45 @@
                                         onblur="(this.type='text')"
                                 />
 
-                                <button class="request-form-submit-btn mb-3">
+                                <button type="submit" class="request-form-submit-btn mb-3">
                                     Request a Call Back
                                 </button>
 
                                 <div class="service-features">
-                                    <div class="single-service-feature">
-                                        <p>1000+</p>
-                                        <p>Certified</p>
-                                        <p>Engineers</p>
-                                    </div>
+                                    <t t-foreach="form_points" t-as="form_point">
+                                        <div class="single-service-feature">
+                                            <p class="single-service-feature-title">
+                                                <t t-if="'&lt;br&gt;' in form_point.title">
+                                                    <t t-set="form_point_titles"
+                                                       t-value="form_point.title.split('&lt;br&gt;')"/>
 
-                                    <div class="single-service-feature">
-                                        <p>365 days</p>
-                                        <p>All year</p>
-                                        <p>support</p>
-                                    </div>
+                                                    <t t-foreach="form_point_titles" t-as="form_point_title">
+                                                        <t t-esc="form_point_title"/>
+                                                        <br/>
+                                                    </t>
 
-                                    <div class="single-service-feature">
-                                        <p>PAN</p>
-                                        <p style="font-weight: bold">INDIA</p>
-                                        <p>Network</p>
-                                    </div>
+                                                </t>
+                                                <t t-else="">
+                                                    <t t-esc="form_point.title"/>
+                                                </t>
+                                            </p>
+                                            <p>
+                                                <t t-if="'&lt;br&gt;' in form_point.sub_title">
+                                                    <t t-set="form_point_sub_titles"
+                                                       t-value="form_point.sub_title.split('&lt;br&gt;')"/>
+
+                                                    <t t-foreach="form_point_sub_titles" t-as="form_point_sub_title">
+                                                        <t t-esc="form_point_sub_title"/>
+                                                        <br/>
+                                                    </t>
+
+                                                </t>
+                                                <t t-else="">
+                                                    <t t-esc="form_point.sub_title"/>
+                                                </t>
+                                            </p>
+                                        </div>
+                                    </t>
                                 </div>
                             </form>
                         </div>
@@ -144,69 +185,51 @@
                             </div>
 
                             <h3 class="features-heading text-center mb-2">
-                                Our Service Features
+                                <t t-if="'&lt;br&gt;' in service_request_settings.feature_title">
+                                    <t t-set="feature_titles"
+                                       t-value="service_request_settings.feature_title.split('&lt;br&gt;')"/>
+
+                                    <t t-foreach="feature_titles" t-as="feature_title">
+                                        <t t-esc="feature_title"/>
+                                        <br/>
+                                    </t>
+
+                                </t>
+                                <t t-else="">
+                                    <t t-esc="service_request_settings.feature_title"/>
+                                </t>
                             </h3>
                             <p class="features-short-description text-center">
-                                Every year many people close to us are affected by water borne
-                                diseases.
-                            </p>
-                            <p class="features-short-description text-center">
-                                Sometimes our loved ones are lost to the horrors of deadly germs
-                                like Typhoid.
-                            </p>
+                                <t t-if="'&lt;br&gt;' in service_request_settings.feature_short_description">
+                                    <t t-set="feature_short_descriptions"
+                                       t-value="service_request_settings.feature_short_description.split('&lt;br&gt;')"/>
 
+                                    <t t-foreach="feature_short_descriptions" t-as="feature_short_description">
+                                        <t t-esc="feature_short_description"/>
+                                        <br/>
+                                    </t>
+
+                                </t>
+                                <t t-else="">
+                                    <t t-esc="service_request_settings.feature_short_description"/>
+                                </t>
+                            </p>
                             <div class="features-container mt-4">
-                                <div class="feature">
-                                    <div class="feature-logo mb-3">
-                                        <img src="/ultima/static/ashik/service_request/images/feature-image-1.png"
-                                             alt="Feature Icon"/>
+                                <t t-foreach="service_request_features" t-as="service_request_feature">
+                                    <div class="feature">
+                                        <div class="feature-logo mb-3">
+                                            <img t-if="service_request_feature.icon"
+                                                 t-att-src="image_data_uri(service_request_feature.icon)"
+                                                 alt="Feature Icon"/>
+                                        </div>
+                                        <h6 class="feature-title mb-1">
+                                            <t t-esc="service_request_feature.title"/>
+                                        </h6>
+                                        <p class="feature-text-description">
+                                            <t t-esc="service_request_feature.short_description"/>
+                                        </p>
                                     </div>
-                                    <h6 class="feature-title mb-1">Best Product</h6>
-                                    <p class="feature-text-description">
-                                        Every year many people close to us are affected by water borne
-                                        diseases. Sometimes our loved ones are lost to the horrors of
-                                        deadly germs like Typhoid, Jaundice, Cholera, Diarrhea etc.
-                                    </p>
-                                </div>
-
-                                <div class="feature">
-                                    <div class="feature-logo mb-3">
-                                        <img src="/ultima/static/ashik/service_request/images/feature-image-2.png"
-                                             alt="Feature Icon"/>
-                                    </div>
-                                    <h6 class="feature-title mb-1">100% Satisfaction</h6>
-                                    <p class="feature-text-description">
-                                        Every year many people close to us are affected by water borne
-                                        diseases. Sometimes our loved ones are lost to the horrors of
-                                        deadly germs like Typhoid, Jaundice, Cholera, Diarrhea etc.
-                                    </p>
-                                </div>
-
-                                <div class="feature">
-                                    <div class="feature-logo mb-3">
-                                        <img src="/ultima/static/ashik/service_request/images/feature-image-3.png"
-                                             alt="Feature Icon"/>
-                                    </div>
-                                    <h6 class="feature-title mb-1">After Sales Service</h6>
-                                    <p class="feature-text-description">
-                                        Every year many people close to us are affected by water borne
-                                        diseases. Sometimes our loved ones are lost to the horrors of
-                                        deadly germs like Typhoid, Jaundice, Cholera, Diarrhea etc.
-                                    </p>
-                                </div>
-
-                                <div class="feature">
-                                    <div class="feature-logo mb-3">
-                                        <img src="/ultima/static/ashik/service_request/images/feature-image-4.png"
-                                             alt=""/>
-                                    </div>
-                                    <h6 class="feature-title mb-1">Quick Delivery</h6>
-                                    <p class="feature-text-description">
-                                        Every year many people close to us are affected by water borne
-                                        diseases. Sometimes our loved ones are lost to the horrors of
-                                        deadly germs like Typhoid, Jaundice, Cholera, Diarrhea etc.
-                                    </p>
-                                </div>
+                                </t>
                             </div>
                         </div>
                     </div>
@@ -220,9 +243,19 @@
                             </div>
 
                             <h3 class="testimonial-heading text-center">
-                                What People Think
-                                <br/>
-                                About Us
+                                <t t-if="'&lt;br&gt;' in service_request_settings.testimonial_title">
+                                    <t t-set="testimonial_titles"
+                                       t-value="service_request_settings.testimonial_title.split('&lt;br&gt;')"/>
+
+                                    <t t-foreach="testimonial_titles" t-as="testimonial_title">
+                                        <t t-esc="testimonial_title"/>
+                                        <br/>
+                                    </t>
+
+                                </t>
+                                <t t-else="">
+                                    <t t-esc="service_request_settings.testimonial_title"/>
+                                </t>
                             </h3>
                             <div class="testimonial-slider">
                                 <div class="swiper mySwiper">
@@ -233,7 +266,8 @@
                                                 <div class="testimonial-slide">
                                                     <div class="client-image">
                                                         <img
-                                                                t-if="service_request_testimonial_slide.client_image" t-att-src="image_data_uri(service_request_testimonial_slide.client_image)"
+                                                                t-if="service_request_testimonial_slide.client_image"
+                                                                t-att-src="image_data_uri(service_request_testimonial_slide.client_image)"
                                                                 alt="Testimonial Client Image"
                                                         />
                                                     </div>
@@ -247,8 +281,12 @@
                                                         <p class="client-comment-text">
                                                             <t t-esc="service_request_testimonial_slide.client_comment"/>
                                                         </p>
-                                                        <h5 class="client-name mb-1"><t t-esc="service_request_testimonial_slide.client_name"/></h5>
-                                                        <p class="client-designation"><t t-esc="service_request_testimonial_slide.client_designation"/></p>
+                                                        <h5 class="client-name mb-1">
+                                                            <t t-esc="service_request_testimonial_slide.client_name"/>
+                                                        </h5>
+                                                        <p class="client-designation">
+                                                            <t t-esc="service_request_testimonial_slide.client_designation"/>
+                                                        </p>
                                                     </div>
                                                 </div>
                                             </div>

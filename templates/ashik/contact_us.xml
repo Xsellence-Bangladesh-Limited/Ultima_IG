@@ -95,14 +95,14 @@
                                         <label for="first-name-input-id" class="input-label">First name</label>
                                         <div>
                                             <input type="text" id="first-name-input-id" class="get-in-touch-input"
-                                                   name="first_name_input" placeholder="First name" required="1"/>
+                                                   name="first_name_input" placeholder="First name" required="1" value=""/>
                                         </div>
                                     </div>
                                     <div class="last-name">
                                         <label for="last-name-input-id" class="input-label">Last name</label>
                                         <div>
                                             <input type="text" id="last-name-input-id" class="get-in-touch-input"
-                                                   name="last_name_input" placeholder="Last name"/>
+                                                   name="last_name_input" placeholder="Last name" value=""/>
                                         </div>
                                     </div>
                                 </div>
@@ -111,7 +111,7 @@
                                     <label for="email-input-id" class="input-label">Email</label>
                                     <div>
                                         <input type="email" id="email-input-id" class="get-in-touch-input"
-                                               name="email_input" placeholder="you@company.com" required="1"/>
+                                               name="email_input" placeholder="you@company.com" required="1" value=""/>
                                     </div>
                                 </div>
 
@@ -124,7 +124,7 @@
                                             </div>
                                         </div>
                                         <input type="text" id="phone-number-input-id" name="phone_number_input"
-                                               placeholder="+1 (555) 000-0000" required="1"/>
+                                               placeholder="+1 (555) 000-0000" required="1" value=""/>
 
                                         <div class="country-dropdown">
                                             <t t-foreach="all_default_countries" t-as="country">
@@ -156,7 +156,7 @@
                                     <br/>
                                 </div>
 
-                                <button class="get-in-touch-form-submission-btn mt-3">Send message</button>
+                                <button type="submit" class="get-in-touch-form-submission-btn mt-3">Send message</button>
                             </form>
                         </div>
                     </div>

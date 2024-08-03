@@ -85,10 +85,34 @@
               sequence="1"
               parent="ultima_ro_service_menu_id"/>
 
-    <menuitem id="ultima_service_request_testimonial_slider_menu_id"
-              name="Testimonial slider"
+    <menuitem id="ultima_service_request_form_point_menu_id"
+              name="Form points"
               sequence="0"
               parent="ultima_service_request_menu_id"
+              action="ultima_service_request_form_point_form"/>
+
+    <menuitem id="ultima_service_request_feature_menu_id"
+              name="Features"
+              sequence="1"
+              parent="ultima_service_request_menu_id"
+              action="ultima_service_request_feature_form"/>
+
+    <menuitem id="ultima_service_request_testimonial_slider_menu_id"
+              name="Testimonial slider"
+              sequence="2"
+              parent="ultima_service_request_menu_id"
               action="ultima_service_request_testimonial_slider_form"/>
+
+    <menuitem id="ultima_service_request_request_menu_id"
+              name="Requests"
+              sequence="3"
+              parent="ultima_service_request_menu_id"
+              action="ultima_service_request_form"/>
+
+    <menuitem id="ultima_service_request_settings_menu_id"
+              name="Settings"
+              sequence="4"
+              parent="ultima_service_request_menu_id"
+              action="ultima_service_request_settings_form"/>
     <!-- Menu items for RO service pages (end)-->
 </odoo>
