@@ -198,6 +198,52 @@ class AMCServiceSettings(models.Model):
 
 # Models for service request page (start)
 
+class ServiceRequest(models.Model):
+    _name = 'ultima.service.request'
+    _description = 'ultima.service.request'
+    _order = 'id desc'
+
+    name = fields.Char(string='Sequence')
+    full_name = fields.Char(string='Full name')
+    registered_mobile_number = fields.Char(string='Registered mobile number')
+    preferred_date = fields.Char(string='Preferred date')
+    preferred_time = fields.Char(string='Preferred time')
+
+    @api.model
+    def create(self, vals):
+        vals['name'] = self.env['ir.sequence'].sudo().next_by_code('ultima.service.request.seq')
+        return super(ServiceRequest, self).create(vals)
+
+class ServiceRequestFormPoint(models.Model):
+    _name = 'ultima.service.request.form.point'
+    _description = 'ultima.service.request.form.point'
+    _order = 'id desc'
+
+    name = fields.Char(string='Name')
+    title = fields.Char(string='Title')
+    sub_title = fields.Char(string='Sub title')
+
+    @api.model
+    def create(self, vals):
+        vals['name'] = self.env['ir.sequence'].sudo().next_by_code('ultima.service.request.form.point.seq')
+        return super(ServiceRequestFormPoint, self).create(vals)
+
+class ServiceRequestFeature(models.Model):
+    _name = 'ultima.service.request.feature'
+    _description = 'ultima.service.request.feature'
+    _order = 'id desc'
+
+    name = fields.Char(string='Name')
+    icon = fields.Image(string='Icon')
+    title = fields.Char(string='Title')
+    short_description = fields.Text(string='Short description')
+
+    @api.model
+    def create(self, vals):
+        vals['name'] = self.env['ir.sequence'].sudo().next_by_code('ultima.service.request.feature.seq')
+        return super(ServiceRequestFeature, self).create(vals)
+
+
 class ServiceRequestTestimonialSlide(models.Model):
     _name = 'ultima.service.request.testimonial.slider'
     _description = 'ultima.service.request.testimonial.slider'
@@ -213,6 +259,24 @@ class ServiceRequestTestimonialSlide(models.Model):
     def create(self, vals):
         vals['name'] = self.env['ir.sequence'].sudo().next_by_code('ultima.service.request.testimonial.slider.seq')
         return super(ServiceRequestTestimonialSlide, self).create(vals)
+
+
+class ServiceRequestSettings(models.Model):
+    _name = 'ultima.service.request.settings'
+    _description = 'ultima.service.request.settings'
+    _order = 'id desc'
+
+    name = fields.Char(string='Name')
+    banner_image = fields.Image(string='Banner image')
+    form_title = fields.Char(string='Form title')
+    feature_title = fields.Char(string='Feature title')
+    feature_short_description = fields.Text(string='Feature short description')
+    testimonial_title = fields.Char(string='Testimonial title')
+
+    @api.model
+    def create(self, vals):
+        vals['name'] = self.env['ir.sequence'].sudo().next_by_code('ultima.service.request.settings')
+        return super(ServiceRequestSettings, self).create(vals)
 
 # Models for service request page (end)
 

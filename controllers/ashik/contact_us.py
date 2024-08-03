@@ -1,6 +1,7 @@
 from odoo import http
 from odoo.http import request as req
 
+
 class ContactUs(http.Controller):
     @http.route('/contact-us', type='http', auth='public', csrf=False)
     def contact_us(self, **form_data):
@@ -17,8 +18,15 @@ class ContactUs(http.Controller):
         all_default_countries = req.env['res.country'].sudo().search([])
         # Retrieving default country data (end)
 
-        if req.httprequest.method == 'POST':
+        if req.session.get('contact_form_submitted'):
+            req.session['contact_form_submitted'] = False
+            return req.render('ultima.ultima_contact_us_template', {
+                'contact_ways': contact_ways,
+                'page_settings': page_settings,
+                'all_default_countries': all_default_countries
+            })
 
+        if req.httprequest.method == 'POST':
             # Retrieving form data (start)
             first_name = form_data.get('first_name_input').strip() if form_data.get('first_name_input') else ''
             last_name = form_data.get('last_name_input').strip() if form_data.get('last_name_input') else ''
@@ -26,6 +34,8 @@ class ContactUs(http.Controller):
             phone_number = form_data.get('phone_number_input').strip() if form_data.get('phone_number_input') else ''
             message = form_data.get('message_input').strip() if form_data.get('message_input') else ''
             # Retrieving form data(end)
+
+            req.session['contact_form_submitted'] = True
 
             # Creating a new record in the ultima.users.message table (start)
             req.env['ultima.users.message'].sudo().create({
@@ -44,9 +54,10 @@ class ContactUs(http.Controller):
             })
             # Creating a new record in the ultima.users.message table (end)
 
+        req.session['contact_form_submitted'] = False
+
         return req.render('ultima.ultima_contact_us_template', {
             'contact_ways': contact_ways,
             'page_settings': page_settings,
             'all_default_countries': all_default_countries
         })
-

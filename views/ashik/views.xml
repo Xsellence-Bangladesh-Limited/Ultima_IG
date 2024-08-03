@@ -541,6 +541,163 @@
     </record>
     <!-- Ultima AMC service settings action (end)-->
 
+    <!-- Ultima service request tree view (start)-->
+    <record id="ultima_service_request_view_tree" model="ir.ui.view">
+        <field name="name">Ultima service request tree view</field>
+        <field name="model">ultima.service.request</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name" readonly="True"/>
+                <field name="full_name"/>
+                <field name="registered_mobile_number"/>
+                <field name="preferred_date"/>
+                <field name="preferred_time"/>
+            </tree>
+        </field>
+    </record>
+    <!-- Ultima service request tree view (end)-->
+
+    <!-- Ultima service request form view (start)-->
+    <record id="ultima_service_request_view_form" model="ir.ui.view">
+        <field name="name">Ultima service request form view</field>
+        <field name="model">ultima.service.request</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <div class="oe_title">
+                        <h1>
+                            <field name="name" readonly="True"/>
+                        </h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="full_name" required="True"/>
+                            <field name="registered_mobile_number" required="True"/>
+                            <field name="preferred_date" required="True"/>
+                            <field name="preferred_time" required="True"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <!-- Ultima service request form view (end)-->
+
+    <!-- Ultima service request action (start)-->
+    <record id="ultima_service_request_form" model="ir.actions.act_window">
+        <field name="name">Users' requests</field>
+        <field name="res_model">ultima.service.request</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                No available requests!
+            </p>
+        </field>
+    </record>
+    <!-- Ultima service request action (end)-->
+
+    <!-- Ultima service request form point tree view (start)-->
+    <record id="ultima_service_request_form_point_view_tree" model="ir.ui.view">
+        <field name="name">Ultima service request form point tree view</field>
+        <field name="model">ultima.service.request.form.point</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name" readonly="True"/>
+                <field name="title"/>
+                <field name="sub_title"/>
+            </tree>
+        </field>
+    </record>
+    <!-- Ultima service request form point tree view (end)-->
+
+    <!-- Ultima service request form point form view (start)-->
+    <record id="ultima_service_request_form_point_view_form" model="ir.ui.view">
+        <field name="name">Ultima service request form point form view</field>
+        <field name="model">ultima.service.request.form.point</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <div class="oe_title">
+                        <h1>
+                            <field name="name" readonly="True"/>
+                        </h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="title" required="True"/>
+                            <field name="sub_title"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <!-- Ultima service request form point form view (end)-->
+
+    <!-- Ultima service request form point action (start)-->
+    <record id="ultima_service_request_form_point_form" model="ir.actions.act_window">
+        <field name="name">Form points</field>
+        <field name="res_model">ultima.service.request.form.point</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Add a new point!
+            </p>
+        </field>
+    </record>
+    <!-- Ultima service request form point action (end)-->
+
+    <!-- Ultima service request feature tree view (start)-->
+    <record id="ultima_service_request_feature_view_tree" model="ir.ui.view">
+        <field name="name">Ultima service request feature tree view</field>
+        <field name="model">ultima.service.request.feature</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name" readonly="True"/>
+                <field name="title"/>
+            </tree>
+        </field>
+    </record>
+    <!-- Ultima service request feature tree view (end)-->
+
+    <!-- Ultima service request feature form view (start)-->
+    <record id="ultima_service_request_feature_view_form" model="ir.ui.view">
+        <field name="name">Ultima service request feature form view</field>
+        <field name="model">ultima.service.request.feature</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <div class="oe_title">
+                        <h1>
+                            <field name="name" readonly="True"/>
+                        </h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="icon" widget="image" class="oe_avatar" required="True"/>
+                            <field name="title" required="True"/>
+                            <field name="short_description" required="True"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <!-- Ultima service request feature form view (end)-->
+
+    <!-- Ultima service request feature action (start)-->
+    <record id="ultima_service_request_feature_form" model="ir.actions.act_window">
+        <field name="name">Features</field>
+        <field name="res_model">ultima.service.request.feature</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Add a new feature!
+            </p>
+        </field>
+    </record>
+    <!-- Ultima service request feature action (end)-->
+
     <!-- Ultima service request testimonial slider tree view (start)-->
     <record id="ultima_service_request_testimonial_slider_view_tree" model="ir.ui.view">
         <field name="name">Ultima service request testimonial slider tree view</field>
@@ -591,4 +748,56 @@
         </field>
     </record>
     <!-- Ultima service request testimonial slider action (end)-->
+
+    <!-- Ultia service request settings tree view (start)-->
+    <record id="ultima_service_request_settings_view_tree" model="ir.ui.view">
+        <field name="name">Ultima service request settings tree view</field>
+        <field name="model">ultima.service.request.settings</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name" readonly="True"/>
+            </tree>
+        </field>
+    </record>
+    <!-- Ultia service request settings tree view (end)-->
+
+    <!-- Ultima service request settings form view (start)-->
+    <record id="ultima_service_request_settings_view_form" model="ir.ui.view">
+        <field name="name">Ultima service request settings form view</field>
+        <field name="model">ultima.service.request.settings</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <div class="oe_title">
+                        <h1>
+                            <field name="name" readonly="True"/>
+                        </h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="banner_image" widget="image" class="oe_avatar"/>
+                            <field name="form_title" required="True"/>
+                            <field name="feature_title" required="True"/>
+                            <field name="feature_short_description"/>
+                            <field name="testimonial_title" required="True"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <!-- Ultima service request settings form view (end)-->
+
+    <!-- Ultima service request settings action (start)-->
+    <record id="ultima_service_request_settings_form" model="ir.actions.act_window">
+        <field name="name">Settings</field>
+        <field name="res_model">ultima.service.request.settings</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                No available settings!
+            </p>
+        </field>
+    </record>
+    <!-- Ultima service request settings action (end)-->
 </odoo>
