@@ -198,7 +198,7 @@ class AMCServiceSettings(models.Model):
 
 # Models for service request page (start)
 
-class ServiceRequest(models.Model):
+class UltimaServiceRequest(models.Model):
     _name = 'ultima.service.request'
     _description = 'ultima.service.request'
     _order = 'id desc'
@@ -279,5 +279,52 @@ class ServiceRequestSettings(models.Model):
         return super(ServiceRequestSettings, self).create(vals)
 
 # Models for service request page (end)
+
+# Models for about us page (start)
+
+class AboutUsClient(models.Model):
+    _name = 'ultima.about.us.client'
+    _description = 'ultima.about.us.client'
+    _order = 'id desc'
+
+    name = fields.Char(string='Sequence')
+    client_logo = fields.Image(string='Client logo')
+
+    @api.model
+    def create(self, vals):
+        vals['name'] = self.env['ir.sequence'].sudo().next_by_code('ultima.about.us.client.seq')
+        return super(AboutUsClient, self).create(vals)
+
+class AboutUsFeature(models.Model):
+    _name = 'ultima.about.us.feature'
+    _description = 'ultima.about.us.feature'
+    _order = 'id desc'
+
+    name = fields.Char(string='Name')
+    icon = fields.Image(string='Icon')
+    title = fields.Char(string='Title')
+    short_description = fields.Text(string='Short description')
+
+    @api.model
+    def create(self, vals):
+        vals['name'] = self.env['ir.sequence'].sudo().next_by_code('ultima.about.us.feature.seq')
+        return super(AboutUsFeature, self).create(vals)
+
+
+class AboutUsOffer(models.Model):
+    _name = 'ultima.about.us.offer'
+    _description = 'ultima.about.us.offer'
+    _order = 'id desc'
+
+    name = fields.Char('Name')
+    icon = fields.Image('Icon')
+    short_description = fields.Text('Short description')
+
+    @api.model
+    def create(self, vals):
+        vals['name'] = self.env['ir.sequence'].sudo().next_by_code('ultima.about.us.offer.seq')
+        return super(AboutUsOffer, self).create(vals)
+
+# Models for about us page (end)
 
 

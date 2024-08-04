@@ -121,5 +121,29 @@
             <field name="padding">5</field>
             <field name="number_next">1</field>
         </record>
+
+        <record id="ultima_about_us_client_seq" model="ir.sequence">
+            <field name="name">Ultima about us client sequence</field>
+            <field name="code">ultima.about.us.client.seq</field>
+            <field name="prefix">CLIENT</field>
+            <field name="padding">5</field>
+            <field name="number_next">1</field>
+        </record>
+
+        <record id="ultima_about_us_feature_seq" model="ir.sequence">
+            <field name="name">Ultima about us feature sequence</field>
+            <field name="code">ultima.about.us.feature.seq</field>
+            <field name="prefix">FEATURE</field>
+            <field name="padding">5</field>
+            <field name="number_next">1</field>
+        </record>
+
+        <record id="ultima_about_us_offer_seq" model="ir.sequence">
+            <field name="name">Ultima about us offer sequence</field>
+            <field name="code">ultima.about.us.offer.seq</field>
+            <field name="prefix">OFFER</field>
+            <field name="padding">5</field>
+            <field name="number_next">1</field>
+        </record>
     </data>
 </odoo>

@@ -800,4 +800,150 @@
         </field>
     </record>
     <!-- Ultima service request settings action (end)-->
+
+    <!-- Ultima about us client tree view (start)-->
+    <record id="ultima_about_us_client_view_tree" model="ir.ui.view">
+        <field name="name">Ultima about us client tree view</field>
+        <field name="model">ultima.about.us.client</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name" readonly="True"/>
+            </tree>
+        </field>
+    </record>
+    <!-- Ultima about us client tree view (end)-->
+
+    <!-- Ultima about us client form view (start)-->
+    <record id="ultima_about_us_client_view_form" model="ir.ui.view">
+        <field name="name">Ultima about us client form view</field>
+        <field name="model">ultima.about.us.client</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <div class="oe_title">
+                        <h1><field name="name" readonly="True"/></h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="client_logo" widget="image" class="oe_avatar" required="True"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <!-- Ultima about us client form view (end)-->
+
+    <!-- Ultima about us client action (start)-->
+    <record id="ultima_about_us_client_form" model="ir.actions.act_window">
+        <field name="name">Clients</field>
+        <field name="res_model">ultima.about.us.client</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Add a new client!
+            </p>
+        </field>
+    </record>
+    <!-- Ultima about us client action (end)-->
+
+    <!-- Ultima about us feature tree view (start)-->
+    <record id="ultima_about_us_feature_view_tree" model="ir.ui.view">
+        <field name="name">Ultima about us feature tree view</field>
+        <field name="model">ultima.about.us.feature</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name" readonly="True"/>
+                <field name="title"/>
+            </tree>
+        </field>
+    </record>
+    <!-- Ultima about us feature tree view (end)-->
+
+    <!-- Ultima about us feature form view (start)-->
+    <record id="ultima_about_us_feature_view_form" model="ir.ui.view">
+        <field name="name">Ultima about us feature form view</field>
+        <field name="model">ultima.about.us.feature</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <div class="oe_title">
+                        <h1>
+                            <field name="name" readonly="True"/>
+                        </h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="icon" widget="image" class="oe_avatar" required="True"/>
+                            <field name="title" required="True"/>
+                            <field name="short_description" required="True"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <!-- Ultima about us feature form view (end)-->
+
+    <!-- Ultima about us feature action (start)-->
+    <record id="ultima_about_us_feature_form" model="ir.actions.act_window">
+        <field name="name">Features</field>
+        <field name="res_model">ultima.about.us.feature</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Add a new feature!
+            </p>
+        </field>
+    </record>
+    <!-- Ultima about us feature action (end)-->
+
+    <!-- Ultima about us offer tree view (start)-->
+    <record id="ultima_about_us_offer_view_tree" model="ir.ui.view">
+        <field name="name">Ultima about us offer tree view</field>
+        <field name="model">ultima.about.us.offer</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name" readonly="True"/>
+            </tree>
+        </field>
+    </record>
+    <!-- Ultima about us offer tree view (end)-->
+
+    <!-- Ultima about us offer form view (start)-->
+    <record id="ultima_about_us_offer_view_form" model="ir.ui.view">
+        <field name="name">Ultima about us offer form view</field>
+        <field name="model">ultima.about.us.offer</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <div class="oe_title">
+                        <h1>
+                            <field name="name" readonly="True"/>
+                        </h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="icon" widget="image" class="oe_avatar" required="True"/>
+                            <field name="short_description" required="True"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <!-- Ultima about us offer form view (end)-->
+
+    <!-- Ultima about us offer action (start)-->
+    <record id="ultima_about_us_offer_form" model="ir.actions.act_window">
+        <field name="name">Offers</field>
+        <field name="res_model">ultima.about.us.offer</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Add a new offer!
+            </p>
+        </field>
+    </record>
+    <!-- Ultima about us offer action (end)-->
 </odoo>

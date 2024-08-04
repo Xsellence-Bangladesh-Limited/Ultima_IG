@@ -21,6 +21,7 @@
         'templates/ashik/contact_us.xml',
         'templates/ashik/AMC_service.xml',
         'templates/ashik/service_request.xml',
+        'templates/ashik/about_us.xml',
     ],
     'demo': [],
     'installable': True,
