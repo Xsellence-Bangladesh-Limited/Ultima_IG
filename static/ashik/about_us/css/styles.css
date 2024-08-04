@@ -1,0 +1,706 @@
+/* Global CSS (start) */
+
+/* Google Font (start) */
+
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Sora:wght@100..800&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+/* Google Font (end) */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --primary-color: #0c79f9;
+  --primary-box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px,
+    rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
+  --secondary-box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+  --title-font-family: "Sora", sans-serif;
+  --normal-text-font-family: "Poppins", sans-serif;
+  --heading-font-weight: 600;
+  --normal-title-font-weight: 400;
+}
+
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin-bottom: 0;
+}
+
+p {
+  font-size: 0.875rem;
+}
+
+/* Global CSS (end) */
+
+/* Main Content (start) */
+
+.my-container {
+  width: 60rem;
+  margin: 0 auto;
+}
+
+/* Main content (start) */
+
+/* Welcome Section (start) */
+
+.welcome-section {
+  display: flex;
+  gap: 2.5rem;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-bottom: 6.25rem;
+}
+
+.welcome-section-left {
+  width: 40%;
+}
+
+.introduction-image {
+  width: 100%;
+  height: 22.188rem;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.introduction-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.welcome-section-right {
+  width: 55%;
+}
+
+.introduction-title {
+  font-family: var(--title-font-family);
+  font-weight: var(--normal-title-font-weight);
+  background: linear-gradient(263.57deg, #62bb46 20%, #0c79f9 63%);
+  -webkit-text-fill-color: transparent;
+  -webkit-background-clip: text;
+  display: inline-block;
+}
+
+.introduction-heading {
+  font-family: var(--title-font-family);
+  font-weight: var(--heading-font-weight);
+}
+
+.introduction-description-text {
+  font-family: var(--normal-text-font-family);
+  font-weight: var(--normal-title-font-weight);
+  font-size: 0.813rem;
+  line-height: 1.6rem;
+}
+
+.see-details-btn {
+  padding: 0.5rem 1.563rem;
+  border: none;
+  outline: none;
+  border-radius: 0.313rem;
+  background-color: var(--primary-color);
+  font-family: var(--title-font-family);
+  font-weight: var(--normal-title-font-weight);
+  color: #f9fdff;
+  font-size: 0.813rem;
+}
+
+/* Welcome Section (end) */
+
+/* Client Introduction (start) */
+
+.client-introduction {
+  margin-bottom: 3.125rem;
+}
+
+.client-introduction-title {
+  font-family: var(--title-font-family);
+  font-weight: var(--normal-title-font-weight);
+  font-size: 1.125rem;
+  text-align: center;
+  margin-bottom: 0.938rem;
+}
+
+.client-introduction-title .number-of-clients {
+  color: var(--primary-color);
+}
+
+.all-client-logo-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  width: 100%;
+  gap: 5rem;
+}
+
+.client-logo{
+  width: 5.313rem;
+}
+
+/* Client Introduction (end) */
+
+/* Features (start) */
+
+.features {
+  padding: 4.063rem 0;
+  background-color: #f9fafb;
+  margin-bottom: 3.125rem;
+}
+
+.features-title {
+  font-family: var(--title-font-family);
+  font-weight: var(--normal-title-font-weight);
+  background: linear-gradient(263.57deg, #62bb46 20%, #0c79f9 63%);
+  -webkit-text-fill-color: transparent;
+  -webkit-background-clip: text;
+  text-align: center;
+  display: inline-block;
+}
+
+.features-heading {
+  font-family: var(--title-font-family);
+  font-weight: var(--heading-font-weight);
+}
+
+.features-short-description {
+  font-family: var(--normal-text-font-family);
+  font-weight: var(--normal-title-font-weight);
+  font-size: 0.813rem;
+  line-height: 1.4rem;
+  color: #7b7b7b;
+}
+
+.features-container {
+  display: flex;
+  /* justify-content: center; */
+  gap: 1.25rem;
+}
+
+.feature {
+  width: 25%;
+  background-color: #fff;
+  padding: 1.125rem;
+  border-radius: 0.625rem;
+  transition: all 0.3s;
+}
+
+.feature:hover {
+  transform: scale(1.03);
+}
+
+.feature-logo{
+  width: 3.125rem;
+}
+
+.feature-title {
+  font-family: var(--normal-text-font-family);
+  font-weight: 600;
+  font-size: 1rem;
+}
+
+.feature-text-description {
+  font-family: var(--normal-text-font-family);
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 1.125rem;
+  color: #7b7b7b;
+}
+
+/* Features (end) */
+
+/* Company growth (start) */
+
+.company-growth {
+  margin-bottom: 3.125rem;
+}
+
+.company-growth-title {
+  font-family: var(--title-font-family);
+  font-weight: var(--normal-title-font-weight);
+  background: linear-gradient(263.57deg, #62bb46 20%, #0c79f9 63%);
+  -webkit-text-fill-color: transparent;
+  -webkit-background-clip: text;
+  text-align: center;
+  display: inline-block;
+}
+
+.company-growth-heading {
+  font-family: var(--title-font-family);
+  font-weight: var(--heading-font-weight);
+}
+
+.company-growth-short-description {
+  font-family: var(--normal-text-font-family);
+  font-weight: var(--normal-title-font-weight);
+  font-size: 0.813rem;
+  line-height: 1.4rem;
+}
+
+.all-growth-data {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.growth-data {
+  width: 25%;
+  position: relative;
+}
+
+.growth-data-heading {
+  font-family: var(--normal-text-font-family);
+  font-weight: 500;
+  font-size: 6.25rem;
+  color: var(--primary-color);
+  -webkit-text-fill-color: white;
+  -webkit-text-stroke-width: 0.094rem;
+  -webkit-text-stroke-color: var(--primary-color);
+  display: inline-block;
+}
+
+.growth-data-heading:hover {
+  -webkit-text-fill-color: var(--primary-color);
+}
+
+.experience-growth-data-title-container {
+  position: absolute;
+  top: 50%;
+  left: 120px;
+  transform: translate(-50%, -50%);
+}
+
+.conference-growth-data-title-container {
+  position: absolute;
+  top: 50%;
+  left: 140px;
+  transform: translate(-50%, -50%);
+}
+
+.professionals-growth-data-title-container {
+  position: absolute;
+  top: 50%;
+  left: 128px;
+  transform: translate(-50%, -50%);
+}
+
+.project-growth-data-title-container {
+  position: absolute;
+  top: 50%;
+  left: 118px;
+  transform: translate(-50%, -50%);
+}
+
+.growth-data-title {
+  font-family: var(--title-font-family);
+  font-weight: var(--heading-font-weight);
+  line-height: 1.163rem;
+}
+
+/* Company growth (end) */
+
+/* Offers (start) */
+
+.offers {
+  padding: 4.063rem 0;
+  background-color: #f9fafb;
+  margin-bottom: 3.125rem;
+  min-height: 31.875rem;
+}
+
+.offers-main-content {
+  display: flex;
+  gap: 70px;
+  align-items: center;
+}
+
+.offers-main-content-left-side,
+.offers-main-content-right-side {
+  width: 50%;
+}
+
+.offers-title {
+  font-family: var(--title-font-family);
+  font-weight: var(--normal-title-font-weight);
+  background: linear-gradient(263.57deg, #62bb46 20%, #0c79f9 63%);
+  -webkit-text-fill-color: transparent;
+  -webkit-background-clip: text;
+  text-align: center;
+  display: inline-block;
+}
+
+.offers-heading {
+  font-family: var(--title-font-family);
+  font-weight: 700;
+}
+
+.offers-short-description {
+  font-family: var(--normal-text-font-family);
+  font-weight: var(--normal-title-font-weight);
+  line-height: 1.563rem;
+  color: #7b7b7b;
+}
+
+.single-offer {
+  display: flex;
+  align-items: center;
+  gap: 0.313rem;
+}
+
+.single-offer-image {
+  width: 1.251rem;
+  height: 1.251rem;
+}
+
+.single-offer img {
+  width: 1.125rem;
+}
+
+.single-offer-short-description {
+  font-family: var(--normal-text-font-family);
+  font-weight: 400;
+  line-height: 32px;
+}
+
+.offers-main-content-right-side {
+  display: flex;
+  justify-content: end;
+}
+
+.offer-image-1-container {
+  width: 310px;
+  height: 255px;
+  position: relative;
+}
+
+.offer-image-1 {
+  width: 100%;
+  height: 100%;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.offer-image-1 img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.offer-image-2 {
+  width: 280px;
+  height: 210px;
+  border-radius: 10px;
+  border: 6px solid #fff;
+  position: absolute;
+  overflow: hidden;
+  top: 58%;
+  left: -25%;
+}
+
+.offer-image-2 img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Offers (end) */
+
+/* Team members (start) */
+
+.team-members-section {
+  margin-bottom: 3.125rem;
+}
+
+.team-members-title {
+  font-family: var(--title-font-family);
+  font-weight: var(--normal-title-font-weight);
+  background: linear-gradient(263.57deg, #62bb46 20%, #0c79f9 63%);
+  -webkit-text-fill-color: transparent;
+  -webkit-background-clip: text;
+  text-align: center;
+  display: inline-block;
+}
+
+.team-members-heading {
+  font-family: var(--title-font-family);
+  font-weight: 700;
+}
+
+.team-members-short-description {
+  font-family: var(--normal-text-font-family);
+  font-weight: var(--normal-title-font-weight);
+  font-size: 0.813rem;
+  line-height: 1.4rem;
+}
+
+.team-members-container {
+  display: flex;
+  gap: 20px;
+}
+
+.team-member {
+  width: 25%;
+  border: 1px solid #c6c6c6;
+  border-radius: 10px;
+  padding: 10px;
+  transition: all 0.3s ease;
+}
+
+.team-member-image {
+  width: 100%;
+  height: 175px;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.team-member-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.team-member-name {
+  font-family: var(--title-font-family);
+  font-weight: var(--heading-font-weight);
+}
+
+.team-member-designation {
+  font-family: var(--normal-text-font-family);
+  font-weight: var(--normal-title-font-weight);
+}
+
+.social-accounts {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.social-account-logo {
+  width: 25px;
+}
+
+.team-member:hover {
+  border-color: var(--primary-color);
+}
+
+/* Team members (end) */
+
+/* Main content (end) */
+
+/* Responsiveness (start) */
+
+@media (min-width: 0px) {
+  .my-container {
+    width: 100%;
+    padding: 0 0.625rem;
+  }
+
+  .welcome-section-left,
+  .welcome-section-right {
+    width: 100%;
+  }
+
+  .welcome-section {
+    gap: 1rem;
+  }
+
+  .all-client-logo-container {
+    gap: 2rem;
+  }
+
+  .features-container {
+    flex-wrap: wrap;
+  }
+
+  .feature {
+    width: 100%;
+  }
+
+  .all-growth-data {
+    flex-wrap: wrap;
+  }
+
+  .growth-data {
+    width: 48%;
+  }
+
+  .all-growth-data {
+    justify-content: center;
+  }
+
+  .offers-main-content {
+    flex-wrap: wrap;
+    gap: 23px;
+  }
+
+  .offers-main-content-left-side,
+  .offers-main-content-right-side {
+    width: 100%;
+  }
+
+  .offers-main-content-right-side {
+    justify-content: center;
+  }
+
+  .offer-image-2 {
+    display: none;
+  }
+
+  .offer-image-1-container {
+    width: 100%;
+  }
+
+  .team-members-container {
+    flex-wrap: wrap;
+  }
+
+  .team-member {
+    width: 100%;
+  }
+
+  .team-member-image {
+    height: 300px;
+  }
+}
+
+/* Small devices (landscape phones, 576px and up) */
+@media (min-width: 576px) {
+  .my-container {
+    width: 34rem;
+  }
+
+  .feature {
+    width: 48%;
+  }
+
+  .growth-data {
+    width: 48%;
+  }
+
+  .offer-image-1-container {
+    height: 350px;
+  }
+
+  .team-member {
+    width: 48%;
+  }
+
+  .team-member-image {
+    height: 175px;
+  }
+}
+
+/* Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) {
+  .my-container {
+    width: 45rem;
+  }
+
+  .feature {
+    width: 31%;
+  }
+
+  .growth-data {
+    width: 31%;
+  }
+
+  .team-member {
+    width: 31%;
+  }
+}
+
+/* Large devices (desktops, 992px and up) */
+@media (min-width: 992px) {
+  .my-container {
+    width: 60rem;
+  }
+
+  .welcome-section-left {
+    width: 40%;
+  }
+
+  .welcome-section-right {
+    width: 55%;
+  }
+
+  .welcome-section {
+    gap: 2.5rem;
+  }
+
+  .all-client-logo-container {
+    gap: 5rem;
+  }
+
+  .features-container {
+    flex-wrap: nowrap;
+  }
+
+  .feature {
+    width: 25%;
+  }
+
+  .all-growth-data {
+    flex-wrap: nowrap;
+  }
+
+  .growth-data {
+    width: 25%;
+  }
+
+  .offers-main-content {
+    flex-wrap: nowrap;
+    gap: 70px;
+  }
+
+  .offers-main-content-left-side,
+  .offers-main-content-right-side {
+    width: 50%;
+  }
+
+  .offer-image-2 {
+    display: block;
+  }
+
+  .offer-image-1-container {
+    width: 310px;
+  }
+
+  .offer-image-1-container {
+    height: 255px;
+  }
+
+  .team-members-container {
+    flex-wrap: nowrap;
+  }
+
+  .team-member {
+    width: 25%;
+  }
+}
+
+/* X-Large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) {
+  .my-container {
+    width: 60rem;
+  }
+}
+
+/* XX-Large devices (larger desktops, 1400px and up) */
+@media (min-width: 1400px) {
+  .my-container {
+    width: 71.25rem;
+  }
+}
+
+/* Responsiveness (end) */

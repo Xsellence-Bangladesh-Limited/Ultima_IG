@@ -30,7 +30,7 @@
     <!-- Menu items for RO service pages (start)-->
     <menuitem id="ultima_ro_service_menu_id"
               name="Ro service"
-              sequence="0"
+              sequence="1"
               parent="ultima_root_menu_id"/>
 
     <menuitem id="ultima_amc_service_menu_id"
@@ -81,7 +81,7 @@
               action="ultima_amc_service_settings_form"/>
 
     <menuitem id="ultima_service_request_menu_id"
-              name="Service Request"
+              name="Service request"
               sequence="1"
               parent="ultima_ro_service_menu_id"/>
 
@@ -115,4 +115,29 @@
               parent="ultima_service_request_menu_id"
               action="ultima_service_request_settings_form"/>
     <!-- Menu items for RO service pages (end)-->
+
+    <!-- Menu items for about us page (start)-->
+    <menuitem id="ultima_about_us_menu_id"
+              name="About us"
+              sequence="2"
+              parent="ultima_root_menu_id"/>
+
+    <menuitem id="ultima_about_us_client_menu_id"
+              name="Clients"
+              sequence="0"
+              parent="ultima_about_us_menu_id"
+              action="ultima_about_us_client_form"/>
+
+    <menuitem id="ultima_about_us_feature_menu_id"
+              name="Features"
+              sequence="1"
+              parent="ultima_about_us_menu_id"
+              action="ultima_about_us_feature_form"/>
+
+    <menuitem id="ultima_about_us_offer_menu_id"
+              name="Offers"
+              sequence="2"
+              parent="ultima_about_us_menu_id"
+              action="ultima_about_us_offer_form"/>
+    <!-- Menu items for about us page (end)-->
 </odoo>

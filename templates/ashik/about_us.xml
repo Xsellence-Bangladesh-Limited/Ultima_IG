@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<odoo>
+    <template id="ultima_about_us_template">
+        <t t-call="ultima.ultima_base_layout_template">
+            <head>
+                <meta charset="UTF-8"/>
+                <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+                <title>About Us | Ultima</title>
+
+                <!-- Bootstrap (start) -->
+                <link rel="stylesheet" href="/ultima/static/third_party_UI_library/Bootstrap/css/bootstrap.min.css"/>
+                <!-- Bootstrap (end) -->
+
+                <!-- Custom CSS (start) -->
+                <link rel="stylesheet" href="/ultima/static/ashik/about_us/css/styles.css?v=1.0"/>
+                <!-- Custom CSS (end) -->
+
+                <!-- Fontawesome CDN (start) -->
+                <link
+                        rel="stylesheet"
+                        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+                        integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+                        crossorigin="anonymous"
+                        referrerpolicy="no-referrer"
+                />
+                <!-- Fontawesome CDN (end) -->
+            </head>
+
+            <body>
+                <div class="my-container">
+                    <div class="main-content mt-4">
+                        <div class="welcome-section">
+                            <div class="welcome-section-left">
+                                <div class="introduction-image">
+                                    <img
+                                            src="/ultima/static/ashik/about_us/images/introduction-image.jpeg"
+                                            alt="Introduction Image"
+                                    />
+                                </div>
+                            </div>
+                            <div class="welcome-section-right">
+                                <p class="introduction-title">Introduction</p>
+                                <h4 class="introduction-heading mb-2">Welcome to Ultima</h4>
+                                <p class="introduction-description-text text-muted mb-3">
+                                    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aliquam
+                                    minima nemo ratione nesciunt. Cumque, dolorem illum? Iure nihil
+                                    tenetur reiciendis suscipit et pariatur temporibus adipisci quos
+                                    necessitatibus. Animi sint obcaecati incidunt aspernatur dolore
+                                    debitis id nemo, at sunt quod impedit voluptates qui velit vitae,
+                                    cumque cupiditate ad quam voluptas omnis doloribus suscipit
+                                    aperiam eius saepe! Aut quaerat eum deserunt neque!
+                                </p>
+                                <button class="see-details-btn">See Details</button>
+                            </div>
+                        </div>
+
+                        <div class="client-introduction">
+                            <p class="client-introduction-title">
+                                Over <span class="number-of-clients">100+</span> business work with
+                                us
+                            </p>
+                            <div class="all-client-logo-container">
+                                <t t-foreach="about_us_clients" t-as="about_us_client">
+                                    <img class="client-logo" t-if="about_us_client.client_logo"
+                                         t-att-src="image_data_uri(about_us_client.client_logo)"
+                                         alt="Client logo"/>
+                                </t>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="features">
+                    <div class="my-container">
+                        <div class="features-title-container text-center">
+                            <p class="features-title">Features</p>
+                        </div>
+
+                        <h3 class="features-heading text-center mb-2">What we Provide</h3>
+                        <p class="features-short-description text-center">
+                            Every year many people close to us are affected by water borne
+                            diseases.
+                        </p>
+                        <p class="features-short-description text-center">
+                            Sometimes our loved ones are lost to the horrors of deadly germs like
+                            Typhoid.
+                        </p>
+
+                        <div class="features-container mt-4">
+                            <t t-foreach="about_us_features" t-as="about_us_feature">
+                                <div class="feature">
+                                    <img class="feature-logo mb-3"
+                                         t-if="about_us_feature.icon" t-att-src="image_data_uri(about_us_feature.icon)"
+                                         alt="Feature Icon"/>
+                                    <h6 class="feature-title mb-1">
+                                        <t t-esc="about_us_feature.title"/>
+                                    </h6>
+                                    <p class="feature-text-description">
+                                        <t t-esc="about_us_feature.short_description"/>
+                                    </p>
+                                </div>
+                            </t>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="my-container">
+                    <div class="company-growth">
+                        <div class="company-growth-title-container text-center">
+                            <p class="company-growth-title">Growth</p>
+                        </div>
+
+                        <h3 class="company-growth-heading text-center mb-2">
+                            Our Company Growth
+                        </h3>
+
+                        <p class="company-growth-short-description text-center text-muted">
+                            Every year many people close to us are affected by water borne
+                            diseases.
+                        </p>
+                        <p class="company-growth-short-description text-center text-muted">
+                            Sometimes our loved ones are lost to the horrors of deadly germs like
+                            Typhoid.
+                        </p>
+
+                        <div class="all-growth-data mt-3">
+                            <div class="growth-data">
+                                <h1 class="growth-data-heading">10</h1>
+                                <div class="experience-growth-data-title-container">
+                                    <p class="growth-data-title">Years Of</p>
+                                    <p class="growth-data-title">Experience</p>
+                                </div>
+                            </div>
+
+                            <div class="growth-data">
+                                <h1 class="growth-data-heading">32</h1>
+                                <div class="conference-growth-data-title-container">
+                                    <p class="growth-data-title">Visited</p>
+                                    <p class="growth-data-title">Conference</p>
+                                </div>
+                            </div>
+
+                            <div class="growth-data">
+                                <h1 class="growth-data-heading">18</h1>
+                                <div class="professionals-growth-data-title-container">
+                                    <p class="growth-data-title">Skilled</p>
+                                    <p class="growth-data-title">Professionals</p>
+                                </div>
+                            </div>
+
+                            <div class="growth-data">
+                                <h1 class="growth-data-heading">1K</h1>
+                                <div class="project-growth-data-title-container">
+                                    <p class="growth-data-title">Project</p>
+                                    <p class="growth-data-title">Worldwide</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="offers">
+                    <div class="my-container">
+                        <div class="offers-main-content">
+                            <div class="offers-main-content-left-side">
+                                <p class="offers-title">Offers</p>
+                                <h3 class="offers-heading mb-3">
+                                    We Offer Real time Water
+                                    <br/>
+                                    Solutions
+                                </h3>
+                                <p class="offers-short-description">
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                                    eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+                                    enim ad minim veniam, quis nostrud exercitation ullamco laboris
+                                    nisi.
+                                </p>
+
+                                <div class="single-offers-container mt-2">
+                                    <t t-foreach="about_us_offers" t-as="about_us_offer">
+                                        <div class="single-offer">
+                                            <img t-if="about_us_offer.icon" t-att-src="image_data_uri(about_us_offer.icon)"
+                                                 alt="Offer icon"/>
+                                            <p class="single-offer-short-description">
+                                                <t t-esc="about_us_offer.short_description"/>
+                                            </p>
+                                        </div>
+                                    </t>
+                                </div>
+                            </div>
+                            <div class="offers-main-content-right-side">
+                                <div class="offer-image-1-container">
+                                    <div class="offer-image-1">
+                                        <img src="/ultima/static/ashik/about_us/images/offer-image-1.png"
+                                             alt="Offer image"/>
+                                    </div>
+
+                                    <div class="offer-image-2">
+                                        <img src="/ultima/static/ashik/about_us/images/offer image 2.png"
+                                             alt="Offer image"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </body>
+        </t>
+    </template>
+</odoo>
