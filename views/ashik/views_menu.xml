@@ -134,10 +134,22 @@
               parent="ultima_about_us_menu_id"
               action="ultima_about_us_feature_form"/>
 
-    <menuitem id="ultima_about_us_offer_menu_id"
-              name="Offers"
+    <menuitem id="ultima_about_us_growth_data_menu_id"
+              name="Growth data"
               sequence="2"
               parent="ultima_about_us_menu_id"
+              action="ultima_about_us_growth_data_form"/>
+
+    <menuitem id="ultima_about_us_offer_menu_id"
+              name="Offers"
+              sequence="3"
+              parent="ultima_about_us_menu_id"
               action="ultima_about_us_offer_form"/>
+
+    <menuitem id="ultima_about_us_offer_menu_id"
+              name="Settings"
+              sequence="4"
+              parent="ultima_about_us_menu_id"
+              action="ultima_about_us_settings_form"/>
     <!-- Menu items for about us page (end)-->
 </odoo>

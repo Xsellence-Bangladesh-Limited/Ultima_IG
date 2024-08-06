@@ -311,6 +311,20 @@ class AboutUsFeature(models.Model):
         return super(AboutUsFeature, self).create(vals)
 
 
+class AboutUsGrowthData(models.Model):
+    _name = 'ultima.about.us.growth.data'
+    _description = 'ultima.about.us.growth.data'
+    _order = 'id desc'
+
+    name = fields.Char(string='Sequence')
+    number = fields.Char(string='Number')
+    title = fields.Char(string='Title')
+
+    @api.model
+    def create(self, vals):
+        vals['name'] = self.env['ir.sequence'].sudo().next_by_code('ultima.about.us.growth.data.seq')
+        return super(AboutUsGrowthData, self).create(vals)
+
 class AboutUsOffer(models.Model):
     _name = 'ultima.about.us.offer'
     _description = 'ultima.about.us.offer'
@@ -324,6 +338,35 @@ class AboutUsOffer(models.Model):
     def create(self, vals):
         vals['name'] = self.env['ir.sequence'].sudo().next_by_code('ultima.about.us.offer.seq')
         return super(AboutUsOffer, self).create(vals)
+
+
+class AboutUsSettings(models.Model):
+    _name = 'ultima.about.us.settings'
+    _description = 'ultima.about.us.settings'
+    _order = 'id desc'
+
+    name = fields.Char(string='Name')
+    introduction_image = fields.Image(string='Introduction image')
+    introduction_title = fields.Char(string='Introduction title')
+    introduction_description = fields.Text(string='Introduction description')
+
+    client_title = fields.Char(string='Clients title')
+
+    feature_title = fields.Char(string='Features title')
+    feature_short_description = fields.Text(string='Features short description')
+
+    growth_title = fields.Char(string='Growth title')
+    growth_short_description = fields.Text(string='Growth short description')
+
+    offer_title = fields.Char(string='Offers title')
+    offer_description = fields.Text(string='Offers description')
+    offer_upper_image = fields.Image(string='Offers upper image')
+    offer_lower_image = fields.Image(string='Offers lower image')
+
+    @api.model
+    def create(self, vals):
+        vals['name'] = self.env['ir.sequence'].sudo().next_by_code('ultima.about.us.settings.seq')
+        return super(AboutUsSettings, self).create(vals)
 
 # Models for about us page (end)
 

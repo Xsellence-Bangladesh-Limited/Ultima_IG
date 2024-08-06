@@ -34,7 +34,7 @@
                             <div class="welcome-section-left">
                                 <div class="introduction-image">
                                     <img
-                                            src="/ultima/static/ashik/about_us/images/introduction-image.jpeg"
+                                            t-if="about_us_settings.introduction_image" t-att-src="image_data_uri(about_us_settings.introduction_image)"
                                             alt="Introduction Image"
                                     />
                                 </div>
@@ -125,37 +125,24 @@
                         </p>
 
                         <div class="all-growth-data mt-3">
-                            <div class="growth-data">
-                                <h1 class="growth-data-heading">10</h1>
-                                <div class="experience-growth-data-title-container">
-                                    <p class="growth-data-title">Years Of</p>
-                                    <p class="growth-data-title">Experience</p>
+                            <t t-foreach="about_us_growth_data" t-as="_growth_data">
+                                <div class="growth-data">
+                                    <h1 class="growth-data-heading"><t t-esc="_growth_data.number"/></h1>
+                                    <div class="experience-growth-data-title-container">
+                                        <p class="growth-data-title">
+                                            <t t-if="'&lt;br&gt;' in _growth_data.title">
+                                                <t t-set="growth_data_titles" t-value="_growth_data.title.split('&lt;br&gt;')"/>
+                                                <t t-foreach="growth_data_titles" t-as="_growth_data_title">
+                                                    <t t-esc="_growth_data_title"/> <br/>
+                                                </t>
+                                            </t>
+                                            <t t-else="">
+                                                <t t-esc="_growth_data.title"/>
+                                            </t>
+                                        </p>
+                                    </div>
                                 </div>
-                            </div>
-
-                            <div class="growth-data">
-                                <h1 class="growth-data-heading">32</h1>
-                                <div class="conference-growth-data-title-container">
-                                    <p class="growth-data-title">Visited</p>
-                                    <p class="growth-data-title">Conference</p>
-                                </div>
-                            </div>
-
-                            <div class="growth-data">
-                                <h1 class="growth-data-heading">18</h1>
-                                <div class="professionals-growth-data-title-container">
-                                    <p class="growth-data-title">Skilled</p>
-                                    <p class="growth-data-title">Professionals</p>
-                                </div>
-                            </div>
-
-                            <div class="growth-data">
-                                <h1 class="growth-data-heading">1K</h1>
-                                <div class="project-growth-data-title-container">
-                                    <p class="growth-data-title">Project</p>
-                                    <p class="growth-data-title">Worldwide</p>
-                                </div>
-                            </div>
+                            </t>
                         </div>
                     </div>
                 </div>
@@ -180,7 +167,8 @@
                                 <div class="single-offers-container mt-2">
                                     <t t-foreach="about_us_offers" t-as="about_us_offer">
                                         <div class="single-offer">
-                                            <img t-if="about_us_offer.icon" t-att-src="image_data_uri(about_us_offer.icon)"
+                                            <img t-if="about_us_offer.icon"
+                                                 t-att-src="image_data_uri(about_us_offer.icon)"
                                                  alt="Offer icon"/>
                                             <p class="single-offer-short-description">
                                                 <t t-esc="about_us_offer.short_description"/>

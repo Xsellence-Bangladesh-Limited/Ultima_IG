@@ -821,7 +821,9 @@
             <form>
                 <sheet>
                     <div class="oe_title">
-                        <h1><field name="name" readonly="True"/></h1>
+                        <h1>
+                            <field name="name" readonly="True"/>
+                        </h1>
                     </div>
                     <group>
                         <group>
@@ -898,6 +900,57 @@
     </record>
     <!-- Ultima about us feature action (end)-->
 
+    <!-- Ultima about us growth data tree view (start)-->
+    <record id="ultima_about_us_growth_data_view_tree" model="ir.ui.view">
+        <field name="name">Ultima about us growth data tree view</field>
+        <field name="model">ultima.about.us.growth.data</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name" readonly="True"/>
+                <field name="number"/>
+                <field name="title"/>
+            </tree>
+        </field>
+    </record>
+    <!-- Ultima about us growth data tree view (end)-->
+
+    <!-- Ultima about us growth data form view (start)-->
+    <record id="ultima_about_us_growth_data_view_form" model="ir.ui.view">
+        <field name="name">Ultima about us growth data form view</field>
+        <field name="model">ultima.about.us.growth.data</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <div class="oe_title">
+                        <h1>
+                            <field name="name" readonly="True"/>
+                        </h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="number" required="True"/>
+                            <field name="title" required="True"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <!-- Ultima about us growth data form view (end)-->
+
+    <!-- Ultima about us growth data action (start)-->
+    <record id="ultima_about_us_growth_data_form" model="ir.actions.act_window">
+        <field name="name">Growth data</field>
+        <field name="res_model">ultima.about.us.growth.data</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Add a new growth data!
+            </p>
+        </field>
+    </record>
+    <!-- Ultima about us growth data action (end)-->
+
     <!-- Ultima about us offer tree view (start)-->
     <record id="ultima_about_us_offer_view_tree" model="ir.ui.view">
         <field name="name">Ultima about us offer tree view</field>
@@ -946,4 +999,72 @@
         </field>
     </record>
     <!-- Ultima about us offer action (end)-->
+
+    <!-- Ultima about us settings tree view (start)-->
+    <record id="ultima_about_us_settings_view_tree" model="ir.ui.view">
+        <field name="name">Ultima about us settings tree view</field>
+        <field name="model">ultima.about.us.settings</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name" readonly="True"/>
+            </tree>
+        </field>
+    </record>
+    <!-- Ultima about us settings tree view (start)-->
+
+    <!-- Ultima about us settings form view (start)-->
+    <record id="ultima_about_us_settings_view_form" model="ir.ui.view">
+        <field name="name">Ultima about us settings form view</field>
+        <field name="model">ultima.about.us.settings</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <div class="oe_name">
+                        <h1><field name="name" readonly="True"/></h1>
+                    </div>
+
+                    <group>
+                        <group>
+                            <separator string="Introduction"/>
+                            <field name="introduction_image" widget="image" class="oe_avatar"/>
+                            <field name="introduction_title" required="True"/>
+                            <field name="introduction_description"/>
+
+                            <separator string="Clients"/>
+                            <field name="client_title" required="True"/>
+
+                            <separator string="Features"/>
+                            <field name="feature_title" required="True"/>
+                            <field name="feature_short_description"/>
+
+                            <separator string="Growth"/>
+                            <field name="growth_title" required="True"/>
+                            <field name="growth_short_description"/>
+
+                            <separator string="Offers"/>
+                            <field name="offer_title" required="True"/>
+                            <field name="offer_description"/>
+                            <field name="offer_upper_image" widget="image" class="oe_avatar"/>
+                            <field name="offer_lower_image" widget="image" class="oe_avatar"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <!-- Ultima about us settings form view (end)-->
+
+    <!-- Ultima about us settings action (start)-->
+    <record id="ultima_about_us_settings_form" model="ir.actions.act_window">
+        <field name="name">Settings</field>
+        <field name="res_model">ultima.about.us.settings</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                No available settings!
+            </p>
+        </field>
+    </record>
+    <!-- Ultima about us settings action (end)-->
+
 </odoo>
