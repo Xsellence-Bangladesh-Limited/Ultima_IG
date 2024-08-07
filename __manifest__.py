@@ -1,5 +1,5 @@
 {
-    'name' : 'Ultima',
+    'name' : 'ultima',
     'version' : '1.0',
     'summary': 'Ultima website module',
     'sequence': 200,

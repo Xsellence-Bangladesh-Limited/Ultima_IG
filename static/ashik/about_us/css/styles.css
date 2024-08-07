@@ -244,6 +244,7 @@ p {
   font-weight: var(--normal-title-font-weight);
   font-size: 0.813rem;
   line-height: 1.4rem;
+  color: #7b7b7b;
 }
 
 .all-growth-data {

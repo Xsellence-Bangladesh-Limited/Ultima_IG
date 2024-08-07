@@ -22,7 +22,7 @@ class AboutUs(http.Controller):
         # Retrieving the offers (end)
 
         # Retrieving the page settings (start)
-        about_us_settings = req.env['ultima.about.us.settings'].sudo([], order='id desc', limit=1)
+        about_us_settings = req.env['ultima.about.us.settings'].sudo().search([], order='id desc', limit=1)
         # Retrieving the page settings (end)
 
         return req.render('ultima.ultima_about_us_template', {

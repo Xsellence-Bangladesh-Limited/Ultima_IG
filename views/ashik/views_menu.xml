@@ -146,7 +146,7 @@
               parent="ultima_about_us_menu_id"
               action="ultima_about_us_offer_form"/>
 
-    <menuitem id="ultima_about_us_offer_menu_id"
+    <menuitem id="ultima_about_us_settings_menu_id"
               name="Settings"
               sequence="4"
               parent="ultima_about_us_menu_id"
