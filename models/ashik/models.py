@@ -212,7 +212,7 @@ class UltimaServiceRequest(models.Model):
     @api.model
     def create(self, vals):
         vals['name'] = self.env['ir.sequence'].sudo().next_by_code('ultima.service.request.seq')
-        return super(ServiceRequest, self).create(vals)
+        return super(UltimaServiceRequest, self).create(vals)
 
 class ServiceRequestFormPoint(models.Model):
     _name = 'ultima.service.request.form.point'
@@ -350,7 +350,9 @@ class AboutUsSettings(models.Model):
     introduction_title = fields.Char(string='Introduction title')
     introduction_description = fields.Text(string='Introduction description')
 
-    client_title = fields.Char(string='Clients title')
+    client_title_part_1 = fields.Char(string='Clients title part 1')
+    number_of_clients = fields.Char(string='Number of clients')
+    client_title_part_2 = fields.Char(string='Clients title part 2')
 
     feature_title = fields.Char(string='Features title')
     feature_short_description = fields.Text(string='Features short description')

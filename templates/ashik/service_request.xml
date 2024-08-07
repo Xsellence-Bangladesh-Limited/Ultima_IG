@@ -73,12 +73,12 @@
                     <!-- Main Banner Section (start) -->
                     <div
                             class="main-banner"
-                            style="background-image: url('/ultima/static/ashik/service_request/images/blog_image_5.jpg')"
+                            t-if="service_request_settings.banner_image" t-attf-style="background-image: url('/web/image/ultima.service.request.settings/{{service_request_settings.id}}/banner_image')"
                     >
                         <div class="service-request-form-container">
                             <form action="/service-request" method="POST" class="service-request-form">
                                 <h5 class="text-center mb-3">
-                                    <t t-if="'&lt;br&gt;' in service_request_settings.form_title">
+                                    <t t-if="service_request_settings.form_title and '&lt;br&gt;' in service_request_settings.form_title">
                                         <t t-set="form_titles"
                                            t-value="service_request_settings.form_title.split('&lt;br&gt;')"/>
 
@@ -140,7 +140,7 @@
                                     <t t-foreach="form_points" t-as="form_point">
                                         <div class="single-service-feature">
                                             <p class="single-service-feature-title">
-                                                <t t-if="'&lt;br&gt;' in form_point.title">
+                                                <t t-if="form_point.title and '&lt;br&gt;' in form_point.title">
                                                     <t t-set="form_point_titles"
                                                        t-value="form_point.title.split('&lt;br&gt;')"/>
 
@@ -155,7 +155,7 @@
                                                 </t>
                                             </p>
                                             <p>
-                                                <t t-if="'&lt;br&gt;' in form_point.sub_title">
+                                                <t t-if="form_point.sub_title and '&lt;br&gt;' in form_point.sub_title">
                                                     <t t-set="form_point_sub_titles"
                                                        t-value="form_point.sub_title.split('&lt;br&gt;')"/>
 
@@ -185,7 +185,7 @@
                             </div>
 
                             <h3 class="features-heading text-center mb-2">
-                                <t t-if="'&lt;br&gt;' in service_request_settings.feature_title">
+                                <t t-if="service_request_settings.feature_title and '&lt;br&gt;' in service_request_settings.feature_title">
                                     <t t-set="feature_titles"
                                        t-value="service_request_settings.feature_title.split('&lt;br&gt;')"/>
 
@@ -200,7 +200,7 @@
                                 </t>
                             </h3>
                             <p class="features-short-description text-center">
-                                <t t-if="'&lt;br&gt;' in service_request_settings.feature_short_description">
+                                <t t-if="service_request_settings.feature_short_description and '&lt;br&gt;' in service_request_settings.feature_short_description">
                                     <t t-set="feature_short_descriptions"
                                        t-value="service_request_settings.feature_short_description.split('&lt;br&gt;')"/>
 
@@ -243,7 +243,7 @@
                             </div>
 
                             <h3 class="testimonial-heading text-center">
-                                <t t-if="'&lt;br&gt;' in service_request_settings.testimonial_title">
+                                <t t-if="service_request_settings.testimonial_title and '&lt;br&gt;' in service_request_settings.testimonial_title">
                                     <t t-set="testimonial_titles"
                                        t-value="service_request_settings.testimonial_title.split('&lt;br&gt;')"/>
 

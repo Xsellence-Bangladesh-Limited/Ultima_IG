@@ -775,7 +775,7 @@
                     </div>
                     <group>
                         <group>
-                            <field name="banner_image" widget="image" class="oe_avatar"/>
+                            <field name="banner_image" widget="image" class="oe_avatar" required="True"/>
                             <field name="form_title" required="True"/>
                             <field name="feature_title" required="True"/>
                             <field name="feature_short_description"/>
@@ -1031,7 +1031,9 @@
                             <field name="introduction_description"/>
 
                             <separator string="Clients"/>
-                            <field name="client_title" required="True"/>
+                            <field name="client_title_part_1" required="True"/>
+                            <field name="number_of_clients" required="True"/>
+                            <field name="client_title_part_2" required="True"/>
 
                             <separator string="Features"/>
                             <field name="feature_title" required="True"/>

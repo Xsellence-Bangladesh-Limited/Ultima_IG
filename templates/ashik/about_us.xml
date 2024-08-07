@@ -34,22 +34,39 @@
                             <div class="welcome-section-left">
                                 <div class="introduction-image">
                                     <img
-                                            t-if="about_us_settings.introduction_image" t-att-src="image_data_uri(about_us_settings.introduction_image)"
+                                            t-if="about_us_settings.introduction_image"
+                                            t-att-src="image_data_uri(about_us_settings.introduction_image)"
                                             alt="Introduction Image"
                                     />
                                 </div>
                             </div>
                             <div class="welcome-section-right">
                                 <p class="introduction-title">Introduction</p>
-                                <h4 class="introduction-heading mb-2">Welcome to Ultima</h4>
+                                <h4 class="introduction-heading mb-2">
+                                    <t t-if="'&lt;br&gt;' in about_us_settings.introduction_title">
+                                        <t t-set="introduction_titles"
+                                           t-value="about_us_settings.introduction_title.split('&lt;br&gt;')"/>
+                                        <t t-foreach="introduction_titles" t-as="introduction_title">
+                                            <t t-esc="introduction_title"/>
+                                            <br/>
+                                        </t>
+                                    </t>
+                                    <t t-else="">
+                                        <t t-esc="about_us_settings.introduction_title"/>
+                                    </t>
+                                </h4>
                                 <p class="introduction-description-text text-muted mb-3">
-                                    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aliquam
-                                    minima nemo ratione nesciunt. Cumque, dolorem illum? Iure nihil
-                                    tenetur reiciendis suscipit et pariatur temporibus adipisci quos
-                                    necessitatibus. Animi sint obcaecati incidunt aspernatur dolore
-                                    debitis id nemo, at sunt quod impedit voluptates qui velit vitae,
-                                    cumque cupiditate ad quam voluptas omnis doloribus suscipit
-                                    aperiam eius saepe! Aut quaerat eum deserunt neque!
+                                    <t t-if="'&lt;br&gt;' in about_us_settings.introduction_description">
+                                        <t t-set="introduction_descriptions"
+                                           t-value="about_us_settings.introduction_description.split('&lt;br&gt;')"/>
+                                        <t t-foreach="introduction_descriptions" t-as="introduction_description">
+                                            <t t-esc="introduction_description"/>
+                                            <br/>
+                                        </t>
+                                    </t>
+                                    <t t-else="">
+                                        <t t-esc="about_us_settings.introduction_description"/>
+                                    </t>
                                 </p>
                                 <button class="see-details-btn">See Details</button>
                             </div>
@@ -57,8 +74,11 @@
 
                         <div class="client-introduction">
                             <p class="client-introduction-title">
-                                Over <span class="number-of-clients">100+</span> business work with
-                                us
+                                <t t-esc="about_us_settings.client_title_part_1"/>
+                                <span class="number-of-clients">
+                                    <t t-esc="about_us_settings.number_of_clients"/>
+                                </span>
+                                <t t-esc="about_us_settings.client_title_part_2"/>
                             </p>
                             <div class="all-client-logo-container">
                                 <t t-foreach="about_us_clients" t-as="about_us_client">
@@ -77,16 +97,32 @@
                             <p class="features-title">Features</p>
                         </div>
 
-                        <h3 class="features-heading text-center mb-2">What we Provide</h3>
+                        <h3 class="features-heading text-center mb-2">
+                            <t t-if="'&lt;br&gt;' in about_us_settings.feature_title">
+                                <t t-set="feature_titles"
+                                   t-value="about_us_settings.feature_title.split('&lt;br&gt;')"/>
+                                <t t-foreach="feature_titles" t-as="feature_title">
+                                    <t t-esc="feature_title"/>
+                                    <br/>
+                                </t>
+                            </t>
+                            <t t-else="">
+                                <t t-esc="about_us_settings.feature_title"/>
+                            </t>
+                        </h3>
                         <p class="features-short-description text-center">
-                            Every year many people close to us are affected by water borne
-                            diseases.
+                            <t t-if="'&lt;br&gt;' in about_us_settings.feature_short_description">
+                                <t t-set="feature_short_descriptions"
+                                   t-value="about_us_settings.feature_short_description.split('&lt;br&gt;')"/>
+                                <t t-foreach="feature_short_descriptions" t-as="feature_short_description">
+                                    <t t-esc="feature_short_description"/>
+                                    <br/>
+                                </t>
+                            </t>
+                            <t t-else="">
+                                <t t-esc="about_us_settings.feature_short_description"/>
+                            </t>
                         </p>
-                        <p class="features-short-description text-center">
-                            Sometimes our loved ones are lost to the horrors of deadly germs like
-                            Typhoid.
-                        </p>
-
                         <div class="features-container mt-4">
                             <t t-foreach="about_us_features" t-as="about_us_feature">
                                 <div class="feature">
@@ -112,28 +148,46 @@
                         </div>
 
                         <h3 class="company-growth-heading text-center mb-2">
-                            Our Company Growth
+                            <t t-if="'&lt;br&gt;' in about_us_settings.growth_title">
+                                <t t-set="growth_titles" t-value="about_us_settings.growth_title.split('&lt;br&gt;')"/>
+                                <t t-foreach="growth_titles" t-as="growth_title">
+                                    <t t-esc="growth_title"/>
+                                    <br/>
+                                </t>
+                            </t>
+                            <t t-else="">
+                                <t t-esc="about_us_settings.growth_title"/>
+                            </t>
                         </h3>
 
-                        <p class="company-growth-short-description text-center text-muted">
-                            Every year many people close to us are affected by water borne
-                            diseases.
-                        </p>
-                        <p class="company-growth-short-description text-center text-muted">
-                            Sometimes our loved ones are lost to the horrors of deadly germs like
-                            Typhoid.
+                        <p class="company-growth-short-description text-center">
+                            <t t-if="'&lt;br&gt;' in about_us_settings.growth_short_description">
+                                <t t-set="growth_short_descriptions"
+                                   t-value="about_us_settings.growth_short_description.split('&lt;br&gt;')"/>
+                                <t t-foreach="growth_short_descriptions" t-as="growth_short_description">
+                                    <t t-esc="growth_short_description"/>
+                                    <br/>
+                                </t>
+                            </t>
+                            <t t-else="">
+                                <t t-esc="about_us_settings.growth_short_description"/>
+                            </t>
                         </p>
 
                         <div class="all-growth-data mt-3">
                             <t t-foreach="about_us_growth_data" t-as="_growth_data">
                                 <div class="growth-data">
-                                    <h1 class="growth-data-heading"><t t-esc="_growth_data.number"/></h1>
+                                    <h1 class="growth-data-heading">
+                                        <t t-esc="_growth_data.number"/>
+                                    </h1>
                                     <div class="experience-growth-data-title-container">
                                         <p class="growth-data-title">
                                             <t t-if="'&lt;br&gt;' in _growth_data.title">
-                                                <t t-set="growth_data_titles" t-value="_growth_data.title.split('&lt;br&gt;')"/>
+                                                <t t-set="growth_data_titles"
+                                                   t-value="_growth_data.title.split('&lt;br&gt;')"/>
                                                 <t t-foreach="growth_data_titles" t-as="_growth_data_title">
-                                                    <t t-esc="_growth_data_title"/> <br/>
+                                                    <t t-esc="_growth_data_title"/>
+                                                    <br/>
                                                 </t>
                                             </t>
                                             <t t-else="">
@@ -153,15 +207,30 @@
                             <div class="offers-main-content-left-side">
                                 <p class="offers-title">Offers</p>
                                 <h3 class="offers-heading mb-3">
-                                    We Offer Real time Water
-                                    <br/>
-                                    Solutions
+                                    <t t-if="'&lt;br&gt;' in about_us_settings.offer_title">
+                                        <t t-set="offer_titles"
+                                           t-value="about_us_settings.offer_title.split('&lt;br&gt;')"/>
+                                        <t t-foreach="offer_titles" t-as="offer_title">
+                                            <t t-esc="offer_title"/>
+                                            <br/>
+                                        </t>
+                                    </t>
+                                    <t t-else="">
+                                        <t t-esc="about_us_settings.offer_title"/>
+                                    </t>
                                 </h3>
                                 <p class="offers-short-description">
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                                    eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-                                    enim ad minim veniam, quis nostrud exercitation ullamco laboris
-                                    nisi.
+                                    <t t-if="'&lt;br&gt;' in about_us_settings.offer_description">
+                                        <t t-set="offer_descriptions"
+                                           t-value="about_us_settings.offer_description.split('&lt;br&gt;')"/>
+                                        <t t-foreach="offer_descriptions" t-as="offer_description">
+                                            <t t-esc="offer_description"/>
+                                            <br/>
+                                        </t>
+                                    </t>
+                                    <t t-else="">
+                                        <t t-esc="about_us_settings.offer_description"/>
+                                    </t>
                                 </p>
 
                                 <div class="single-offers-container mt-2">
@@ -180,12 +249,14 @@
                             <div class="offers-main-content-right-side">
                                 <div class="offer-image-1-container">
                                     <div class="offer-image-1">
-                                        <img src="/ultima/static/ashik/about_us/images/offer-image-1.png"
+                                        <img t-if="about_us_settings.offer_lower_image"
+                                             t-att-src="image_data_uri(about_us_settings.offer_lower_image)"
                                              alt="Offer image"/>
                                     </div>
 
                                     <div class="offer-image-2">
-                                        <img src="/ultima/static/ashik/about_us/images/offer image 2.png"
+                                        <img t-if="about_us_settings.offer_upper_image"
+                                             t-att-src="image_data_uri(about_us_settings.offer_upper_image)"
                                              alt="Offer image"/>
                                     </div>
                                 </div>

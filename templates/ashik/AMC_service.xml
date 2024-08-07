@@ -87,7 +87,7 @@
                             </div>
 
                             <h3 class="plans-heading text-center">
-                                <t t-if="'&lt;br&gt;' in amc_page_settings.plan_title">
+                                <t t-if="amc_page_settings.plan_title and '&lt;br&gt;' in amc_page_settings.plan_title">
                                     <t t-set="plan_titles" t-value="amc_page_settings.plan_title.split('&lt;br&gt;')"/>
                                     <t t-foreach="plan_titles" t-as="plan_title">
                                         <t t-esc="plan_title"/><br/>
@@ -100,7 +100,7 @@
                             </h3>
 
                             <p class="plans-short-intro text-center">
-                                <t t-if="'&lt;br&gt;' in amc_page_settings.plan_short_description">
+                                <t t-if="amc_page_settings.plan_short_description and '&lt;br&gt;' in amc_page_settings.plan_short_description">
                                     <t t-set="plan_short_descriptions"
                                        t-value="amc_page_settings.plan_short_description.split('&lt;br&gt;')"/>
                                     <t t-foreach="plan_short_descriptions" t-as="plan_short_description">
@@ -192,7 +192,7 @@
                                 <div class="offers-main-content-left-side">
                                     <p class="offers-title">Advantages</p>
                                     <h3 class="offers-heading mb-3">
-                                        <t t-if="'&lt;br&gt;' in amc_page_settings.advantage_title">
+                                        <t t-if="amc_page_settings.advantage_title and '&lt;br&gt;' in amc_page_settings.advantage_title">
                                             <t t-set="advantage_titles"
                                                t-value="amc_page_settings.advantage_title.split('&lt;br&gt;')"/>
                                             <t t-foreach="advantage_titles" t-as="advantage_title">
@@ -205,7 +205,7 @@
 
                                     </h3>
                                     <p class="offers-short-description">
-                                        <t t-if="'&lt;br&gt;' in amc_page_settings.advantage_description">
+                                        <t t-if="amc_page_settings.advantage_description and '&lt;br&gt;' in amc_page_settings.advantage_description">
                                             <t t-set="advantage_descriptions"
                                                t-value="amc_page_settings.advantage_description.split('&lt;br&gt;')"/>
                                             <t t-foreach="advantage_descriptions" t-as="advantage_description">
@@ -259,7 +259,7 @@
                             </div>
 
                             <h3 class="features-heading text-center mb-2">
-                                <t t-if="'&lt;br&gt;' in amc_page_settings.feature_title">
+                                <t t-if="amc_page_settings.feature_title and '&lt;br&gt;' in amc_page_settings.feature_title">
                                     <t t-set="feature_titles"
                                        t-value="amc_page_settings.feature_title.split('&lt;br&gt;')"/>
                                     <t t-foreach="feature_titles" t-as="feature_title">
@@ -271,7 +271,7 @@
                                 </t>
                             </h3>
                             <p class="features-short-description text-center">
-                                <t t-if="'&lt;br&gt;' in amc_page_settings.feature_short_description">
+                                <t t-if="amc_page_settings.feature_short_description and '&lt;br&gt;' in amc_page_settings.feature_short_description">
                                     <t t-set="feature_short_descriptions"
                                        t-value="amc_page_settings.feature_short_description.split('&lt;br&gt;')"/>
                                     <t t-foreach="feature_short_descriptions" t-as="feature_short_description">
@@ -310,7 +310,7 @@
                             </div>
 
                             <h3 class="testimonial-heading text-center">
-                                <t t-if="'&lt;br&gt;' in amc_page_settings.testimonial_title">
+                                <t t-if="amc_page_settings.testimonial_title and '&lt;br&gt;' in amc_page_settings.testimonial_title">
                                     <t t-set="testimonial_titles"
                                        t-value="amc_page_settings.testimonial_title.split('&lt;br&gt;')"/>
                                     <t t-foreach="testimonial_titles" t-as="testimonial_title">
