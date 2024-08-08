@@ -62,21 +62,27 @@
               parent="ultima_amc_service_menu_id"
               action="ultima_amc_service_advantage_form"/>
 
+    <menuitem id="ultima_amc_service_faq_menu_id"
+              name="FAQ's"
+              sequence="4"
+              parent="ultima_amc_service_menu_id"
+              action="ultima_amc_service_faq_form"/>
+
     <menuitem id="ultima_amc_service_feature_menu_id"
               name="Features"
-              sequence="4"
+              sequence="5"
               parent="ultima_amc_service_menu_id"
               action="ultima_amc_service_feature_form"/>
 
     <menuitem id="ultima_amc_service_testimonial_slider_menu_id"
               name="Testimonial slider"
-              sequence="5"
+              sequence="6"
               parent="ultima_amc_service_menu_id"
               action="ultima_amc_service_testimonial_slider_form"/>
 
     <menuitem id="ultima_amc_service_settings_menu_id"
               name="Settings"
-              sequence="6"
+              sequence="7"
               parent="ultima_amc_service_menu_id"
               action="ultima_amc_service_settings_form"/>
 
@@ -97,26 +103,33 @@
               parent="ultima_service_request_menu_id"
               action="ultima_service_request_feature_form"/>
 
+    <menuitem id="ultima_service_request_faq_menu_id"
+              name="FAQ's"
+              sequence="2"
+              parent="ultima_service_request_menu_id"
+              action="ultima_service_request_faq_form"/>
+
     <menuitem id="ultima_service_request_testimonial_slider_menu_id"
               name="Testimonial slider"
-              sequence="2"
+              sequence="3"
               parent="ultima_service_request_menu_id"
               action="ultima_service_request_testimonial_slider_form"/>
 
     <menuitem id="ultima_service_request_request_menu_id"
               name="Requests"
-              sequence="3"
+              sequence="4"
               parent="ultima_service_request_menu_id"
               action="ultima_service_request_form"/>
 
     <menuitem id="ultima_service_request_settings_menu_id"
               name="Settings"
-              sequence="4"
+              sequence="5"
               parent="ultima_service_request_menu_id"
               action="ultima_service_request_settings_form"/>
     <!-- Menu items for RO service pages (end)-->
 
     <!-- Menu items for about us page (start)-->
+
     <menuitem id="ultima_about_us_menu_id"
               name="About us"
               sequence="2"
@@ -151,5 +164,20 @@
               sequence="4"
               parent="ultima_about_us_menu_id"
               action="ultima_about_us_settings_form"/>
+
     <!-- Menu items for about us page (end)-->
+
+    <!-- Menu items for blog (start)-->
+    <menuitem id="ultima_blog_menu_id"
+              name="Blog"
+              sequence="3"
+              parent="ultima_root_menu_id"/>
+
+    <menuitem id="ultima_blog_category_menu_id"
+              name="Categories"
+              sequence="0"
+              parent="ultima_blog_menu_id"
+              action="ultima_blog_category_action"/>
+
+    <!-- Menu items for blog (end)-->
 </odoo>

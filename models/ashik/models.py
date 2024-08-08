@@ -97,6 +97,20 @@ class AMCServicePlanFeature(models.Model):
         return super(AMCServicePlanFeature, self).create(vals)
 
 
+class AMCServiceFAQ(models.Model):
+    _name = 'ultima.amc.service.faq'
+    _description = 'ultima.amc.service.faq'
+    _order = 'id desc'
+
+    name = fields.Char(string='Sequence')
+    title = fields.Char(string='Title')
+    description = fields.Text(string='Description')
+
+    @api.model
+    def create(self, vals):
+        vals['name'] = self.env['ir.sequence'].sudo().next_by_code('ultima.amc.service.faq.seq')
+        return super(AMCServiceFAQ, self).create(vals)
+
 class AMCServicePlan(models.Model):
     _name = 'ultima.amc.service.plan'
     _description = 'ultima.amc.service.plan'
@@ -244,6 +258,21 @@ class ServiceRequestFeature(models.Model):
         return super(ServiceRequestFeature, self).create(vals)
 
 
+class UltimaServiceRequestFAQ(models.Model):
+    _name = 'ultima.service.request.faq'
+    _description = 'ultima.service.request.faq'
+    _order = 'id desc'
+
+    name = fields.Char(string='Sequence')
+    title = fields.Char(string='Title')
+    description = fields.Text(string='Description')
+
+    @api.model
+    def create(self, vals):
+        vals['name'] = self.env['ir.sequence'].sudo().next_by_code('ultima.service.request.faq.seq')
+        return super(UltimaServiceRequestFAQ, self).create(vals)
+
+
 class ServiceRequestTestimonialSlide(models.Model):
     _name = 'ultima.service.request.testimonial.slider'
     _description = 'ultima.service.request.testimonial.slider'
@@ -371,5 +400,22 @@ class AboutUsSettings(models.Model):
         return super(AboutUsSettings, self).create(vals)
 
 # Models for about us page (end)
+
+# Models for blog (start)
+
+class BlogCategory(models.Model):
+    _name = 'ultima.blog.category'
+    _description = 'ultima.blog.category'
+    _order = 'id desc'
+
+    name = fields.Char(string='Sequence')
+    category_name = fields.Char(string='Category name')
+
+    @api.model
+    def create(self, vals):
+        vals['name'] = self.env['ir.sequence'].sudo().next_by_code('ultima.blog.category.seq')
+        return super(BlogCategory, self).create(vals)
+
+# Models for blog (end)
 
 

@@ -17,6 +17,10 @@ class AMCService(http.Controller):
         amc_advantages = req.env['ultima.amc.service.advantage'].sudo().search([], order='id asc')
         # Retrieving advantages (end)
 
+        # Retrieving amc faqs (start)
+        amc_faqs = req.env['ultima.amc.service.faq'].sudo().search([], order='id desc')
+        # Retrieving amc faqs (end)
+
         # Retrieving features (start)
         amc_features = req.env['ultima.amc.service.feature'].sudo().search([], order='id asc')
         # Retrieving features (end)
@@ -33,6 +37,7 @@ class AMCService(http.Controller):
             'amc_banner_slider_images': amc_banner_slider_images,
             'amc_plans': amc_plans,
             'amc_advantages': amc_advantages,
+            'amc_faqs': amc_faqs,
             'amc_features': amc_features,
             'amc_testimonial_slides': amc_testimonial_slides,
             'amc_page_settings': amc_page_settings
