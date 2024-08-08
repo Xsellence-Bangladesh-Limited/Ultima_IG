@@ -376,6 +376,55 @@
     </record>
     <!-- Ultima AMC Service advantage action (end)-->
 
+    <!-- Ultima AMC Service faq tree view (start)-->
+    <record id="ultima_amc_service_faq_view_tree" model="ir.ui.view">
+        <field name="name">Ultima amc service faq tree view</field>
+        <field name="model">ultima.amc.service.faq</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name" readonly="True"/>
+            </tree>
+        </field>
+    </record>
+    <!-- Ultima AMC Service faq tree view (end)-->
+
+    <!-- Ultima AMC Service faq form view (start)-->
+    <record id="ultima_amc_service_faq_view_form" model="ir.ui.view">
+        <field name="name">Ultima amc service faq tree view</field>
+        <field name="model">ultima.amc.service.faq</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <div class="oe_title">
+                        <h1>
+                            <field name="name" readonly="True"/>
+                        </h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="title"/>
+                            <field name="description"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <!-- Ultima AMC Service faq tree view (end)-->
+
+    <!-- Ultima AMC Service faq action (start)-->
+    <record id="ultima_amc_service_faq_form" model="ir.actions.act_window">
+        <field name="name">FAQ's</field>
+        <field name="res_model">ultima.amc.service.faq</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Add a new FAQ!
+            </p>
+        </field>
+    </record>
+    <!-- Ultima AMC Service faq action (end)-->
+
     <!-- Ultima AMC Service feature tree view (start)-->
     <record id="ultima_amc_service_feature_view_tree" model="ir.ui.view">
         <field name="name">Ultima amc service feature tree view</field>
@@ -697,6 +746,55 @@
         </field>
     </record>
     <!-- Ultima service request feature action (end)-->
+
+    <!-- Ultima service request faq tree view (start)-->
+    <record id="ultima_service_request_faq_view_tree" model="ir.ui.view">
+        <field name="name">Ultima service request faq tree view</field>
+        <field name="model">ultima.service.request.faq</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name" readonly="True"/>
+            </tree>
+        </field>
+    </record>
+    <!-- Ultima service request faq tree view (end)-->
+
+    <!-- Ultima service request faq form view (start)-->
+    <record id="ultima_service_request_faq_view_form" model="ir.ui.view">
+        <field name="name">Ultima service request faq tree view</field>
+        <field name="model">ultima.service.request.faq</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <div class="oe_title">
+                        <h1>
+                            <field name="name" readonly="True"/>
+                        </h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="title"/>
+                            <field name="description"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <!-- Ultima service request faq tree view (end)-->
+
+    <!-- Ultima service request faq action (start)-->
+    <record id="ultima_service_request_faq_form" model="ir.actions.act_window">
+        <field name="name">FAQ's</field>
+        <field name="res_model">ultima.service.request.faq</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Add a new FAQ!
+            </p>
+        </field>
+    </record>
+    <!-- Ultima service request faq action (end)-->
 
     <!-- Ultima service request testimonial slider tree view (start)-->
     <record id="ultima_service_request_testimonial_slider_view_tree" model="ir.ui.view">
@@ -1020,7 +1118,9 @@
             <form>
                 <sheet>
                     <div class="oe_name">
-                        <h1><field name="name" readonly="True"/></h1>
+                        <h1>
+                            <field name="name" readonly="True"/>
+                        </h1>
                     </div>
 
                     <group>
@@ -1068,5 +1168,53 @@
         </field>
     </record>
     <!-- Ultima about us settings action (end)-->
+
+    <!-- Ultima blog category tree view (start)-->
+    <record id="ultima_blog_category_view_tree" model="ir.ui.view">
+        <field name="name">Ultima blog category tree view</field>
+        <field name="model">ultima.blog.category</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name" readonly="True"/>
+                <field name="category_name"/>
+            </tree>
+        </field>
+    </record>
+    <!-- Ultima blog category tree view (end)-->
+
+    <!-- Ultima blog category form view (start)-->
+    <record id="ultima_blog_category_view_form" model="ir.ui.view">
+        <field name="name">Ultima blog category tree view</field>
+        <field name="model">ultima.blog.category</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <div class="oe_title">
+                        <h1><field name="name" readonly="True"/></h1>
+                    </div>
+
+                    <group>
+                        <group>
+                            <field name="category_name"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <!-- Ultima blog category form view (end)-->
+
+    <!-- Ultima blog category action (start)-->
+    <record id="ultima_blog_category_action" model="ir.actions.act_window">
+        <field name="name">Categories</field>
+        <field name="res_model">ultima.blog.category</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Add a new blog category!
+            </p>
+        </field>
+    </record>
+    <!-- Ultima blog category action (end)-->
 
 </odoo>

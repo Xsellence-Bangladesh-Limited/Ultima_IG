@@ -34,6 +34,14 @@
             <field name="number_next">1</field>
         </record>
 
+        <record id="ultima_amc_service_faq_seq" model="ir.sequence">
+            <field name="name">Ultima amc service faq sequence</field>
+            <field name="code">ultima.amc.service.faq.seq</field>
+            <field name="prefix">FAQ</field>
+            <field name="padding">5</field>
+            <field name="number_next">1</field>
+        </record>
+
         <record id="ultima_amc_service_feature_seq" model="ir.sequence">
             <field name="name">Ultima amc service feature sequence</field>
             <field name="code">ultima.amc.service.feature.seq</field>
@@ -75,9 +83,17 @@
         </record>
 
         <record id="ultima_service_request_feature_seq" model="ir.sequence">
-            <field name="name">Ultima service request sequence</field>
+            <field name="name">Ultima service request feature sequence</field>
             <field name="code">ultima.service.request.feature.seq</field>
             <field name="prefix">FEATURE</field>
+            <field name="padding">5</field>
+            <field name="number_next">1</field>
+        </record>
+
+        <record id="ultima_service_request_faq_seq" model="ir.sequence">
+            <field name="name">Ultima service request faq sequence</field>
+            <field name="code">ultima.service.request.faq.seq</field>
+            <field name="prefix">FAQ</field>
             <field name="padding">5</field>
             <field name="number_next">1</field>
         </record>
@@ -158,6 +174,14 @@
             <field name="name">Ultima about us settings sequence</field>
             <field name="code">ultima.about.us.settings.seq</field>
             <field name="prefix">SETTINGS</field>
+            <field name="padding">5</field>
+            <field name="number_next">1</field>
+        </record>
+
+        <record id="ultima_blog_category_seq" model="ir.sequence">
+            <field name="name">Ultima blog category sequence</field>
+            <field name="code">ultima.blog.category.seq</field>
+            <field name="prefix">CATEGORY</field>
             <field name="padding">5</field>
             <field name="number_next">1</field>
         </record>

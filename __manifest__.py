@@ -20,6 +20,7 @@
         'templates/base_templates/base_layout.xml',
         'templates/ashik/contact_us.xml',
         'templates/ashik/AMC_service.xml',
+        'templates/ashik/blog.xml',
         'templates/ashik/service_request.xml',
         'templates/ashik/about_us.xml',
     ],

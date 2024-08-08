@@ -14,6 +14,10 @@ class ServiceRequest(http.Controller):
         service_request_features = req.env['ultima.service.request.feature'].sudo().search([], order='id asc')
         # Retrieving features (end)
 
+        # Retrieving amc faqs (start)
+        service_request_faqs = req.env['ultima.service.request.faq'].sudo().search([], order='id desc')
+        # Retrieving amc faqs (end)
+
         # Retrieving testimonial slides (start)
         service_request_testimonial_slides = req.env['ultima.service.request.testimonial.slider'].sudo().search([],
                                                                                                                 order='id asc')
@@ -28,6 +32,7 @@ class ServiceRequest(http.Controller):
             return req.render('ultima.ultima_service_request_template', {
                 'form_points': form_points,
                 'service_request_features': service_request_features,
+                'service_request_faqs': service_request_faqs,
                 'service_request_testimonial_slides': service_request_testimonial_slides,
                 'service_request_settings': service_request_settings
             })
@@ -54,6 +59,7 @@ class ServiceRequest(http.Controller):
                 'request_sent_successful': True,
                 'form_points': form_points,
                 'service_request_features': service_request_features,
+                'service_request_faqs': service_request_faqs,
                 'service_request_testimonial_slides': service_request_testimonial_slides,
                 'service_request_settings': service_request_settings
             })
@@ -64,6 +70,7 @@ class ServiceRequest(http.Controller):
         return req.render('ultima.ultima_service_request_template', {
             'form_points': form_points,
             'service_request_features': service_request_features,
+            'service_request_faqs': service_request_faqs,
             'service_request_testimonial_slides': service_request_testimonial_slides,
             'service_request_settings': service_request_settings
         })

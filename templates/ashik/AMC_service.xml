@@ -90,7 +90,8 @@
                                 <t t-if="amc_page_settings.plan_title and '&lt;br&gt;' in amc_page_settings.plan_title">
                                     <t t-set="plan_titles" t-value="amc_page_settings.plan_title.split('&lt;br&gt;')"/>
                                     <t t-foreach="plan_titles" t-as="plan_title">
-                                        <t t-esc="plan_title"/><br/>
+                                        <t t-esc="plan_title"/>
+                                        <br/>
                                     </t>
                                 </t>
 
@@ -104,7 +105,8 @@
                                     <t t-set="plan_short_descriptions"
                                        t-value="amc_page_settings.plan_short_description.split('&lt;br&gt;')"/>
                                     <t t-foreach="plan_short_descriptions" t-as="plan_short_description">
-                                        <t t-esc="plan_short_description"/><br/>
+                                        <t t-esc="plan_short_description"/>
+                                        <br/>
                                     </t>
                                 </t>
                                 <t t-else="">
@@ -196,7 +198,8 @@
                                             <t t-set="advantage_titles"
                                                t-value="amc_page_settings.advantage_title.split('&lt;br&gt;')"/>
                                             <t t-foreach="advantage_titles" t-as="advantage_title">
-                                                <t t-esc="advantage_title"/><br/>
+                                                <t t-esc="advantage_title"/>
+                                                <br/>
                                             </t>
                                         </t>
                                         <t t-else="">
@@ -209,7 +212,8 @@
                                             <t t-set="advantage_descriptions"
                                                t-value="amc_page_settings.advantage_description.split('&lt;br&gt;')"/>
                                             <t t-foreach="advantage_descriptions" t-as="advantage_description">
-                                                <t t-esc="advantage_description"/><br/>
+                                                <t t-esc="advantage_description"/>
+                                                <br/>
                                             </t>
                                         </t>
                                         <t t-else="">
@@ -263,7 +267,8 @@
                                     <t t-set="feature_titles"
                                        t-value="amc_page_settings.feature_title.split('&lt;br&gt;')"/>
                                     <t t-foreach="feature_titles" t-as="feature_title">
-                                        <t t-esc="feature_title"/><br/>
+                                        <t t-esc="feature_title"/>
+                                        <br/>
                                     </t>
                                 </t>
                                 <t t-else="">
@@ -275,7 +280,8 @@
                                     <t t-set="feature_short_descriptions"
                                        t-value="amc_page_settings.feature_short_description.split('&lt;br&gt;')"/>
                                     <t t-foreach="feature_short_descriptions" t-as="feature_short_description">
-                                        <t t-esc="feature_short_description"/><br/>
+                                        <t t-esc="feature_short_description"/>
+                                        <br/>
                                     </t>
                                 </t>
                                 <t t-else="">
@@ -302,6 +308,62 @@
                     </div>
                     <!-- Features (end) -->
 
+                    <!-- FAQ Section (start)-->
+                    <div class="faq-main">
+                        <div class="my-container">
+                            <div class="block faq py-5 bg_light">
+
+                                <!-- Header -->
+                                <div class="header mb-4">
+                                    <div class="header_content text-center">
+                                        <div class="text-gradient faq-title">FAQ</div>
+                                        <div>
+                                            <h3 class="faq-heading">Frequently Asked Question</h3>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- content -->
+                                <div class="content mt-3">
+
+                                    <div></div>
+                                    <div class="accordions">
+                                        <t t-set="counter" t-value="0"/>
+                                        <t t-foreach="amc_faqs" t-as="amc_faq">
+                                            <t t-if="counter == 0">
+                                                <div class="accordion active sora-600">
+                                                    <t t-esc="amc_faq.title"/>
+                                                </div>
+                                                <div id="panel_active" class="panel">
+                                                    <p class="faq_text">
+                                                        <t t-esc="amc_faq.description"/>
+                                                    </p>
+                                                </div>
+                                            </t>
+                                            <t t-else="">
+                                                <div class="accordion sora-600">
+                                                    <t t-esc="amc_faq.title"/>
+                                                </div>
+                                                <div class="panel">
+                                                    <p class="faq_text">
+                                                         <t t-esc="amc_faq.description"/>
+                                                    </p>
+                                                </div>
+                                            </t>
+                                             <div class="spacer"></div>
+                                            <t t-set="counter" t-value="counter + 1"/>
+                                        </t>
+                                    </div>
+                                    <div></div>
+
+                                </div>
+                                <!-- content -->
+
+                            </div>
+                        </div>
+                    </div>
+                    <!-- FAQ Section (end)-->
+
                     <!-- Testimonial Section (start) -->
                     <div class="testimonial">
                         <div class="my-container">
@@ -314,7 +376,8 @@
                                     <t t-set="testimonial_titles"
                                        t-value="amc_page_settings.testimonial_title.split('&lt;br&gt;')"/>
                                     <t t-foreach="testimonial_titles" t-as="testimonial_title">
-                                        <t t-esc="testimonial_title"/><br/>
+                                        <t t-esc="testimonial_title"/>
+                                        <br/>
                                     </t>
                                 </t>
                                 <t t-else="">

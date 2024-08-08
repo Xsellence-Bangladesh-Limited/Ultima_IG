@@ -1,0 +1,384 @@
+<?xml version='1.0' encoding='utf-8'?>
+
+<odoo>
+    <template id="ultima_blog_template">
+        <t t-call="ultima.ultima_base_layout_template">
+            <head>
+                <meta charset="UTF-8"/>
+                <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+                <title>Blog | Ultima IG</title>
+
+                <!-- Bootstrap (start) -->
+                <link rel="stylesheet" href="/ultima/static/third_party_UI_library/Bootstrap/css/bootstrap.min.css"/>
+                <!-- Bootstrap (end) -->
+
+                <!-- Swiper CSS (start) -->
+                <link rel="stylesheet" href="/ultima/static/third_party_UI_library/Swiper_JS/swiper-bundle.min.css"/>
+                <!-- Swiper CSS (end) -->
+
+                <!-- Splide CSS (start) -->
+                <link rel="stylesheet" href="/ultima/static/third_party_UI_library/splide/dist/css/splide.min.css"/>
+                <!-- Splide CSS (end) -->
+
+                <!-- Custom CSS (start) -->
+                <link rel="stylesheet" href="/ultima/static/ashik/blog/css/styles.css?v=1.0"/>
+                <!-- Custom CSS (end) -->
+
+                <!-- Fontawesome CDN (start) -->
+                <link
+                        rel="stylesheet"
+                        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+                        integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+                        crossorigin="anonymous"
+                        referrerpolicy="no-referrer"
+                />
+                <!-- Fontawesome CDN (end) -->
+
+                <!-- Jquery (start) -->
+                <script src="/ultima/static/third_party_UI_library/jQuery/jquery.min.js" defer="1"/>
+                <!-- Jquery (end) -->
+
+                <!-- Popper JS (start) -->
+                <script src="/ultima/static/third_party_UI_library/Bootstrap/js/popper.min.js" defer="1"/>
+                <!-- Popper JS (end) -->
+
+                <!-- Bootstrap JS (start) -->
+                <script src="/ultima/static/third_party_UI_library/Bootstrap/js/bootstrap.min.js" defer="1"/>
+                <!-- Bootstrap JS (end) -->
+
+                <!-- Swiper JS (start) -->
+                <script src="/ultima/static/third_party_UI_library/Swiper_JS/swiper-bundle.min.js"/>
+                <!-- Swiper JS (end) -->
+
+                <!-- Splide JS (start) -->
+                <script src="/ultima/static/third_party_UI_library/splide/dist/js/splide.min.js"/>
+                <!-- Splide JS (end) -->
+
+                <!-- Custom JS (start) -->
+                <script src="/ultima/static/ashik/blog/JS/script.js?v=1.0" defer="1"/>
+                <!-- Custom JS (end) -->
+            </head>
+            <body>
+                <div class="main-content mt-4">
+                    <div class="blog-slider">
+                        <div class="my-container">
+                            <div class="all-blog-sliders">
+                                <div class="slide">
+                                    <div class="swiper mySwiper">
+                                        <div class="swiper-wrapper">
+                                            <div class="swiper-slide text-slide">
+                                                <a href="#" class="text-slide-tag">Story</a>
+                                                <h3 class="text-slide-title">
+                                                    Benefits of drinking pure water in summer.
+                                                </h3>
+                                                <p class="slide-text-short-description mb-1">
+                                                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                                                    Quis aspernatur veritatis laudantium, illum minima ex eos
+                                                    voluptatum repellendus exercitationem fugiat? Mollitia
+                                                    labore consequatur minima inventore animi! Repellat nobis
+                                                    quod, temporibus consectetur tenetur natus? Doloribus
+                                                    ullam perferendis aspernatur incidunt voluptatibus.
+                                                    Quisquam.
+                                                </p>
+
+                                                <div class="slide-post-creator">
+                                                    <span class="text-muted">By Md. Ashikuzzaman</span>
+                                                    <span class="slide-post-creator-separator text-muted"
+                                                    >//
+                                                    </span
+                                                    >
+                                                    <span class="text-muted"
+                                                    >
+                                                        <i class="fa-regular fa-calendar-days"></i>
+                                                        July 18,
+                                                        2024
+                                                    </span
+                                                    >
+                                                </div>
+                                            </div>
+
+                                            <div class="swiper-slide text-slide">
+                                                <a href="#" class="text-slide-tag">Story</a>
+                                                <h3 class="text-slide-title">
+                                                    Benefits of drinking pure water in summer.
+                                                </h3>
+                                                <p class="slide-text-short-description mb-1">
+                                                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                                                    Quis aspernatur veritatis laudantium, illum minima ex eos
+                                                    voluptatum repellendus exercitationem fugiat? Mollitia
+                                                    labore consequatur minima inventore animi! Repellat nobis
+                                                    quod, temporibus consectetur tenetur natus? Doloribus
+                                                    ullam perferendis aspernatur incidunt voluptatibus.
+                                                    Quisquam.
+                                                </p>
+
+                                                <div class="slide-post-creator">
+                                                    <span class="text-muted">By Md. Ashikuzzaman</span>
+                                                    <span class="slide-post-creator-separator text-muted"
+                                                    >//
+                                                    </span
+                                                    >
+                                                    <span class="text-muted"
+                                                    >
+                                                        <i class="fa-regular fa-calendar-days"></i>
+                                                        July 18,
+                                                        2024
+                                                    </span
+                                                    >
+                                                </div>
+                                            </div>
+
+                                            <div class="swiper-slide text-slide">
+                                                <a href="#" class="text-slide-tag">Story</a>
+                                                <h3 class="text-slide-title">
+                                                    Benefits of drinking pure water in summer.
+                                                </h3>
+                                                <p class="slide-text-short-description mb-1">
+                                                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                                                    Quis aspernatur veritatis laudantium, illum minima ex eos
+                                                    voluptatum repellendus exercitationem fugiat? Mollitia
+                                                    labore consequatur minima inventore animi! Repellat nobis
+                                                    quod, temporibus consectetur tenetur natus? Doloribus
+                                                    ullam perferendis aspernatur incidunt voluptatibus.
+                                                    Quisquam.
+                                                </p>
+
+                                                <div class="slide-post-creator">
+                                                    <span class="text-muted">By Md. Ashikuzzaman</span>
+                                                    <span class="slide-post-creator-separator text-muted"
+                                                    >//
+                                                    </span
+                                                    >
+                                                    <span class="text-muted"
+                                                    >
+                                                        <i class="fa-regular fa-calendar-days"></i>
+                                                        July 18,
+                                                        2024
+                                                    </span
+                                                    >
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="swiper mySwiper">
+                                        <div class="swiper-wrapper">
+                                            <div class="swiper-slide image-slide">
+                                                <img src="/ultima/static/ashik/blog/images/blog_image_5.jpg" alt="Blog slide image"/>
+                                            </div>
+
+                                            <div class="swiper-slide image-slide">
+                                                <img src="/ultima/static/ashik/blog/images/blog_image_6.jpg" alt="Blog slide image"/>
+                                            </div>
+
+                                            <div class="swiper-slide image-slide">
+                                                <img src="/ultima/static/ashik/blog/images/blog_image_7.jpg" alt="Blog slide image"/>
+                                            </div>
+                                        </div>
+                                        <div class="swiper-button-next"></div>
+                                        <div class="swiper-button-prev"></div>
+                                    </div>
+                                </div>
+                                <div class="splide blog-category-slider-container">
+                                    <div class="splide__track">
+                                        <ul class="blog-category-slider splide__list">
+                                            <a href="#" class="blog-category-slider-item splide__slide"
+                                            >Blog
+                                            </a
+                                            >
+                                            <a href="#" class="blog-category-slider-item splide__slide"
+                                            >গল্প
+                                            </a
+                                            >
+
+                                            <a href="#" class="blog-category-slider-item splide__slide"
+                                            >গাড়ির খুটিনাটি
+                                            </a
+                                            >
+                                            <a href="#" class="blog-category-slider-item splide__slide"
+                                            >গাড়ির বিশ্ব
+                                            </a
+                                            >
+
+                                            <a href="#" class="blog-category-slider-item splide__slide"
+                                            >টিপস এন্ড ট্রিক্স
+                                            </a
+                                            >
+                                            <a href="#" class="blog-category-slider-item splide__slide"
+                                            >দেশের গাড়ি
+                                            </a
+                                            >
+
+                                            <a href="#" class="blog-category-slider-item splide__slide"
+                                            >ব্লগ
+                                            </a
+                                            >
+                                            <a href="#" class="blog-category-slider-item splide__slide"
+                                            >ভিটিএস
+                                            </a
+                                            >
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="individual-blog-section">
+                        <div class="my-container">
+                            <div class="blog-section-heading">
+                                <h2 class="blog-heading-title">Tips and Tricks</h2>
+                                <a href="#" class="blog-see-more-btn"
+                                >
+                                    <span>See more</span>
+                                    <span class="blog-see-more-btn-icon"
+                                    >
+                                        <i class="fa-solid fa-chevron-right"></i>
+                                    </span
+                                    >
+                                </a>
+                            </div>
+
+                            <div class="all-blogs-container">
+                                <a href="#" class="single-blog">
+                                    <div class="single-blog-image">
+                                        <img src="/ultima/static/ashik/blog/images/blog_image_1.jpg" alt="Blog image"/>
+                                    </div>
+                                    <div class="single-blog-body">
+                                        <h3 class="single-blog-post-title">
+                                            How much water should you drink in summer?
+                                        </h3>
+                                    </div>
+                                </a>
+
+                                <a href="#" class="single-blog">
+                                    <div class="single-blog-image">
+                                        <img src="/ultima/static/ashik/blog/images/blog_image_2.jpg" alt="Blog image"/>
+                                    </div>
+                                    <div class="single-blog-body">
+                                        <h3 class="single-blog-post-title">
+                                            How much water should you drink in summer?
+                                        </h3>
+                                    </div>
+                                </a>
+
+                                <a href="#" class="single-blog">
+                                    <div class="single-blog-image">
+                                        <img src="/ultima/static/ashik/blog/images/blog_image_3.jpg" alt="Blog image"/>
+                                    </div>
+                                    <div class="single-blog-body">
+                                        <h3 class="single-blog-post-title">
+                                            How much water should you drink in summer?
+                                        </h3>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="individual-blog-section odd-section">
+                        <div class="my-container">
+                            <div class="blog-section-heading">
+                                <h2 class="blog-heading-title">Story of Water</h2>
+                                <a href="#" class="blog-see-more-btn"
+                                >
+                                    <span>See more</span>
+                                    <span class="blog-see-more-btn-icon"
+                                    >
+                                        <i class="fa-solid fa-chevron-right"></i>
+                                    </span
+                                    >
+                                </a>
+                            </div>
+
+                            <div class="all-blogs-container">
+                                <a href="#" class="single-blog">
+                                    <div class="single-blog-image">
+                                        <img src="/ultima/static/ashik/blog/images/blog_image_4.jpg" alt="Blog image"/>
+                                    </div>
+                                    <div class="single-blog-body">
+                                        <h3 class="single-blog-post-title">
+                                            How much water should you drink in summer?
+                                        </h3>
+                                    </div>
+                                </a>
+
+                                <a href="#" class="single-blog">
+                                    <div class="single-blog-image">
+                                        <img src="/ultima/static/ashik/blog/images/blog_image_5.jpg" alt="Blog image"/>
+                                    </div>
+                                    <div class="single-blog-body">
+                                        <h3 class="single-blog-post-title">
+                                            How much water should you drink in summer?
+                                        </h3>
+                                    </div>
+                                </a>
+
+                                <a href="#" class="single-blog">
+                                    <div class="single-blog-image">
+                                        <img src="/ultima/static/ashik/blog/images/blog_image_6.jpg" alt="Blog image"/>
+                                    </div>
+                                    <div class="single-blog-body">
+                                        <h3 class="single-blog-post-title">
+                                            How much water should you drink in summer?
+                                        </h3>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="individual-blog-section">
+                        <div class="my-container">
+                            <div class="blog-section-heading">
+                                <h2 class="blog-heading-title">Water of The World</h2>
+                                <a href="#" class="blog-see-more-btn"
+                                >
+                                    <span>See more</span>
+                                    <span class="blog-see-more-btn-icon"
+                                    >
+                                        <i class="fa-solid fa-chevron-right"></i>
+                                    </span
+                                    >
+                                </a>
+                            </div>
+
+                            <div class="all-blogs-container">
+                                <a href="#" class="single-blog">
+                                    <div class="single-blog-image">
+                                        <img src="/ultima/static/ashik/blog/images/blog_image_7.jpg" alt="Blog image"/>
+                                    </div>
+                                    <div class="single-blog-body">
+                                        <h3 class="single-blog-post-title">
+                                            How much water should you drink in summer?
+                                        </h3>
+                                    </div>
+                                </a>
+
+                                <a href="#" class="single-blog">
+                                    <div class="single-blog-image">
+                                        <img src="/ultima/static/ashik/blog/images/blog_image_8.jpg" alt="Blog image"/>
+                                    </div>
+                                    <div class="single-blog-body">
+                                        <h3 class="single-blog-post-title">
+                                            How much water should you drink in summer?
+                                        </h3>
+                                    </div>
+                                </a>
+
+                                <a href="#" class="single-blog">
+                                    <div class="single-blog-image">
+                                        <img src="/ultima/static/ashik/blog/images/blog_image_9.jpg" alt="Blog image"/>
+                                    </div>
+                                    <div class="single-blog-body">
+                                        <h3 class="single-blog-post-title">
+                                            How much water should you drink in summer?
+                                        </h3>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </body>
+        </t>
+    </template>
+</odoo>
