@@ -1,5 +1,5 @@
 from odoo import fields, models, api
-
+from datetime import datetime
 
 # Models for contact us page (start)
 class ContactWay(models.Model):
@@ -415,6 +415,49 @@ class BlogCategory(models.Model):
     def create(self, vals):
         vals['name'] = self.env['ir.sequence'].sudo().next_by_code('ultima.blog.category.seq')
         return super(BlogCategory, self).create(vals)
+
+class Blog(models.Model):
+    _name = 'ultima.blog.blog'
+    _description = 'ultima.blog.blog'
+    _order = 'id desc'
+
+    name = fields.Char(string='Sequence')
+    banner_image = fields.Image(string='Banner image')
+    title = fields.Char(string='Title')
+    content = fields.Html(string='Content')
+    category_id = fields.Many2one('ultima.blog.category', string='Category')
+    estimated_time_to_read = fields.Char(string='Estimated time to read')
+    publication_date = fields.Date(default=lambda self: fields.Date.today(), string='Publication date')
+    author_id = fields.Many2one('res.users', string='Author')
+
+    @api.model
+    def create(self, vals):
+        vals['name'] = self.env['ir.sequence'].sudo().next_by_code('ultima.blog.blog.seq')
+        return super(Blog, self).create(vals)
+
+class BlogSlider(models.Model):
+    _name = 'ultima.blog.slider'
+    _description = 'ultima.blog.slider'
+    _order = 'id desc'
+
+    name = fields.Char(string='Sequence')
+    slider_image = fields.Image(string='Slider image')
+    blog_category_id = fields.Many2one('ultima.blog.category', string='Blog category')
+    slider_title = fields.Char(string='Slider title')
+    slider_description = fields.Text(string='Slider description')
+    blog_author_id = fields.Many2one('res.users', string='Blog author')
+    creation_date = fields.Date(default=lambda self: fields.Date.today(), string='Creation date')
+
+    def format_blog_date(self):
+        date_obj = datetime.strptime(str(self.creation_date), "%Y-%m-%d")
+        formatted_date = date_obj.strftime("%B %d, %Y")
+
+        return formatted_date
+
+    @api.model
+    def create(self, vals):
+        vals['name'] = self.env['ir.sequence'].sudo().next_by_code('ultima.blog.slider.seq')
+        return super(BlogSlider, self).create(vals)
 
 # Models for blog (end)
 

@@ -1169,6 +1169,58 @@
     </record>
     <!-- Ultima about us settings action (end)-->
 
+    <!-- Ultima blog blog tree view (start)-->
+    <record id="ultima_blog_blog_view_tree" model="ir.ui.view">
+        <field name="name">Ultima blog blog tree view</field>
+        <field name="model">ultima.blog.blog</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name" readonly="True"/>
+            </tree>
+        </field>
+    </record>
+    <!-- Ultima blog blog tree view (end)-->
+
+    <!-- Ultima blog blog form view (start)-->
+    <record id="ultima_blog_blog_view_form" model="ir.ui.view">
+        <field name="name">Ultima blog blog form view</field>
+        <field name="model">ultima.blog.blog</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <div class="oe_name">
+                        <h1><field name="name" readonly="True"/></h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="banner_image" widget="image" class="oe_avatar" required="True"/>
+                            <field name="title" required="True"/>
+                            <field name="content" required="True"/>
+                            <field name="category_id" required="True"/>
+                            <field name="estimated_time_to_read" required="True"/>
+                            <field name="publication_date"/>
+                            <field name="author_id" required="True"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <!-- Ultima blog blog form view (end)-->
+
+    <!-- Ultima blog blog action (start)-->
+    <record id="ultima_blog_blog_form" model="ir.actions.act_window">
+        <field name="name">Blogs</field>
+        <field name="res_model">ultima.blog.blog</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Add a new blog!
+            </p>
+        </field>
+    </record>
+    <!-- Ultima blog blog action (end)-->
+
     <!-- Ultima blog category tree view (start)-->
     <record id="ultima_blog_category_view_tree" model="ir.ui.view">
         <field name="name">Ultima blog category tree view</field>
@@ -1195,7 +1247,7 @@
 
                     <group>
                         <group>
-                            <field name="category_name"/>
+                            <field name="category_name" required="True"/>
                         </group>
                     </group>
                 </sheet>
@@ -1205,7 +1257,7 @@
     <!-- Ultima blog category form view (end)-->
 
     <!-- Ultima blog category action (start)-->
-    <record id="ultima_blog_category_action" model="ir.actions.act_window">
+    <record id="ultima_blog_category_form" model="ir.actions.act_window">
         <field name="name">Categories</field>
         <field name="res_model">ultima.blog.category</field>
         <field name="view_mode">tree,form</field>
@@ -1216,5 +1268,57 @@
         </field>
     </record>
     <!-- Ultima blog category action (end)-->
+
+    <!-- Ultima blog slider tree view (start)-->
+    <record id="ultima_blog_slider_view_tree" model="ir.ui.view">
+        <field name="name">Ultima blog slider tree view</field>
+        <field name="model">ultima.blog.slider</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name" readonly="True"/>
+            </tree>
+        </field>
+    </record>
+    <!-- Ultima blog slider tree view (end)-->
+
+    <!-- Ultima blog slider form view (start)-->
+    <record id="ultima_blog_slider_view_form" model="ir.ui.view">
+        <field name="name">Ultima blog slider form view</field>
+        <field name="model">ultima.blog.slider</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <div class="oe_title">
+                        <h1><field name="name" readonly="True"/></h1>
+                    </div>
+
+                    <group>
+                        <group>
+                            <field name="slider_image" widget="image" class="oe_avatar"/>
+                            <field name="blog_category_id" required="True"/>
+                            <field name="slider_title" required="True"/>
+                            <field name="slider_description" required="True"/>
+                            <field name="blog_author_id"/>
+                            <field name="creation_date" readonly="True"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <!-- Ultima blog slider form view (end)-->
+
+    <!-- Ultima blog slider action (start)-->
+    <record id="ultima_blog_slider_form" model="ir.actions.act_window">
+        <field name="name">Slides</field>
+        <field name="res_model">ultima.blog.slider</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Add a new slide!
+            </p>
+        </field>
+    </record>
+    <!-- Ultima blog slider action (end)-->
 
 </odoo>
