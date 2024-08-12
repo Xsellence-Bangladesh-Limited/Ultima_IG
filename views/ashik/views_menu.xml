@@ -185,9 +185,21 @@
               parent="ultima_blog_menu_id"
               action="ultima_blog_blog_form"/>
 
+    <menuitem id="ultima_suggested_blog_menu_id"
+              name="Suggested blogs"
+              sequence="2"
+              parent="ultima_blog_menu_id"
+              action="ultima_suggested_blog_form"/>
+
+    <menuitem id="ultima_blog_query_menu_id"
+              name="Queries"
+              sequence="3"
+              parent="ultima_blog_menu_id"
+              action="ultima_blog_query_form"/>
+
     <menuitem id="ultima_blog_slider_menu_id"
               name="Slider"
-              sequence="2"
+              sequence="4"
               parent="ultima_blog_menu_id"
               action="ultima_blog_slider_form"/>
 

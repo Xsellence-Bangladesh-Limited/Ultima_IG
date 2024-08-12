@@ -21,6 +21,8 @@
         'templates/ashik/contact_us.xml',
         'templates/ashik/AMC_service.xml',
         'templates/ashik/blog.xml',
+        'templates/ashik/blog_details.xml',
+        'templates/ashik/see_more_blogs.xml',
         'templates/ashik/service_request.xml',
         'templates/ashik/about_us.xml',
     ],

@@ -76,7 +76,7 @@
                             t-if="service_request_settings.banner_image" t-attf-style="background-image: url('/web/image/ultima.service.request.settings/{{service_request_settings.id}}/banner_image')"
                     >
                         <div class="service-request-form-container">
-                            <form action="/service-request" method="POST" class="service-request-form">
+                            <form action="/users-service-request" method="POST" class="service-request-form">
                                 <h5 class="text-center mb-3">
                                     <t t-if="service_request_settings.form_title and '&lt;br&gt;' in service_request_settings.form_title">
                                         <t t-set="form_titles"

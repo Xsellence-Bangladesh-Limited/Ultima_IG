@@ -89,7 +89,7 @@
 
                             <p class="get-in-touch-short-info"><t t-esc="page_settings.form_sub_headline"/></p>
 
-                            <form action="/contact-us" method="POST" class="mt-3">
+                            <form action="/users-contact" method="POST" class="mt-3">
                                 <div class="name-input mb-2">
                                     <div class="first-name">
                                         <label for="first-name-input-id" class="input-label">First name</label>

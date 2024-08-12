@@ -429,11 +429,57 @@ class Blog(models.Model):
     estimated_time_to_read = fields.Char(string='Estimated time to read')
     publication_date = fields.Date(default=lambda self: fields.Date.today(), string='Publication date')
     author_id = fields.Many2one('res.users', string='Author')
+    slug = fields.Char(string='Slug', compute='_compute_blog_slug')
+
+    @api.depends('title')
+    def _compute_blog_slug(self):
+        for rec in self:
+            title = str(rec.title)
+            if '?' in title:
+                title = title.replace('?', '')
+            if '&' in title:
+                title = title.replace('&', 'and')
+            rec.slug = '-'.join(title.split(' ')) + '-' + str(datetime.now())
+
+    def format_blog_date(self):
+        date_obj = datetime.strptime(str(self.publication_date), "%Y-%m-%d")
+        formatted_date = date_obj.strftime("%B %d, %Y")
+
+        return formatted_date
 
     @api.model
     def create(self, vals):
         vals['name'] = self.env['ir.sequence'].sudo().next_by_code('ultima.blog.blog.seq')
         return super(Blog, self).create(vals)
+
+class SuggestedBlog(models.Model):
+    _name = 'ultima.suggested.blog'
+    _description = 'ultima.suggested.blog'
+    _order = 'id desc'
+
+    name = fields.Char(string='Sequence')
+    main_blog_id = fields.Many2one('ultima.blog.blog', string='Main blog')
+    suggested_blog_ids = fields.Many2many('ultima.blog.blog', string='Suggested blogs')
+
+    @api.model
+    def create(self, vals):
+        vals['name'] = self.env['ir.sequence'].sudo().next_by_code('ultima.suggested.blog.seq')
+        return super(SuggestedBlog, self).create(vals)
+
+class BlogQuery(models.Model):
+    _name = 'ultima.blog.query'
+    _description = 'ultima.blog.query'
+    _order = 'id desc'
+
+    name = fields.Char(string='Sequence')
+    user_name = fields.Char(string='Name')
+    user_email = fields.Char(string='Email')
+    user_mobile = fields.Char(string='Mobile')
+
+    @api.model
+    def create(self, vals):
+        vals['name'] = self.env['ir.sequence'].sudo().next_by_code('ultima.blog.query.seq')
+        return super(BlogQuery, self).create(vals)
 
 class BlogSlider(models.Model):
     _name = 'ultima.blog.slider'

@@ -1,0 +1,156 @@
+<?xml version='1.0' encoding='utf-8'?>
+
+<odoo>
+    <template id="ultima_blog_details_template">
+        <t t-call="ultima.ultima_base_layout_template">
+            <head>
+                <meta charset="UTF-8"/>
+                <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+                <title>Blog details | Ultima IG</title>
+
+                <!-- Bootstrap (start) -->
+                <link rel="stylesheet" href="/ultima/static/third_party_UI_library/Bootstrap/css/bootstrap.min.css"/>
+                <!-- Bootstrap (end) -->
+
+                <!-- Swiper CSS (start) -->
+                <link rel="stylesheet" href="/ultima/static/third_party_UI_library/Swiper_JS/swiper-bundle.min.css"/>
+                <!-- Swiper CSS (end) -->
+
+                <!-- Splide CSS (start) -->
+                <link rel="stylesheet" href="/ultima/static/third_party_UI_library/splide/dist/css/splide.min.css"/>
+                <!-- Splide CSS (end) -->
+
+                <!-- Custom CSS (start) -->
+                <link rel="stylesheet" href="/ultima/static/ashik/blog_details/css/styles.css?v=1.0"/>
+                <!-- Custom CSS (end) -->
+
+                <!-- Fontawesome CDN (start) -->
+                <link
+                        rel="stylesheet"
+                        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+                        integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+                        crossorigin="anonymous"
+                        referrerpolicy="no-referrer"
+                />
+                <!-- Fontawesome CDN (end) -->
+
+                <!-- Jquery (start) -->
+                <script src="/ultima/static/third_party_UI_library/jQuery/jquery.min.js" defer="1"/>
+                <!-- Jquery (end) -->
+
+                <!-- Popper JS (start) -->
+                <script src="/ultima/static/third_party_UI_library/Bootstrap/js/popper.min.js" defer="1"/>
+                <!-- Popper JS (end) -->
+
+                <!-- Bootstrap JS (start) -->
+                <script src="/ultima/static/third_party_UI_library/Bootstrap/js/bootstrap.min.js" defer="1"/>
+                <!-- Bootstrap JS (end) -->
+
+                <!-- Swiper JS (start) -->
+                <script src="/ultima/static/third_party_UI_library/Swiper_JS/swiper-bundle.min.js"/>
+                <!-- Swiper JS (end) -->
+
+                <!-- Splide JS (start) -->
+                <script src="/ultima/static/third_party_UI_library/splide/dist/js/splide.min.js"/>
+                <!-- Splide JS (end) -->
+
+                <!-- Custom JS (start) -->
+                <script src="/ultima/static/ashik/blog_details/JS/script.js?v=1.0" defer="1"/>
+                <!-- Custom JS (end) -->
+            </head>
+
+            <body>
+                <div class="main-content mt-4">
+                    <div class="my-container">
+                        <t t-if="query_submission_successful">
+                            <div class="alert alert-success mt-2 message-sent-successful-alert">
+                                <p>Query sent successfully!</p>
+                                <span class="message-sent-successful-alert-cancel-btn">
+                                    <i class="fa-solid fa-xmark"></i>
+                                </span>
+                            </div>
+                        </t>
+                        <div class="banner-image">
+                            <img t-if="blog.banner_image" t-att-src="image_data_uri(blog.banner_image)"
+                                 alt="Banner image"/>
+                        </div>
+                        <div class="blog-details">
+                            <div class="blog-details-left">
+                                <div class="time-and-category">
+                                    <p class="blog-category">
+                                        <t t-esc="blog.category_id.category_name"/>
+                                    </p>
+                                    <p class="time-to-finish">
+                                        <t t-esc="blog.estimated_time_to_read"/>
+                                        minutes to finish
+                                    </p>
+                                </div>
+                                <div class="blog-details-main-text-content">
+                                    <h3 class="main-text-content-header mb-3">
+                                        <t t-esc="blog.title"/>
+                                    </h3>
+                                    <p class="blog-publication-date mb-3">Published on
+                                        <t t-esc="blog.format_blog_date()"/>
+                                    </p>
+                                    <div class="blog-author mb-3">
+                                        <div class="blog-author-image">
+                                            <img src="/ultima/static/ashik/blog_details/images/blog_creator.jpg"
+                                                 alt="Blog author"/>
+                                        </div>
+                                        <h6 class="blog-author-name">
+                                            <t t-esc="blog.author_id.name"/>
+                                        </h6>
+                                    </div>
+
+                                    <div class="text-content-details">
+                                        <t t-esc="blog.content"/>
+                                    </div>
+                                </div>
+
+                                <form action="/query/user-query" method="POST" class="user-query-form mb-4">
+                                    <h4 class="form-heading mb-4 text-center">Do you have any query?</h4>
+                                    <div class="name-input-container mb-4">
+                                        <label for="name-input" class="input-label">Name</label>
+                                        <input type="text" name="name_input" id="name-input" class="form-input"
+                                               required="1"/>
+                                    </div>
+
+                                    <div class="email-input-container mb-4">
+                                        <label for="email-input" class="input-label">Email</label>
+                                        <input type="email" name="email_input" id="email-input" class="form-input"
+                                               required="1"/>
+                                    </div>
+
+                                    <div class="mobile-number-input-container mb-4">
+                                        <label for="mobile-input" class="input-label">Mobile</label>
+                                        <input type="text" name="mobile_input" id="mobile-input" class="form-input"
+                                               required="1"/>
+                                    </div>
+
+                                    <div class="form-submit-button-container">
+                                        <button class="form-submit-btn">Submit</button>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="blog-details-right">
+                                <div class="suggested-blogs">
+                                    <t t-foreach="suggested_blogs" t-as="suggested_blog">
+                                        <a t-attf-href="/blog-details/{{suggested_blog.id}}" class="suggested-blog mb-4">
+                                        <div class="suggested-blog-image mt-4">
+                                            <img t-if="suggested_blog.banner_image" t-att-src="image_data_uri(suggested_blog.banner_image)"
+                                                 alt="Suggested blog image"/>
+                                        </div>
+                                        <p class="suggested-blog-title mt-3">
+                                            <t t-esc="suggested_blog.title"/>
+                                        </p>
+                                    </a>
+                                    </t>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </body>
+        </t>
+    </template>
+</odoo>

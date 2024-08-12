@@ -130,7 +130,7 @@
                                     <h2 class="blog-heading-title">
                                         <t t-esc="blogs_based_on_category[0]"/>
                                     </h2>
-                                    <a href="#" class="blog-see-more-btn"
+                                    <a t-attf-href="/more-blogs/{{blogs_based_on_category[0]}}" class="blog-see-more-btn"
                                     >
                                         <span>See more</span>
                                         <span class="blog-see-more-btn-icon"
@@ -143,7 +143,7 @@
 
                                 <div class="all-blogs-container">
                                     <t t-foreach="blogs_based_on_category[1]" t-as="single_blog">
-                                        <a href="#" class="single-blog">
+                                        <a t-attf-href="/blog-details/{{single_blog.id}}" class="single-blog">
                                             <div class="single-blog-image">
                                                 <img t-if="single_blog.banner_image" t-att-src="image_data_uri(single_blog.banner_image)"
                                                      alt="Blog image"/>

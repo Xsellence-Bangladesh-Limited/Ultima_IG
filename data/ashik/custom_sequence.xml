@@ -194,6 +194,22 @@
             <field name="number_next">1</field>
         </record>
 
+        <record id="ultima_suggested_blog_seq" model="ir.sequence">
+            <field name="name">Ultima suggested blog sequence</field>
+            <field name="code">ultima.suggested.blog.seq</field>
+            <field name="prefix">SUGGESTED</field>
+            <field name="padding">5</field>
+            <field name="number_next">1</field>
+        </record>
+
+        <record id="ultima_blog_query_seq" model="ir.sequence">
+            <field name="name">Ultima blog query sequence</field>
+            <field name="code">ultima.blog.query.seq</field>
+            <field name="prefix">QUERY</field>
+            <field name="padding">5</field>
+            <field name="number_next">1</field>
+        </record>
+
         <record id="ultima_blog_slider_seq" model="ir.sequence">
             <field name="name">Ultima blog slider sequence</field>
             <field name="code">ultima.blog.slider.seq</field>

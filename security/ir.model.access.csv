@@ -23,4 +23,6 @@ ultima_about_us_offer,ultima_about_us_offer,model_ultima_about_us_offer,,1,1,1,1
 ultima_about_us_settings,ultima_about_us_settings,model_ultima_about_us_settings,,1,1,1,1
 ultima_blog_category,ultima_blog_category,model_ultima_blog_category,,1,1,1,1
 ultima_blog_blog,ultima_blog_blog,model_ultima_blog_blog,,1,1,1,1
+ultima_suggested_blog,ultima_suggested_blog,model_ultima_suggested_blog,,1,1,1,1
+ultima_blog_query,ultima_blog_query,model_ultima_blog_query,,1,1,1,1
 ultima_blog_slider,ultima_blog_slider,model_ultima_blog_slider,,1,1,1,1
