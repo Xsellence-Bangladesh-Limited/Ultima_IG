@@ -1,0 +1,191 @@
+/* Global CSS (start) */
+
+/* Google Font (start) */
+
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Sora:wght@100..800&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+/* Google Font (end) */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --primary-color: #0c79f9;
+  --primary-box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px,
+    rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
+  --secondary-box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+  --title-font-family: "Sora", sans-serif;
+  --normal-text-font-family: "Poppins", sans-serif;
+  --inter-font-family: "Inter", sans-serif;
+  --heading-font-weight: 600;
+  --normal-title-font-weight: 400;
+}
+
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin-bottom: 0;
+}
+
+p {
+  font-size: 0.875rem;
+}
+
+/* Global CSS (end) */
+
+/* Main Content (start) */
+
+.my-container {
+  width: 60rem;
+  margin: 0 auto;
+}
+
+.category-title {
+  font-family: var(--normal-text-font-family);
+  color: #212125;
+  font-weight: var(--heading-font-weight);
+  font-size: 2.25rem;
+  margin-bottom: 1.875rem;
+}
+
+.all-category-cards {
+  display: flex;
+  gap: 1.875rem;
+  flex-wrap: wrap;
+}
+
+.single-category-card {
+  width: 31%;
+  padding: 1.25rem 1.25rem 3rem 1.25rem;
+  background-color: #fff;
+  box-shadow: rgb(149 157 165 / 11%) 0px 8px 24px;
+}
+
+.single-category-card-image {
+  width: 100%;
+  display: block;
+  height: 10rem;
+  overflow: hidden;
+}
+
+.single-category-card-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.single-category-card-tag-link {
+  color: var(--primary-color);
+  font-family: var(--normal-text-font-family);
+  font-size: 1.063rem;
+  text-decoration: none;
+  display: block;
+  margin-bottom: 0.813rem;
+}
+
+.single-category-card-tag-link:hover {
+  color: var(--primary-color);
+  text-decoration: none;
+}
+
+.single-category-card-title {
+  font-family: var(--title-font-family);
+  font-size: 1.25rem;
+  font-weight: var(--heading-font-weight);
+  color: #3e3e3e;
+  text-decoration: none;
+  display: block;
+  margin-bottom: 1.25rem;
+}
+
+.single-category-card-title:hover {
+  color: #212125;
+  text-decoration: none;
+}
+
+.publication-date {
+  color: #7b7b7b;
+  font-family: var(--normal-text-font-family);
+  font-size: 0.938rem;
+}
+
+/* Main Content (end) */
+
+/* Responsiveness (start) */
+
+@media (min-width: 0px) {
+  .my-container {
+    width: 100%;
+    padding: 0 0.625rem;
+  }
+
+  .single-category-card {
+    width: 100%;
+  }
+
+  .single-category-card-image {
+    height: 15rem;
+  }
+}
+
+/* Small devices (landscape phones, 576px and up) */
+@media (min-width: 576px) {
+  .my-container {
+    width: 34rem;
+  }
+
+  .single-category-card-image {
+    height: 20rem;
+  }
+}
+
+/* Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) {
+  .my-container {
+    width: 45rem;
+  }
+
+  .single-category-card {
+    width: 47%;
+  }
+
+  .single-category-card-image {
+    height: 10rem;
+  }
+}
+
+/* Large devices (desktops, 992px and up) */
+@media (min-width: 992px) {
+  .my-container {
+    width: 60rem;
+  }
+
+  .single-category-card {
+    width: 31%;
+  }
+}
+
+/* X-Large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) {
+  .my-container {
+    width: 60rem;
+  }
+}
+
+/* XX-Large devices (larger desktops, 1400px and up) */
+@media (min-width: 1400px) {
+  .my-container {
+    width: 71.25rem;
+  }
+}
+
+/* Responsiveness (end) */

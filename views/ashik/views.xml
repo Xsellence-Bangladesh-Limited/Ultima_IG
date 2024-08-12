@@ -1189,7 +1189,9 @@
             <form>
                 <sheet>
                     <div class="oe_name">
-                        <h1><field name="name" readonly="True"/></h1>
+                        <h1>
+                            <field name="name" readonly="True"/>
+                        </h1>
                     </div>
                     <group>
                         <group>
@@ -1198,8 +1200,9 @@
                             <field name="content" required="True"/>
                             <field name="category_id" required="True"/>
                             <field name="estimated_time_to_read" required="True"/>
-                            <field name="publication_date"/>
+                            <field name="publication_date" readonly="True"/>
                             <field name="author_id" required="True"/>
+                            <field name="slug" readonly="True"/>
                         </group>
                     </group>
                 </sheet>
@@ -1220,6 +1223,108 @@
         </field>
     </record>
     <!-- Ultima blog blog action (end)-->
+
+    <!-- Ultima suggested blog tree view (start)-->
+    <record id="ultima_suggested_blog_view_tree" model="ir.ui.view">
+        <field name="name">Ultima suggested blog tree view</field>
+        <field name="model">ultima.suggested.blog</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name" readonly="True"/>
+            </tree>
+        </field>
+    </record>
+    <!-- Ultima suggested blog tree view (end)-->
+
+    <!-- Ultima suggested blog form view (start)-->
+    <record id="ultima_suggested_blog_view_form" model="ir.ui.view">
+        <field name="name">Ultima suggested blog form view</field>
+        <field name="model">ultima.suggested.blog</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <div class="oe_name">
+                        <h1>
+                            <field name="name" readonly="True"/>
+                        </h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="main_blog_id" required="True"/>
+                            <field name="suggested_blog_ids" widget="many2many_tags" required="True"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <!-- Ultima suggested blog form view (end)-->
+
+    <!-- Ultima suggested blog action (start)-->
+    <record id="ultima_suggested_blog_form" model="ir.actions.act_window">
+        <field name="name">Suggested blogs</field>
+        <field name="res_model">ultima.suggested.blog</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Add a new suggested blog!
+            </p>
+        </field>
+    </record>
+    <!-- Ultima suggested blog action (end)-->
+
+    <!-- Ultima blog query tree view (start)-->
+    <record id="ultima_blog_query_view_tree" model="ir.ui.view">
+        <field name="name">Ultima blog query tree view</field>
+        <field name="model">ultima.blog.query</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name" readonly="True"/>
+                <field name="user_name"/>
+                <field name="user_email"/>
+                <field name="user_mobile"/>
+            </tree>
+        </field>
+    </record>
+    <!-- Ultima blog query tree view (end)-->
+
+    <!-- Ultima blog query form view (start)-->
+    <record id="ultima_blog_query_view_form" model="ir.ui.view">
+        <field name="name">Ultima blog query form view</field>
+        <field name="model">ultima.blog.query</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <div class="oe_name">
+                        <h1>
+                            <field name="name" readonly="True"/>
+                        </h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="user_name" required="True"/>
+                            <field name="user_email" required="True"/>
+                            <field name="user_mobile" required="True"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <!-- Ultima blog query form view (end)-->
+
+    <!-- Ultima blog query action (start)-->
+    <record id="ultima_blog_query_form" model="ir.actions.act_window">
+        <field name="name">Queries</field>
+        <field name="res_model">ultima.blog.query</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                No available query!
+            </p>
+        </field>
+    </record>
+    <!-- Ultima blog query action (end)-->
 
     <!-- Ultima blog category tree view (start)-->
     <record id="ultima_blog_category_view_tree" model="ir.ui.view">
@@ -1242,7 +1347,9 @@
             <form>
                 <sheet>
                     <div class="oe_title">
-                        <h1><field name="name" readonly="True"/></h1>
+                        <h1>
+                            <field name="name" readonly="True"/>
+                        </h1>
                     </div>
 
                     <group>
@@ -1289,7 +1396,9 @@
             <form>
                 <sheet>
                     <div class="oe_title">
-                        <h1><field name="name" readonly="True"/></h1>
+                        <h1>
+                            <field name="name" readonly="True"/>
+                        </h1>
                     </div>
 
                     <group>
