@@ -18,4 +18,14 @@ $(document).ready(function () {
 
     });
 
+    // lang
+    $('.select_lang').change(function () {
+
+        let code = $(this).val();
+        $(`.flag_image`).hide();
+        $(`#flag_image_${code}`).show();
+        alert('This feature is upcoming');
+
+    });
+
 });

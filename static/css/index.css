@@ -369,3 +369,8 @@ wrap wrap
 #rb_ac .icon img {
     width: 40px;
 }
+
+.flag_image {
+    display: none;
+    width: 23px;
+}

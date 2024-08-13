@@ -1,5 +1,136 @@
 <?xml version="1.0" encoding="utf-8" ?>
-
 <odoo>
+    <!-- ultima.layout, generated on August 13, 2024 -->
+    <!-- Tree view of ultima.layout -->
+    <record model="ir.ui.view" id="ultima_layout_tree_id">
+        <field name="name">UltimaLayout</field>
+        <field name="model">ultima.layout</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="address"/>
+                <field name="contact_no"/>
+                <field name="email"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Form view of ultima.layout -->
+    <record model="ir.ui.view" id="ultima_layout_form_id">
+        <field name="name">UltimaLayout</field>
+        <field name="model">ultima.layout</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="footer_desc"/>
+                            <field name="note"/>
+                            <field name="address"/>
+                            <field name="contact_no"/>
+                            <field name="whatsapp"/>
+                            <field name="email"/>
+                            <field name="quick_link_ids"/>
+                            <field name="social_ids"/>
+                        </group>
+                        <group>
+                            <field name="logo_1920" widget="image" class="oe_avatar"/>
+                            <field name="footer_logo_1920" widget="image" class="oe_avatar"/>
+                            <field name="map_1920" widget="image" class="oe_avatar"/>
+                            <field name="map_url"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Action view of ultima.layout -->
+    <record model="ir.actions.act_window" id="ultima_layout_action_id">
+        <field name="name">UltimaLayout</field>
+        <field name="res_model">ultima.layout</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- ultima.quick_link, generated on August 13, 2024 -->
+    <!-- Tree view of ultima.quick_link -->
+    <record model="ir.ui.view" id="ultima_quick_link_tree_id">
+        <field name="name">UltimaQuick_link</field>
+        <field name="model">ultima.quick_link</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="url"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Form view of ultima.quick_link -->
+    <record model="ir.ui.view" id="ultima_quick_link_form_id">
+        <field name="name">UltimaQuick_link</field>
+        <field name="model">ultima.quick_link</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name"/>
+                            <field name="url"/>
+                        </group>
+                        <group>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Action view of ultima.quick_link -->
+    <record model="ir.actions.act_window" id="ultima_quick_link_action_id">
+        <field name="name">UltimaQuick_link</field>
+        <field name="res_model">ultima.quick_link</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- ultima.social, generated on August 13, 2024 -->
+    <!-- Tree view of ultima.social -->
+    <record model="ir.ui.view" id="ultima_social_tree_id">
+        <field name="name">UltimaSocial</field>
+        <field name="model">ultima.social</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="url"/>
+                <field name="svg"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Form view of ultima.social -->
+    <record model="ir.ui.view" id="ultima_social_form_id">
+        <field name="name">UltimaSocial</field>
+        <field name="model">ultima.social</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <group>
+                            <!--<field name="name"/>-->
+                            <!--<field name="logo_1920" widget="image" class="oe_avatar"/>-->
+                            <field name="svg"/>
+                            <field name="url"/>
+                        </group>
+                        <group>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Action view of ultima.social -->
+    <record model="ir.actions.act_window" id="ultima_social_action_id">
+        <field name="name">UltimaSocial</field>
+        <field name="res_model">ultima.social</field>
+        <field name="view_mode">tree,form</field>
+    </record>
 
 </odoo>

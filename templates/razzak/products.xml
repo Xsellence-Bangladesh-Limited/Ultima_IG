@@ -552,7 +552,7 @@
                         <br/>
                         About Us
                     </h3>
-                    <div class="testimonial-slider">
+                    <div class="testimonial-slider" style="height: fit-content;">
                         <div class="swiper mySwiper">
                             <div class="swiper-wrapper">
                                 <div class="swiper-slide">
