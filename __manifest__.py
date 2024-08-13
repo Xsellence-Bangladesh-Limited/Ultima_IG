@@ -27,7 +27,7 @@
         'templates/ashik/about_us.xml',
 
         # Razzak
-        'templates/layout.xml',
+        # 'templates/layout.xml',
         'templates/home.xml',
         'templates/products.xml',
         'templates/product_details.xml',
