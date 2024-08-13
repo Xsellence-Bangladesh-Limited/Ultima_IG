@@ -77,10 +77,10 @@
                     >
                         <div class="service-request-form-container">
                             <form action="/users-service-request" method="POST" class="service-request-form">
-                                <h5 class="text-center mb-3">
+                                <h5 class="text-center mb-3 service-request-form-title">
                                     <t t-if="service_request_settings.form_title and '&lt;br&gt;' in service_request_settings.form_title">
                                         <t t-set="form_titles"
-                                           t-value="service_request_settings.form_title.split('&lt;br&gt;')"/>
+                                           t-value="str(service_request_settings.form_title).split('&lt;br&gt;')"/>
 
                                         <t t-foreach="form_titles" t-as="form_title">
                                             <t t-esc="form_title"/>
@@ -142,7 +142,7 @@
                                             <p class="single-service-feature-title">
                                                 <t t-if="form_point.title and '&lt;br&gt;' in form_point.title">
                                                     <t t-set="form_point_titles"
-                                                       t-value="form_point.title.split('&lt;br&gt;')"/>
+                                                       t-value="str(form_point.title).split('&lt;br&gt;')"/>
 
                                                     <t t-foreach="form_point_titles" t-as="form_point_title">
                                                         <t t-esc="form_point_title"/>
@@ -157,7 +157,7 @@
                                             <p>
                                                 <t t-if="form_point.sub_title and '&lt;br&gt;' in form_point.sub_title">
                                                     <t t-set="form_point_sub_titles"
-                                                       t-value="form_point.sub_title.split('&lt;br&gt;')"/>
+                                                       t-value="str(form_point.sub_title).split('&lt;br&gt;')"/>
 
                                                     <t t-foreach="form_point_sub_titles" t-as="form_point_sub_title">
                                                         <t t-esc="form_point_sub_title"/>
@@ -301,7 +301,7 @@
                             <h3 class="testimonial-heading text-center">
                                 <t t-if="service_request_settings.testimonial_title and '&lt;br&gt;' in service_request_settings.testimonial_title">
                                     <t t-set="testimonial_titles"
-                                       t-value="service_request_settings.testimonial_title.split('&lt;br&gt;')"/>
+                                       t-value="str(service_request_settings.testimonial_title).split('&lt;br&gt;')"/>
 
                                     <t t-foreach="testimonial_titles" t-as="testimonial_title">
                                         <t t-esc="testimonial_title"/>

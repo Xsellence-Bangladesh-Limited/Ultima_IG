@@ -92,6 +92,10 @@ p {
   box-shadow: rgba(0, 0, 0, 0.15) 2.4px 2.4px 3.2px;
 }
 
+.service-request-form-title{
+    color: var(--primary-color);
+}
+
 .service-request-form-input {
   border: none;
   outline: none;
@@ -101,18 +105,17 @@ p {
   font-family: var(--normal-text-font-family);
   font-weight: var(--normal-title-font-weight);
   width: 100%;
-  color: #307bbe;
 }
 
 .service-request-form-input::placeholder {
-  color: #307bbe;
+  color: var(--primary-color);
 }
 
 .request-form-submit-btn {
   width: 100%;
   border: none;
   outline: none;
-  background-color: #307bbe;
+  background-color: var(--primary-color);
   color: #fff;
   padding: 0.625rem 0 0.625rem 0;
   font-size: 0.875rem;
