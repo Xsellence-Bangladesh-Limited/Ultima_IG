@@ -1,0 +1,363 @@
+<odoo>
+    <template id="layout">
+
+
+        <html lang="en">
+
+            <head>
+                <!-- Required meta tags -->
+                <meta charset="utf-8"/>
+                <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+                <link rel="icon" href="favicon.png" type="image/x-icon"/>
+
+                <!-- Bootstrap CSS -->
+                <link rel="stylesheet" href="/ultima/static/css/bootstrap.min.css"/>
+                <link rel="stylesheet" href="/ultima/static/css/short.css"/>
+
+                <!-- Custom stylesheet -->
+                <link rel="stylesheet" href="/ultima/static/css/index.css"/>
+
+                <t t-raw="header">
+
+                </t>
+            </head>
+
+            <body class="">
+
+                <div id="wrap">
+
+                    <!-- Top header > 992 px -->
+                    <div class="top_header sora-400">
+
+                        <!-- Left company logo -->
+                        <div>
+                            <a href="#">
+                                <img class="logo" src="/ultima/static/image/logo.png" alt=""/>
+                            </a>
+                        </div>
+
+                        <!-- Right quick contact -->
+                        <div>
+                            <div class="options">
+                                <div class="br">
+                                    <img src="/ultima/static/image/svg/us.svg" alt=""/>
+                                    <select class="lang" name="lang" id="lang">
+                                        <option value="en-us">English (US)</option>
+                                        <option value="bn">Bangla</option>
+                                    </select>
+                                </div>
+                                <div class="br">
+                                    <a href="#">
+                                        <div class="d-f ai-c">
+                                            <svg width="15" height="15" viewBox="0 0 20 20" fill="none"
+                                                 xmlns="http://www.w3.org/2000/svg">
+                                                <path
+                                                        d="M17.5 9.07391C17.5 13.1649 12.8125 18.3332 10 18.3332C7.1875 18.3332 2.5 13.1649 2.5 9.07391C2.5 4.98291 5.85786 1.6665 10 1.6665C14.1421 1.6665 17.5 4.98291 17.5 9.07391Z"
+                                                        stroke="#00060B" stroke-width="1.3"/>
+                                                <path
+                                                        d="M12.5 9.1665C12.5 10.5472 11.3807 11.6665 10 11.6665C8.61929 11.6665 7.5 10.5472 7.5 9.1665C7.5 7.78579 8.61929 6.6665 10 6.6665C11.3807 6.6665 12.5 7.78579 12.5 9.1665Z"
+                                                        stroke="#00060B" stroke-width="1.3"/>
+                                            </svg>
+                                            <div class="pl-1">Store Location</div>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="d-f ai-c">
+                                    <svg width="17" height="17" viewBox="0 0 25 24" fill="none"
+                                         xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M16.4695 6C16.4695 3.79086 14.6786 2 12.4695 2C10.2603 2 8.46948 3.79086 8.46948 6"
+                                              stroke="#00060B" stroke-width="1.2" stroke-linecap="round"
+                                              stroke-linejoin="round"/>
+                                        <path
+                                                d="M5.03148 9.50386C5.28169 7.50215 6.9833 6 9.00059 6H15.9383C17.9556 6 19.6572 7.50215 19.9074 9.50386L20.9074 17.5039C21.2059 19.8913 19.3443 22 16.9383 22H8.00059C5.5946 22 3.73305 19.8913 4.03148 17.5039L5.03148 9.50386Z"
+                                                stroke="#00060B" stroke-width="1.2" stroke-linejoin="round"/>
+                                        <path d="M9.35254 16C11.8009 17.3404 13.1428 17.3263 15.5873 16"
+                                              stroke="#00060B" stroke-width="1.2"
+                                              stroke-linecap="round" stroke-linejoin="round"/>
+                                    </svg>
+                                </div>
+                                <div class="d-f ai-c">
+                                    <svg width="15" height="15" viewBox="0 0 16 20" fill="none"
+                                         xmlns="http://www.w3.org/2000/svg">
+                                        <path
+                                                d="M11.339 5C11.339 6.87777 9.81673 8.4 7.93897 8.4V9.6C10.4795 9.6 12.539 7.54051 12.539 5H11.339ZM7.93897 8.4C6.0612 8.4 4.53897 6.87777 4.53897 5H3.33897C3.33897 7.54051 5.39846 9.6 7.93897 9.6V8.4ZM4.53897 5C4.53897 3.12223 6.0612 1.6 7.93897 1.6V0.4C5.39846 0.4 3.33897 2.45949 3.33897 5H4.53897ZM7.93897 1.6C9.81673 1.6 11.339 3.12223 11.339 5H12.539C12.539 2.45949 10.4795 0.4 7.93897 0.4V1.6ZM14.339 15.5C14.339 16.1168 13.8234 16.8367 12.6204 17.4382C11.4533 18.0218 9.79901 18.4 7.93897 18.4V19.6C9.94491 19.6 11.7906 19.1947 13.157 18.5115C14.4876 17.8463 15.539 16.8162 15.539 15.5H14.339ZM7.93897 18.4C6.07892 18.4 4.42463 18.0218 3.25755 17.4382C2.05458 16.8367 1.53896 16.1168 1.53896 15.5H0.338965C0.338965 16.8162 1.39036 17.8463 2.72089 18.5115C4.08731 19.1947 5.93302 19.6 7.93897 19.6V18.4ZM1.53896 15.5C1.53896 14.8832 2.05458 14.1633 3.25755 13.5618C4.42463 12.9782 6.07892 12.6 7.93897 12.6V11.4C5.93302 11.4 4.08731 11.8053 2.72089 12.4885C1.39036 13.1537 0.338965 14.1838 0.338965 15.5H1.53896ZM7.93897 12.6C9.79901 12.6 11.4533 12.9782 12.6204 13.5618C13.8234 14.1633 14.339 14.8832 14.339 15.5H15.539C15.539 14.1838 14.4876 13.1537 13.157 12.4885C11.7906 11.8053 9.94491 11.4 7.93897 11.4V12.6Z"
+                                                fill="#00060B"/>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <a href="tel:01731001895">
+                                        <div class="contact_button d-f ai-c">
+                                            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"
+                                                 xmlns="http://www.w3.org/2000/svg">
+                                                <path
+                                                        d="M15.439 13.8333V12.4617C15.439 11.7802 15.024 11.1674 14.3913 10.9143L12.6962 10.2362C11.8914 9.91429 10.9741 10.263 10.5865 11.0383L10.439 11.3333C10.439 11.3333 8.35563 10.9167 6.68896 9.25C5.0223 7.58333 4.60563 5.5 4.60563 5.5L4.90065 5.35249C5.67595 4.96484 6.02468 4.04761 5.70275 3.2428L5.0247 1.54768C4.7716 0.914919 4.15875 0.5 3.47724 0.5H2.10563C1.18516 0.5 0.438965 1.24619 0.438965 2.16667C0.438965 9.53046 6.4085 15.5 13.7723 15.5C14.6928 15.5 15.439 14.7538 15.439 13.8333Z"
+                                                        fill="#F9FDFF"/>
+                                            </svg>
+                                            <div class="ml-2">01731001895</div>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <!-- Top header small < 992 -->
+                    <div class="small_header">
+                        <div>
+                            <a href="/">
+                                <img class="logo" src="/ultima/static/image/logo/logo.png" alt="Ultima Logo"/>
+                            </a>
+                        </div>
+                        <div>
+                            <i id="menu_control_icon_bars" class="fas fa-bars menu_control_icon"></i>
+                            <i id="menu_control_icon_times" class="fas fa-times menu_control_icon"
+                               style="display: none;"></i>
+                        </div>
+                    </div>
+                    <!-- End Top header small device < 992 -->
+
+                    <!-- Small menu -->
+                    <div class="sm_menu">
+
+                        <!-- A vertical navbar -->
+                        <nav class="navbar bg-light">
+                            <!-- Links -->
+                            <ul class="navbar-nav">
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#">Home</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#">Products</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#">Filter Cartridge</a>
+                                </li>
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                                       data-toggle="dropdown"
+                                       aria-haspopup="true" aria-expanded="false">
+                                        RO Services
+                                    </a>
+
+                                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                        <div class="list-group list-group-flush">
+                                            <a href="#" class="list-group-item list-group-item-action">Service Request
+                                            </a>
+                                            <a href="#" class="list-group-item list-group-item-action">AMC Service</a>
+                                        </div>
+                                    </div>
+
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#">About Us</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#">Blog</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#">Contact Us</a>
+                                </li>
+                            </ul>
+                        </nav>
+
+                    </div>
+                    <!-- End Small menu -->
+
+                    <!-- Menu -->
+                    <div class="menu_container sora-400">
+                        <ul class="menu">
+                            <li>
+                                <a href="#">Home</a>
+                            </li>
+                            <li>
+                                <a href="#">Products</a>
+                            </li>
+                            <li>
+                                <a href="#">Filter Cartridge</a>
+                            </li>
+                            <li>
+                                <a class="d-f ai-c" href="#">RO Services
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                         xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M17 10L12 14L7 10" stroke="#7B7B7B" stroke-width="1.4"
+                                              stroke-linecap="round"
+                                              stroke-linejoin="round"/>
+                                    </svg>
+                                </a>
+                                <div class="dropdown_menu">
+                                    <a class="dropdown_menu_item" href="#">Service Request</a>
+                                    <a class="dropdown_menu_item" href="#">AMC Service</a>
+                                </div>
+                            </li>
+                            <li>
+                                <a href="#">About Us</a>
+                            </li>
+                            <li>
+                                <a href="#">Blog</a>
+                            </li>
+                            <li>
+                                <a href="#">Contact Us</a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- page content -->
+                    <t t-raw="0">
+
+                    </t>
+                    <!-- End page content -->
+
+                    <!-- Footer -->
+                    <div class="footer">
+                        <div class="container">
+
+                            <div class="content">
+                                <div class="row">
+                                    <div class="col-12 col-lg-4 mt-5">
+                                        <img class="footer_logo" src="/ultima/static/image/logo/white_logo.png"
+                                             alt=""/>
+                                        <div class="mt-3 text poppins-400">
+                                            Your best family friend, guarding against 80% waterborne diseases ensuring
+                                            100% safe and mineral rich
+                                            water
+                                            for the wellbeing of your family.
+                                        </div>
+                                        <div>
+                                            <div class="d-f socials">
+                                                <a class="d-f ai-c" href="#">
+                                                    <svg width="16" height="25" viewBox="0 0 12 12" fill="none"
+                                                         xmlns="http://www.w3.org/2000/svg">
+                                                        <path
+                                                                d="M6.96094 0.0164061C5.73281 0.215625 4.95 0.839062 4.59609 1.89609C4.44844 2.33906 4.35938 2.95078 4.35938 3.53672V3.82031H3.375H2.39062V4.95937V6.09844L3.375 6.09141L4.35938 6.08203V9.03984V12H5.85938H7.35938V9.04688V6.09375H8.34375H9.32813V4.95703V3.82031H8.34141H7.35469L7.36406 3.33281C7.37578 2.76797 7.40156 2.66719 7.58672 2.46094C7.82109 2.20078 8.01797 2.15625 8.94375 2.15625H9.60938V1.07812V0L8.31563 0.00234318C7.60313 0.00468731 6.99375 0.0117188 6.96094 0.0164061ZM9.09375 1.07578V1.63594L8.56172 1.64766C7.97109 1.65937 7.86563 1.67812 7.58203 1.81875C7.25859 1.97578 7.02656 2.25234 6.91875 2.60625C6.86016 2.79609 6.85781 2.82422 6.84844 3.56719L6.84141 4.33594H7.82578H8.8125V4.95703V5.57812H7.82812H6.84375V8.53125V11.4844H5.85938H4.875V8.51484V5.54766L3.89062 5.56406L2.90625 5.58047V4.95703V4.33594H3.89062H4.875V3.81328C4.875 3.05859 4.92422 2.61562 5.05313 2.17969C5.32266 1.28672 5.95547 0.724218 6.89062 0.548437C6.99375 0.529687 7.37578 0.520312 8.06953 0.517968L9.09375 0.515625V1.07578Z"
+                                                                fill="#F9FDFF"/>
+                                                    </svg>
+                                                </a>
+                                                <a href="#">
+                                                    <svg width="16" height="25" viewBox="0 0 16 16" fill="none"
+                                                         xmlns="http://www.w3.org/2000/svg">
+                                                        <path
+                                                                d="M7 1.67507C3.87188 2.1282 1.62187 4.82195 1.72813 7.98445C1.75937 8.87507 1.90313 9.55007 2.2375 10.3344C2.35625 10.6126 2.55625 11.0032 2.68437 11.2063C2.72188 11.2626 2.66875 11.4282 2.20625 12.6751C1.92188 13.4469 1.6875 14.1251 1.6875 14.1782C1.6875 14.2469 1.71875 14.3126 1.775 14.3782C1.93125 14.5532 1.9625 14.5407 3.4375 13.9126C4.16875 13.6001 4.78437 13.3438 4.80625 13.3438C4.83125 13.3438 4.94375 13.4001 5.05938 13.4657C5.46563 13.7032 6.06875 13.9438 6.5875 14.0751C7.07188 14.2001 7.45 14.2532 7.98438 14.2719C10.3969 14.3594 12.5656 13.1219 13.6844 11.0282C14.8594 8.82507 14.5625 6.00007 12.9438 4.02195C12.7156 3.74695 12.2125 3.24695 11.9375 3.02507C11.0344 2.30632 9.90312 1.82195 8.75625 1.67195C8.31875 1.61257 7.40625 1.6157 7 1.67507ZM8.79688 2.34382C10.0094 2.5407 11.0437 3.05945 11.9344 3.92195C12.4688 4.4407 12.8125 4.90632 13.1344 5.54695C14.2281 7.7282 13.8219 10.3313 12.1281 12.0219C10.9875 13.1626 9.39062 13.7532 7.79688 13.6251C6.87813 13.5501 6.13125 13.3157 5.29375 12.8407C5.0875 12.7219 4.8875 12.6251 4.84687 12.6251C4.80938 12.6251 4.3 12.8282 3.7125 13.0782C3.125 13.3282 2.63438 13.5282 2.62187 13.5251C2.60938 13.5188 2.78125 13.0313 3.00313 12.4376C3.25625 11.7563 3.40313 11.3157 3.40625 11.2376C3.40625 11.1438 3.36563 11.0469 3.2375 10.8313C2.61875 9.78757 2.34375 8.75632 2.38438 7.62507C2.41875 6.67507 2.65 5.84382 3.1 5.05632C3.94375 3.57507 5.375 2.59695 7.07812 2.33132C7.5125 2.26257 8.34688 2.26882 8.79688 2.34382Z"
+                                                                fill="#F9FDFF"/>
+                                                        <path
+                                                                d="M5.85625 4.1687C5.55313 4.26558 5.20312 4.52495 4.90625 4.86245C4.56562 5.24995 4.4375 5.58746 4.4375 6.08121C4.4375 7.61871 5.65313 9.53746 7.35313 10.6812C8.51562 11.4687 9.86562 11.8156 10.5938 11.5187C11.2812 11.2375 11.9219 10.4812 11.9156 9.95308C11.9125 9.59996 11.8187 9.47496 11.3438 9.19371C11.1813 9.09683 10.9281 8.94371 10.7844 8.84996C10.15 8.44058 9.84375 8.37183 9.54688 8.56871C9.46563 8.62183 9.27813 8.81246 9.13438 8.99058L8.86875 9.30933L8.75313 9.26246C8.15 9.01246 7.19062 8.08121 6.85625 7.42183L6.74688 7.20308L6.86563 7.09996C7.29063 6.72808 7.47813 6.54058 7.53125 6.43433C7.65937 6.18746 7.59063 5.89683 7.29688 5.41871C7.2 5.26558 7.025 4.97808 6.90625 4.7812C6.67188 4.39058 6.57812 4.27495 6.4375 4.20308C6.30625 4.13433 6.00937 4.11558 5.85625 4.1687ZM6.19687 4.89683C6.24063 4.96245 6.33438 5.12183 6.4125 5.24996C6.49063 5.37808 6.64375 5.63121 6.75312 5.80621L6.95 6.13121L6.80938 6.25933C6.73125 6.33121 6.55625 6.48746 6.425 6.60621C6.29062 6.72496 6.15938 6.86871 6.1375 6.92496C5.96875 7.32808 6.325 8.03121 7.09063 8.82183C7.76875 9.52183 8.475 9.96558 8.90625 9.96871C9.11875 9.96871 9.2625 9.86558 9.58437 9.48433C9.74375 9.29371 9.89062 9.13746 9.91563 9.13121C9.9375 9.12808 10.0687 9.19058 10.2031 9.27496C10.3406 9.35933 10.6219 9.53121 10.8281 9.65621C11.0344 9.78121 11.2219 9.89996 11.2438 9.91871C11.3625 10.0312 10.8156 10.6843 10.4531 10.8625C10.2781 10.9468 10.2406 10.9531 9.92188 10.95C9.37813 10.95 8.7875 10.7593 8.09687 10.3625C6.44375 9.41871 5.09375 7.49371 5.09375 6.08433C5.09375 5.84683 5.10313 5.79996 5.20312 5.59996C5.2875 5.43433 5.37813 5.32183 5.5625 5.14683C5.77188 4.94995 6.01875 4.7812 6.1 4.7812C6.1125 4.7812 6.15625 4.83433 6.19687 4.89683Z"
+                                                                fill="#F9FDFF"/>
+                                                    </svg>
+                                                </a>
+                                                <a href="#">
+                                                    <svg width="16" height="25" viewBox="0 0 14 14" fill="none"
+                                                         xmlns="http://www.w3.org/2000/svg">
+                                                        <path
+                                                                d="M2.50195 1.86216C1.36719 1.96333 0.388281 2.80278 0.0765625 3.93755L0.0136719 4.16997V7.00005V9.83013L0.0765625 10.0625C0.292578 10.8528 0.814844 11.4926 1.53672 11.8563C1.85391 12.0149 2.16836 12.1024 2.5457 12.1379C2.975 12.179 11.025 12.179 11.4543 12.1379C11.8316 12.1024 12.1461 12.0149 12.4633 11.8563C13.1852 11.4926 13.7074 10.8528 13.9234 10.0625L13.9863 9.83013V7.00005V4.16997L13.9234 3.93755C13.6062 2.77817 12.6383 1.96606 11.4461 1.85942C11.0797 1.82661 2.86289 1.82935 2.50195 1.86216ZM11.7441 2.51021C12.6656 2.76997 13.3 3.51099 13.3984 4.43247C13.434 4.77153 13.434 9.22856 13.3984 9.56763C13.3 10.4973 12.652 11.2465 11.7305 11.4899L11.498 11.5528H7H2.50195L2.26953 11.4899C1.34805 11.2465 0.7 10.4973 0.601562 9.56763C0.566016 9.22856 0.566016 4.77153 0.601562 4.43247C0.694531 3.54927 1.30977 2.80005 2.14922 2.54575C2.25586 2.51294 2.41992 2.47466 2.51836 2.46372C2.61406 2.45005 4.68125 2.44185 7.10938 2.44458L11.5254 2.44731L11.7441 2.51021Z"
+                                                                fill="#F9FDFF"/>
+                                                        <path
+                                                                d="M5.21992 4.61842L5.14062 4.69772V7.12038C5.14062 8.84577 5.14883 9.55944 5.1707 9.60866C5.21172 9.69616 5.35664 9.77272 5.46055 9.75631C5.5043 9.75084 6.45586 9.20944 7.57148 8.55592C9.09453 7.66725 9.61133 7.35006 9.64141 7.29538C9.69883 7.18327 9.69062 7.04108 9.61953 6.95905C9.58398 6.92077 8.65156 6.36022 7.54688 5.71491C5.73125 4.65124 5.52891 4.53913 5.41953 4.53913C5.32383 4.53913 5.28555 4.55553 5.21992 4.61842ZM7.24062 6.23717C8.06367 6.71842 8.74453 7.12038 8.75547 7.13131C8.76641 7.14225 8.10469 7.5442 7.28164 8.02545C6.46133 8.5067 5.77227 8.91139 5.75313 8.92233C5.72031 8.94147 5.71484 8.65709 5.71484 7.15045C5.71484 6.16608 5.72031 5.35944 5.72852 5.35944C5.73672 5.35944 6.41758 5.75319 7.24062 6.23717Z"
+                                                                fill="#F9FDFF"/>
+                                                    </svg>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-lg-2 mt-5">
+                                        <h5 class="sora-600">Quick Link</h5>
+                                        <ul class="quick_links text">
+                                            <li class="sora-400">
+                                                <a href="#">About Us</a>
+                                            </li>
+                                            <li>
+                                                <a href="#">Become Affiliate</a>
+                                            </li>
+                                            <li>
+                                                <a href="#">Contact Us</a>
+                                            </li>
+                                            <li>
+                                                <a href="#">Blog</a>
+                                            </li>
+                                            <li>
+                                                <a href="#">Privacy Policy</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="col-12 col-lg-3 mt-5">
+                                        <h5 class="sora-600">Find Us</h5>
+                                        <ul class="quick_links text">
+                                            <li>
+                                                House: 368, Road: 05, Avenue: 04 Mirpur DOHS, Dhaka-1216, Bangladesh.
+                                            </li>
+                                            <li>
+                                                Contact No:
+                                                <b class="text-white">096000333444</b>
+                                            </li>
+                                            <li>
+                                                Email:
+                                                <b class="text-white">support@ultima.care</b>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="col-12 col-lg-3 mt-5">
+                                        <h5 class="sora-600">Map</h5>
+                                        <a href="#">
+                                            <img class="map" src="/ultima/static/image/map.jpg" alt=""/>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="mt-4 text-center">
+                                Copyright 2024, All right reserved by Ultima
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <!-- Optional JavaScript -->
+                    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+                    <script src="/ultima/static/js/jquery-3.6.0.min.js"/>
+                    <script src="/ultima/static/js/popper.min.js"/>
+                    <script src="/ultima/static/js/bootstrap.min.js"/>
+                    <script src="/ultima/static/js/font-awesome.js"/>
+
+                    <!-- Custom Javascript -->
+                    <script src="/ultima/static/js/index.js"/>
+
+                    <t t-raw="footer">
+
+                    </t>
+
+                    <!-- Absolute Components -->
+                    <div id="lb_ac">
+                        <div class="d-f fd-c">
+                            <div class="icon">
+                                <a href="tel:01731001895">
+                                    <img src="/ultima/static/image/logo/callicon.png" alt="Call Icon"/>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Bottom right buttons -->
+                    <div id="rb_ac">
+                        <div class="d-f fd-c">
+                            <div class="icon">
+                                <a target="_blank" href="https://m.me/ultimabd">
+                                    <img src="/ultima/static/image/logo/fbicon.png" alt="Facebook messenger"/>
+                                </a>
+                            </div>
+                            <div class="icon mt-2">
+                                <a target="_blank"
+                                   href="https://api.whatsapp.com/send?phone=+8801958106501&amp;text=Say%20Hello!&amp;source=&amp;data=">
+                                    <img src="/ultima/static/image/logo/whaticon.webp" alt="WhatsApp contact"/>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                </div> <!-- End wrap -->
+
+            </body>
+
+        </html>
+
+
+    </template>
+</odoo>
