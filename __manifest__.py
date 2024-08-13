@@ -9,6 +9,7 @@
     'depends': [],
     'data': [
         'security/ir.model.access.csv',
+        'security/razzak/ir.model.access.csv',
         'data/ashik/custom_sequence.xml',
         'views/ashik/views.xml',
         'views/razzak/views.xml',
@@ -28,10 +29,10 @@
 
         # Razzak
         # 'templates/layout.xml',
-        'templates/home.xml',
-        'templates/products.xml',
-        'templates/product_details.xml',
-        'templates/billing.xml',
+        'templates/razzak/home.xml',
+        'templates/razzak/products.xml',
+        'templates/razzak/product_details.xml',
+        'templates/razzak/billing.xml',
     ],
     'demo': [],
     'installable': True,

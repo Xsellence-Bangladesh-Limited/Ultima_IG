@@ -1,0 +1,4 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+ultima_layout,ultima_layout,model_ultima_layout,,1,1,1,1
+ultima_quick_link,ultima_quick_link,model_ultima_quick_link,,1,1,1,1
+ultima_social,ultima_social,model_ultima_social,,1,1,1,1
