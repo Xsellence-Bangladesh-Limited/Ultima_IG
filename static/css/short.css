@@ -1,0 +1,107 @@
+/*
+ * Short 1.0
+ * Author: Abdur Razzak
+ */
+
+/* 
+flex-direction
+flex-wrap
+flex-flow
+justify-content
+align-items
+align-content
+*/
+
+/* Flex */
+.d-f {
+    display: flex;
+}
+
+/* flex-direction */
+.fd-c {
+    flex-direction: column;
+}
+
+.fd-cr {
+    flex-direction: column-reverse;
+}
+
+.fd-r {
+    flex-direction: row;
+}
+
+.fd-rr {
+    flex-direction: row-reverse;
+}
+
+/* flex-wrap */
+.fw-w {
+    flex-wrap: wrap;
+}
+
+.fw-nw {
+    flex-wrap: nowrap;
+}
+
+.fw-wr {
+    flex-wrap: wrap-reverse;
+}
+
+/* justify-content */
+.jc-c {
+    justify-content: center;
+}
+
+.jc-s {
+    justify-content: start;
+}
+
+.jc-fe {
+    justify-content: flex-end;
+}
+
+.jc-sa {
+    justify-content: space-around;
+}
+
+.jc-sb {
+    justify-content: space-between;
+}
+
+/* align-items */
+.ai-c {
+    align-items: center;
+}
+
+.ai-fs {
+    align-items: flex-start;
+}
+
+.ai-fe {
+    align-items: flex-end;
+}
+
+.ai-s {
+    align-items: stretch;
+}
+
+.ai-b {
+    align-items: baseline;
+}
+
+/* align-content */
+.ac-sb {
+    align-content: space-between;
+}
+
+.ac-sa {
+    align-content: space-around;
+}
+
+.ac-s {
+    align-content: stretch;
+}
+
+.ac-c {
+    align-content: center;
+}

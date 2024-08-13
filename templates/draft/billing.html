@@ -1,0 +1,231 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <title>Billing | Ultima</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <link rel="icon" href="favicon.png" type="image/x-icon" />
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="static/css/bootstrap.min.css" />
+  <!-- <link rel="stylesheet" href="static/css/owl.carousel.min.css" />
+  <link rel="stylesheet" href="static/css/owl.theme.default.min.css" /> -->
+  <link rel="stylesheet" href="static/css/short.css" />
+  <!-- <link rel="stylesheet" href="static/css/swiper-bundle.min.css" /> -->
+
+  <!-- Custom stylesheet -->
+  <link rel="stylesheet" href="static/css/index.css" />
+  <link rel="stylesheet" href="static/css/billing.css" />
+</head>
+
+<body>
+
+  <!-- Billing -->
+  <div class="billing py-5">
+
+    <!--
+    step
+    -->
+    <div class="container_step py-5">
+
+      <div class="step">
+        <div class="steps">
+
+          <div class="circle d-f ai-c jc-c">
+            <div>1</div>
+          </div>
+
+          <div class="dashed_line" style="flex: 1;"></div>
+
+          <div class="circle circle_disabled d-f ai-c jc-c">
+            <div>2</div>
+          </div>
+        </div>
+
+        <div class="step_text">
+          <div class="step_text_content left">
+            Address & <br />
+            Payment Details
+          </div>
+          <div class="step_text_content step_text_content_disabled right">
+            Order <br />
+            Complete
+          </div>
+        </div>
+
+      </div>
+    </div>
+    <!--
+    End step
+    -->
+
+    <div class="container-fluid">
+
+      <form action="#">
+        <div class="row">
+
+          <div class="col-12 col-lg-1"></div>
+
+          <!-- Left side -->
+          <div class="col-12 col-lg-5">
+            <div class="billing_box">
+              <div class="title">Have a coupon code?</div>
+              <div class="content">
+                <div class="d-f fw-w">
+                  <div>
+                    <input type="text" placeholder="Enter your coupon code here" />
+                  </div>
+                  <div>
+                    <button type="button" class="ml-2 button" style="padding: 5px 15px;">Apply</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="billing_box mt-4">
+              <div class="title">Order Summery</div>
+              <div class="content">
+                <!-- Order summery -->
+                <div class="d-f jc-sb ai-c fw-w order_summery">
+                  <div>
+
+                    <div class="d-f">
+
+                      <div class="d-f fd-c">
+                        <div id="btn_cart_in" class="cart_btn">+</div>
+                        <div id="cart_counter" class="counter">1</div>
+                        <div id="btn_cart_de" class="cart_btn">-</div>
+                      </div>
+
+                      <div class="ml-3 d-f ai-c fw-w">
+                        <div class="c_cart_img">
+                          <img style="width: 100%;" src="static/image/1.jpg" alt="">
+                        </div>
+                        <div class="ml-3 cart_text text">
+                          Ultima Light Commercial RO Aditional Purifier
+                          <div class="font-weight-bold">$27,000</div>
+                        </div>
+                      </div>
+
+                    </div>
+
+                  </div>
+                  <div class="d-f">
+                    <div class="font-weight-bold">$27,000</div>
+                    <div class="text-danger ml-2 item_close font-weight-bold">x</div>
+                  </div>
+                </div>
+                <!-- End Order summery -->
+              </div>
+
+              <div>
+                <div class="text-center mt-5 pb-2">
+                  <h5 class="mb-0">Cart Total: <span id="cart_total">$27,000</span></h5>
+                  <div class="text-small text-muted">Shipping cost will be added after choosing shipping method</div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Right side -->
+          <div class="col-12 col-lg-5 mt-3 mt-lg-0">
+
+            <div class="billing_box">
+
+              <div class="title">Billing Details</div>
+
+              <div class="p-3">
+
+                <div class="row">
+                  <div class="col-12 col-md-6">
+                    <div class="b_input_group">
+                      <div class="b_input_label text">Full Name <span class="b_required">*</span></div>
+                      <input type="text" class="b_input" placeholder="Full Name" />
+                    </div>
+                  </div>
+                  <div class="col-12 col-md-6">
+                    <div class="b_input_group">
+                      <div class="b_input_label text">Phone Number <span class="b_required">*</span></div>
+                      <input type="text" class="b_input" placeholder="019xxxxxxxx" />
+                    </div>
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="col-12 col-md-6">
+                    <div class="b_input_group">
+                      <div class="b_input_label text">Email Address <span class="b_required">*</span></div>
+                      <input type="email" class="b_input" placeholder="Email Address" />
+                    </div>
+                  </div>
+                  <div class="col-12 col-md-6">
+                    <div class="b_input_group">
+                      <div class="b_input_label text">Address <span class="b_required">*</span></div>
+                      <input type="text" class="b_input" placeholder="House #20, Road #26, Mirpur, Dhaka 1216" />
+                    </div>
+                  </div>
+                </div>
+
+                <div class="b_input_group">
+                  <div class="b_input_label text">Order Note</div>
+                  <input type="text" class="b_input" placeholder="E.g: Call me when you arrive..." />
+                </div>
+
+                <div class="b_input_group">
+                  <div class="b_input_label text">Shipping Location</div>
+                  <select class="b_input">
+                    <option value="19" selected="1">Bangladesh</option>
+                    <option value="01">China</option>
+                    <option value="02">Japan</option>
+                  </select>
+                </div>
+
+                <div class="b_input_group">
+                  <div class="b_input_label text">Shipping Type</div>
+                  <select class="b_input">
+                    <option value="" selected="1">Select Shipping Type</option>
+                    <option value="1">Type 01</option>
+                    <option value="2">Type 02</option>
+                    <option value="3">Type 03</option>
+                  </select>
+                </div>
+
+                <div class="b_input_group">
+                  <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike">
+                  <label class="b_input_label text" for="vehicle1"> Ship to a different address?</label>
+                </div>
+
+              </div>
+
+            </div>
+
+          </div>
+
+          <div class="col-12 col-lg-1"></div>
+
+        </div>
+      </form>
+
+    </div>
+
+  </div>
+  <!-- End Billing -->
+
+  <!-- Optional JavaScript -->
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  <script src="static/js/jquery-3.6.0.min.js"></script>
+  <script src="static/js/popper.min.js"></script>
+  <script src="static/js/bootstrap.min.js"></script>
+  <script src="static/js/font-awesome.js"></script>
+  <!-- <script src="static/js/owl.carousel.min.js"></script>
+  <script src="static/js/swiper-bundle.min.js"></script> -->
+
+  <!-- Custom Javascript -->
+  <script src="static/js/billing.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,55 @@
+@keyframes circle {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes inner-circle {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(-360deg);
+    }
+}
+
+@keyframes inner-circle2 {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(-360deg);
+    }
+}
+
+#rotator {
+    width: 450px;
+    height: 450px;
+    margin: 20px auto;
+    font-size: 10px;
+    line-height: 1;
+    animation: circle 25s linear infinite;
+    transform-origin: 50% 50%;
+    background-color: pink;
+    background-color: transparent;
+}
+
+#rotator>#logo_a {
+    animation: inner-circle 25s linear infinite;
+    background-color: #d0b3b3;
+    width: 50px;
+    height: 50px;
+}
+
+#rotator>#logo_b {
+    animation: inner-circle2 25s linear infinite;
+    background-color: #bb7c7c;
+    width: 50px;
+    height: 50px;
+}

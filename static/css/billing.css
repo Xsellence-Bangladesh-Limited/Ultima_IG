@@ -1,0 +1,182 @@
+body {
+    /* margin: 50px; */
+}
+
+.container_step {
+    display: flex;
+    justify-content: center;
+}
+
+.step {
+    /* background-color: pink; */
+    width: 400px;
+    padding: 0px 36px;
+}
+
+.step .steps {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.step .steps .circle {
+    background-color: var(--color_primary);
+    color: white;
+    height: 30px;
+    width: 30px;
+    border-radius: 50%;
+
+}
+
+.step .steps .circle_disabled {
+    opacity: .5 !important;
+
+}
+
+.step .steps .dashed_line {
+    height: 1px;
+    width: 200px;
+    border-bottom: 2px dashed #0c7bf986;
+}
+
+.step .step_text {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.step .step_text .left {
+    margin-left: -32px;
+}
+
+.step .step_text .right {
+    margin-right: -17px;
+}
+
+.step .step_text .step_text_content {
+    margin-top: 5px;
+    line-height: 17px;
+    font-size: 14px;
+    color: gray;
+    text-align: center;
+    color: var(--color_primary);
+}
+
+.step .step_text .step_text_content_disabled {
+    opacity: .5 !important;
+}
+
+.billing .details {
+    display: flex;
+    justify-content: center;
+}
+
+.billing .billing_box {
+    box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
+    border-radius: 6px;
+}
+
+@media (min-width: 992px) {
+    .billing .billing_box {
+        /* min-width: 404px; */
+    }
+}
+
+.billing .billing_box .title {
+    background-color: #EFF3FF;
+    font-size: 20px;
+    padding: 2px 10px;
+}
+
+.billing .billing_box .content {
+    padding: 10px 10px;
+}
+
+.billing .billing_box .content input {
+    border: 1px solid #EEEEEE;
+    outline: none;
+    padding: 3px 5px;
+    min-width: 250px;
+}
+
+.billing .billing_box .content input::placeholder {
+    color: rgb(200, 200, 200);
+}
+
+/* home -> */
+/* .order_summery {
+    width: 420px;
+    margin: 10px;
+} */
+
+.order_summery .cart_btn {
+    background-color: var(--color_primary);
+    color: white;
+    padding: 0px 10px;
+    text-align: center;
+    cursor: pointer;
+}
+
+.order_summery .counter {
+    padding: 0px 10px;
+    text-align: center;
+    cursor: pointer;
+}
+
+.order_summery .cart_btn:hover {
+    opacity: .7;
+}
+
+.c_cart_img {
+    width: 111px;
+    object-fit: cover;
+}
+
+.c_cart_img img {
+    border-radius: 5px;
+}
+
+.cart_text {
+    width: 201px;
+}
+
+.item_close {
+    cursor: pointer;
+}
+
+.item_close:hover {
+    font-weight: bold;
+}
+
+/* End home -> */
+
+/* Billing Details */
+.b_input {
+    border: 1px solid #e1e1e1;
+    outline: none;
+    padding: 3px 5px;
+    width: 100%;
+}
+
+.b_input::placeholder {
+    color: rgb(200, 200, 200);
+    font-size: 14px;
+}
+
+/* .billing_details {
+    width: 455px;
+} */
+
+.b_input_group {
+    margin-bottom: 14px;
+}
+
+.b_input_label {
+    margin-bottom: 5px;
+}
+
+.b_required {
+    color: red;
+}
+
+/* End Billing Details */

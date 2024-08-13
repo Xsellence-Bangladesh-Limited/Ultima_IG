@@ -1,6 +1,6 @@
 {
-    'name' : 'ultima',
-    'version' : '1.0',
+    'name': 'Ultima',
+    'version': '1.0',
     'summary': 'Ultima website module',
     'sequence': 200,
     'description': """Developed by Xsellence Bangladesh Limited.""",
@@ -25,6 +25,13 @@
         'templates/ashik/see_more_blogs.xml',
         'templates/ashik/service_request.xml',
         'templates/ashik/about_us.xml',
+
+        # Razzak
+        'templates/layout.xml',
+        'templates/home.xml',
+        'templates/products.xml',
+        'templates/product_details.xml',
+        'templates/billing.xml',
     ],
     'demo': [],
     'installable': True,
