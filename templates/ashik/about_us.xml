@@ -2,7 +2,7 @@
 
 <odoo>
     <template id="ultima_about_us_template">
-        <t t-call="ultima.ultima_base_layout_template">
+        <t t-call="ultima.layout">
             <head>
                 <meta charset="UTF-8"/>
                 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
