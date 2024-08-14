@@ -2,3 +2,14 @@ id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
 ultima_layout,ultima_layout,model_ultima_layout,,1,1,1,1
 ultima_quick_link,ultima_quick_link,model_ultima_quick_link,,1,1,1,1
 ultima_social,ultima_social,model_ultima_social,,1,1,1,1
+ultima_home_introduce,ultima_home_introduce,model_ultima_home_introduce,,1,1,1,1
+ultima_home_introduce_desc_line,ultima_home_introduce_desc_line,model_ultima_home_introduce_desc_line,,1,1,1,1
+ultima_home,ultima_home,model_ultima_home,,1,1,1,1
+ultima_home_dis_line,ultima_home_dis_line,model_ultima_home_dis_line,,1,1,1,1
+ultima_home_type_line,ultima_home_type_line,model_ultima_home_type_line,,1,1,1,1
+ultima_home_type_line_line,ultima_home_type_line_line,model_ultima_home_type_line_line,,1,1,1,1
+ultima_home_com_line,ultima_home_com_line,model_ultima_home_com_line,,1,1,1,1
+ultima_home_faq,ultima_home_faq,model_ultima_home_faq,,1,1,1,1
+ultima_ribbon,ultima_ribbon,model_ultima_ribbon,,1,1,1,1
+ultima_tag,ultima_tag,model_ultima_tag,,1,1,1,1
+ultima_testimonial,ultima_testimonial,model_ultima_testimonial,,1,1,1,1
