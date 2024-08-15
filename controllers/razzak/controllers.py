@@ -6,8 +6,19 @@ class UltimaWebsite(http.Controller):
 
     @http.route('/', auth='public')
     def home(self, **kw):
+        intro = req.env['ultima.home.introduce'].sudo().search([], limit=1)
+        page = req.env['ultima.home'].sudo().search([], limit=1)
+        products = req.env['product.template'].sudo().search([('detailed_type', '=', 'product')], limit=3)
+        currency_id = req.env.company.currency_id
+
+        testimonials = req.env['ultima.testimonial'].sudo().search([])
+
         return req.render('ultima.home', {
-            'product': 'product',
+            'intro': intro,
+            'p': page,
+            'products': products,
+            'currency_id': currency_id,
+            'testimonials': testimonials,
         })
 
     @http.route('/products', auth='public')

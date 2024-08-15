@@ -24,4 +24,77 @@
               parent="ultima_layout_lbl_menu_id"
               sequence="2"
               action="ultima_social_action_id"/>
+
+    <menuitem id="ultima_testimonial_menu_id"
+              name="Testimonial"
+              parent="ultima_layout_lbl_menu_id"
+              sequence="3"
+              action="ultima_testimonial_action_id"/>
+
+    <!-- Home -->
+    <menuitem id="ultima_home_lbl_menu_id"
+              name="Home"
+              parent="ultima_root_menu_id"
+              sequence="52"/>
+
+    <menuitem id="ultima_home_introduce_menu_id"
+              name="UltimaHomeIntroduce"
+              parent="ultima_home_lbl_menu_id"
+              sequence="0"
+              action="ultima_home_introduce_action_id"/>
+
+    <menuitem id="ultima_home_introduce_desc_line_menu_id"
+              name="UltimaHomeIntroduceDescLine"
+              parent="ultima_home_lbl_menu_id"
+              sequence="1"
+              action="ultima_home_introduce_desc_line_action_id"/>
+
+    <menuitem id="ultima_home_menu_id"
+              name="Home"
+              parent="ultima_home_lbl_menu_id"
+              sequence="2"
+              action="ultima_home_action_id"/>
+
+    <menuitem id="ultima_home_dis_line_menu_id"
+              name="UltimaHomeDisLine"
+              parent="ultima_home_lbl_menu_id"
+              sequence="3"
+              action="ultima_home_dis_line_action_id"/>
+
+    <menuitem id="ultima_home_type_line_menu_id"
+              name="UltimaHomeTypeLine"
+              parent="ultima_home_lbl_menu_id"
+              sequence="4"
+              action="ultima_home_type_line_action_id"/>
+
+    <menuitem id="ultima_home_type_line_line_menu_id"
+              name="UltimaHomeTypeLineLine"
+              parent="ultima_home_lbl_menu_id"
+              sequence="5"
+              action="ultima_home_type_line_line_action_id"/>
+
+    <menuitem id="ultima_home_com_line_menu_id"
+              name="UltimaHomeComLine"
+              parent="ultima_home_lbl_menu_id"
+              sequence="6"
+              action="ultima_home_com_line_action_id"/>
+
+    <menuitem id="ultima_home_faq_menu_id"
+              name="UltimaHomeFaq"
+              parent="ultima_home_lbl_menu_id"
+              sequence="7"
+              action="ultima_home_faq_action_id"/>
+
+    <menuitem id="ultima_ribbon_menu_id"
+              name="UltimaRibbon"
+              parent="ultima_home_lbl_menu_id"
+              sequence="8"
+              action="ultima_ribbon_action_id"/>
+
+    <menuitem id="ultima_tag_menu_id"
+              name="Tag"
+              parent="ultima_home_lbl_menu_id"
+              sequence="9"
+              action="ultima_tag_action_id"/>
+
 </odoo>
