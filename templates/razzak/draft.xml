@@ -1,27 +1,179 @@
-                <!-- Image and text 3 -->
-                <div class="con_banner_and_desc">
-                    <div class="banner_and_desc">
-                        <div>
-                            <img class="banner" src="/ultima/static/image/filtration/commercial_plants.jpg"
-                                 alt="Water Purifiers for Home/Residential Solution"/>
+<!-- Image and text 3 -->
+<div class="con_banner_and_desc">
+    <div class="banner_and_desc">
+        <div>
+            <img class="banner" src="/ultima/static/image/filtration/commercial_plants.jpg"
+                 alt="Water Purifiers for Home/Residential Solution"/>
+        </div>
+        <div>
+            <div class="title sora-600">Water Solution for Commercial Plants</div>
+            <ul class="my-4 pl-4">
+                <li class="text">Water treatment facilities (WTPs) for effective pollutant removal in
+                    commercial or
+                    industrial settings.
+                </li>
+                <li class="text">Utilizing the latest cutting-edge technology, customized treatment
+                    processes guarantee the
+                    highest level of effectiveness.
+                </li>
+                <li class="text">Effluent Treatment Plants (ETPs) are used to treat industrial
+                    wastewater and guarantee that
+                    pollution control laws are followed.
+                </li>
+            </ul>
+            <a class="button" href="#">See The Solution</a>
+        </div>
+    </div>
+</div>
+
+        <!--
+        Testimonials
+        -->
+<div class="testimonial py-5">
+<div class="my-container">
+    <div class="testimonial-title-container text-center">
+        <p class="testimonial-title">Testimonials</p>
+    </div>
+
+    <h3 class="testimonial-heading text-center">
+        What People Think
+        <br/>
+        About Us
+    </h3>
+    <div class="testimonial-slider" style="height: fit-content;">
+        <div class="swiper mySwiper">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                    <div class="testimonial-slide">
+                        <div class="client-image">
+                            <img src="/ultima/static/image/testimonial/testimonial-client-image.jpeg"
+                                 alt="Testimonial Client Image"/>
                         </div>
-                        <div>
-                            <div class="title sora-600">Water Solution for Commercial Plants</div>
-                            <ul class="my-4 pl-4">
-                                <li class="text">Water treatment facilities (WTPs) for effective pollutant removal in
-                                    commercial or
-                                    industrial settings.
-                                </li>
-                                <li class="text">Utilizing the latest cutting-edge technology, customized treatment
-                                    processes guarantee the
-                                    highest level of effectiveness.
-                                </li>
-                                <li class="text">Effluent Treatment Plants (ETPs) are used to treat industrial
-                                    wastewater and guarantee that
-                                    pollution control laws are followed.
-                                </li>
-                            </ul>
-                            <a class="button" href="#">See The Solution</a>
+                        <div class="client-comment">
+                            <img src="/ultima/static/image/testimonial/testimonial_icon.png"
+                                 class="testimonial-icon mb-3"
+                                 alt="Testimonial Icon"/>
+
+                            <p class="client-comment-text">
+                                Through our years of experience, we've also learned that
+                                while each channel has its own set of advantages, they
+                                all work best when strategically paired with other
+                                channels. This is the main factor that sets us apart
+                                from our competition. Through our years of experience.
+                            </p>
+                            <h5 class="client-name mb-1">David Jhon</h5>
+                            <p class="client-designation">CEO of ABC Company</p>
                         </div>
                     </div>
                 </div>
+
+                <div class="swiper-slide">
+                    <div class="testimonial-slide">
+                        <div class="client-image">
+                            <img src="/ultima/static/image/testimonial/blog_creator.jpg"
+                                 alt="Testimonial Client Image"/>
+                        </div>
+                        <div class="client-comment">
+                            <img src="/ultima/static/image/testimonial/testimonial_icon.png"
+                                 class="testimonial-icon mb-3"
+                                 alt="Testimonial Icon"/>
+
+                            <p class="client-comment-text">
+                                Through our years of experience, we've also learned that
+                                while each channel has its own set of advantages, they
+                                all work best when strategically paired with other
+                                channels. This is the main factor that sets us apart
+                                from our competition. Through our years of experience.
+                            </p>
+                            <h5 class="client-name mb-1">Marco Moore</h5>
+                            <p class="client-designation">Designer of ABC Company</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-pagination"></div>
+        </div>
+    </div>
+</div>
+</div>
+        <!--
+        End Testimonials
+        -->
+
+        <!--
+        Testimonials
+        -->
+<div class="testimonial py-5">
+<div class="my-container">
+    <div class="testimonial-title-container text-center">
+        <div class="testimonial-title">Testimonials</div>
+    </div>
+
+    <h3 class="testimonial-heading text-center">
+        What People Think
+        <br/>
+        About Us
+    </h3>
+    <div class="testimonial-slider" style="height: fit-content;">
+        <div class="swiper mySwiper">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                    <div class="testimonial-slide">
+                        <div class="client-image">
+                            <img src="/ultima/static/image/testimonial/testimonial-client-image.jpeg"
+                                 alt="Testimonial Client Image"/>
+                        </div>
+                        <div class="client-comment">
+                            <img src="/ultima/static/image/testimonial/testimonial_icon.png"
+                                 class="testimonial-icon mb-3"
+                                 alt="Testimonial Icon"/>
+
+                            <p class="client-comment-text">
+                                Through our years of experience, we've also learned that
+                                while each channel has its own set of advantages, they
+                                all work best when strategically paired with other
+                                channels. This is the main factor that sets us apart
+                                from our competition. Through our years of experience.
+                            </p>
+                            <h5 class="client-name mb-1">David Jhon</h5>
+                            <p class="client-designation">CEO of ABC Company</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="swiper-slide">
+                    <div class="testimonial-slide">
+                        <div class="client-image">
+                            <img src="/ultima/static/image/testimonial/blog_creator.jpg"
+                                 alt="Testimonial Client Image"/>
+                        </div>
+                        <div class="client-comment">
+                            <img src="/ultima/static/image/testimonial/testimonial_icon.png"
+                                 class="testimonial-icon mb-3"
+                                 alt="Testimonial Icon"/>
+
+                            <p class="client-comment-text">
+                                Through our years of experience, we've also learned that
+                                while each channel has its own set of advantages, they
+                                all work best when strategically paired with other
+                                channels. This is the main factor that sets us apart
+                                from our competition. Through our years of experience.
+                            </p>
+                            <h5 class="client-name mb-1">Marco Moore</h5>
+                            <p class="client-designation">Designer of ABC Company</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-pagination"></div>
+        </div>
+    </div>
+</div>
+</div>
+        <!--
+        End Testimonials
+        -->

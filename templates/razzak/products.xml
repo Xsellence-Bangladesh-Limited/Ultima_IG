@@ -10,7 +10,7 @@
 
             <t t-set="footer">
                 <script src="/ultima/static/js/swiper-bundle.min.js"/>
-                  <script src="/ultima/static/js/product.js"/>
+                <script src="/ultima/static/js/product.js"/>
             </t>
 
             <!--
@@ -21,26 +21,30 @@
 
                     <!-- Indicators -->
                     <ul class="carousel-indicators">
-                        <li data-target="#demo" data-slide-to="0" class="active"></li>
-                        <li data-target="#demo" data-slide-to="1"></li>
-                        <li data-target="#demo" data-slide-to="2"></li>
-                        <li data-target="#demo" data-slide-to="3"></li>
+
+                        <t t-set="indicator_active" t-value="'active'"/>
+                        <t t-set="indicator_index" t-value="'0'"/>
+
+                        <t t-foreach="p.carousel_ids" t-as="i">
+                            <li data-target="#demo" t-att-data-slide-to="indicator_index"
+                                t-att-class="'%s' % indicator_active"></li>
+                            <t t-set="indicator_active" t-value="''"/>
+                            <t t-set="indicator_index" t-value="int(indicator_index) + 1"/>
+                        </t>
                     </ul>
 
                     <!-- The slideshow -->
                     <div class="carousel-inner">
-                        <div class="carousel-item active">
-                            <img src="/ultima/static/image/product/1.jpg" alt=""/>
-                        </div>
-                        <div class="carousel-item">
-                            <img src="/ultima/static/image/product/2.jpg" alt=""/>
-                        </div>
-                        <div class="carousel-item">
-                            <img src="/ultima/static/image/product/3.jpg" alt=""/>
-                        </div>
-                        <div class="carousel-item">
-                            <img src="/ultima/static/image/product/4.jpg" alt=""/>
-                        </div>
+
+                        <t t-set="carousel_item_active" t-value="'active'"/>
+
+                        <t t-foreach="p.carousel_ids" t-as="c">
+                            <div t-att-class="'carousel-item %s' % carousel_item_active">
+                                <img t-att-src="image_data_uri(c.image_1920)" t-att-alt="c.alt"/>
+                            </div>
+                            <t t-set="carousel_item_active" t-value="''"/>
+                        </t>
+
                     </div>
 
                     <!-- Left and right controls -->
@@ -64,315 +68,55 @@
                 <div class="content">
                     <!-- <div class="text-gradient">Products</div> -->
                     <div>
-                        <h3>Our all Product</h3>
+                        <h3 t-raw="p.oap_title"></h3>
                     </div>
-                    <div class="desc">
-                        Safeguarding your family's health with the most advanced American RO technology. Protecting 80%
-                        of waterborne
-                        diseases.
-                    </div>
+                    <div class="desc" t-raw="p.oap_desc"></div>
                 </div>
             </div>
 
             <!-- Best selling products -->
             <div class="bspd oapd">
 
-                <!-- _card -->
-                <div class="_card">
-                    <div class="c_img">
-                        <img src="/ultima/static/image/card.png" alt="Product"/>
-                        <div class="ribbon">
-                            Budget Fixer
-                        </div>
-                    </div>
-                    <div class="text_content">
-                        <div class="title sora-600">
-                            Ultima Additional Purifier xxxx xxxx xxxx
-                        </div>
-                        <div class="d-f jc-sb">
-                            <div class="d-f ai-c">
-                                <div class="amount_big sora-600">$200</div>
-                                <div class="ml-2 old_amount">$300</div>
+                <t t-foreach="products" t-as="pd">
+                    <!-- _card -->
+                    <div class="_card">
+                        <div class="c_img">
+                            <img t-if="pd.image_512" t-att-src="image_data_uri(pd.image_512)" alt="Product"/>
+                            <div class="ribbon"
+                                 t-att-style="'background-color: %s; color: %s' % (pd.ribbon_id.bg_color if pd.ribbon_id else '', pd.ribbon_id.text_color if pd.ribbon_id else '')">
+                                <t t-esc="pd.ribbon_id.text if pd.ribbon_id else ''"/>
                             </div>
-                            <div>
-                                <div class="percent_off">
-                                    <div class="content">60% OFF</div>
+                        </div>
+                        <div class="text_content">
+                            <div class="title sora-600" t-esc="pd.name"></div>
+                            <div class="d-f jc-sb">
+                                <div class="d-f ai-c">
+                                    <div class="amount_big sora-600"
+                                         t-esc="'%s%s' % (currency_id.symbol ,pd.list_price)"></div>
+                                    <div class="ml-2 old_amount"
+                                         t-esc="'%s%s' % (currency_id.symbol ,pd.old_list_price)"></div>
+                                </div>
+                                <div>
+                                    <div class="percent_off">
+                                        <t t-set="discount_amount" t-value="pd.old_list_price - pd.list_price"/>
+                                        <t t-set="discount_percentage"
+                                           t-value="int((discount_amount / pd.old_list_price) * 100)"/>
+                                        <div class="content" t-esc="'%s%s OFF' % (discount_percentage, '%')"></div>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="tags">
-                            <div class="item color1">7/8/6 Stage Purification</div>
-                            <div class="item color2">Real Time Display</div>
-                            <div class="item color3">100% Food Grade Material</div>
-                        </div>
-                    </div>
-                    <a href="#" class="button_outline">Buy Now</a>
-                </div>
-                <!-- End _card -->
-
-                <!-- _card -->
-                <div class="_card">
-                    <div class="c_img">
-                        <img src="/ultima/static/image/card.png" alt="Product"/>
-                        <div class="ribbon">
-                            Budget Fixer
-                        </div>
-                    </div>
-                    <div class="text_content">
-                        <div class="title sora-600">
-                            Ultima Additional Purifier xxxx xxxx xxxx
-                        </div>
-                        <div class="d-f jc-sb">
-                            <div class="d-f ai-c">
-                                <div class="amount_big sora-600">$200</div>
-                                <div class="ml-2 old_amount">$300</div>
-                            </div>
-                            <div>
-                                <div class="percent_off">
-                                    <div class="content">60% OFF</div>
-                                </div>
+                            <div class="tags">
+                                <t t-foreach="pd.tag_ids" t-as="tag">
+                                    <div class="item color1"
+                                         t-att-style="'background-color: %s; color: %s' % (tag.bg_color, tag.text_color)"
+                                         t-esc="tag.name"></div>
+                                </t>
                             </div>
                         </div>
-                        <div class="tags">
-                            <div class="item color1">7/8/6 Stage Purification</div>
-                            <div class="item color2">Real Time Display</div>
-                            <div class="item color3">100% Food Grade Material</div>
-                        </div>
+                        <a href="#" class="button_outline">Buy Now</a>
                     </div>
-                    <a href="#" class="button_outline">Buy Now</a>
-                </div>
-                <!-- End _card -->
-
-                <!-- _card -->
-                <div class="_card">
-                    <div class="c_img">
-                        <img src="/ultima/static/image/card.png" alt="Product"/>
-                        <div class="ribbon">
-                            Budget Fixer
-                        </div>
-                    </div>
-                    <div class="text_content">
-                        <div class="title sora-600">
-                            Ultima Additional Purifier xxxx xxxx xxxx
-                        </div>
-                        <div class="d-f jc-sb">
-                            <div class="d-f ai-c">
-                                <div class="amount_big sora-600">$200</div>
-                                <div class="ml-2 old_amount">$300</div>
-                            </div>
-                            <div>
-                                <div class="percent_off">
-                                    <div class="content">60% OFF</div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="tags">
-                            <div class="item color1">7/8/6 Stage Purification</div>
-                            <div class="item color2">Real Time Display</div>
-                            <div class="item color3">100% Food Grade Material</div>
-                        </div>
-                    </div>
-                    <a href="#" class="button_outline">Buy Now</a>
-                </div>
-                <!-- End _card -->
-
-                <!-- _card -->
-                <div class="_card">
-                    <div class="c_img">
-                        <img src="/ultima/static/image/card.png" alt="Product"/>
-                        <div class="ribbon">
-                            Budget Fixer
-                        </div>
-                    </div>
-                    <div class="text_content">
-                        <div class="title sora-600">
-                            Ultima Additional Purifier xxxx xxxx xxxx
-                        </div>
-                        <div class="d-f jc-sb">
-                            <div class="d-f ai-c">
-                                <div class="amount_big sora-600">$200</div>
-                                <div class="ml-2 old_amount">$300</div>
-                            </div>
-                            <div>
-                                <div class="percent_off">
-                                    <div class="content">60% OFF</div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="tags">
-                            <div class="item color1">7/8/6 Stage Purification</div>
-                            <div class="item color2">Real Time Display</div>
-                            <div class="item color3">100% Food Grade Material</div>
-                        </div>
-                    </div>
-                    <a href="#" class="button_outline">Buy Now</a>
-                </div>
-                <!-- End _card -->
-
-                <!-- _card -->
-                <div class="_card">
-                    <div class="c_img">
-                        <img src="/ultima/static/image/card.png" alt="Product"/>
-                        <div class="ribbon">
-                            Budget Fixer
-                        </div>
-                    </div>
-                    <div class="text_content">
-                        <div class="title sora-600">
-                            Ultima Additional Purifier xxxx xxxx xxxx
-                        </div>
-                        <div class="d-f jc-sb">
-                            <div class="d-f ai-c">
-                                <div class="amount_big sora-600">$200</div>
-                                <div class="ml-2 old_amount">$300</div>
-                            </div>
-                            <div>
-                                <div class="percent_off">
-                                    <div class="content">60% OFF</div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="tags">
-                            <div class="item color1">7/8/6 Stage Purification</div>
-                            <div class="item color2">Real Time Display</div>
-                            <div class="item color3">100% Food Grade Material</div>
-                        </div>
-                    </div>
-                    <a href="#" class="button_outline">Buy Now</a>
-                </div>
-                <!-- End _card -->
-
-                <!-- _card -->
-                <div class="_card">
-                    <div class="c_img">
-                        <img src="/ultima/static/image/card.png" alt="Product"/>
-                        <div class="ribbon">
-                            Budget Fixer
-                        </div>
-                    </div>
-                    <div class="text_content">
-                        <div class="title sora-600">
-                            Ultima Additional Purifier xxxx xxxx xxxx
-                        </div>
-                        <div class="d-f jc-sb">
-                            <div class="d-f ai-c">
-                                <div class="amount_big sora-600">$200</div>
-                                <div class="ml-2 old_amount">$300</div>
-                            </div>
-                            <div>
-                                <div class="percent_off">
-                                    <div class="content">60% OFF</div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="tags">
-                            <div class="item color1">7/8/6 Stage Purification</div>
-                            <div class="item color2">Real Time Display</div>
-                            <div class="item color3">100% Food Grade Material</div>
-                        </div>
-                    </div>
-                    <a href="#" class="button_outline">Buy Now</a>
-                </div>
-                <!-- End _card -->
-
-                <!-- _card -->
-                <div class="_card">
-                    <div class="c_img">
-                        <img src="/ultima/static/image/card.png" alt="Product"/>
-                        <div class="ribbon">
-                            Budget Fixer
-                        </div>
-                    </div>
-                    <div class="text_content">
-                        <div class="title sora-600">
-                            Ultima Additional Purifier xxxx xxxx xxxx
-                        </div>
-                        <div class="d-f jc-sb">
-                            <div class="d-f ai-c">
-                                <div class="amount_big sora-600">$200</div>
-                                <div class="ml-2 old_amount">$300</div>
-                            </div>
-                            <div>
-                                <div class="percent_off">
-                                    <div class="content">60% OFF</div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="tags">
-                            <div class="item color1">7/8/6 Stage Purification</div>
-                            <div class="item color2">Real Time Display</div>
-                            <div class="item color3">100% Food Grade Material</div>
-                        </div>
-                    </div>
-                    <a href="#" class="button_outline">Buy Now</a>
-                </div>
-                <!-- End _card -->
-
-                <!-- _card -->
-                <div class="_card">
-                    <div class="c_img">
-                        <img src="/ultima/static/image/card.png" alt="Product"/>
-                        <div class="ribbon">
-                            Budget Fixer
-                        </div>
-                    </div>
-                    <div class="text_content">
-                        <div class="title sora-600">
-                            Ultima Additional Purifier xxxx xxxx xxxx
-                        </div>
-                        <div class="d-f jc-sb">
-                            <div class="d-f ai-c">
-                                <div class="amount_big sora-600">$200</div>
-                                <div class="ml-2 old_amount">$300</div>
-                            </div>
-                            <div>
-                                <div class="percent_off">
-                                    <div class="content">60% OFF</div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="tags">
-                            <div class="item color1">7/8/6 Stage Purification</div>
-                            <div class="item color2">Real Time Display</div>
-                            <div class="item color3">100% Food Grade Material</div>
-                        </div>
-                    </div>
-                    <a href="#" class="button_outline">Buy Now</a>
-                </div>
-                <!-- End _card -->
-
-                <!-- _card -->
-                <div class="_card">
-                    <div class="c_img">
-                        <img src="/ultima/static/image/card.png" alt="Product"/>
-                        <div class="ribbon">
-                            Budget Fixer
-                        </div>
-                    </div>
-                    <div class="text_content">
-                        <div class="title sora-600">
-                            Ultima Additional Purifier xxxx xxxx xxxx
-                        </div>
-                        <div class="d-f jc-sb">
-                            <div class="d-f ai-c">
-                                <div class="amount_big sora-600">$200</div>
-                                <div class="ml-2 old_amount">$300</div>
-                            </div>
-                            <div>
-                                <div class="percent_off">
-                                    <div class="content">60% OFF</div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="tags">
-                            <div class="item color1">7/8/6 Stage Purification</div>
-                            <div class="item color2">Real Time Display</div>
-                            <div class="item color3">100% Food Grade Material</div>
-                        </div>
-                    </div>
-                    <a href="#" class="button_outline">Buy Now</a>
-                </div>
-                <!-- End _card -->
+                    <!-- End _card -->
+                </t>
 
             </div>
             <!--
@@ -385,51 +129,27 @@
 
                 <div class="bsp my-3">
                     <div class="content">
-                        <div class="text-gradient">Features</div>
+                        <div class="text-gradient" t-raw="p.oaf_section"></div>
                         <div>
-                            <h3>Our All Features</h3>
+                            <h3 t-raw="p.oaf_title"></h3>
                         </div>
-                        <div class="desc">
-                            Every year many people close to us are affected by water borne diseases. Sometimes our loved
-                            ones are lost to
-                            the horrors of deadly germs like Typhoid.
-                        </div>
+                        <div class="desc" t-raw="p.oaf_desc"></div>
                     </div>
                 </div>
 
                 <div class="_cards">
 
-                    <div class="_card">
-                        <div>
-                            <img class="icon" src="/ultima/static/image/product/guarantee.png" alt="05 Years of guarantee"/>
+                    <t t-foreach="p.oaf_ids" t-as="i">
+                        <div class="_card">
+                            <div>
+                                <img class="icon"
+                                     t-if="i.image_128"
+                                     t-att-src="image_data_uri(i.image_128)"/>
+                            </div>
+                            <div class="title sora-600" t-raw="i.title"></div>
+                            <div class="desc text" t-raw="i.desc"></div>
                         </div>
-                        <div class="title sora-600">05 Years Guarantee</div>
-                        <div class="desc text">
-                            Advanced USA based RO Technology that ensures 100% Safe Water.
-                        </div>
-                    </div>
-
-                    <div class="_card">
-                        <div>
-                            <img class="icon" src="/ultima/static/image/product/installment.png"
-                                 alt="equated monthly installment"/>
-                        </div>
-                        <div class="title sora-600">equated monthly installment</div>
-                        <div class="desc text">
-                            Advanced USA based RO Technology that ensures 100% Safe Water.
-                        </div>
-                    </div>
-
-                    <div class="_card">
-                        <div>
-                            <img class="icon" src="/ultima/static/image/product/automated.png"
-                                 alt="Automated After Sales Service"/>
-                        </div>
-                        <div class="title sora-600">Automated After Sales Service</div>
-                        <div class="desc text">
-                            Advanced USA based RO Technology that ensures 100% Safe Water.
-                        </div>
-                    </div>
+                    </t>
 
                 </div>
 
@@ -445,9 +165,9 @@
                 <!-- Header -->
                 <div class="header mb-4">
                     <div class="content">
-                        <div class="text-gradient">FAQ</div>
+                        <div class="text-gradient" t-raw="p.faq_section"></div>
                         <div>
-                            <h3>Frequently Asked Question</h3>
+                            <h3 t-raw="p.faq_title"></h3>
                         </div>
                     </div>
                 </div>
@@ -458,74 +178,26 @@
                     <div></div>
                     <div class="accordions">
 
-                        <div class="accordion active sora-600">What is water purification?</div>
-                        <div id="panel_active" class="panel">
-                            <p class="faq_text">
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti perferendis
-                                praesentium alias! Quaerat
-                                dolorem ullam dicta beatae voluptas voluptatum error eius ut? Pariatur quis quidem
-                                veritatis assumenda modi
-                                ex aut aperiam sed maxime consequatur ipsam omnis harum qui porro, incidunt deleniti
-                                ratione, sit laborum
-                                voluptatem asperiores. Debitis voluptatem voluptates numquam.
-                            </p>
-                        </div>
-                        <div class="spacer"></div>
+                        <t t-set="acc" t-value="True"/>
 
-                        <div class="accordion sora-600">In which ways is polluted water treated?</div>
-                        <div class="panel">
-                            <p class="faq_text">Before the purification process begins some contaminants, such as oil,
-                                can be settled in a
-                                settling tank. They can then be removed easily, after they have reached the bottom of
-                                the tank. Often
-                                polluted water has to be freed from microorganisms. The water is than disinfected,
-                                usually by means of
-                                chlorination.
-                            </p>
-                        </div>
-                        <div class="spacer"></div>
+                        <t t-foreach="p.faq_ids" t-as="i">
 
-                        <div class="accordion sora-600">How can bacteria be removed from water?</div>
-                        <div class="panel">
-                            <p class="faq_text">
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Atque, ad? Ipsum animi dolorum
-                                laudantium saepe!
-                                Maiores, soluta odit ducimus eaque esse, repellat, ex quas corrupti rem nihil reiciendis
-                                veritatis! Illum
-                                iste atque ipsam porro ipsum consectetur aliquam repellat cupiditate odit assumenda
-                                velit, odio maiores?
-                                Similique nihil quod dicta dolorum alias!
-                            </p>
-                        </div>
-                        <div class="spacer"></div>
-
-                        <div class="accordion sora-600">What is aerobic water treatment?</div>
-                        <div class="panel">
-                            <p class="faq_text">
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos nulla sit quaerat ducimus,
-                                ratione enim nostrum
-                                facilis esse reprehenderit officia, in dolorum minima facere molestiae quo ut commodi
-                                ullam illum
-                                temporibus! Impedit maxime nulla consectetur totam laboriosam nobis nihil ullam repellat
-                                nostrum placeat,
-                                inventore unde dolor deserunt, dolore dolorum itaque?
-                            </p>
-                        </div>
-                        <div class="spacer"></div>
-
-                        <div class="accordion sora-600">What is water purification?</div>
-                        <div class="panel">
-                            <p class="faq_text">
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos nulla sit quaerat ducimus,
-                                ratione enim nostrum
-                                facilis esse reprehenderit officia, in dolorum minima facere molestiae quo ut commodi
-                                ullam illum
-                                temporibus! Impedit maxime nulla consectetur totam laboriosam nobis nihil ullam repellat
-                                nostrum placeat,
-                                inventore unde dolor deserunt, dolore dolorum itaque?
-                            </p>
-                        </div>
-                        <div class="spacer"></div>
+                            <t t-if="acc">
+                                <div class="accordion active sora-600" t-raw="i.title"></div>
+                                <div id="panel_active" class="panel">
+                                    <p class="faq_text" t-raw="i.desc"></p>
+                                </div>
+                                <div class="spacer"></div>
+                                <t t-set="acc" t-value="False"/>
+                            </t>
+                            <t t-else="">
+                                <div class="accordion sora-600" t-raw="i.title"></div>
+                                <div class="panel">
+                                    <p class="faq_text" t-raw="i.desc"></p>
+                                </div>
+                                <div class="spacer"></div>
+                            </t>
+                        </t>
 
                     </div>
                     <div></div>
@@ -538,81 +210,7 @@
               End Frequently Asked Question
             -->
 
-            <!--
-            Testimonials
-            -->
-            <div class="testimonial py-5">
-                <div class="my-container">
-                    <div class="testimonial-title-container text-center">
-                        <p class="testimonial-title">Testimonials</p>
-                    </div>
-
-                    <h3 class="testimonial-heading text-center">
-                        What People Think
-                        <br/>
-                        About Us
-                    </h3>
-                    <div class="testimonial-slider" style="height: fit-content;">
-                        <div class="swiper mySwiper">
-                            <div class="swiper-wrapper">
-                                <div class="swiper-slide">
-                                    <div class="testimonial-slide">
-                                        <div class="client-image">
-                                            <img src="/ultima/static/image/testimonial/testimonial-client-image.jpeg"
-                                                 alt="Testimonial Client Image"/>
-                                        </div>
-                                        <div class="client-comment">
-                                            <img src="/ultima/static/image/testimonial/testimonial_icon.png"
-                                                 class="testimonial-icon mb-3"
-                                                 alt="Testimonial Icon"/>
-
-                                            <p class="client-comment-text">
-                                                Through our years of experience, we've also learned that
-                                                while each channel has its own set of advantages, they
-                                                all work best when strategically paired with other
-                                                channels. This is the main factor that sets us apart
-                                                from our competition. Through our years of experience.
-                                            </p>
-                                            <h5 class="client-name mb-1">David Jhon</h5>
-                                            <p class="client-designation">CEO of ABC Company</p>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="swiper-slide">
-                                    <div class="testimonial-slide">
-                                        <div class="client-image">
-                                            <img src="/ultima/static/image/testimonial/blog_creator.jpg"
-                                                 alt="Testimonial Client Image"/>
-                                        </div>
-                                        <div class="client-comment">
-                                            <img src="/ultima/static/image/testimonial/testimonial_icon.png"
-                                                 class="testimonial-icon mb-3"
-                                                 alt="Testimonial Icon"/>
-
-                                            <p class="client-comment-text">
-                                                Through our years of experience, we've also learned that
-                                                while each channel has its own set of advantages, they
-                                                all work best when strategically paired with other
-                                                channels. This is the main factor that sets us apart
-                                                from our competition. Through our years of experience.
-                                            </p>
-                                            <h5 class="client-name mb-1">Marco Moore</h5>
-                                            <p class="client-designation">Designer of ABC Company</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="swiper-button-next"></div>
-                            <div class="swiper-button-prev"></div>
-                            <div class="swiper-pagination"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!--
-            End Testimonials
-            -->
+             <t t-call="ultima.testimonial"/>
 
         </t>
     </template>
