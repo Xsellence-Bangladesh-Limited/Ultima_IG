@@ -145,42 +145,47 @@
                         <nav class="navbar bg-light">
                             <!-- Links -->
                             <ul class="navbar-nav">
-                                <li class="nav-item">
-                                    <a class="nav-link" href="/">Home</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="/products">Products</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="/product-details">Filter Cartridge</a>
-                                </li>
-                                <li class="nav-item dropdown">
-                                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                                       data-toggle="dropdown"
-                                       aria-haspopup="true" aria-expanded="false">
-                                        RO Services
-                                    </a>
+                                
+                                <t t-foreach="menus.filtered(lambda m: not m.parent_id)" t-as="menu">
 
-                                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                        <div class="list-group list-group-flush">
-                                            <a href="/service-request" class="list-group-item list-group-item-action">
-                                                Service Request
-                                            </a>
-                                            <a href="/amc-service" class="list-group-item list-group-item-action">AMC
-                                                Service</a>
-                                        </div>
-                                    </div>
+                                    <!-- Dropdown menu -->
+                                    <t t-if="menus.filtered(lambda m: m.parent_id.id == menu.id)">
+                                        <li class="nav-item dropdown">
+                                            <a class="nav-link dropdown-toggle"
+                                               href="#"
+                                               id="navbarDropdown"
+                                               role="button"
+                                               data-toggle="dropdown"
+                                               aria-haspopup="true" aria-expanded="false" t-esc="menu.name"></a>
 
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="/about-us">About Us</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="/blogs">Blog</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="/contact-us">Contact Us</a>
-                                </li>
+                                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                                <div class="list-group list-group-flush">
+
+                                                    <t t-foreach="menus.filtered(lambda m: m.parent_id.id == menu.id)"
+                                                       t-as="submenu">
+                                                        <a t-att-href="submenu.url"
+                                                           class="list-group-item list-group-item-action"
+                                                           t-esc="submenu.name"></a>
+                                                    </t>
+
+                                                </div>
+                                            </div>
+
+                                        </li>
+                                    </t>
+                                    <!-- End Dropdown menu -->
+
+                                    <!-- Root menu -->
+                                    <t t-else="">
+                                        <li class="nav-item">
+                                            <a class="nav-link" t-att-href="menu.url" t-esc="menu.name"></a>
+                                        </li>
+                                    </t>
+                                    <!-- End Root menu -->
+
+                                </t>
+                                <!-- End root foreach -->
+
                             </ul>
                         </nav>
 
@@ -194,6 +199,7 @@
 
                             <t t-foreach="menus.filtered(lambda m: not m.parent_id)" t-as="menu">
 
+                                <!-- Dropdown menu -->
                                 <t t-if="menus.filtered(lambda m: m.parent_id.id == menu.id)">
                                     <li>
                                         <a class="d-f ai-c" href="#">
@@ -208,12 +214,14 @@
                                         <div class="dropdown_menu">
                                             <t t-foreach="menus.filtered(lambda m: m.parent_id.id == menu.id)"
                                                t-as="submenu">
-                                                <a class="dropdown_menu_item" t-att-href="submenu.url" t-esc="submenu.name"></a>
+                                                <a class="dropdown_menu_item" t-att-href="submenu.url"
+                                                   t-esc="submenu.name"></a>
                                             </t>
                                         </div>
                                     </li>
                                 </t>
 
+                                <!-- Root menu -->
                                 <t t-else="">
                                     <li>
                                         <a t-attf-href="#{menu.url}"
