@@ -323,3 +323,28 @@ class UltimaPd_detailFaq(models.Model):
     sequence = fields.Integer()
     title = fields.Char(required=True, translate=True)
     desc = fields.Text(required=True, translate=True)
+
+
+class UltimaWebsite_menu(models.Model):
+    _name = 'ultima.website_menu'
+    _description = 'ultima.website_menu'
+    _rec_name = 'name'
+    _order = 'sequence'
+
+    sequence = fields.Integer()
+    name = fields.Char()
+    url = fields.Char()
+    parent_id = fields.Many2one('ultima.website_menu')
+    icon_class = fields.Char()
+    new_window = fields.Boolean()
+
+
+# class Def(models.Model):
+#     _name = 'ultima.def'
+#     _description = 'ultima.def'
+#
+#     name = fields.Char(string='Name')
+#
+#     def get_menus(self):
+#         menus = self.env['ultima.website_menu'].sudo().search([])
+#         print('menus', menus)

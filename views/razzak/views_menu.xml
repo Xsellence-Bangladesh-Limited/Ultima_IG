@@ -31,6 +31,12 @@
               sequence="3"
               action="ultima_testimonial_action_id"/>
 
+    <menuitem id="ultima_website_menu_menu_id"
+              name="Website Menu"
+              parent="ultima_layout_lbl_menu_id"
+              sequence="4"
+              action="ultima_website_menu_action_id"/>
+
     <!-- Home -->
     <menuitem id="ultima_home_lbl_menu_id"
               name="Home"

@@ -897,4 +897,50 @@
         <field name="view_mode">tree,form</field>
     </record>
 
+    <!-- ultima.website_menu, generated on August 18, 2024 -->
+    <!-- Tree view of ultima.website_menu -->
+    <record model="ir.ui.view" id="ultima_website_menu_tree_id">
+        <field name="name">Website Menu</field>
+        <field name="model">ultima.website_menu</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="sequence" widget="handle"/>
+                <field name="name"/>
+                <field name="url"/>
+                <field name="parent_id"/>
+                <field name="new_window"/>
+                <field name="sequence"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Form view of ultima.website_menu -->
+    <record model="ir.ui.view" id="ultima_website_menu_form_id">
+        <field name="name">Website Menu</field>
+        <field name="model">ultima.website_menu</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name"/>
+                            <field name="url"/>
+                            <field name="parent_id"/>
+                            <field name="new_window"/>
+                        </group>
+                        <group>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Action view of ultima.website_menu -->
+    <record model="ir.actions.act_window" id="ultima_website_menu_action_id">
+        <field name="name">Website Menu</field>
+        <field name="res_model">ultima.website_menu</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
 </odoo>

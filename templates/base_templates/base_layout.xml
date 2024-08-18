@@ -5,6 +5,7 @@
 
         <t t-set="langs" t-value="request.env['res.lang'].sudo().search([('active', '=', True)])"/>
         <t t-set="layout" t-value="request.env['ultima.layout'].sudo().search([], limit=1)"/>
+        <t t-set="menus" t-value="request.env['ultima.website_menu'].sudo().search([])"/>
 
         <html lang="en">
             <head>
@@ -24,6 +25,7 @@
             </head>
 
             <body>
+
                 <div id="wrap">
 
                     <!-- Top header > 992 px -->
@@ -161,9 +163,11 @@
 
                                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                         <div class="list-group list-group-flush">
-                                            <a href="/service-request" class="list-group-item list-group-item-action">Service Request
+                                            <a href="/service-request" class="list-group-item list-group-item-action">
+                                                Service Request
                                             </a>
-                                            <a href="/amc-service" class="list-group-item list-group-item-action">AMC Service</a>
+                                            <a href="/amc-service" class="list-group-item list-group-item-action">AMC
+                                                Service</a>
                                         </div>
                                     </div>
 
@@ -185,46 +189,47 @@
 
                     <!-- Menu -->
                     <div class="menu_container sora-400">
+
                         <ul class="menu">
-                            <li>
-                                <a href="/">Home</a>
-                            </li>
-                            <li>
-                                <a href="products">Products</a>
-                            </li>
-                            <li>
-                                <a href="/product-details">Filter Cartridge</a>
-                            </li>
-                            <li>
-                                <a class="d-f ai-c" href="#">RO Services
-                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
-                                         xmlns="http://www.w3.org/2000/svg">
-                                        <path d="M17 10L12 14L7 10" stroke="#7B7B7B" stroke-width="1.4"
-                                              stroke-linecap="round"
-                                              stroke-linejoin="round"/>
-                                    </svg>
-                                </a>
-                                <div class="dropdown_menu">
-                                    <a class="dropdown_menu_item" href="/service-request">Service Request</a>
-                                    <a class="dropdown_menu_item" href="/amc-service">AMC Service</a>
-                                </div>
-                            </li>
-                            <li>
-                                <a href="/about-us">About Us</a>
-                            </li>
-                            <li>
-                                <a href="/blogs">Blog</a>
-                            </li>
-                            <li>
-                                <a href="/contact-us">Contact Us</a>
-                            </li>
+
+                            <t t-foreach="menus.filtered(lambda m: not m.parent_id)" t-as="menu">
+
+                                <t t-if="menus.filtered(lambda m: m.parent_id.id == menu.id)">
+                                    <li>
+                                        <a class="d-f ai-c" href="#">
+                                            <t t-esc="menu.name"/>
+                                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                                 xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M17 10L12 14L7 10" stroke="#7B7B7B" stroke-width="1.4"
+                                                      stroke-linecap="round"
+                                                      stroke-linejoin="round"/>
+                                            </svg>
+                                        </a>
+                                        <div class="dropdown_menu">
+                                            <t t-foreach="menus.filtered(lambda m: m.parent_id.id == menu.id)"
+                                               t-as="submenu">
+                                                <a class="dropdown_menu_item" t-att-href="submenu.url" t-esc="submenu.name"></a>
+                                            </t>
+                                        </div>
+                                    </li>
+                                </t>
+
+                                <t t-else="">
+                                    <li>
+                                        <a t-attf-href="#{menu.url}"
+                                           t-att-target="menu.new_window and '_blank' or ''"
+                                           t-esc="menu.name">
+                                        </a>
+                                    </li>
+                                </t>
+                            </t>
+
                         </ul>
+
                     </div>
 
                     <!-- page content -->
-                    <t t-raw="0">
-
-                    </t>
+                    <t t-raw="0"></t>
                     <!-- End page content -->
 
                     <!-- Footer -->
