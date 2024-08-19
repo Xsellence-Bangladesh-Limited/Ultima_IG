@@ -48,7 +48,7 @@ class ContactUsPageSettings(models.Model):
     _order = 'id desc'
 
     name = fields.Char(string='Name')
-    main_headline = fields.Char(string='Main headline')
+    main_headline = fields.Char(string='Main headline', translate=True)
     main_sub_headline = fields.Char(string='Main sub-headline')
     form_headline = fields.Char(string='Form headline')
     form_sub_headline = fields.Char(string='Form sub-headline')
