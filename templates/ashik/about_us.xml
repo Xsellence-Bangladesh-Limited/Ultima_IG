@@ -43,7 +43,7 @@
                             <div class="welcome-section-right">
                                 <p class="introduction-title">Introduction</p>
                                 <h4 class="introduction-heading mb-2">
-                                    <t t-if="'&lt;br&gt;' in about_us_settings.introduction_title">
+                                    <t t-if="about_us_settings.introduction_title and '&lt;br&gt;' in about_us_settings.introduction_title">
                                         <t t-set="introduction_titles"
                                            t-value="str(about_us_settings.introduction_title).split('&lt;br&gt;')"/>
                                         <t t-foreach="introduction_titles" t-as="introduction_title">
@@ -56,9 +56,9 @@
                                     </t>
                                 </h4>
                                 <p class="introduction-description-text text-muted mb-3">
-                                    <t t-if="'&lt;br&gt;' in about_us_settings.introduction_description">
-                                        <t t-set="introduction_descriptions"
-                                           t-value="str(about_us_settings.introduction_description).split('&lt;br&gt;')"/>
+                                    <t t-if="about_us_settings.introduction_description and '&lt;br&gt;' in about_us_settings.introduction_description">
+                                        <t t-if="about_us_settings.introduction_description" t-set="introduction_descriptions"
+                                            t-value="str(about_us_settings.introduction_description).split('&lt;br&gt;')"/>
                                         <t t-foreach="introduction_descriptions" t-as="introduction_description">
                                             <t t-esc="introduction_description"/>
                                             <br/>
@@ -98,7 +98,7 @@
                         </div>
 
                         <h3 class="features-heading text-center mb-2">
-                            <t t-if="'&lt;br&gt;' in about_us_settings.feature_title">
+                            <t t-if="about_us_settings.feature_title and '&lt;br&gt;' in about_us_settings.feature_title">
                                 <t t-set="feature_titles"
                                    t-value="str(about_us_settings.feature_title).split('&lt;br&gt;')"/>
                                 <t t-foreach="feature_titles" t-as="feature_title">
@@ -111,7 +111,7 @@
                             </t>
                         </h3>
                         <p class="features-short-description text-center">
-                            <t t-if="'&lt;br&gt;' in about_us_settings.feature_short_description">
+                            <t t-if="about_us_settings.feature_short_description and '&lt;br&gt;' in about_us_settings.feature_short_description">
                                 <t t-set="feature_short_descriptions"
                                    t-value="str(about_us_settings.feature_short_description).split('&lt;br&gt;')"/>
                                 <t t-foreach="feature_short_descriptions" t-as="feature_short_description">
@@ -148,7 +148,7 @@
                         </div>
 
                         <h3 class="company-growth-heading text-center mb-2">
-                            <t t-if="'&lt;br&gt;' in about_us_settings.growth_title">
+                            <t t-if="about_us_settings.growth_title and '&lt;br&gt;' in about_us_settings.growth_title">
                                 <t t-set="growth_titles" t-value="str(about_us_settings.growth_title).split('&lt;br&gt;')"/>
                                 <t t-foreach="growth_titles" t-as="growth_title">
                                     <t t-esc="growth_title"/>
@@ -161,7 +161,7 @@
                         </h3>
 
                         <p class="company-growth-short-description text-center">
-                            <t t-if="'&lt;br&gt;' in about_us_settings.growth_short_description">
+                            <t t-if="about_us_settings.growth_short_description and '&lt;br&gt;' in about_us_settings.growth_short_description">
                                 <t t-set="growth_short_descriptions"
                                    t-value="str(about_us_settings.growth_short_description).split('&lt;br&gt;')"/>
                                 <t t-foreach="growth_short_descriptions" t-as="growth_short_description">
@@ -182,7 +182,7 @@
                                     </h1>
                                     <div class="experience-growth-data-title-container">
                                         <p class="growth-data-title">
-                                            <t t-if="'&lt;br&gt;' in _growth_data.title">
+                                            <t t-if="_growth_data.title and '&lt;br&gt;' in _growth_data.title">
                                                 <t t-set="growth_data_titles"
                                                    t-value="str(_growth_data.title).split('&lt;br&gt;')"/>
                                                 <t t-foreach="growth_data_titles" t-as="_growth_data_title">
@@ -207,7 +207,7 @@
                             <div class="offers-main-content-left-side">
                                 <p class="offers-title">Offers</p>
                                 <h3 class="offers-heading mb-3">
-                                    <t t-if="'&lt;br&gt;' in about_us_settings.offer_title">
+                                    <t t-if="about_us_settings.offer_title and '&lt;br&gt;' in about_us_settings.offer_title">
                                         <t t-set="offer_titles"
                                            t-value="str(about_us_settings.offer_title).split('&lt;br&gt;')"/>
                                         <t t-foreach="offer_titles" t-as="offer_title">
@@ -220,7 +220,7 @@
                                     </t>
                                 </h3>
                                 <p class="offers-short-description">
-                                    <t t-if="'&lt;br&gt;' in about_us_settings.offer_description">
+                                    <t t-if="about_us_settings.offer_description and '&lt;br&gt;' in about_us_settings.offer_description">
                                         <t t-set="offer_descriptions"
                                            t-value="str(about_us_settings.offer_description).split('&lt;br&gt;')"/>
                                         <t t-foreach="offer_descriptions" t-as="offer_description">
