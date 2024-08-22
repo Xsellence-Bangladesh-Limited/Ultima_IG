@@ -145,7 +145,7 @@
                         <nav class="navbar bg-light">
                             <!-- Links -->
                             <ul class="navbar-nav">
-                                
+
                                 <t t-foreach="menus.filtered(lambda m: not m.parent_id)" t-as="menu">
 
                                     <!-- Dropdown menu -->
