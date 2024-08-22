@@ -333,6 +333,7 @@ wrap wrap
     bottom: 35px;
     left: 35px;
     background-color: transparent;
+    z-index: 1;
 }
 
 #lb_ac .icon img {
@@ -354,6 +355,7 @@ wrap wrap
     bottom: 35px;
     right: 35px;
     background-color: transparent;
+    z-index: 1;
 }
 
 #rb_ac .icon {

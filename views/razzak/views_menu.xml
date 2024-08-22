@@ -20,7 +20,7 @@
               action="ultima_quick_link_action_id"/>
 
     <menuitem id="ultima_social_menu_id"
-              name="UltimaSocial"
+              name="Social"
               parent="ultima_layout_lbl_menu_id"
               sequence="2"
               action="ultima_social_action_id"/>
@@ -31,70 +31,125 @@
               sequence="3"
               action="ultima_testimonial_action_id"/>
 
+    <menuitem id="ultima_website_menu_menu_id"
+              name="Website Menu"
+              parent="ultima_layout_lbl_menu_id"
+              sequence="4"
+              action="ultima_website_menu_action_id"/>
+
     <!-- Home -->
     <menuitem id="ultima_home_lbl_menu_id"
               name="Home"
               parent="ultima_root_menu_id"
               sequence="52"/>
 
-    <menuitem id="ultima_home_introduce_menu_id"
-              name="UltimaHomeIntroduce"
-              parent="ultima_home_lbl_menu_id"
-              sequence="0"
-              action="ultima_home_introduce_action_id"/>
-
-    <menuitem id="ultima_home_introduce_desc_line_menu_id"
-              name="UltimaHomeIntroduceDescLine"
-              parent="ultima_home_lbl_menu_id"
-              sequence="1"
-              action="ultima_home_introduce_desc_line_action_id"/>
 
     <menuitem id="ultima_home_menu_id"
               name="Home"
               parent="ultima_home_lbl_menu_id"
-              sequence="2"
+              sequence="0"
               action="ultima_home_action_id"/>
 
+    <menuitem id="ultima_home_introduce_desc_line_menu_id"
+              name="Introduce Description Line"
+              parent="ultima_home_lbl_menu_id"
+              sequence="1"
+              action="ultima_home_introduce_desc_line_action_id"/>
+
+    <menuitem id="ultima_home_introduce_menu_id"
+              name="Introduce"
+              parent="ultima_home_lbl_menu_id"
+              sequence="2"
+              action="ultima_home_introduce_action_id"/>
+
     <menuitem id="ultima_home_dis_line_menu_id"
-              name="UltimaHomeDisLine"
+              name="Discover Line"
               parent="ultima_home_lbl_menu_id"
               sequence="3"
               action="ultima_home_dis_line_action_id"/>
 
     <menuitem id="ultima_home_type_line_menu_id"
-              name="UltimaHomeTypeLine"
+              name="Type Line"
               parent="ultima_home_lbl_menu_id"
               sequence="4"
               action="ultima_home_type_line_action_id"/>
 
     <menuitem id="ultima_home_type_line_line_menu_id"
-              name="UltimaHomeTypeLineLine"
+              name="Type Line 2"
               parent="ultima_home_lbl_menu_id"
               sequence="5"
               action="ultima_home_type_line_line_action_id"/>
 
     <menuitem id="ultima_home_com_line_menu_id"
-              name="UltimaHomeComLine"
+              name="Comparison Line"
               parent="ultima_home_lbl_menu_id"
               sequence="6"
               action="ultima_home_com_line_action_id"/>
 
     <menuitem id="ultima_home_faq_menu_id"
-              name="UltimaHomeFaq"
+              name="Faq"
               parent="ultima_home_lbl_menu_id"
               sequence="7"
               action="ultima_home_faq_action_id"/>
 
     <menuitem id="ultima_ribbon_menu_id"
-              name="UltimaRibbon"
+              name="Ribbon"
               parent="ultima_home_lbl_menu_id"
               sequence="8"
               action="ultima_ribbon_action_id"/>
 
     <menuitem id="ultima_tag_menu_id"
-              name="Tag"
+              name="Tags"
               parent="ultima_home_lbl_menu_id"
               sequence="9"
               action="ultima_tag_action_id"/>
+
+    <!-- Products -->
+    <menuitem id="ultima_products_lbl_menu_id"
+              name="Products"
+              parent="ultima_root_menu_id"
+              sequence="53"/>
+
+    <menuitem id="ultima_products_menu_id"
+              name="Products"
+              parent="ultima_products_lbl_menu_id"
+              sequence="0"
+              action="ultima_products_action_id"/>
+
+    <menuitem id="ultima_products_carousel_menu_id"
+              name="Carousel"
+              parent="ultima_products_lbl_menu_id"
+              sequence="1"
+              action="ultima_products_carousel_action_id"/>
+
+    <menuitem id="ultima_products_feature_menu_id"
+              name="Feature"
+              parent="ultima_products_lbl_menu_id"
+              sequence="2"
+              action="ultima_products_feature_action_id"/>
+
+    <menuitem id="ultima_products_faq_menu_id"
+              name="Faq"
+              parent="ultima_products_lbl_menu_id"
+              sequence="3"
+              action="ultima_products_faq_action_id"/>
+
+    <!-- Product Detail -->
+    <menuitem id="ultima_pd_detail_lbl_menu_id"
+              name="Product Detail"
+              parent="ultima_root_menu_id"
+              sequence="54"/>
+
+    <menuitem id="ultima_pd_detail_menu_id"
+              name="Product Detail"
+              parent="ultima_pd_detail_lbl_menu_id"
+              sequence="0"
+              action="ultima_pd_detail_action_id"/>
+
+    <menuitem id="ultima_pd_detail_faq_menu_id"
+              name="Faq"
+              parent="ultima_pd_detail_lbl_menu_id"
+              sequence="1"
+              action="ultima_pd_detail_faq_action_id"/>
 
 </odoo>

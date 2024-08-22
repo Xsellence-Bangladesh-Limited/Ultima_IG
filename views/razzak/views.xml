@@ -39,6 +39,11 @@
                             <field name="map_url"/>
                         </group>
                     </group>
+                    <group>
+                        <separator string="Testimonials"/>
+                        <field name="tm_section"/>
+                        <field name="tm_title"/>
+                    </group>
                 </sheet>
             </form>
         </field>
@@ -58,6 +63,7 @@
         <field name="model">ultima.quick_link</field>
         <field name="arch" type="xml">
             <tree>
+                <field name="sequence" widget="handle"/>
                 <field name="name"/>
                 <field name="url"/>
             </tree>
@@ -98,6 +104,7 @@
         <field name="model">ultima.social</field>
         <field name="arch" type="xml">
             <tree>
+                <field name="sequence" widget="handle"/>
                 <field name="url"/>
                 <field name="svg"/>
             </tree>
@@ -191,6 +198,7 @@
         <field name="model">ultima.home.introduce.desc.line</field>
         <field name="arch" type="xml">
             <tree>
+                <field name="sequence" widget="handle"/>
                 <field name="name"/>
             </tree>
         </field>
@@ -296,6 +304,7 @@
         <field name="model">ultima.home.dis.line</field>
         <field name="arch" type="xml">
             <tree>
+                <field name="sequence" widget="handle"/>
                 <field name="title"/>
                 <field name="desc"/>
             </tree>
@@ -337,6 +346,7 @@
         <field name="model">ultima.home.type.line</field>
         <field name="arch" type="xml">
             <tree>
+                <field name="sequence" widget="handle"/>
                 <field name="title"/>
                 <field name="button_text"/>
                 <field name="button_url"/>
@@ -383,6 +393,7 @@
         <field name="model">ultima.home.type.line.line</field>
         <field name="arch" type="xml">
             <tree>
+                <field name="sequence" widget="handle"/>
                 <field name="name"/>
             </tree>
         </field>
@@ -421,6 +432,7 @@
         <field name="model">ultima.home.com.line</field>
         <field name="arch" type="xml">
             <tree>
+                <field name="sequence" widget="handle"/>
                 <field name="title"/>
                 <field name="desc"/>
                 <field name="img"/>
@@ -467,6 +479,7 @@
         <field name="model">ultima.home.faq</field>
         <field name="arch" type="xml">
             <tree>
+                <field name="sequence" widget="handle"/>
                 <field name="title"/>
                 <field name="desc"/>
             </tree>
@@ -542,21 +555,6 @@
         <field name="view_mode">tree,form</field>
     </record>
 
-    <record id="view_product_template_inherit" model="ir.ui.view">
-        <field name="name">product.template.inherit</field>
-        <field name="model">product.template</field>
-        <field name="inherit_id" ref="product.product_template_only_form_view"/>
-        <field name="arch" type="xml">
-            <xpath expr="//field[@name='product_tag_ids']" position="after">
-                <field name="ribbon_id"/>
-                <field name="tag_ids"/>
-            </xpath>
-            <!--            <xpath expr="//field[@name='taxes_id']" position="after">-->
-            <!--                <field name="old_list_price" string="Old Sales Price"></field>-->
-            <!--            </xpath>-->
-        </field>
-    </record>
-
     <!-- ultima.tag, generated on August 14, 2024 -->
     <!-- Tree view of ultima.tag -->
     <record model="ir.ui.view" id="ultima_tag_tree_id">
@@ -606,6 +604,7 @@
         <field name="model">ultima.testimonial</field>
         <field name="arch" type="xml">
             <tree>
+                <field name="sequence" widget="handle"/>
                 <field name="section"/>
                 <field name="title"/>
                 <field name="desc"/>
@@ -643,6 +642,304 @@
     <record model="ir.actions.act_window" id="ultima_testimonial_action_id">
         <field name="name">UltimaTestimonial</field>
         <field name="res_model">ultima.testimonial</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- ultima.products, generated on August 15, 2024 -->
+    <!-- Tree view of ultima.products -->
+    <record model="ir.ui.view" id="ultima_products_tree_id">
+        <field name="name">UltimaProducts</field>
+        <field name="model">ultima.products</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="oap_title"/>
+                <field name="oap_desc"/>
+                <field name="oaf_section"/>
+                <field name="oaf_title"/>
+                <field name="oaf_desc"/>
+                <field name="faq_section"/>
+                <field name="faq_title"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Form view of ultima.products -->
+    <record model="ir.ui.view" id="ultima_products_form_id">
+        <field name="name">UltimaProducts</field>
+        <field name="model">ultima.products</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="carousel_ids"/>
+
+                        <field name="oap_title"/>
+                        <field name="oap_desc"/>
+
+                        <field name="oaf_section"/>
+                        <field name="oaf_title"/>
+                        <field name="oaf_desc"/>
+                        <field name="oaf_ids"/>
+
+                        <field name="faq_section"/>
+                        <field name="faq_title"/>
+                        <field name="faq_ids"/>
+                    </group>
+                    <div>Add Testimonials In Base Layout</div>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Action view of ultima.products -->
+    <record model="ir.actions.act_window" id="ultima_products_action_id">
+        <field name="name">UltimaProducts</field>
+        <field name="res_model">ultima.products</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- ultima.products.carousel, generated on August 15, 2024 -->
+    <!-- Tree view of ultima.products.carousel -->
+    <record model="ir.ui.view" id="ultima_products_carousel_tree_id">
+        <field name="name">UltimaProductsCarousel</field>
+        <field name="model">ultima.products.carousel</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="sequence" widget="handle"/>
+                <field name="alt"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Form view of ultima.products.carousel -->
+    <record model="ir.ui.view" id="ultima_products_carousel_form_id">
+        <field name="name">UltimaProductsCarousel</field>
+        <field name="model">ultima.products.carousel</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="image_1920" widget="image" class="oe_avatar"/>
+                            <field name="alt"/>
+                        </group>
+                        <group>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Action view of ultima.products.carousel -->
+    <record model="ir.actions.act_window" id="ultima_products_carousel_action_id">
+        <field name="name">UltimaProductsCarousel</field>
+        <field name="res_model">ultima.products.carousel</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- ultima.products.feature, generated on August 15, 2024 -->
+    <!-- Tree view of ultima.products.feature -->
+    <record model="ir.ui.view" id="ultima_products_feature_tree_id">
+        <field name="name">UltimaProductsFeature</field>
+        <field name="model">ultima.products.feature</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="sequence" widget="handle"/>
+                <field name="title"/>
+                <field name="desc"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Form view of ultima.products.feature -->
+    <record model="ir.ui.view" id="ultima_products_feature_form_id">
+        <field name="name">UltimaProductsFeature</field>
+        <field name="model">ultima.products.feature</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="image_1920" widget="image" class="oe_avatar"/>
+                            <field name="title"/>
+                            <field name="desc"/>
+                        </group>
+                        <group>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Action view of ultima.products.feature -->
+    <record model="ir.actions.act_window" id="ultima_products_feature_action_id">
+        <field name="name">UltimaProductsFeature</field>
+        <field name="res_model">ultima.products.feature</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+
+    <!-- ultima.products.faq, generated on August 15, 2024 -->
+    <!-- Tree view of ultima.products.faq -->
+    <record model="ir.ui.view" id="ultima_products_faq_tree_id">
+        <field name="name">UltimaProductsFaq</field>
+        <field name="model">ultima.products.faq</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="sequence" widget="handle"/>
+                <field name="title"/>
+                <field name="desc"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Form view of ultima.products.faq -->
+    <record model="ir.ui.view" id="ultima_products_faq_form_id">
+        <field name="name">UltimaProductsFaq</field>
+        <field name="model">ultima.products.faq</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="title"/>
+                            <field name="desc"/>
+                        </group>
+                        <group>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Action view of ultima.products.faq -->
+    <record model="ir.actions.act_window" id="ultima_products_faq_action_id">
+        <field name="name">UltimaProductsFaq</field>
+        <field name="res_model">ultima.products.faq</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- ultima.pd_detail, generated on August 15, 2024 -->
+    <!-- Tree view of ultima.pd_detail -->
+    <record model="ir.ui.view" id="ultima_pd_detail_tree_id">
+        <field name="name">UltimaPd_detail</field>
+        <field name="model">ultima.pd_detail</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="faq_section"/>
+                <field name="faq_title"/>
+                <field name="faq_ids"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Form view of ultima.pd_detail -->
+    <record model="ir.ui.view" id="ultima_pd_detail_form_id">
+        <field name="name">UltimaPd_detail</field>
+        <field name="model">ultima.pd_detail</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="faq_section"/>
+                        <field name="faq_title"/>
+                        <field name="faq_ids"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Action view of ultima.pd_detail -->
+    <record model="ir.actions.act_window" id="ultima_pd_detail_action_id">
+        <field name="name">UltimaPd_detail</field>
+        <field name="res_model">ultima.pd_detail</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- ultima.pd_detail.faq, generated on August 15, 2024 -->
+    <!-- Tree view of ultima.pd_detail.faq -->
+    <record model="ir.ui.view" id="ultima_pd_detail_faq_tree_id">
+        <field name="name">UltimaPd_detailFaq</field>
+        <field name="model">ultima.pd_detail.faq</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="sequence" widget="handle"/>
+                <field name="title"/>
+                <field name="desc"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Form view of ultima.pd_detail.faq -->
+    <record model="ir.ui.view" id="ultima_pd_detail_faq_form_id">
+        <field name="name">UltimaPd_detailFaq</field>
+        <field name="model">ultima.pd_detail.faq</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="title"/>
+                        <field name="desc"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Action view of ultima.pd_detail.faq -->
+    <record model="ir.actions.act_window" id="ultima_pd_detail_faq_action_id">
+        <field name="name">UltimaPd_detailFaq</field>
+        <field name="res_model">ultima.pd_detail.faq</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- ultima.website_menu, generated on August 18, 2024 -->
+    <!-- Tree view of ultima.website_menu -->
+    <record model="ir.ui.view" id="ultima_website_menu_tree_id">
+        <field name="name">Website Menu</field>
+        <field name="model">ultima.website_menu</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="sequence" widget="handle"/>
+                <field name="name"/>
+                <field name="url"/>
+                <field name="parent_id"/>
+                <field name="new_window"/>
+                <field name="sequence"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Form view of ultima.website_menu -->
+    <record model="ir.ui.view" id="ultima_website_menu_form_id">
+        <field name="name">Website Menu</field>
+        <field name="model">ultima.website_menu</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name"/>
+                            <field name="url"/>
+                            <field name="parent_id"/>
+                            <field name="new_window"/>
+                        </group>
+                        <group>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Action view of ultima.website_menu -->
+    <record model="ir.actions.act_window" id="ultima_website_menu_action_id">
+        <field name="name">Website Menu</field>
+        <field name="res_model">ultima.website_menu</field>
         <field name="view_mode">tree,form</field>
     </record>
 

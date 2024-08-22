@@ -367,9 +367,9 @@
                 <!-- Header -->
                 <div class="header mb-4">
                     <div class="content">
-                        <div class="text-gradient">FAQ</div>
+                        <div class="text-gradient" t-raw="p.faq_section"></div>
                         <div>
-                            <h3>Frequently Asked Question</h3>
+                            <h3 t-raw="p.faq_title"></h3>
                         </div>
                     </div>
                 </div>
@@ -380,78 +380,26 @@
                     <div></div>
                     <div class="accordions">
 
-                        <div class="accordion active sora-600">What is water purification?</div>
-                        <div id="panel_active" class="panel">
-                            <p class="faq_text">
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti perferendis
-                                praesentium alias! Quaerat
-                                dolorem ullam dicta beatae voluptas voluptatum error eius ut? Pariatur quis quidem
-                                veritatis assumenda
-                                modi
-                                ex aut aperiam sed maxime consequatur ipsam omnis harum qui porro, incidunt deleniti
-                                ratione, sit laborum
-                                voluptatem asperiores. Debitis voluptatem voluptates numquam.
-                            </p>
-                        </div>
-                        <div class="spacer"></div>
+                        <t t-set="acc" t-value="True"/>
 
-                        <div class="accordion sora-600">In which ways is polluted water treated?</div>
-                        <div class="panel">
-                            <p class="faq_text">Before the purification process begins some contaminants, such as oil,
-                                can be settled in
-                                a
-                                settling tank. They can then be removed easily, after they have reached the bottom of
-                                the tank. Often
-                                polluted water has to be freed from microorganisms. The water is than disinfected,
-                                usually by means of
-                                chlorination.
-                            </p>
-                        </div>
-                        <div class="spacer"></div>
+                        <t t-foreach="p.faq_ids" t-as="i">
 
-                        <div class="accordion sora-600">How can bacteria be removed from water?</div>
-                        <div class="panel">
-                            <p class="faq_text">
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Atque, ad? Ipsum animi dolorum
-                                laudantium saepe!
-                                Maiores, soluta odit ducimus eaque esse, repellat, ex quas corrupti rem nihil reiciendis
-                                veritatis! Illum
-                                iste atque ipsam porro ipsum consectetur aliquam repellat cupiditate odit assumenda
-                                velit, odio maiores?
-                                Similique nihil quod dicta dolorum alias!
-                            </p>
-                        </div>
-                        <div class="spacer"></div>
-
-                        <div class="accordion sora-600">What is aerobic water treatment?</div>
-                        <div class="panel">
-                            <p class="faq_text">
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos nulla sit quaerat ducimus,
-                                ratione enim
-                                nostrum
-                                facilis esse reprehenderit officia, in dolorum minima facere molestiae quo ut commodi
-                                ullam illum
-                                temporibus! Impedit maxime nulla consectetur totam laboriosam nobis nihil ullam repellat
-                                nostrum placeat,
-                                inventore unde dolor deserunt, dolore dolorum itaque?
-                            </p>
-                        </div>
-                        <div class="spacer"></div>
-
-                        <div class="accordion sora-600">What is water purification?</div>
-                        <div class="panel">
-                            <p class="faq_text">
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos nulla sit quaerat ducimus,
-                                ratione enim
-                                nostrum
-                                facilis esse reprehenderit officia, in dolorum minima facere molestiae quo ut commodi
-                                ullam illum
-                                temporibus! Impedit maxime nulla consectetur totam laboriosam nobis nihil ullam repellat
-                                nostrum placeat,
-                                inventore unde dolor deserunt, dolore dolorum itaque?
-                            </p>
-                        </div>
-                        <div class="spacer"></div>
+                            <t t-if="acc">
+                                <div class="accordion active sora-600" t-raw="i.title"></div>
+                                <div id="panel_active" class="panel">
+                                    <p class="faq_text" t-raw="i.desc"></p>
+                                </div>
+                                <div class="spacer"></div>
+                                <t t-set="acc" t-value="False"/>
+                            </t>
+                            <t t-else="">
+                                <div class="accordion sora-600" t-raw="i.title"></div>
+                                <div class="panel">
+                                    <p class="faq_text" t-raw="i.desc"></p>
+                                </div>
+                                <div class="spacer"></div>
+                            </t>
+                        </t>
 
                     </div>
                     <div></div>
@@ -464,81 +412,7 @@
             End Frequently Asked Question
             -->
 
-            <!--
-            Testimonials
-            -->
-            <div class="testimonial py-5">
-                <div class="my-container">
-                    <div class="testimonial-title-container text-center">
-                        <div class="testimonial-title">Testimonials</div>
-                    </div>
-
-                    <h3 class="testimonial-heading text-center">
-                        What People Think
-                        <br/>
-                        About Us
-                    </h3>
-                    <div class="testimonial-slider" style="height: fit-content;">
-                        <div class="swiper mySwiper">
-                            <div class="swiper-wrapper">
-                                <div class="swiper-slide">
-                                    <div class="testimonial-slide">
-                                        <div class="client-image">
-                                            <img src="/ultima/static/image/testimonial/testimonial-client-image.jpeg"
-                                                 alt="Testimonial Client Image"/>
-                                        </div>
-                                        <div class="client-comment">
-                                            <img src="/ultima/static/image/testimonial/testimonial_icon.png"
-                                                 class="testimonial-icon mb-3"
-                                                 alt="Testimonial Icon"/>
-
-                                            <p class="client-comment-text">
-                                                Through our years of experience, we've also learned that
-                                                while each channel has its own set of advantages, they
-                                                all work best when strategically paired with other
-                                                channels. This is the main factor that sets us apart
-                                                from our competition. Through our years of experience.
-                                            </p>
-                                            <h5 class="client-name mb-1">David Jhon</h5>
-                                            <p class="client-designation">CEO of ABC Company</p>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="swiper-slide">
-                                    <div class="testimonial-slide">
-                                        <div class="client-image">
-                                            <img src="/ultima/static/image/testimonial/blog_creator.jpg"
-                                                 alt="Testimonial Client Image"/>
-                                        </div>
-                                        <div class="client-comment">
-                                            <img src="/ultima/static/image/testimonial/testimonial_icon.png"
-                                                 class="testimonial-icon mb-3"
-                                                 alt="Testimonial Icon"/>
-
-                                            <p class="client-comment-text">
-                                                Through our years of experience, we've also learned that
-                                                while each channel has its own set of advantages, they
-                                                all work best when strategically paired with other
-                                                channels. This is the main factor that sets us apart
-                                                from our competition. Through our years of experience.
-                                            </p>
-                                            <h5 class="client-name mb-1">Marco Moore</h5>
-                                            <p class="client-designation">Designer of ABC Company</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="swiper-button-next"></div>
-                            <div class="swiper-button-prev"></div>
-                            <div class="swiper-pagination"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!--
-            End Testimonials
-            -->
+            <t t-call="ultima.testimonial"/>
 
         </t>
     </template>

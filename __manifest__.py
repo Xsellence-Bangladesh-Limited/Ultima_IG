@@ -13,6 +13,7 @@
         'data/ashik/custom_sequence.xml',
         'views/ashik/views.xml',
         'views/razzak/views.xml',
+        'views/razzak/inherit.xml',
         'views/root_menu/root_menu.xml',
         'views/ashik/views_menu.xml',
         'views/razzak/views_menu.xml',
@@ -30,6 +31,7 @@
 
         # Razzak
         # 'templates/layout.xml',
+        'templates/razzak/templates.xml',
         'templates/razzak/home.xml',
         'templates/razzak/products.xml',
         'templates/razzak/product_details.xml',
