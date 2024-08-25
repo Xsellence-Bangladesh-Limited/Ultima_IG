@@ -475,11 +475,28 @@ class BlogQuery(models.Model):
     user_name = fields.Char(string='Name')
     user_email = fields.Char(string='Email')
     user_mobile = fields.Char(string='Mobile')
+    blog_id = fields.Many2one('ultima.blog.blog', string='Blog')
 
     @api.model
     def create(self, vals):
         vals['name'] = self.env['ir.sequence'].sudo().next_by_code('ultima.blog.query.seq')
         return super(BlogQuery, self).create(vals)
+
+
+class BlogComment(models.Model):
+    _name = 'ultima.blog.comment'
+    _description = 'ultima.blog.comment'
+    _order = 'id desc'
+
+    name = fields.Char(string='Sequence')
+    user_id = fields.Many2one('res.users', string='User')
+    comment = fields.Text(string='Comment')
+    blog_id = fields.Many2one('ultima.blog.blog', string='Blog')
+
+    @api.model
+    def create(self, vals):
+        vals['name'] = self.env['ir.sequence'].sudo().next_by_code('ultima.blog.comment.seq')
+        return super(BlogComment, self).create(vals)
 
 class BlogSlider(models.Model):
     _name = 'ultima.blog.slider'
@@ -487,12 +504,8 @@ class BlogSlider(models.Model):
     _order = 'id desc'
 
     name = fields.Char(string='Sequence')
-    slider_image = fields.Image(string='Slider image')
-    blog_category_id = fields.Many2one('ultima.blog.category', string='Blog category')
-    slider_title = fields.Char(string='Slider title')
+    blog_id = fields.Many2one('ultima.blog.blog', string='Blog')
     slider_description = fields.Text(string='Slider description')
-    blog_author_id = fields.Many2one('res.users', string='Blog author')
-    creation_date = fields.Date(default=lambda self: fields.Date.today(), string='Creation date')
 
     def format_blog_date(self):
         date_obj = datetime.strptime(str(self.creation_date), "%Y-%m-%d")

@@ -210,6 +210,14 @@
             <field name="number_next">1</field>
         </record>
 
+        <record id="ultima_blog_comment_seq" model="ir.sequence">
+            <field name="name">Ultima blog comment sequence</field>
+            <field name="code">ultima.blog.comment.seq</field>
+            <field name="prefix">COMMENT</field>
+            <field name="padding">5</field>
+            <field name="number_next">1</field>
+        </record>
+
         <record id="ultima_blog_slider_seq" model="ir.sequence">
             <field name="name">Ultima blog slider sequence</field>
             <field name="code">ultima.blog.slider.seq</field>

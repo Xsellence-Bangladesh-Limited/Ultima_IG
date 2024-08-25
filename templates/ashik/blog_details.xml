@@ -21,17 +21,11 @@
                 <!-- Splide CSS (end) -->
 
                 <!-- Custom CSS (start) -->
-                <link rel="stylesheet" href="/ultima/static/ashik/blog_details/css/styles.css?v=1.0"/>
+                <link rel="stylesheet" href="/ultima/static/ashik/blog_details/css/styles.css?v=1.2"/>
                 <!-- Custom CSS (end) -->
 
                 <!-- Fontawesome CDN (start) -->
-                <link
-                        rel="stylesheet"
-                        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
-                        integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
-                        crossorigin="anonymous"
-                        referrerpolicy="no-referrer"
-                />
+                <script src="/ultima/static/third_party_UI_library/Fontawesome/js/all.min.js" defer="1"/>
                 <!-- Fontawesome CDN (end) -->
 
                 <!-- Jquery (start) -->
@@ -55,11 +49,18 @@
                 <!-- Splide JS (end) -->
 
                 <!-- Custom JS (start) -->
-                <script src="/ultima/static/ashik/blog_details/JS/script.js?v=1.0" defer="1"/>
+                <script src="/ultima/static/ashik/blog_details/JS/script.js?v=1.2" defer="1"/>
                 <!-- Custom JS (end) -->
             </head>
 
             <body>
+                <div class="scroll-to-top-btn-parent">
+                    <div class="scroll-to-top-btn-container">
+                        <button class="scroll-to-top-button">
+                            <i class="fa-solid fa-angle-up"></i>
+                        </button>
+                    </div>
+                </div>
                 <div class="main-content mt-4">
                     <div class="my-container">
                         <t t-if="query_submission_successful">
@@ -107,7 +108,9 @@
                                     </div>
                                 </div>
 
-                                <form action="/query/user-query" method="POST" class="user-query-form mb-4">
+                                <form action="/query/user-query" method="POST" class="user-query-form mb-5">
+                                    <input type="hidden" t-att-value="blog.id" class="query_blog_id_input"
+                                           name="blog_id"/>
                                     <h4 class="form-heading mb-4 text-center">Do you have any query?</h4>
                                     <div class="name-input-container mb-4">
                                         <label for="name-input" class="input-label">Name</label>
@@ -131,19 +134,92 @@
                                         <button class="form-submit-btn">Submit</button>
                                     </div>
                                 </form>
+                                <div class="blog-comments mb-4">
+                                    <h5 class="blog-comments-heading mb-3">Comments (<t t-esc="len(all_comments)"/>)
+                                    </h5>
+                                    <t t-if="logged_in_user_id">
+                                        <div class="users-comment mb-3">
+                                            <div class="users-identity mb-3">
+                                                <div class="users-image">
+                                                    <img t-att-src="image_data_uri(logged_in_user.image_1920)"
+                                                         alt="logged-in user"/>
+                                                </div>
+                                                <h6 class="users-name">
+                                                    <t t-esc="logged_in_user.name"/>
+                                                </h6>
+                                            </div>
+
+                                            <form class="users-comment-box">
+                                                <input type="hidden" t-att-value="blog.id" class="blog_id_input"/>
+                                                <textarea class="users-comment-box-text-area mb-3"
+                                                          name="users_comment_input" placeholder="Write your comment..."
+                                                          required="1"></textarea>
+                                                <button type="button" class="comment-submit-btn">Submit</button>
+                                            </form>
+                                            <button class="comment-submit-loading-btn" disabled="1">
+                                                <img src="/ultima/static/image/spinner.svg"/>
+                                            </button>
+                                        </div>
+                                    </t>
+                                    <div class="other-users-comment-container">
+                                        <t t-foreach="all_comments[:5]" t-as="comment">
+                                            <div class="other-users-comment mb-2">
+                                                <div class="other-users-identity mb-2">
+                                                    <div class="other-users-image">
+                                                        <img t-att-src="image_data_uri(comment.user_id.image_1920)"
+                                                             alt="logged-in user"/>
+                                                    </div>
+                                                    <h6 class="other-users-name">
+                                                        <t t-esc="comment.user_id.name"/>
+                                                    </h6>
+                                                </div>
+                                                <p class="other-users-comment-text">
+                                                    <i class="fa-solid fa-message"></i>
+                                                    <t t-esc="comment.comment"/>
+                                                </p>
+                                            </div>
+                                        </t>
+                                        <t t-if="len(all_comments) > 5">
+                                            <button type="button" class="comment-see-more-btn mt-2">See more</button>
+                                        </t>
+                                    </div>
+
+                                    <div class="all-other-users-comment-container">
+                                        <t t-foreach="all_comments" t-as="comment">
+                                            <div class="other-users-comment mb-2">
+                                                <div class="other-users-identity mb-2">
+                                                    <div class="other-users-image">
+                                                        <img t-att-src="image_data_uri(comment.user_id.image_1920)"
+                                                             alt="logged-in user"/>
+                                                    </div>
+                                                    <h6 class="other-users-name">
+                                                        <t t-esc="comment.user_id.name"/>
+                                                    </h6>
+                                                </div>
+                                                <p class="other-users-comment-text">
+                                                    <i class="fa-solid fa-message"></i>
+                                                    <t t-esc="comment.comment"/>
+                                                </p>
+                                            </div>
+                                        </t>
+                                        <button type="button" class="comment-see-less-btn mt-2">See less</button>
+                                    </div>
+                                </div>
                             </div>
                             <div class="blog-details-right">
                                 <div class="suggested-blogs">
                                     <t t-foreach="suggested_blogs" t-as="suggested_blog">
-                                        <a t-attf-href="/blog-details/{{suggested_blog.id}}" class="suggested-blog mb-4">
-                                        <div class="suggested-blog-image mt-4">
-                                            <img t-if="suggested_blog.banner_image" t-att-src="image_data_uri(suggested_blog.banner_image)"
-                                                 alt="Suggested blog image"/>
-                                        </div>
-                                        <p class="suggested-blog-title mt-3">
-                                            <t t-esc="suggested_blog.title"/>
-                                        </p>
-                                    </a>
+                                        <a t-attf-href="/blog-details/{{suggested_blog.id}}"
+                                           class="suggested-blog mb-4">
+                                            <div class="suggested-blog-image mt-4">
+                                                <img t-if="suggested_blog.banner_image"
+                                                     t-att-src="image_data_uri(suggested_blog.banner_image)"
+                                                     alt="Suggested blog image"/>
+                                            </div>
+                                            <p class="suggested-blog-title mt-3">
+                                                <t t-esc="suggested_blog.title"/>
+                                            </p>
+                                        </a>
                                     </t>
                                 </div>
                             </div>

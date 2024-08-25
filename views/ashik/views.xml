@@ -1283,6 +1283,7 @@
                 <field name="user_name"/>
                 <field name="user_email"/>
                 <field name="user_mobile"/>
+                <field name="blog_id"/>
             </tree>
         </field>
     </record>
@@ -1305,6 +1306,7 @@
                             <field name="user_name" required="True"/>
                             <field name="user_email" required="True"/>
                             <field name="user_mobile" required="True"/>
+                            <field name="blog_id" required="True"/>
                         </group>
                     </group>
                 </sheet>
@@ -1320,11 +1322,63 @@
         <field name="view_mode">tree,form</field>
         <field name="help" type="html">
             <p class="o_view_nocontent_smiling_face">
-                No available query!
+                No available queries!
             </p>
         </field>
     </record>
     <!-- Ultima blog query action (end)-->
+
+    <!-- Ultima blog comment tree view (start)-->
+    <record id="ultima_blog_comment_view_tree" model="ir.ui.view">
+        <field name="name">Ultima blog comment tree view</field>
+        <field name="model">ultima.blog.comment</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name" readonly="True"/>
+                <field name="user_id"/>
+                <field name="blog_id"/>
+            </tree>
+        </field>
+    </record>
+    <!-- Ultima blog comment tree view (end)-->
+
+    <!-- Ultima blog comment form view (start)-->
+    <record id="ultima_blog_comment_view_form" model="ir.ui.view">
+        <field name="name">Ultima blog comment form view</field>
+        <field name="model">ultima.blog.comment</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <div class="oe_name">
+                        <h1>
+                            <field name="name" readonly="True"/>
+                        </h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="user_id" required="True"/>
+                            <field name="comment" required="True"/>
+                            <field name="blog_id" required="True"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <!-- Ultima blog comment form view (end)-->
+
+    <!-- Ultima blog comment action (start)-->
+    <record id="ultima_blog_comment_form" model="ir.actions.act_window">
+        <field name="name">Comments</field>
+        <field name="res_model">ultima.blog.comment</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                No available comments!
+            </p>
+        </field>
+    </record>
+    <!-- Ultima blog comment action (end)-->
 
     <!-- Ultima blog category tree view (start)-->
     <record id="ultima_blog_category_view_tree" model="ir.ui.view">
@@ -1383,6 +1437,7 @@
         <field name="arch" type="xml">
             <tree>
                 <field name="name" readonly="True"/>
+                <field name="blog_id"/>
             </tree>
         </field>
     </record>
@@ -1403,12 +1458,8 @@
 
                     <group>
                         <group>
-                            <field name="slider_image" widget="image" class="oe_avatar"/>
-                            <field name="blog_category_id" required="True"/>
-                            <field name="slider_title" required="True"/>
+                            <field name="blog_id" required="True"/>
                             <field name="slider_description" required="True"/>
-                            <field name="blog_author_id"/>
-                            <field name="creation_date" readonly="True"/>
                         </group>
                     </group>
                 </sheet>
