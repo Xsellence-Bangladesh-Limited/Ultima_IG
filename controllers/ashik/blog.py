@@ -1,6 +1,7 @@
 from odoo import http
 from odoo.http import request as req
 from werkzeug.utils import redirect
+import json
 
 class Blog(http.Controller):
     @http.route('/blogs', type='http', auth='public')
@@ -45,16 +46,23 @@ class Blog(http.Controller):
             for s_s_blog in s_blog.suggested_blog_ids:
                 all_suggested_blogs.append(s_s_blog)
 
-        req.session['current_blog'] = blog.id
+        # req.session['current_blog'] = blog.id
 
         query_submission_successful = req.session.get('query_submission_successful')
 
         req.session['query_submission_successful'] = False
 
+        logged_in_user = req.env['res.users'].sudo().search([('id', '=', req.env.user.id)])
+
+        all_comments = req.env['ultima.blog.comment'].sudo().search([('blog_id', '=', blog.id)], order='id desc')
+
         return req.render('ultima.ultima_blog_details_template', {
             'blog': blog,
             'suggested_blogs': all_suggested_blogs,
-            'query_submission_successful': query_submission_successful
+            'query_submission_successful': query_submission_successful,
+            'logged_in_user': logged_in_user,
+            'all_comments': all_comments,
+            'logged_in_user_id': req.session.get('uid')
         })
 
     @http.route('/query/user-query', type='http', auth='public', csrf=False)
@@ -63,18 +71,53 @@ class Blog(http.Controller):
             user_name = form_data.get('name_input').strip() if form_data.get('name_input') else ''
             user_email = form_data.get('email_input').strip() if form_data.get('email_input') else ''
             user_mobile = form_data.get('mobile_input').strip() if form_data.get('mobile_input') else ''
+            blog_id = int(form_data.get('blog_id')) if form_data.get('blog_id') else None
 
             req.env['ultima.blog.query'].sudo().create({
                 'user_name': user_name,
                 'user_email': user_email,
-                'user_mobile': user_mobile
+                'user_mobile': user_mobile,
+                'blog_id': blog_id
             })
 
-            blog = req.env['ultima.blog.blog'].sudo().search([('id', '=', req.session.get('current_blog'))])
+            # blog = req.env['ultima.blog.blog'].sudo().search([('id', '=', req.session.get('current_blog'))])
 
             req.session['query_submission_successful'] = True
 
-            return redirect(f'/blog-details/{blog.id}')
+            return redirect(f'/blog-details/{blog_id}')
+
+    @http.route('/comments/user-comment', type='http', auth='user', csrf=False)
+    def user_comment(self, **form_data):
+        comment = form_data.get('comment').strip() if form_data.get('comment') else ''
+        blog_id = int(form_data.get('blogId')) if form_data.get('blogId') else None
+
+        # Creating a new comment (start)
+
+        new_comment = req.env['ultima.blog.comment'].sudo().create({
+            'comment': comment,
+            'user_id': req.env.user.id,
+            'blog_id': blog_id
+        })
+
+        # Creating a new comment (end)
+
+        # Retrieving all comments (start)
+
+        all_comments = req.env['ultima.blog.comment'].sudo().search([('blog_id', '=', blog_id)], order='id desc', limit=5)
+
+        comment_dict_list = []
+
+        for s_comment in all_comments:
+            comment_dict_list.append({
+                'user_id': s_comment.user_id.id,
+                'user_name': s_comment.user_id.name,
+                'comment': s_comment.comment
+            })
+
+        # Retrieving all comments (end)
+
+        if new_comment:
+            return json.dumps({'code': 200, 'all_comments': comment_dict_list})
 
     @http.route('/more-blogs/<string:category_name>', type='http', auth='public')
     def more_blogs(self, category_name):

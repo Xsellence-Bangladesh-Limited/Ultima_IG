@@ -197,9 +197,15 @@
               parent="ultima_blog_menu_id"
               action="ultima_blog_query_form"/>
 
+    <menuitem id="ultima_blog_comment_menu_id"
+              name="Comments"
+              sequence="4"
+              parent="ultima_blog_menu_id"
+              action="ultima_blog_comment_form"/>
+
     <menuitem id="ultima_blog_slider_menu_id"
               name="Slider"
-              sequence="4"
+              sequence="5"
               parent="ultima_blog_menu_id"
               action="ultima_blog_slider_form"/>
 

@@ -49,6 +49,32 @@ p {
   margin: 0 auto;
 }
 
+.scroll-to-top-btn-parent{
+    width: 100%;
+    position: fixed;
+    left: 0;
+    bottom: 10px;
+    display: none;
+}
+
+.scroll-to-top-btn-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.scroll-to-top-button{
+    border: none;
+    outline: none !important;
+    background-color: var(--primary-color);
+    color: #fff;
+    cursor: pointer;
+    width: 40px;
+    height: 40px;
+    border-radius: 100%;
+}
+
 .message-sent-successful-alert{
     display: flex;
     justify-content: space-between;
@@ -158,10 +184,9 @@ p {
 }
 
 .user-query-form{
-  width: 85%;
+  width: 100%;
   padding: 1.875rem;
   border: 1px solid #ddd;
-  margin: 0 auto;
 }
 
 .form-heading{
@@ -255,6 +280,142 @@ p {
   padding-bottom: 18px;
 }
 
+/* Blog Comments (start) */
+
+.blog-comments-heading{
+    font-family: var(--title-font-family);
+    font-weight: var(--heading-font-weight);
+}
+
+.users-comment{
+    border: 0.063rem solid #ddd;
+    padding: 0.625rem;
+}
+
+.users-identity{
+    display: flex;
+    align-items: center;
+    gap: 0.625rem;
+}
+
+.users-image{
+    width: 2.813rem;
+    height: 2.813rem;
+    border-radius: 100%;
+    overflow: hidden;
+}
+
+.users-image img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.users-name{
+    font-family: var(--normal-text-font-family);
+    font-weight: var(--normal-title-font-weight);
+    font-size: 0.938rem;
+}
+
+.users-comment-box-text-area{
+    border: 0.063rem solid #ddd;
+    padding: 0.625rem;
+    width: 100%;
+    outline: none !important;
+    font-family: var(--normal-text-font-family);
+    font-weight: var(--normal-title-font-weight);
+    font-size: 0.875rem;
+    line-height: 1.7;
+}
+
+.comment-submit-btn{
+  outline: none !important;
+  padding: 5px 30px;
+  background-color: var(--primary-color);
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  font-family: var(--normal-text-font-family);
+  transition: all 0.3s;
+  font-size: 0.875rem;
+}
+
+.comment-submit-loading-btn{
+  outline: none !important;
+  padding: 5px 30px;
+  background-color: var(--primary-color);
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  font-family: var(--normal-text-font-family);
+  transition: all 0.3s;
+  display: none;
+  cursor: not-allowed;
+}
+
+.comment-submit-loading-btn img{
+    width: 3.1em;
+    height: 1.5em;
+}
+
+.other-users-comment{
+    border: 0.063rem solid #ddd;
+    padding: 0.625rem;
+}
+.other-users-identity{
+    display: flex;
+    align-items: center;
+    gap: 0.625rem;
+}
+
+.other-users-image{
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 100%;
+    overflow: hidden;
+}
+
+.other-users-image img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.other-users-name{
+    font-family: var(--normal-text-font-family);
+    font-weight: var(--normal-title-font-weight);
+    font-size: 0.875rem;
+}
+
+.other-users-comment-text{
+    font-family: var(--normal-text-font-family);
+    font-weight: var(--normal-title-font-weight);
+    font-size: 0.875rem;
+    line-height: 1.7;
+}
+
+.other-users-comment-text svg path{
+    fill: var(--primary-color);
+}
+
+.all-other-users-comment-container{
+    display: none;
+}
+
+.comment-see-more-btn, .comment-see-less-btn{
+  outline: none !important;
+  padding: 5px 30px;
+  background-color: var(--primary-color);
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  font-family: var(--normal-text-font-family);
+  transition: all 0.3s;
+  font-size: 0.875rem;
+}
+
+/* Blog Comments (end) */
+
 /* Main Content (end) */
 
 /* Responsiveness (start) */
@@ -295,10 +456,6 @@ p {
     height: 12.5rem;
   }
 
-  .user-query-form{
-    width: 100%;
-  }
-
   .name-input-container, .email-input-container, .mobile-number-input-container{
     flex-direction: column;
     align-items: start;
@@ -328,10 +485,6 @@ p {
 
   .banner-image{
     height: 34.063rem;
-  }
-
-  .user-query-form{
-    width: 85%;
   }
 
   .name-input-container, .email-input-container, .mobile-number-input-container{
