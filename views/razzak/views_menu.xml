@@ -43,65 +43,70 @@
               parent="ultima_root_menu_id"
               sequence="52"/>
 
+    <menuitem id="ultima_home_introduce_menu_id"
+              name="Introduce"
+              parent="ultima_home_lbl_menu_id"
+              sequence="0"
+              action="ultima_home_introduce_action_id"/>
 
     <menuitem id="ultima_home_menu_id"
               name="Home"
               parent="ultima_home_lbl_menu_id"
-              sequence="0"
+              sequence="1"
               action="ultima_home_action_id"/>
+
+    <menuitem id="ultima_home_others_menu_id"
+              name="Others"
+              parent="ultima_home_lbl_menu_id"
+              sequence="2"
+              action="ultima_home_introduce_desc_line_action_id"/>
 
     <menuitem id="ultima_home_introduce_desc_line_menu_id"
               name="Introduce Description Line"
-              parent="ultima_home_lbl_menu_id"
-              sequence="1"
+              parent="ultima_home_others_menu_id"
+              sequence="0"
               action="ultima_home_introduce_desc_line_action_id"/>
-
-    <menuitem id="ultima_home_introduce_menu_id"
-              name="Introduce"
-              parent="ultima_home_lbl_menu_id"
-              sequence="2"
-              action="ultima_home_introduce_action_id"/>
 
     <menuitem id="ultima_home_dis_line_menu_id"
               name="Discover Line"
-              parent="ultima_home_lbl_menu_id"
-              sequence="3"
+              parent="ultima_home_others_menu_id"
+              sequence="1"
               action="ultima_home_dis_line_action_id"/>
 
     <menuitem id="ultima_home_type_line_menu_id"
               name="Type Line"
-              parent="ultima_home_lbl_menu_id"
-              sequence="4"
+              parent="ultima_home_others_menu_id"
+              sequence="2"
               action="ultima_home_type_line_action_id"/>
 
     <menuitem id="ultima_home_type_line_line_menu_id"
               name="Type Line 2"
-              parent="ultima_home_lbl_menu_id"
-              sequence="5"
+              parent="ultima_home_others_menu_id"
+              sequence="3"
               action="ultima_home_type_line_line_action_id"/>
 
     <menuitem id="ultima_home_com_line_menu_id"
               name="Comparison Line"
-              parent="ultima_home_lbl_menu_id"
-              sequence="6"
+              parent="ultima_home_others_menu_id"
+              sequence="4"
               action="ultima_home_com_line_action_id"/>
 
     <menuitem id="ultima_home_faq_menu_id"
               name="Faq"
-              parent="ultima_home_lbl_menu_id"
-              sequence="7"
+              parent="ultima_home_others_menu_id"
+              sequence="5"
               action="ultima_home_faq_action_id"/>
 
     <menuitem id="ultima_ribbon_menu_id"
               name="Ribbon"
-              parent="ultima_home_lbl_menu_id"
-              sequence="8"
+              parent="ultima_home_others_menu_id"
+              sequence="6"
               action="ultima_ribbon_action_id"/>
 
     <menuitem id="ultima_tag_menu_id"
               name="Tags"
-              parent="ultima_home_lbl_menu_id"
-              sequence="9"
+              parent="ultima_home_others_menu_id"
+              sequence="7"
               action="ultima_tag_action_id"/>
 
     <!-- Products -->
@@ -116,22 +121,27 @@
               sequence="0"
               action="ultima_products_action_id"/>
 
+    <menuitem id="ultima_products_others_menu_id"
+              name="Others"
+              parent="ultima_products_lbl_menu_id"
+              sequence="1"/>
+
     <menuitem id="ultima_products_carousel_menu_id"
               name="Carousel"
-              parent="ultima_products_lbl_menu_id"
-              sequence="1"
+              parent="ultima_products_others_menu_id"
+              sequence="0"
               action="ultima_products_carousel_action_id"/>
 
     <menuitem id="ultima_products_feature_menu_id"
               name="Feature"
-              parent="ultima_products_lbl_menu_id"
-              sequence="2"
+              parent="ultima_products_others_menu_id"
+              sequence="1"
               action="ultima_products_feature_action_id"/>
 
     <menuitem id="ultima_products_faq_menu_id"
               name="Faq"
-              parent="ultima_products_lbl_menu_id"
-              sequence="3"
+              parent="ultima_products_others_menu_id"
+              sequence="2"
               action="ultima_products_faq_action_id"/>
 
     <!-- Product Detail -->
@@ -146,10 +156,45 @@
               sequence="0"
               action="ultima_pd_detail_action_id"/>
 
+    <menuitem id="ultima_pd_detail_lbl2_menu_id"
+              name="Others"
+              parent="ultima_pd_detail_lbl_menu_id"
+              sequence="1"/>
+
     <menuitem id="ultima_pd_detail_faq_menu_id"
               name="Faq"
-              parent="ultima_pd_detail_lbl_menu_id"
-              sequence="1"
+              parent="ultima_pd_detail_lbl2_menu_id"
+              sequence="0"
               action="ultima_pd_detail_faq_action_id"/>
+
+    <menuitem id="product_desc_line_menu_id"
+              name="Product Description line"
+              parent="ultima_pd_detail_lbl2_menu_id"
+              sequence="1"
+              action="product_desc_line_action_id"/>
+
+    <menuitem id="product_p_detail_hl_line_menu_id"
+              name="Product Details Highlight Line"
+              parent="ultima_pd_detail_lbl2_menu_id"
+              sequence="2"
+              action="product_p_detail_hl_line_action_id"/>
+
+    <menuitem id="product_p_detail_hl_line2_menu_id"
+              name="Product Details Highlight Line 2"
+              parent="ultima_pd_detail_lbl2_menu_id"
+              sequence="3"
+              action="product_p_detail_hl_line2_action_id"/>
+
+    <menuitem id="p_detail_desc_line_menu_id"
+              name="Product Detail Description Line (C)"
+              parent="ultima_pd_detail_lbl2_menu_id"
+              sequence="4"
+              action="p_detail_desc_line_action_id"/>
+
+    <menuitem id="product_spe_line_menu_id"
+              name="Product Specification Line"
+              parent="ultima_pd_detail_lbl2_menu_id"
+              sequence="5"
+              action="product_spe_line_action_id"/>
 
 </odoo>

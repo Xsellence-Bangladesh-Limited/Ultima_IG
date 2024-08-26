@@ -76,6 +76,7 @@ class UltimaHomeIntroduce(models.Model):
     desc = fields.Text(translate=True)
     desc_line_ids = fields.Many2many('ultima.home.introduce.desc.line')
     shop_now_url = fields.Char()
+    shop_now_text = fields.Char()
     video_bg_1920 = fields.Image("Image", max_width=1920, max_height=1920)
     video_bg_1024 = fields.Image("Image 1024", related="video_bg_1920", max_width=1024, max_height=1024, store=True)
     video_bg_512 = fields.Image("Image 512", related="video_bg_1920", max_width=512, max_height=512, store=True)
@@ -101,6 +102,8 @@ class UltimaHome(models.Model):
     bsp_section = fields.Char(translate=True)
     bsp_title = fields.Char(translate=True)
     bsp_desc = fields.Text(translate=True)
+    bsp_btn_text = fields.Char(translate=True)
+    bsp_ids = fields.Many2many('product.template')
 
     dis_section = fields.Char(translate=True)
     dis_title = fields.Char(translate=True)
@@ -198,13 +201,65 @@ class UltimaHomeFaq(models.Model):
     desc = fields.Text(translate=True)
 
 
-class ProTemInherut(models.Model):
+class ProTemInherit(models.Model):
     _inherit = 'product.template'
 
     old_list_price = fields.Float()
     ribbon_id = fields.Many2one('ultima.ribbon')
     tag_ids = fields.Many2many('ultima.tag')
     website_publish = fields.Boolean()
+
+    # Product Details
+    short_desc = fields.Text()
+    desc_line_ids = fields.Many2many('product.desc_line')
+
+    p_detail_title = fields.Char()
+    p_detail_desc = fields.Text()
+
+    p_detail_hl_lbl = fields.Char()
+    p_detail_desc_lbl = fields.Char()
+    p_detail_spe_lbl = fields.Char()
+    p_detail_hl_line_ids = fields.Many2many('product.p_detail_hl_line')
+
+    p_detail_desc_line_ids = fields.Many2many('p_detail.desc_line')
+    spe_line_ids = fields.Many2many('product.spe_line')
+
+
+    """
+    short_desc
+    desc_line_ids
+    
+    p_detail_title
+    p_detail_desc
+    
+    p_detail_hl_lbl
+    p_detail_desc_lbl
+    p_detail_spe_lbl
+    p_detail_line_ids
+    """
+
+
+class ProductDesc_line(models.Model):
+    _name = 'product.desc_line'
+    _description = 'product.desc_line'
+
+    name = fields.Char(required=True)
+
+
+class ProductP_detail_hl_line(models.Model):
+    _name = 'product.p_detail_hl_line'
+    _description = 'product.p_detail_hl_line'
+
+    name = fields.Char(required=True)
+    # desc = fields.Char()
+    line_ids = fields.Many2many('product.p_detail_hl_line2')
+
+
+class ProductP_detail_hl_line2(models.Model):
+    _name = 'product.p_detail_hl_line2'
+    _description = 'product.p_detail_hl_line2'
+
+    name = fields.Char(required=True)
 
 
 class UltimaRibbon(models.Model):
@@ -348,3 +403,31 @@ class UltimaWebsite_menu(models.Model):
 #     def get_menus(self):
 #         menus = self.env['ultima.website_menu'].sudo().search([])
 #         print('menus', menus)
+
+class P_detailDesc_line(models.Model):
+    _name = 'p_detail.desc_line'
+    _description = 'p_detail.desc_line'
+
+    sequence = fields.Integer()
+
+    img_1920 = fields.Image("Image", max_width=1920, max_height=1920)
+    img_1024 = fields.Image("Image 1024", related="img_1920", max_width=1024, max_height=1024, store=True)
+    img_512 = fields.Image("Image 512", related="img_1920", max_width=512, max_height=512, store=True)
+    img_256 = fields.Image("Image 256", related="img_1920", max_width=256, max_height=256, store=True)
+    img_128 = fields.Image("Image 128", related="img_1920", max_width=128, max_height=128, store=True)
+
+    title = fields.Char(translate=True)
+    button_text = fields.Char(translate=True)
+    desc = fields.Text(translate=True)
+    style = fields.Selection([
+        ('left_img_right_text', 'Left Image And Right Text'),
+        ('right_img_left_text', 'Right Image And Left Text'),
+    ])
+
+
+class ProductSpe_line(models.Model):
+    _name = 'product.spe_line'
+    _description = 'product.spe_line'
+
+    name = fields.Char(required=True, translate=True)
+    value = fields.Char(required=True, translate=True)
