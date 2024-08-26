@@ -170,6 +170,7 @@
                             <field name="title"/>
                             <field name="desc"/>
                             <field name="shop_now_url"/>
+                            <field name="shop_now_text"/>
                             <field name="video_url"/>
                         </group>
                         <group>
@@ -248,41 +249,43 @@
 
     <!-- Form view of ultima.home -->
     <record model="ir.ui.view" id="ultima_home_form_id">
-        <field name="name">UltimaHome</field>
+        <field name="name">Home</field>
         <field name="model">ultima.home</field>
         <field name="arch" type="xml">
             <form>
                 <sheet>
                     <group>
                         <separator string="Best Selling Products"/>
-                        <field name="bsp_section"/>
-                        <field name="bsp_title"/>
-                        <field name="bsp_desc"/>
+                        <field name="bsp_section" string="Section"/>
+                        <field name="bsp_title" string="Title"/>
+                        <field name="bsp_desc" string="Description"/>
+                        <field name="bsp_btn_text" string="Button Text"/>
+                        <field name="bsp_ids" string="Best Selling Products"/>
 
                         <separator string="Discover"/>
-                        <field name="dis_section"/>
-                        <field name="dis_title"/>
-                        <field name="dis_desc"/>
-                        <field name="dis_line_ids"/>
+                        <field name="dis_section" string="Section"/>
+                        <field name="dis_title" string="Title"/>
+                        <field name="dis_desc" string="Description"/>
+                        <field name="dis_line_ids" string="Description Lines"/>
 
                         <separator string="Types"/>
-                        <field name="type_section"/>
-                        <field name="type_title"/>
-                        <field name="type_ids"/>
+                        <field name="type_section" string="Section"/>
+                        <field name="type_title" string="Title"/>
+                        <field name="type_ids" string="Lines"/>
 
                         <separator string="Comparison"/>
-                        <field name="com_section"/>
-                        <field name="com_title"/>
-                        <field name="com_ids"/>
+                        <field name="com_section" string="Section"/>
+                        <field name="com_title" string="Title"/>
+                        <field name="com_ids" string="Comparison Lines"/>
 
                         <separator string="Clients"/>
-                        <field name="client_title"/>
-                        <field name="client_img_1920" widget="image" class="oe_avatar"/>
+                        <field name="client_title" string="Title"/>
+                        <field name="client_img_1920" widget="image" class="oe_avatar" string="Images"/>
 
                         <separator string="FAQ"/>
-                        <field name="faq_section"/>
-                        <field name="faq_title"/>
-                        <field name="faq_ids"/>
+                        <field name="faq_section" string="Section"/>
+                        <field name="faq_title" string="Title"/>
+                        <field name="faq_ids" string="Lines"/>
 
                     </group>
                 </sheet>
@@ -940,6 +943,205 @@
     <record model="ir.actions.act_window" id="ultima_website_menu_action_id">
         <field name="name">Website Menu</field>
         <field name="res_model">ultima.website_menu</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- product.desc_line, generated on August 25, 2024 -->
+    <!-- Tree view of product.desc_line -->
+    <record model="ir.ui.view" id="product_desc_line_tree_id">
+        <field name="name">Product Desc_line</field>
+        <field name="model">product.desc_line</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Form view of product.desc_line -->
+    <record model="ir.ui.view" id="product_desc_line_form_id">
+        <field name="name">Product Desc_line</field>
+        <field name="model">product.desc_line</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name"/>
+                        </group>
+                        <group>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Action view of product.desc_line -->
+    <record model="ir.actions.act_window" id="product_desc_line_action_id">
+        <field name="name">Product Desc_line</field>
+        <field name="res_model">product.desc_line</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- product.p_detail_hl_line, generated on August 25, 2024 -->
+    <!-- Tree view of product.p_detail_hl_line -->
+    <record model="ir.ui.view" id="product_p_detail_hl_line_tree_id">
+        <field name="name">Product Details Highlight Line</field>
+        <field name="model">product.p_detail_hl_line</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="line_ids"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Form view of product.p_detail_hl_line -->
+    <record model="ir.ui.view" id="product_p_detail_hl_line_form_id">
+        <field name="name">Product Details Highlight Line</field>
+        <field name="model">product.p_detail_hl_line</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name"/>
+                            <field name="line_ids"/>
+                        </group>
+                        <group>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Action view of product.p_detail_hl_line -->
+    <record model="ir.actions.act_window" id="product_p_detail_hl_line_action_id">
+        <field name="name">Product Details Highlight Line</field>
+        <field name="res_model">product.p_detail_hl_line</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- product.p_detail_hl_line2, generated on August 25, 2024 -->
+    <!-- Tree view of product.p_detail_hl_line2 -->
+    <record model="ir.ui.view" id="product_p_detail_hl_line2_tree_id">
+        <field name="name">Product Details Highlight Line 2</field>
+        <field name="model">product.p_detail_hl_line2</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Form view of product.p_detail_hl_line2 -->
+    <record model="ir.ui.view" id="product_p_detail_hl_line2_form_id">
+        <field name="name">Product Details Highlight Line 2</field>
+        <field name="model">product.p_detail_hl_line2</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name"/>
+                        </group>
+                        <group>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Action view of product.p_detail_hl_line2 -->
+    <record model="ir.actions.act_window" id="product_p_detail_hl_line2_action_id">
+        <field name="name">Product Details Highlight Line 2</field>
+        <field name="res_model">product.p_detail_hl_line2</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- p_detail.desc_line, generated on August 26, 2024 -->
+    <!-- Tree view of p_detail.desc_line -->
+    <record model="ir.ui.view" id="p_detail_desc_line_tree_id">
+        <field name="name">Product Detail Description Line</field>
+        <field name="model">p_detail.desc_line</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="sequence" widget="handle"/>
+                <field name="title"/>
+                <field name="style"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Form view of p_detail.desc_line -->
+    <record model="ir.ui.view" id="p_detail_desc_line_form_id">
+        <field name="name">Product Detail Description Line</field>
+        <field name="model">p_detail.desc_line</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="img_1920" widget="image" class="oe_avatar"/>
+                            <field name="title"/>
+                            <field name="desc"/>
+                            <field name="style"/>
+                        </group>
+                        <group>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Action view of p_detail.desc_line -->
+    <record model="ir.actions.act_window" id="p_detail_desc_line_action_id">
+        <field name="name">Product Detail Description Line</field>
+        <field name="res_model">p_detail.desc_line</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- product.spe_line, generated on August 26, 2024 -->
+    <!-- Tree view of product.spe_line -->
+    <record model="ir.ui.view" id="product_spe_line_tree_id">
+        <field name="name">Product Specification Line</field>
+        <field name="model">product.spe_line</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="value"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Form view of product.spe_line -->
+    <record model="ir.ui.view" id="product_spe_line_form_id">
+        <field name="name">Product Specification Line</field>
+        <field name="model">product.spe_line</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name"/>
+                            <field name="value"/>
+                        </group>
+                        <group>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Action view of product.spe_line -->
+    <record model="ir.actions.act_window" id="product_spe_line_action_id">
+        <field name="name">Product Specification Line</field>
+        <field name="res_model">product.spe_line</field>
         <field name="view_mode">tree,form</field>
     </record>
 

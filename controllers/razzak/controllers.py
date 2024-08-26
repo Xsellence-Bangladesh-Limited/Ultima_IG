@@ -8,22 +8,22 @@ class UltimaWebsite(http.Controller):
     def home(self, **kw):
         intro = req.env['ultima.home.introduce'].sudo().search([], limit=1)
         page = req.env['ultima.home'].sudo().search([], limit=1)
-        products = req.env['product.template'].sudo().search([
-            ('website_publish', '=', True),
-            ('detailed_type', '=', 'product'),
-        ], limit=3)
+
+        # Best Selling Products
+        # products = req.env['product.template'].sudo().search([
+        #     ('website_publish', '=', True),
+        #     ('detailed_type', '=', 'product'),
+        # ], limit=3)
+
         currency_id = req.env.company.currency_id
 
         testimonials = req.env['ultima.testimonial'].sudo().search([])
         layout = req.env['ultima.layout'].sudo().search([], limit=1)
 
-        print('req.env.user.lang', req.env.user.lang)
-        print('req.session.context', req.session.context)
-
         return req.render('ultima.home', {
             'intro': intro,
             'p': page,
-            'products': products,
+            # 'products': products,
             'currency_id': currency_id,
             'testimonials': testimonials,
             'layout': layout,
@@ -39,32 +39,6 @@ class UltimaWebsite(http.Controller):
             ('website_publish', '=', True),
             ('detailed_type', '=', 'product'),
         ])
-
-        # lang = req.session
-        # req.session.context['age'] = 11
-
-        # print(req.session.context['age'])
-
-        # context = req.session.context
-        # context['lang'] = 'bn_IN'
-
-        # session = req.session.context['lang'] = 'bn_IN'
-        # http.root.session_store.save(context)
-
-        # print(req.session.context)
-
-        # a = req.session.get('lang')
-        # print(a)
-
-        # b = req.env.user.lang = 'bn_IN'
-        # print(b)
-
-        # b = req.env.user.lang = 'en_US'
-        # print(b)
-        #
-        # print('req.env.user.lang', req.env.user.lang)
-        # lang_code = 'en_US'
-        # req.update_context(lang=lang_code)
 
         return req.render('ultima.products', {
             'p': page,
@@ -82,16 +56,25 @@ class UltimaWebsite(http.Controller):
         page = req.env['ultima.pd_detail'].sudo().search([], limit=1)
 
         sale_report = req.env['sale.report'].sudo().search([])
-        print('sale_report', sale_report)
 
-        for sr in sale_report:
-            print(sr.product_tmpl_id)
+        # Product
+        product_id = kw.get('id')
+        if not product_id:
+            return 'Product id not passed'
+        
+        product = req.env['product.template'].sudo().search([('id', '=', int(product_id))])
+        if not product:
+            return 'Product object not found'
+
+        currency_id = req.env.company.currency_id
 
         return req.render('ultima.product_details', {
-            'product': 'product',
+            'product': product,
+            'pd': product,
             'testimonials': testimonials,
             'layout': layout,
             'p': page,
+            'currency_id': currency_id,
         })
 
     @http.route('/billing', auth='public')

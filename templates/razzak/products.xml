@@ -5,7 +5,7 @@
             <t t-set="header">
                 <title>Products | Ultima</title>
                 <link rel="stylesheet" href="/ultima/static/css/swiper-bundle.min.css"/>
-                <link rel="stylesheet" href="/ultima/static/css/product.css?product=1"/>
+                <link rel="stylesheet" href="/ultima/static/css/product.css?product=2"/>
             </t>
 
             <t t-set="footer">
@@ -82,7 +82,7 @@
                     <div class="_card">
                         <div class="c_img">
                             <img t-if="pd.image_512" t-att-src="image_data_uri(pd.image_512)" alt="Product"/>
-                            <div class="ribbon"
+                            <div t-if="pd.ribbon_id" class="ribbon"
                                  t-att-style="'background-color: %s; color: %s' % (pd.ribbon_id.bg_color if pd.ribbon_id else '', pd.ribbon_id.text_color if pd.ribbon_id else '')">
                                 <t t-esc="pd.ribbon_id.text if pd.ribbon_id else ''"/>
                             </div>
@@ -93,11 +93,12 @@
                                 <div class="d-f ai-c">
                                     <div class="amount_big sora-600"
                                          t-esc="'%s%s' % (currency_id.symbol ,pd.list_price)"></div>
-                                    <div class="ml-2 old_amount"
+
+                                    <div t-if="pd.old_list_price" class="ml-2 old_amount"
                                          t-esc="'%s%s' % (currency_id.symbol ,pd.old_list_price)"></div>
                                 </div>
                                 <div>
-                                    <div class="percent_off">
+                                    <div t-if="pd.old_list_price" class="percent_off">
                                         <t t-set="discount_amount" t-value="pd.old_list_price - pd.list_price"/>
                                         <t t-set="discount_percentage"
                                            t-value="int((discount_amount / pd.old_list_price) * 100)"/>

@@ -204,6 +204,7 @@ a {
     top: 33px;
     background-color: white;
     transition: display 300ms;
+    z-index: 1;
 }
 
 .dropdown_menu_item {

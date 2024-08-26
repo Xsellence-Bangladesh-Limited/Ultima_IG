@@ -12,6 +12,29 @@
             <xpath expr="//field[@name='categ_id']" position="after">
                 <field name="old_list_price" string="Old Sales Price"></field>
             </xpath>
+            <xpath expr="//page[@name='general_information']" position="after">
+                <page name="website_detail" string="Website Details">
+                    <group>
+                        <group>
+                            <separator string="Product"/>
+                            <field name="short_desc" string="Short Description"/>
+                            <field name="desc_line_ids" string="Description Lines"/>
+
+                            <separator string="Product Details"/>
+                            <field name="p_detail_title" string="Pd. Title"/>
+                            <field name="p_detail_desc" string="Pd. Description"/>
+                            <field name="p_detail_hl_lbl" string="Pd. Highlight Label"/>
+                            <field name="p_detail_desc_lbl" string="Pd. Description Label"/>
+                            <field name="p_detail_spe_lbl" string="Pd. Specification Label"/>
+
+                            <field name="p_detail_desc_line_ids" string="Pd. Description Lines"/>
+                            <field name="spe_line_ids" string="Pd. Specifications"/>
+
+                        </group>
+                        <group></group>
+                    </group>
+                </page>
+            </xpath>
         </field>
     </record>
 </odoo>

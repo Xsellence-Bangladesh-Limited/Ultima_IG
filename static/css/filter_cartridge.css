@@ -209,11 +209,6 @@ End Product Details
     Frequently Asked Question
 */
 
-.faq .active {
-    color: white !important;
-    background-color: #0C79F9 !important;
-}
-
 .faq .accordion {
     background-color: #fff;
     color: #444;
@@ -224,7 +219,6 @@ End Product Details
     outline: none;
     font-size: 15px;
     transition: 0.4s;
-    /* width: 100%; */
     border-top-left-radius: 4px;
     border-top-right-radius: 4px;
     border: 1px solid rgb(242, 242, 242);
@@ -240,33 +234,17 @@ End Product Details
     margin-bottom: 10px;
 }
 
-/* .faq .accordion:after {
-    content: '\002B';
-    background-color: white;
-    color: black;
-    font-weight: bold;
-    float: right;
-    margin-left: 5px;
-} */
-
 .faq .accordion:after {
-    content: '\002B';
-    /* background-color: white; */
-    color: black;
+    content: '\2335';
     font-weight: bold;
     float: right;
-    /* margin-left: 5px; */
-    /* padding: 3px; */
-    /* border-radius: 50%; */
-    /* width: 25px; */
-    /* height: 25px; */
     text-align: center;
-    /* border: 1px solid gray; */
+    transition: rotate 200ms;
 }
 
 .faq .active:after {
-    content: "\2212";
-    color: white;
+    content: "\2335";
+    rotate: 180deg;
 }
 
 .faq .panel {
@@ -294,6 +272,7 @@ End Product Details
 .faq_text {
     line-height: 21px;
     font-size: 15px;
+    margin-top: 1rem;
 }
 
 .faq .faq_content {

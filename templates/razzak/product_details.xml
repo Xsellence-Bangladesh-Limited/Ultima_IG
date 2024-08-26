@@ -7,7 +7,7 @@
                 <link rel="stylesheet" href="/ultima/static/css/owl.carousel.min.css"/>
                 <link rel="stylesheet" href="/ultima/static/css/owl.theme.default.min.css"/>
                 <link rel="stylesheet" href="/ultima/static/css/swiper-bundle.min.css"/>
-                <link rel="stylesheet" href="/ultima/static/css/filter_cartridge.css"/>
+                <link rel="stylesheet" href="/ultima/static/css/filter_cartridge.css?filter_cartridge=2"/>
             </t>
 
             <t t-set="footer">
@@ -19,7 +19,7 @@
             <!--
             Service Kit
             -->
-            <div class="service_kit py-5 px-2">
+            <div class="service_kit py-5 px-4 px-lg-2">
                 <div class="items">
 
                     <!-- Left Item -->
@@ -63,31 +63,18 @@
 
                     <!-- Right Item -->
                     <div class="right_item">
-                        <h3>06 Months Service Kit</h3>
+                        <h3 t-raw="product.name"></h3>
 
-                        <div class="text">
-                            Through our years of experience, we’ve also learned that while each channel has its own set
-                            of advantages,
-                            they all work best when strategically paired with other channels. This is the main factor
-                            that sets us apart
-                            from our competition. Through our years of experience. They all work best when strategically
-                            paired with other
-                            channels. This is the main factor that sets us apart from our competition. Through our years
-                            of experience.
+                        <div class="text" t-raw="product.short_desc">
                         </div>
 
                         <div>
                             <ul class="mt-4 mb-3 pl-4" style="color: black;">
-                                <li class="text_black">Normal filters remove dirt, sand, and other particles, but they
-                                    cannot remove
-                                </li>
-                                <li class="text_black">Some chemical filters use toxic chlorine which is the cause of
-                                    disease.
-                                </li>
-                                <li class="text_black">Some chemical filters use toxic chlorine which is the cause of
-                                    disease.
-                                </li>
-                                <li class="text_black">Still there is an issue with pouring water exists.</li>
+
+                                <t t-foreach="product.desc_line_ids" t-as="l">
+                                    <li class="text_black" t-raw="l.name"></li>
+                                </t>
+
                             </ul>
                         </div>
 
@@ -97,8 +84,10 @@
                             </div>
                             <div>
                                 <div class="d-f ai-c">
-                                    <div class="amount_big sora-600">$200</div>
-                                    <div class="ml-2 old_amount">$300</div>
+                                    <div class="amount_big sora-600"
+                                         t-esc="'%s%s' % (currency_id.symbol ,pd.list_price)"></div>
+                                    <div t-if="pd.old_list_price" class="ml-2 old_amount"
+                                         t-esc="'%s%s' % (currency_id.symbol ,pd.old_list_price)"></div>
                                 </div>
                             </div>
                         </div>
@@ -127,12 +116,9 @@
                 <div class="header">
                     <div class="content">
 
-                        <h3>Product Details</h3>
+                        <h3 t-raw="pd.p_detail_title"></h3>
 
-                        <div class="text pt-2">
-                            Safeguarding your family's health with the most advanced American RO technology. Protecting
-                            80% of waterborne
-                            diseases, it ensures 100% safe.
+                        <div class="text pt-2" t-raw="pd.p_detail_desc">
                         </div>
 
                         <div class="tabs">
@@ -153,8 +139,8 @@
                                             d="M21.5 18C21.5 19.1046 20.6046 20 19.5 20C18.3954 20 17.5 19.1046 17.5 18C17.5 16.8954 18.3954 16 19.5 16C20.6046 16 21.5 16.8954 21.5 18Z"
                                             stroke-width="1.5"/>
                                 </svg>
-                                <div id="pd_detail_svg_text_1" class="pd_detail_svg_text pd_detail_svg_text_active">
-                                    Highlights
+                                <div id="pd_detail_svg_text_1"
+                                     class="pd_detail_svg_text pd_detail_svg_text_active" t-raw="pd.p_detail_hl_lbl">
                                 </div>
                             </div>
 
@@ -180,9 +166,9 @@
                                     <path d="M16.5 20H24.5" stroke-width="1.5" stroke-linecap="round"/>
                                     <path d="M16.5 15H24.5" stroke-width="1.5" stroke-linecap="round"/>
                                 </svg>
-                                <div id="pd_detail_svg_text_2" class="pd_detail_svg_text pd_detail_svg_text_active2">
-                                    Description
-                                </div>
+                                <div id="pd_detail_svg_text_2"
+                                     class="pd_detail_svg_text pd_detail_svg_text_active2"
+                                     t-raw="pd.p_detail_desc_lbl"></div>
                             </div>
 
                             <div>
@@ -205,9 +191,9 @@
                                             d="M29 25.9998L20.8123 29.6388C20.2951 29.8686 19.7049 29.8686 19.1877 29.6388L11 25.9998M29 20.9998L20.8123 24.6388C20.2951 24.8686 19.7049 24.8686 19.1877 24.6388L11 20.9998M11.7889 15.8942L19.1056 19.5526C19.6686 19.8341 20.3314 19.8341 20.8944 19.5526L28.2111 15.8942C28.9482 15.5257 28.9482 14.4739 28.2111 14.1053L20.8944 10.447C20.3314 10.1655 19.6686 10.1655 19.1056 10.447L11.7889 14.1053C11.0518 14.4739 11.0518 15.5257 11.7889 15.8942Z"
                                             stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                                 </svg>
-                                <div id="pd_detail_svg_text_3" class="pd_detail_svg_text pd_detail_svg_text_active2">
-                                    Specification
-                                </div>
+                                <div id="pd_detail_svg_text_3"
+                                     class="pd_detail_svg_text pd_detail_svg_text_active2"
+                                     t-raw="pd.p_detail_spe_lbl"></div>
                             </div>
 
                         </div>
@@ -220,23 +206,23 @@
 
                     <!-- Highlight -->
                     <div id="tab_content_1" class="tab_content" style="display: block;">
-                        <div class="banner_and_desc2">
-                            <div>
-                                <h4 class="mb-3">Highlights</h4>
-                                <ul class="mt-4 mb-3 pl-4" style="color: black;">
-                                    <li class="text_black">Normal filters remove dirt, sand, and other particles, but
-                                        they cannot remove
-                                    </li>
-                                    <li class="text_black">Some chemical filters use toxic chlorine which is the cause
-                                        of disease.
-                                    </li>
-                                    <li class="text_black">Some chemical filters use toxic chlorine which is the cause
-                                        of disease.
-                                    </li>
-                                    <li class="text_black">Still there is an issue with pouring water exists.</li>
-                                </ul>
+
+                        <t t-foreach="pd.p_detail_hl_line_ids" t-as="l">
+                            <div class="banner_and_desc2 mb-2">
+                                <div>
+                                    <h4 class="mb-3" t-esc="l.name"></h4>
+                                    <ul class="mb-3 pl-4" style="color: black;">
+
+                                        <t t-if="l and l.line_ids">
+                                            <t t-foreach="l.line_ids" t-as="l2">
+                                                <li class="text_black" t-raw="l2.name"></li>
+                                            </t>
+                                        </t>
+
+                                    </ul>
+                                </div>
                             </div>
-                        </div>
+                        </t>
                     </div>
                     <!-- End Highlight -->
 
@@ -246,74 +232,38 @@
                         <!-- Filtration types -->
                         <div class="block filtration">
 
-                            <!-- <div class="header">
-                              <div class="content">
-                                <div class="text-gradient">Process</div>
-                                <div>
-                                  <h3>Our Filtration Types <br>& Solution</h3>
-                                </div>
-                              </div>
-                            </div> -->
+                            <t t-foreach="pd.p_detail_desc_line_ids" t-as="t">
 
-                            <!-- Image and text -->
-                            <div class="con_banner_and_desc">
-                                <div class="banner_and_desc">
-                                    <div>
-                                        <img class="banner" src="/ultima/static/image/product_detail/1.png"
-                                             alt="100% Purified Water"/>
-                                    </div>
-                                    <div>
-                                        <div class="title sora-600">100% Purified Water</div>
-                                        <div class="text mt-2">
-                                            Water filters work as a physical barrier that can block or trap debris (for
-                                            example sand) and
-                                            sometimes bacteria from passing through. Generally, the speed of the water
-                                            flow will depend on the
-                                            size of the gaps in the filter barrier or membrane.
+                                <!-- Image and text -->
+                                <div t-if="t.style == 'left_img_right_text'" class="con_banner_and_desc">
+                                    <div class="banner_and_desc">
+                                        <div>
+                                            <img class="banner" t-if="t.img_512" t-att-src="image_data_uri(t.img_512)"
+                                                 alt=""/>
+                                        </div>
+                                        <div>
+                                            <div class="title sora-600" t-raw="t.title"></div>
+                                            <div class="text mt-2" t-raw="t.desc">
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
 
-                            <!-- Image and text 2 -->
-                            <div class="con_banner_and_desc bg_light">
-                                <div class="banner_and_desc">
-                                    <div>
-                                        <div class="title sora-600">Includes Minaral Cartidige</div>
-                                        <div class="text mt-2">
-                                            Water filters work as a physical barrier that can block or trap debris (for
-                                            example sand) and
-                                            sometimes bacteria from passing through. Generally, the speed of the water
-                                            flow will depend on the
-                                            size of the gaps in the filter barrier or membrane.
+                                <!-- Image and text 2 -->
+                                <div t-else="" class="con_banner_and_desc bg_light">
+                                    <div class="banner_and_desc">
+                                        <div>
+                                            <div class="title sora-600" t-raw="t.title"></div>
+                                            <div class="text mt-2" t-raw="t.desc"></div>
                                         </div>
-                                    </div>
-                                    <div>
-                                        <img class="banner" src="/ultima/static/image/product_detail/2.png"
-                                             alt="Includes Minaral Cartidige"/>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Image and text 3 -->
-                            <div class="con_banner_and_desc">
-                                <div class="banner_and_desc">
-                                    <div>
-                                        <img class="banner" src="/ultima/static/image/product_detail/3.png"
-                                             alt="Storage With Water Level"/>
-                                    </div>
-                                    <div>
-                                        <div class="title sora-600">Storage With Water Level</div>
-                                        <div class="text mt-2">
-                                            Water filters work as a physical barrier that can block or trap debris (for
-                                            example sand) and
-                                            sometimes bacteria from passing through. Generally, the speed of the water
-                                            flow will depend on the
-                                            size of the gaps in the filter barrier or membrane.
+                                        <div>
+                                            <img class="banner" t-if="t.img_512" t-att-src="image_data_uri(t.img_512)"
+                                                 alt=""/>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+
+                            </t>
 
                         </div>
                         <!-- End Filtration types -->
@@ -326,26 +276,14 @@
                             <div style="width: 100%;">
                                 <h4 class="mb-3">Specification</h4>
                                 <table class="table table-striped">
-                                    <tr>
-                                        <td>Driver Diameter</td>
-                                        <td>40mm</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Connectivity</td>
-                                        <td>1 x USB Type-A</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Weight</td>
-                                        <td>6.22 oz / 176.4 g</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Color</td>
-                                        <td>Black</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Manufacturing Warranty</td>
-                                        <td>02-year</td>
-                                    </tr>
+
+                                    <t t-foreach="pd.spe_line_ids" t-as="spe">
+                                        <tr>
+                                            <td t-raw="spe.name"></td>
+                                            <td t-raw="spe.value"></td>
+                                        </tr>
+                                    </t>
+
                                 </table>
                             </div>
                         </div>
