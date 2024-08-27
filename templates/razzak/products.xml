@@ -5,7 +5,7 @@
             <t t-set="header">
                 <title>Products | Ultima</title>
                 <link rel="stylesheet" href="/ultima/static/css/swiper-bundle.min.css"/>
-                <link rel="stylesheet" href="/ultima/static/css/product.css?product=2"/>
+                <link rel="stylesheet" href="/ultima/static/css/product.css?product=3"/>
                 <!-- Fontawesome CDN (start) -->
                 <script src="/ultima/static/third_party_UI_library/Fontawesome/js/all.min.js" defer="1"/>
                 <!-- Fontawesome CDN (end) -->
