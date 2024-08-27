@@ -27,6 +27,7 @@
                             <field name="p_detail_desc_lbl" string="Pd. Description Label"/>
                             <field name="p_detail_spe_lbl" string="Pd. Specification Label"/>
 
+                            <field name="p_detail_hl_line_ids" string="Pd. Highlight Lines"/>
                             <field name="p_detail_desc_line_ids" string="Pd. Description Lines"/>
                             <field name="spe_line_ids" string="Pd. Specifications"/>
 
