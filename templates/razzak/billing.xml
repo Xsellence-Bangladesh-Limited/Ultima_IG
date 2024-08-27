@@ -4,7 +4,7 @@
 
             <t t-set="header">
                 <title>Billing | Ultima</title>
-                <link rel="stylesheet" href="/ultima/static/css/billing.css"/>
+                <link rel="stylesheet" href="/ultima/static/css/billing.css?v=1.2"/>
             </t>
 
             <t t-set="footer">
