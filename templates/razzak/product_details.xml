@@ -7,13 +7,13 @@
                 <link rel="stylesheet" href="/ultima/static/css/owl.carousel.min.css"/>
                 <link rel="stylesheet" href="/ultima/static/css/owl.theme.default.min.css"/>
                 <link rel="stylesheet" href="/ultima/static/css/swiper-bundle.min.css"/>
-                <link rel="stylesheet" href="/ultima/static/css/filter_cartridge.css?filter_cartridge=2"/>
+                <link rel="stylesheet" href="/ultima/static/css/filter_cartridge.css?filter_cartridge=3"/>
             </t>
 
             <t t-set="footer">
                 <script src="/ultima/static/js/owl.carousel.min.js"/>
                 <script src="/ultima/static/js/swiper-bundle.min.js"/>
-                <script src="/ultima/static/js/filter_cartridge.js"/>
+                <script src="/ultima/static/js/filter_cartridge.js?v=filter_cartridge2"/>
             </t>
 
             <!--

@@ -61,7 +61,7 @@ class UltimaWebsite(http.Controller):
         product_id = kw.get('id')
         if not product_id:
             return 'Product id not passed'
-        
+
         product = req.env['product.template'].sudo().search([('id', '=', int(product_id))])
         if not product:
             return 'Product object not found'
