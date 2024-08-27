@@ -53,13 +53,13 @@
 
                 <div class="container-fluid">
 
-                    <form action="#">
+                    <form action="" method="POST">
                         <div class="row">
 
                             <div class="col-12 col-lg-1"></div>
 
                             <!-- Left side -->
-                            <div class="col-12 col-lg-5">
+                            <div class="col-12 col-lg-5 d-none">
                                 <div class="billing_box">
                                     <div class="title">Have a coupon code?</div>
                                     <div class="content">
@@ -127,7 +127,7 @@
                             </div>
 
                             <!-- Right side -->
-                            <div class="col-12 col-lg-5 mt-3 mt-lg-0">
+                            <div class="col-12 col-lg-5 mt-3 mt-lg-0 mx-auto">
 
                                 <div class="billing_box">
 
@@ -141,7 +141,7 @@
                                                     <div class="b_input_label text">Full Name
                                                         <span class="b_required">*</span>
                                                     </div>
-                                                    <input type="text" class="b_input" placeholder="Full Name"/>
+                                                    <input type="text" class="b_input" placeholder="Full Name" name="full_name" required="1"/>
                                                 </div>
                                             </div>
                                             <div class="col-12 col-md-6">
@@ -149,7 +149,7 @@
                                                     <div class="b_input_label text">Phone Number
                                                         <span class="b_required">*</span>
                                                     </div>
-                                                    <input type="text" class="b_input" placeholder="019xxxxxxxx"/>
+                                                    <input type="text" class="b_input" placeholder="019xxxxxxxx" name="phone_number" required="1"/>
                                                 </div>
                                             </div>
                                         </div>
@@ -160,7 +160,7 @@
                                                     <div class="b_input_label text">Email Address
                                                         <span class="b_required">*</span>
                                                     </div>
-                                                    <input type="email" class="b_input" placeholder="Email Address"/>
+                                                    <input type="email" class="b_input" placeholder="Email Address" name="email_address" required="1"/>
                                                 </div>
                                             </div>
                                             <div class="col-12 col-md-6">
@@ -169,7 +169,7 @@
                                                         <span class="b_required">*</span>
                                                     </div>
                                                     <input type="text" class="b_input"
-                                                           placeholder="House #20, Road #26, Mirpur, Dhaka 1216"/>
+                                                           placeholder="House #20, Road #26, Mirpur, Dhaka 1216" name='address' required="1"/>
                                                 </div>
                                             </div>
                                         </div>
@@ -177,12 +177,12 @@
                                         <div class="b_input_group">
                                             <div class="b_input_label text">Order Note</div>
                                             <input type="text" class="b_input"
-                                                   placeholder="E.g: Call me when you arrive..."/>
+                                                   placeholder="E.g: Call me when you arrive..." name="order_note"/>
                                         </div>
 
                                         <div class="b_input_group">
                                             <div class="b_input_label text">Shipping Location</div>
-                                            <select class="b_input">
+                                            <select class="b_input" name="shipping_location">
                                                 <option value="19" selected="1">Bangladesh</option>
                                                 <option value="01">China</option>
                                                 <option value="02">Japan</option>
@@ -191,7 +191,7 @@
 
                                         <div class="b_input_group">
                                             <div class="b_input_label text">Shipping Type</div>
-                                            <select class="b_input">
+                                            <select class="b_input" name="shipping_type">
                                                 <option value="" selected="1">Select Shipping Type</option>
                                                 <option value="1">Type 01</option>
                                                 <option value="2">Type 02</option>
@@ -200,10 +200,22 @@
                                         </div>
 
                                         <div class="b_input_group">
-                                            <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike"/>
-                                            <label class="b_input_label text" for="vehicle1">Ship to a different
-                                                address?
-                                            </label>
+                                            <div class="b_input_label text">OTP <span class="b_required">*</span></div>
+                                            <input type="text" class="b_input"
+                                                   placeholder="Enter the 4 digits OTP (Ex: 4444)" name="otp" required="1"/>
+                                        </div>
+
+<!--                                        <div class="b_input_group">-->
+<!--                                            <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike"/>-->
+<!--                                            <label class="b_input_label text" for="vehicle1">Ship to a different-->
+<!--                                                address?-->
+<!--                                            </label>-->
+<!--                                        </div>-->
+
+                                        <input type="hidden" t-att-value="product_id" name="product_id"/>
+
+                                        <div class="billing-submit-btn-container">
+                                            <button class="billing-submit-btn">Continue</button>
                                         </div>
 
                                     </div>

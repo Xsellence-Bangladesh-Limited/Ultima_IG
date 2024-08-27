@@ -25,3 +25,4 @@ product_p_detail_hl_line,product_p_detail_hl_line,model_product_p_detail_hl_line
 product_p_detail_hl_line2,product_p_detail_hl_line2,model_product_p_detail_hl_line2,,1,1,1,1
 p_detail_desc_line,p_detail_desc_line,model_p_detail_desc_line,,1,1,1,1
 product_spe_line,product_spe_line,model_product_spe_line,,1,1,1,1
+ultima_product_order,ultima_product_order,model_ultima_product_order,,1,1,1,1

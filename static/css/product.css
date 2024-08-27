@@ -1,5 +1,17 @@
+/* Google Font (start) */
+
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Sora:wght@100..800&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+/* Google Font (end) */
+
 :root {
     --primary-color: #0c79f9;
+    --title-font-family: "Sora", sans-serif;
+    --normal-text-font-family: "Poppins", sans-serif;
+    --heading-font-weight: 600;
+    --normal-title-font-weight: 400;
 }
 
 /* 
@@ -24,6 +36,83 @@ Page Global
 /* 
 End Page Global 
 */
+
+/* OTP modal (start) */
+
+.otp-modal-parent-container{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(214, 214, 212, 0.7);
+    z-index: 100000;
+    display: none;
+}
+
+.otp-modal-parent{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.otp-modal-header{
+    display: flex;
+    justify-content: end;
+    padding: 10px;
+    border-bottom: 1px solid #f3f3f3;
+}
+
+.otp-modal-body{
+    padding: 0px 10px;
+}
+
+.otp-modal-body h5{
+    font-family: var(--title-font-family);
+    font-weight: var(--heading-font-weight);
+}
+
+.otp-modal-close-btn{
+    font-size: 1.75rem;
+    cursor: pointer;
+    color: #E10505;
+}
+
+.otp-modal{
+    width: 40%;
+    background-color: #fff;
+}
+
+#otp-input{
+    width: 100%;
+    padding: 5px 10px;
+    border: 1px solid #ddd;
+    border-radius: 100px;
+    outline: none !important;
+    font-size: 15px;
+    font-family: var(--normal-text-font-family);
+    font-weight: var(--normal-title-font-weight);
+}
+
+.submit-btn-container{
+    display: flex;
+    justify-content: center;
+}
+
+.otp-form-submit-btn{
+    padding: 5px 25px;
+    border: none;
+    outline: none !important;
+    border-radius: 100px;
+    background-color: var(--primary-color);
+    font-family: var(--normal-text-font-family);
+    color: #fff;
+    cursor: pointer;
+}
+
+/* OTP modal (end) */
 
 /* 
 Carousel
@@ -206,6 +295,9 @@ Our All Products
     padding: 4px 0px;
     box-shadow: 0px 1px 1px rgba(90, 186, 245, 0.405);
     transition: background-color 300ms;
+    outline: none !important;
+    width: 100%;
+    cursor: pointer;
 }
 
 ._card .button_outline:hover {

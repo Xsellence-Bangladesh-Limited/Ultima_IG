@@ -6,12 +6,35 @@
                 <title>Products | Ultima</title>
                 <link rel="stylesheet" href="/ultima/static/css/swiper-bundle.min.css"/>
                 <link rel="stylesheet" href="/ultima/static/css/product.css?product=2"/>
+                <!-- Fontawesome CDN (start) -->
+                <script src="/ultima/static/third_party_UI_library/Fontawesome/js/all.min.js" defer="1"/>
+                <!-- Fontawesome CDN (end) -->
             </t>
 
             <t t-set="footer">
                 <script src="/ultima/static/js/swiper-bundle.min.js"/>
                 <script src="/ultima/static/js/product.js"/>
             </t>
+
+            <!-- OTP modal (start)-->
+<!--            <div class="otp-modal-parent-container">-->
+<!--                <div class="otp-modal-parent">-->
+<!--                    <div class="otp-modal">-->
+<!--                        <div class="otp-modal-header mb-2">-->
+<!--                            <i class="fa-solid fa-circle-xmark otp-modal-close-btn"></i>-->
+<!--                        </div>-->
+
+<!--                        <div class="otp-modal-body">-->
+<!--                            <h5 class="text-center mb-3">Enter the OTP</h5>-->
+<!--                            <input id="otp-input" type="text" name="otp_input_value" class="mb-3" required="1"/>-->
+<!--                            <div class="submit-btn-container">-->
+<!--                                <button type="button" class="otp-form-submit-btn mb-4">Submit</button>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
+            <!-- OTP modal (end)-->
 
             <!--
               Carousel
@@ -80,41 +103,43 @@
                 <t t-foreach="products" t-as="pd">
                     <!-- _card -->
                     <div class="_card">
-                        <div class="c_img">
-                            <img t-if="pd.image_512" t-att-src="image_data_uri(pd.image_512)" alt="Product"/>
-                            <div t-if="pd.ribbon_id" class="ribbon"
-                                 t-att-style="'background-color: %s; color: %s' % (pd.ribbon_id.bg_color if pd.ribbon_id else '', pd.ribbon_id.text_color if pd.ribbon_id else '')">
-                                <t t-esc="pd.ribbon_id.text if pd.ribbon_id else ''"/>
-                            </div>
-                        </div>
-                        <div class="text_content">
-                            <div class="title sora-600" t-esc="pd.name"></div>
-                            <div class="d-f jc-sb">
-                                <div class="d-f ai-c">
-                                    <div class="amount_big sora-600"
-                                         t-esc="'%s%s' % (currency_id.symbol ,pd.list_price)"></div>
-
-                                    <div t-if="pd.old_list_price" class="ml-2 old_amount"
-                                         t-esc="'%s%s' % (currency_id.symbol ,pd.old_list_price)"></div>
+                        <a t-attf-href="/product-details?id={{pd.id}}">
+                            <div class="c_img">
+                                <img t-if="pd.image_512" t-att-src="image_data_uri(pd.image_512)" alt="Product"/>
+                                <div t-if="pd.ribbon_id" class="ribbon"
+                                     t-att-style="'background-color: %s; color: %s' % (pd.ribbon_id.bg_color if pd.ribbon_id else '', pd.ribbon_id.text_color if pd.ribbon_id else '')">
+                                    <t t-esc="pd.ribbon_id.text if pd.ribbon_id else ''"/>
                                 </div>
-                                <div>
-                                    <div t-if="pd.old_list_price" class="percent_off">
-                                        <t t-set="discount_amount" t-value="pd.old_list_price - pd.list_price"/>
-                                        <t t-set="discount_percentage"
-                                           t-value="int((discount_amount / pd.old_list_price) * 100)"/>
-                                        <div class="content" t-esc="'%s%s OFF' % (discount_percentage, '%')"></div>
+                            </div>
+                            <div class="text_content">
+                                <div class="title sora-600" t-esc="pd.name"></div>
+                                <div class="d-f jc-sb">
+                                    <div class="d-f ai-c">
+                                        <div class="amount_big sora-600"
+                                             t-esc="'%s%s' % (currency_id.symbol ,pd.list_price)"></div>
+
+                                        <div t-if="pd.old_list_price" class="ml-2 old_amount"
+                                             t-esc="'%s%s' % (currency_id.symbol ,pd.old_list_price)"></div>
+                                    </div>
+                                    <div>
+                                        <div t-if="pd.old_list_price" class="percent_off">
+                                            <t t-set="discount_amount" t-value="pd.old_list_price - pd.list_price"/>
+                                            <t t-set="discount_percentage"
+                                               t-value="int((discount_amount / pd.old_list_price) * 100)"/>
+                                            <div class="content" t-esc="'%s%s OFF' % (discount_percentage, '%')"></div>
+                                        </div>
                                     </div>
                                 </div>
+                                <div class="tags">
+                                    <t t-foreach="pd.tag_ids" t-as="tag">
+                                        <div class="item color1"
+                                             t-att-style="'background-color: %s; color: %s' % (tag.bg_color, tag.text_color)"
+                                             t-esc="tag.name"></div>
+                                    </t>
+                                </div>
                             </div>
-                            <div class="tags">
-                                <t t-foreach="pd.tag_ids" t-as="tag">
-                                    <div class="item color1"
-                                         t-att-style="'background-color: %s; color: %s' % (tag.bg_color, tag.text_color)"
-                                         t-esc="tag.name"></div>
-                                </t>
-                            </div>
-                        </div>
-                        <a href="#" class="button_outline">Buy Now</a>
+                        </a>
+                        <a t-attf-href="/billing?product_id={{pd.id}}" type="button" class="button_outline">Buy Now</a>
                     </div>
                     <!-- End _card -->
                 </t>
@@ -211,7 +236,7 @@
               End Frequently Asked Question
             -->
 
-             <t t-call="ultima.testimonial"/>
+            <t t-call="ultima.testimonial"/>
 
         </t>
     </template>
