@@ -1,5 +1,6 @@
 from odoo import http
 from odoo.http import request as req
+from werkzeug.utils import redirect
 
 
 class UltimaWebsite(http.Controller):
@@ -77,11 +78,67 @@ class UltimaWebsite(http.Controller):
             'currency_id': currency_id,
         })
 
-    @http.route('/billing', auth='public')
+    @http.route('/billing', auth='public', csrf=False)
     def billing(self, **kw):
+        if req.httprequest.method == 'POST':
+            form_product_id = int(kw.get('product_id')) if kw.get('product_id') else None
+            full_name = kw.get('full_name').strip() if kw.get('full_name') else ''
+            phone_number = kw.get('phone_number').strip() if kw.get('phone_number') else ''
+            email_address = kw.get('email_address').strip() if kw.get('email_address') else ''
+            address = kw.get('address').strip() if kw.get('address') else ''
+            order_note = kw.get('order_note').strip() if kw.get('order_note') else ''
+            shipping_location = kw.get('shipping_location').strip() if kw.get('shipping_location') else ''
+            shipping_type = kw.get('shipping_type').strip() if kw.get('shipping_type') else ''
+            otp = kw.get('otp').strip() if kw.get('otp') else ''
+
+            product_obj = req.env['product.product'].sudo().search([('product_tmpl_id', '=', form_product_id)])
+
+            # [(4, other_guiding_area_id) for other_guiding_area_id in other_guiding_area_ids]
+
+            # Creating a new order (start)
+
+            new_order = req.env['ultima.product.order'].sudo().create({
+                'full_name': full_name,
+                'phone_number': phone_number,
+                'email_address': email_address,
+                'address': address,
+                'order_note': order_note,
+                'shipping_location': shipping_location,
+                'shipping_type': shipping_type,
+                'otp': otp,
+                'product_ids': [(4, product_obj.id)]
+            })
+
+            if new_order:
+                logged_in_user = req.env['res.users'].sudo().search([('id', '=', req.env.user.id)])
+
+                new_sale_order = req.env['sale.order'].sudo().create({
+                    'partner_id': logged_in_user.partner_id.id,
+                    'order_line': [
+                        (0, 0, {
+                            'product_id': product.id,
+                            'product_uom_qty': 1,
+                            'price_unit': product.list_price
+                        }) for product in new_order.product_ids
+                    ]
+                })
+
+                if new_sale_order:
+                    return redirect('/order-completed')
+
+            # Creating a new order (end)
+
+
         layout = req.env['ultima.layout'].sudo().search([], limit=1)
+
+        product_id = int(kw.get('product_id')) if kw.get('product_id') else None
 
         return req.render('ultima.billing', {
             'product': 'product',
+            'product_id': product_id,
             'layout': layout,
         })
+
+    @http.route('/order-completed', auth='public')
+    def complete_order(self):
+        return req.render('ultima.ultima_order_completion_template', {})

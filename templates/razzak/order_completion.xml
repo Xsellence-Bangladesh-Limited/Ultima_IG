@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<odoo>
+    <template id="ultima_order_completion_template">
+        <t t-call="ultima.layout">
+            <head>
+                <meta charset="UTF-8"/>
+                <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+                <title>Order completed | Ultima</title>
+
+                <!-- Bootstrap (start) -->
+                <link rel="stylesheet" href="/ultima/static/third_party_UI_library/Bootstrap/css/bootstrap.min.css"/>
+                <!-- Bootstrap (end) -->
+
+                <!-- Custom CSS (start) -->
+                <link rel="stylesheet" href="/ultima/static/css/order_completion.css?v=1.0"/>
+                <!-- Custom CSS (end) -->
+
+                <!-- Fontawesome CDN (start) -->
+                <script src="/ultima/static/third_party_UI_library/Fontawesome/js/all.min.js" defer="1"/>
+                <!-- Fontawesome CDN (end) -->
+            </head>
+
+            <body>
+                <div class="my-container">
+                    <!--step-->
+                    <div class="container_step py-5">
+
+                        <div class="step">
+                            <div class="steps">
+
+                                <div class="circle d-f ai-c jc-c">
+                                    <div>1</div>
+                                </div>
+
+                                <div class="dashed_line" style="flex: 1;"></div>
+
+                                <div class="circle d-f ai-c jc-c">
+                                    <div>2</div>
+                                </div>
+                            </div>
+
+                            <div class="step_text">
+                                <div class="step_text_content left">
+                                    Address &amp;
+                                    <br/>
+                                    Payment Details
+                                </div>
+                                <div class="step_text_content right">
+                                    Order
+                                    <br/>
+                                    Complete
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <!--End step-->
+
+                    <div class="thanks-div-container mb-5">
+                        <div class="thanks-div">
+                            <img src="/ultima/static/image/order_completion.png" class="order_completion_icon mb-3"/>
+                            <h6 class="thanks-div-title mb-2">Thanks for your order!</h6>
+                            <p class="thanks-div-description mb-3">
+                                Woohoo! Your payment was successful, and your order is complete.
+                                A receipt and download instructions are on their way to your inbox.
+                            </p>
+                            <img class="form_illustration_icon form_illustration_icon_1" src="/ultima/static/image/order_completion_illustration_icon_1.png"/>
+                            <img class="form_illustration_icon form_illustration_icon_2" src="/ultima/static/image/order_completion_illustration_icon_2.png"/>
+                            <img class="form_illustration_icon form_illustration_icon_3" src="/ultima/static/image/order_completion_illustration_icon_3.png"/>
+                            <img class="form_illustration_icon form_illustration_icon_4" src="/ultima/static/image/order_completion_illustration_icon_4.png"/>
+                            <img class="form_illustration_icon form_illustration_icon_5" src="/ultima/static/image/order_completion_illustration_icon_5.png"/>
+
+                            <div class="payment-success-button-container">
+                                <button class="payment-success-btn">Payment Success</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </body>
+        </t>
+    </template>
+</odoo>

@@ -8,7 +8,7 @@
                 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
                 <title>
                     <t t-esc="category_name"/>
-                    | Ultima IG
+                    | Ultima
                 </title>
 
                 <!-- Bootstrap (start) -->

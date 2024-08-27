@@ -6,7 +6,7 @@
             <head>
                 <meta charset="UTF-8"/>
                 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-                <title>Service Request | Ultima IG</title>
+                <title>Service Request | Ultima</title>
 
                 <!-- Bootstrap (start) -->
                 <link rel="stylesheet" href="/ultima/static/third_party_UI_library/Bootstrap/css/bootstrap.min.css"/>

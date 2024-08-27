@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<odoo>
+    <data noupdate="1">
+        <record id="ultima_product_order_seq" model="ir.sequence">
+            <field name="name">Ultima product order sequence</field>
+            <field name="code">ultima.product.order.seq</field>
+            <field name="prefix">ORDER</field>
+            <field name="padding">5</field>
+            <field name="number_next">1</field>
+        </record>
+    </data>
+</odoo>

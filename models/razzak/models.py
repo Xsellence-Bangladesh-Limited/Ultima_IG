@@ -431,3 +431,25 @@ class ProductSpe_line(models.Model):
 
     name = fields.Char(required=True, translate=True)
     value = fields.Char(required=True, translate=True)
+
+class ProductOrder(models.Model):
+    _name = 'ultima.product.order'
+    _description = 'ultima.product.order'
+    _order = 'id desc'
+
+    name = fields.Char(string='Sequence')
+    full_name = fields.Char(string='Full name')
+    phone_number = fields.Char(string='Phone number')
+    email_address = fields.Char(string='Email address')
+    address = fields.Char(string='Address')
+    order_note = fields.Text(string='Order note')
+    shipping_location = fields.Text(string='Shipping location')
+    shipping_type = fields.Char(string='Shipping type')
+    otp = fields.Char(string='OTP')
+    product_ids = fields.Many2many('product.product', string='Products')
+    created_at = fields.Datetime(default=lambda self: fields.Datetime.now(), string='Created at')
+
+    @api.model
+    def create(self, vals):
+        vals['name'] = self.env['ir.sequence'].sudo().next_by_code('ultima.product.order.seq')
+        return super(ProductOrder, self).create(vals)

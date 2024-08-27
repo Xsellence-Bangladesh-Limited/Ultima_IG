@@ -57,4 +57,19 @@ $(document).ready(function () {
         Testimonial Slider (end)
     */
 
+    // Product OTP (start)
+
+//    $('._card .button_outline').click(function(){
+//        $('.otp-modal-parent-container').fadeIn('slow');
+//        $("body").css("overflow", "hidden");
+//    })
+//
+//    $(document).on('click', '.otp-modal-close-btn', function(){
+//        $("body").css("overflow", "auto");
+//        $('.otp-modal-parent-container').fadeOut('slow');
+//        console.log('clicked')
+//    })
+
+    // Product OTP (end)
+
 });

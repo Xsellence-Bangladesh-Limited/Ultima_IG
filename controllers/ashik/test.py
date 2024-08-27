@@ -1,15 +1,31 @@
-from odoo import http
-from odoo.http import request as req
+# from odoo import http
+# from odoo.http import request as req
 
-class TestSession(http.Controller):
-    @http.route('/test-session', type='http', auth='public')
-    def test_session(self):
+
+# OTP practice (start)
+
+import pyotp
+import time
+
+# totp = pyotp.TOTP('base32secret3232')
+# a = totp.now()
+#
+# print(totp.verify(a))
+# time.sleep(30)
+# print(totp.verify(a))
+
+# OTP practice (end)
+
+
+# class TestSession(http.Controller):
+#     @http.route('/test-session', type='http', auth='public')
+#     def test_session(self):
         # Selected language
-        selected_language = req.env['res.lang'].sudo().search([('code', '=', 'bn_IN')])
+        # selected_language = req.env['res.lang'].sudo().search([('code', '=', 'bn_IN')])
         # selected_language = req.env['res.lang'].sudo().search([('code', '=', 'en_US')])
 
         # Selected user
-        selected_user = req.env['res.users'].sudo().search([('login', '=', 'admin')])
+        # selected_user = req.env['res.users'].sudo().search([('login', '=', 'admin')])
 
         # print(selected_user._fields)
 
@@ -19,15 +35,15 @@ class TestSession(http.Controller):
 
         # req.env.cr.commit()
 
-        session = req.session.context
-
-        print(req.default_lang())
+        # session = req.session.context
+        #
+        # print(req.default_lang())
 
         # session['lang'] = 'bn_IN'
 
-        print(req.default_lang())
-
-        return req.render('ultima.test_session_template', {
-            'session': session
-        })
+        # print(req.default_lang())
+        #
+        # return req.render('ultima.test_session_template', {
+        #     'session': session
+        # })
 
