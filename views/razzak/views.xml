@@ -1156,6 +1156,7 @@
                 <field name="full_name"/>
                 <field name="phone_number"/>
                 <field name="email_address"/>
+                <field name="user_id"/>
                 <field name="created_at"/>
             </tree>
         </field>
@@ -1179,6 +1180,7 @@
                         <field name="phone_number" required="True"/>
                         <field name="email_address" required="True"/>
                         <field name="address" required="True"/>
+                        <field name="user_id" required="True"/>
                         <field name="order_note"/>
                         <field name="shipping_location"/>
                         <field name="shipping_type"/>

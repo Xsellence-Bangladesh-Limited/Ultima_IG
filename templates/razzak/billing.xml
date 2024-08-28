@@ -141,7 +141,7 @@
                                                     <div class="b_input_label text">Full Name
                                                         <span class="b_required">*</span>
                                                     </div>
-                                                    <input type="text" class="b_input" placeholder="Full Name" name="full_name" required="1"/>
+                                                    <input type="text" class="b_input" placeholder="Full Name" name="full_name" required="1" t-att-value="logged_in_user.partner_id.name"/>
                                                 </div>
                                             </div>
                                             <div class="col-12 col-md-6">
@@ -149,7 +149,7 @@
                                                     <div class="b_input_label text">Phone Number
                                                         <span class="b_required">*</span>
                                                     </div>
-                                                    <input type="text" class="b_input" placeholder="019xxxxxxxx" name="phone_number" required="1"/>
+                                                    <input type="text" class="b_input" placeholder="019xxxxxxxx" name="phone_number" required="1" t-att-value="logged_in_user.partner_id.phone"/>
                                                 </div>
                                             </div>
                                         </div>
@@ -160,7 +160,7 @@
                                                     <div class="b_input_label text">Email Address
                                                         <span class="b_required">*</span>
                                                     </div>
-                                                    <input type="email" class="b_input" placeholder="Email Address" name="email_address" required="1"/>
+                                                    <input type="email" class="b_input" placeholder="Email Address" name="email_address" required="1" t-att-value="logged_in_user.partner_id.email"/>
                                                 </div>
                                             </div>
                                             <div class="col-12 col-md-6">
@@ -169,7 +169,7 @@
                                                         <span class="b_required">*</span>
                                                     </div>
                                                     <input type="text" class="b_input"
-                                                           placeholder="House #20, Road #26, Mirpur, Dhaka 1216" name='address' required="1"/>
+                                                           placeholder="House #20, Road #26, Mirpur, Dhaka 1216" name='address' required="1" t-att-value="logged_in_user.partner_id.street + ', ' + logged_in_user.partner_id.country_id.name"/>
                                                 </div>
                                             </div>
                                         </div>

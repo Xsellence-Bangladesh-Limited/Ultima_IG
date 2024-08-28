@@ -1,0 +1,372 @@
+/* Global CSS (start) */
+
+/* Google Font (start) */
+
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Sora:wght@100..800&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+/* Google Font (end) */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --primary-color: #0c79f9;
+  --primary-box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px,
+    rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
+  --secondary-box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+  --title-font-family: "Sora", sans-serif;
+  --normal-text-font-family: "Poppins", sans-serif;
+  --heading-font-weight: 600;
+  --normal-title-font-weight: 400;
+}
+
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin-bottom: 0;
+}
+
+p {
+  font-size: 0.875rem;
+}
+
+body{
+  background-color: #F5F5F5;
+}
+
+/* Global CSS (end) */
+
+/* Main Content (start) */
+
+.order-details-modal-parent-container{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(176, 170, 168, 0.7);
+  display: none;
+}
+
+.order-details-modal-parent{
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.order-details-modal{
+  border-radius: 10px;
+  background-color: #fff;
+  width: 35%;
+}
+
+.details-modal-header{
+  padding: 10px 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #d0d0d0;
+}
+
+.details-modal-header p{
+  font-family: var(--normal-text-font-family);
+  font-weight: 500;
+  font-size: 17px;
+}
+
+.modal-close-btn{
+  border: none;
+  outline: none !important;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.order-details-body, .product-details{
+  padding: 10px 15px;
+}
+
+.order-product-title{
+  font-family: var(--normal-text-font-family);
+  font-weight: 500;
+  font-size: 20px;
+}
+
+.product-main-image{
+  width: 100%;
+  height: 220px;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.product-main-image img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.product-details .row{
+  padding: 15px 0 15px 0;
+}
+
+.product-details .row:first-of-type{
+  border-top: 1px solid #D8D8D8;
+}
+
+.product-details .row{
+  border-bottom: 1px solid #D8D8D8;
+}
+
+.product-details .row p:first-of-type{
+  font-family: var(--normal-text-font-family);
+  font-weight: 500;
+}
+
+.product-details .row p:last-of-type{
+  font-family: var(--normal-text-font-family);
+  font-weight: 400;
+}
+
+.my-container {
+  width: 60rem;
+  margin: 0 auto;
+}
+
+.user-panel{
+  display: flex;
+  gap: 10px;
+}
+
+.user-panel-left{
+  width: 20%;
+  background-color: #fff;
+  border-radius: 10px;
+  min-height: 500px;
+}
+
+.left-panel-tab:first-of-type{
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+.left-panel-tab{
+  padding: 7px;
+  cursor: pointer;
+}
+
+.active{
+  background-color: #DDECFF;
+}
+
+.left-panel-tab p{
+  font-family: var(--title-font-family);
+  font-weight: var(--normal-title-font-weight);
+}
+
+.left-panel-tab.active p{
+  color: var(--primary-color);
+}
+
+.left-panel-tab p{
+  color: #7B7B7B;
+}
+
+.tab-icon{
+  width: 18px;
+}
+
+.user-panel-right{
+  width: 80%;
+  background-color: #fff;
+  border-radius: 10px;
+}
+
+.tab-content-heading{
+  padding: 10px 15px;
+  border-bottom: 1px solid #D0D0D0;
+}
+
+.tab-content-heading p{
+  font-family: var(--normal-text-font-family);
+  font-weight: 500;
+}
+
+.personal-information-main{
+  padding: 15px;
+}
+
+.user-identity{
+  display: flex;
+  justify-content: space-between;
+}
+
+.user-image{
+  width: 60px;
+  height: 60px;
+  border-radius: 100%;
+  overflow: hidden;
+}
+
+.user-image img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.user-name{
+  font-family: var(--normal-text-font-family);
+  font-weight: 500;
+}
+
+.user-email{
+  font-family: var(--normal-text-font-family);
+  font-weight: var(--normal-title-font-weight);
+  color: #8D8D8D;
+  font-size: 14px;
+}
+
+.users-main-information{
+  width: 100%;
+}
+
+.name-and-email, .contact-and-address, .state-and-country{
+  display: flex;
+  gap: 15px;
+  margin-bottom: 15px;
+}
+
+.name-info, .email-info, .contact-info, .address-info, .state-info, .country-info{
+  width: 40%;
+}
+
+.user-input-label{
+  font-family: var(--normal-text-font-family);
+  font-weight: 500;
+  font-size: 13px;
+}
+
+.user-input{
+  border: none;
+  outline: none !important;
+  width: 100%;
+  background-color: #F4F4F4;
+  border-radius: 8px;
+  font-family: var(--normal-text-font-family);
+  font-weight: 400;
+  font-size: 13px;
+  padding: 8px;
+  color: #ABABAB;
+}
+
+.user-input::placeholder{
+  color: #ABABAB;
+}
+
+.orders-information-main{
+  padding: 15px 20px;
+}
+
+.orders-table th{
+  font-family: var(--normal-text-font-family);
+  font-weight: 500;
+  font-size: 12px;
+  padding: 10px;
+  border-bottom: 2px solid #F5F5F5;
+}
+
+.orders-table .heading-row{
+  background-color: #FAFAFA;
+}
+
+.orders-table .heading-row th{
+  border-right: 1px solid #F5F5F5;
+}
+
+.normal-row{
+  border-bottom: 1px solid #F5F5F5;
+}
+
+.normal-row td{
+  padding: 10px 0;
+  font-family: var(--normal-text-font-family);
+  font-weight: 400;
+  font-size: 13px;
+  padding-left: 14px;
+}
+
+.order-cancel-link{
+  color: #F22828;
+}
+
+.order-details-btn{
+  color: #000;
+  cursor: pointer;
+}
+
+.order-status{
+  color: #02BE2C;
+}
+
+
+/* Main content (start) */
+
+
+/* Responsiveness (start) */
+
+@media (min-width: 0px) {
+  .my-container {
+    width: 100%;
+    padding: 0 0.625rem;
+  }
+
+
+}
+
+/* Small devices (landscape phones, 576px and up) */
+@media (min-width: 576px) {
+  .my-container {
+    width: 34rem;
+  }
+
+}
+
+/* Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) {
+  .my-container {
+    width: 45rem;
+  }
+}
+
+/* Large devices (desktops, 992px and up) */
+@media (min-width: 992px) {
+  .my-container {
+    width: 60rem;
+  }
+
+}
+
+/* X-Large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) {
+  .my-container {
+    width: 60rem;
+  }
+}
+
+/* XX-Large devices (larger desktops, 1400px and up) */
+@media (min-width: 1400px) {
+  .my-container {
+    width: 71.25rem;
+  }
+}
+
+/* Responsiveness (end) */

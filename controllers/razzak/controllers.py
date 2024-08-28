@@ -102,6 +102,7 @@ class UltimaWebsite(http.Controller):
                 'phone_number': phone_number,
                 'email_address': email_address,
                 'address': address,
+                'user_id': req.env.user.id,
                 'order_note': order_note,
                 'shipping_location': shipping_location,
                 'shipping_type': shipping_type,
@@ -133,10 +134,13 @@ class UltimaWebsite(http.Controller):
 
         product_id = int(kw.get('product_id')) if kw.get('product_id') else None
 
+        logged_in_user = req.env['res.users'].sudo().search([('id', '=', req.env.user.id)])
+
         return req.render('ultima.billing', {
             'product': 'product',
             'product_id': product_id,
             'layout': layout,
+            'logged_in_user': logged_in_user
         })
 
     @http.route('/order-completed', auth='public')
