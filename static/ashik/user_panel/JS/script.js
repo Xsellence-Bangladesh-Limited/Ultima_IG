@@ -20,7 +20,7 @@ $(document).ready(function(){
             orderID
         }
 
-        $.post('/product-details', data, function(response){
+        $.post('/product-details-ajax', data, function(response){
             const res = JSON.parse(response);
             if(res.code){
                 const productData = res.data;
