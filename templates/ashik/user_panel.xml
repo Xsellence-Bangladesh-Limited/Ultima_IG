@@ -67,7 +67,7 @@
             </div>
             <body>
                 <div class="my-container mt-4">
-                    <div class="user-panel">
+                    <div class="user-panel mb-4">
                         <div class="user-panel-left">
                             <div class="left-panel-tab active" data-tab="1">
                                 <p>
@@ -133,8 +133,9 @@
 
                                             <div class="address-info">
                                                 <p class="user-input-label mb-1">Address</p>
-                                                <input type="text" readonly="1"
-                                                       t-att-value="logged_in_user.partner_id.street + ', ' + logged_in_user.partner_id.country_id.name"
+                                                <input t-if="logged_in_user.partner_id or logged_in_user.partner_id.country_id"
+                                                       type="text" readonly="1"
+                                                       t-att-value="str(logged_in_user.partner_id.street) + ', ' + str(logged_in_user.partner_id.country_id.name)"
                                                        class="user-input"/>
                                             </div>
                                         </div>
@@ -180,14 +181,17 @@
                                                 <td><t t-esc="order.product_ids[0].name"/></td>
                                                 <td><t t-esc="order.format_order_date()"/></td>
                                                 <td class="order-status">Completed</td>
-                                                <td><t t-esc="currency"/><t t-esc="order.product_ids[0].list_price"/></td>
+                                                <td><t t-esc="currency"/><t
+                                                        t-esc="order.product_ids[0].list_price"/></td>
                                                 <td>
                                                     <span>
                                                         <a class="order-cancel-link" href="#">Cancel</a>
                                                     </span>
                                                     <span>
-                                                        <input type="hidden" name="product_id" class="product-id" t-att-value="order.product_ids[0].id"/>
-                                                        <input type="hidden" name="order_id" class="order-id" t-att-value="order.id"/>
+                                                        <input type="hidden" name="product_id" class="product-id"
+                                                               t-att-value="order.product_ids[0].id"/>
+                                                        <input type="hidden" name="order_id" class="order-id"
+                                                               t-att-value="order.id"/>
                                                         <a class="order-details-btn">See details</a>
                                                     </span>
                                                 </td>
