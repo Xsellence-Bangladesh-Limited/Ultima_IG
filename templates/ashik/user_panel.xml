@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<odoo>
+    <template id="user_panel_template" name="User panel template">
+        <t t-call="ultima.layout">
+            <head>
+                <meta charset="UTF-8"/>
+                <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+                <title>User Panel | Ultima</title>
+
+                <!-- Bootstrap (start) -->
+                <link rel="stylesheet" href="/ultima/static/third_party_UI_library/Bootstrap/css/bootstrap.min.css"/>
+                <!-- Bootstrap (end) -->
+
+                <!-- Custom CSS (start) -->
+                <link rel="stylesheet" href="/ultima/static/ashik/user_panel/css/styles.css?v=1.0"/>
+                <!-- Custom CSS (end) -->
+
+                <!-- Fontawesome CDN (start) -->
+                <script src="/ultima/static/third_party_UI_library/Fontawesome/js/all.min.js" defer="1"/>
+                <!-- Fontawesome CDN (end) -->
+
+                <!-- Jquery (start) -->
+                <script src="/ultima/static/third_party_UI_library/jQuery/jquery.min.js" defer="1"/>
+                <!-- Jquery (end) -->
+
+                <!-- Custom JS (start) -->
+                <script src="/ultima/static/ashik/user_panel/JS/script.js?v=1.2" defer="1"/>
+                <!-- Custom JS (end) -->
+
+
+            </head>
+            <div class="order-details-modal-parent-container">
+                <div class="order-details-modal-parent">
+                    <div class="order-details-modal">
+                        <div class="details-modal-header">
+                            <p>Orders Details</p>
+                            <button class="modal-close-btn">
+                                <img src="/ultima/static/ashik/user_panel/images/remove-circle.png"
+                                     alt="details modal close button icon"/>
+                            </button>
+                        </div>
+                        <div class="order-details-body">
+                            <h6 class="order-product-title mb-3">Ultima additional purifier</h6>
+                            <div class="product-main-image mb-3">
+                                <img src="" alt="product-main-image"/>
+                            </div>
+                            <div class="product-details">
+                                <div class="row">
+                                    <p class="col">Order No</p>
+                                    <p class="col modal-order-name">#214854</p>
+                                </div>
+
+                                <div class="row">
+                                    <p class="col">Order Date</p>
+                                    <p class="col modal-order-date">AUGUST 06, 2023</p>
+                                </div>
+
+                                <div class="row">
+                                    <p class="col">Amount</p>
+                                    <p class="col modal-order-amount">$652</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <body>
+                <div class="my-container mt-4">
+                    <div class="user-panel">
+                        <div class="user-panel-left">
+                            <div class="left-panel-tab active" data-tab="1">
+                                <p>
+                                    <img src="/ultima/static/ashik/user_panel/images/user.png" class="tab-icon"/>
+                                    Personal Information
+                                </p>
+                            </div>
+
+                            <div class="left-panel-tab" data-tab="2">
+                                <p>
+                                    <img src="/ultima/static/ashik/user_panel/images/order-icon.png" class="tab-icon"/>
+                                    Orders
+                                </p>
+                            </div>
+                        </div>
+                        <div class="user-panel-right">
+                            <div class="personal-information-tab-content tab-content" id="tab-content-1">
+                                <div class="tab-content-heading">
+                                    <p>Personal Information</p>
+                                </div>
+
+                                <div class="personal-information-main">
+                                    <div class="user-identity mb-3">
+                                        <div class="user-identity-left">
+                                            <div class="user-image mb-2">
+                                                <img t-if="logged_in_user.image_1920"
+                                                     t-att-src="image_data_uri(logged_in_user.image_1920)"
+                                                     alt="user image"/>
+                                            </div>
+                                            <p class="user-name">
+                                                <t t-esc="logged_in_user.name"/>
+                                            </p>
+                                            <p class="user-email">
+                                                <t t-esc="logged_in_user.email"/>
+                                            </p>
+
+                                        </div>
+                                        <div class="user-identity-right"></div>
+
+                                    </div>
+                                    <div class="users-main-information">
+                                        <div class="name-and-email">
+                                            <div class="name-info">
+                                                <p class="user-input-label mb-1">Name</p>
+                                                <input type="text" readonly="1" t-att-value="logged_in_user.name"
+                                                       class="user-input"/>
+                                            </div>
+
+                                            <div class="email-info">
+                                                <p class="user-input-label mb-1">Email</p>
+                                                <input type="email" readonly="1" t-att-value="logged_in_user.email"
+                                                       class="user-input"/>
+                                            </div>
+                                        </div>
+
+                                        <div class="contact-and-address">
+                                            <div class="contact-info">
+                                                <p class="user-input-label mb-1">Contact Number</p>
+                                                <input type="text" readonly="1"
+                                                       t-att-value="logged_in_user.partner_id.phone"
+                                                       class="user-input"/>
+                                            </div>
+
+                                            <div class="address-info">
+                                                <p class="user-input-label mb-1">Address</p>
+                                                <input type="text" readonly="1"
+                                                       t-att-value="logged_in_user.partner_id.street + ', ' + logged_in_user.partner_id.country_id.name"
+                                                       class="user-input"/>
+                                            </div>
+                                        </div>
+
+                                        <div class="state-and-country">
+                                            <div class="state-info">
+                                                <p class="user-input-label mb-1">State</p>
+                                                <input type="text" readonly="1"
+                                                       t-att-value="logged_in_user.partner_id.country_id.name"
+                                                       class="user-input"/>
+                                            </div>
+
+                                            <div class="country-info">
+                                                <p class="user-input-label mb-1">Country</p>
+                                                <input type="text" readonly="1"
+                                                       t-att-value="logged_in_user.partner_id.country_id.name"
+                                                       class="user-input"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="orders-information-tab-content tab-content" id="tab-content-2"
+                                 style="display: none;">
+                                <div class="tab-content-heading">
+                                    <p>Orders Information</p>
+                                </div>
+
+                                <div class="orders-information-main">
+                                    <table class="orders-table">
+                                        <tr class="heading-row">
+                                            <th>Order No</th>
+                                            <th>Product Name</th>
+                                            <th>Order Date</th>
+                                            <th>Order Status</th>
+                                            <th>Total Amount</th>
+                                            <th>Action</th>
+                                        </tr>
+                                        <t t-foreach="all_orders" t-as="order">
+                                            <tr class="normal-row">
+                                                <td><t t-esc="order.name"/></td>
+                                                <td><t t-esc="order.product_ids[0].name"/></td>
+                                                <td><t t-esc="order.format_order_date()"/></td>
+                                                <td class="order-status">Completed</td>
+                                                <td><t t-esc="currency"/><t t-esc="order.product_ids[0].list_price"/></td>
+                                                <td>
+                                                    <span>
+                                                        <a class="order-cancel-link" href="#">Cancel</a>
+                                                    </span>
+                                                    <span>
+                                                        <input type="hidden" name="product_id" class="product-id" t-att-value="order.product_ids[0].id"/>
+                                                        <input type="hidden" name="order_id" class="order-id" t-att-value="order.id"/>
+                                                        <a class="order-details-btn">See details</a>
+                                                    </span>
+                                                </td>
+                                            </tr>
+                                        </t>
+                                    </table>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </body>
+        </t>
+    </template>
+</odoo>

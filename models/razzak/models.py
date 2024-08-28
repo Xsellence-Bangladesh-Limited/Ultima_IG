@@ -1,5 +1,5 @@
 from odoo import fields, models, api
-
+from datetime import datetime
 
 class UltimaLayout(models.Model):
     _name = 'ultima.layout'
@@ -442,6 +442,7 @@ class ProductOrder(models.Model):
     phone_number = fields.Char(string='Phone number')
     email_address = fields.Char(string='Email address')
     address = fields.Char(string='Address')
+    user_id = fields.Many2one('res.users', string='User')
     order_note = fields.Text(string='Order note')
     shipping_location = fields.Text(string='Shipping location')
     shipping_type = fields.Char(string='Shipping type')
@@ -449,6 +450,10 @@ class ProductOrder(models.Model):
     product_ids = fields.Many2many('product.product', string='Products')
     created_at = fields.Datetime(default=lambda self: fields.Datetime.now(), string='Created at')
 
+    def format_order_date(self):
+        formatted_date = datetime.strftime(self.created_at, "%b %d, %Y").upper()
+
+        return formatted_date
     @api.model
     def create(self, vals):
         vals['name'] = self.env['ir.sequence'].sudo().next_by_code('ultima.product.order.seq')

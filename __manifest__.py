@@ -28,6 +28,7 @@
         'templates/ashik/see_more_blogs.xml',
         'templates/ashik/service_request.xml',
         'templates/ashik/about_us.xml',
+        'templates/ashik/user_panel.xml',
         'templates/ashik/test_session.xml',
 
         # Razzak
