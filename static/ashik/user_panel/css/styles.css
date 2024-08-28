@@ -276,6 +276,10 @@ body{
   padding: 15px 20px;
 }
 
+.orders-table{
+    width: 100%;
+}
+
 .orders-table th{
   font-family: var(--normal-text-font-family);
   font-weight: 500;
