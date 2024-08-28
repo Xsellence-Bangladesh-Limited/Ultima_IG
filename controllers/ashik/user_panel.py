@@ -19,7 +19,7 @@ class UserPanel(http.Controller):
             'currency': req.env.company.currency_id.symbol,
         })
 
-    @http.route('/product-details', type='http', auth='user', csrf=False)
+    @http.route('/product-details-ajax', type='http', auth='user', csrf=False)
     def product_details(self, **kw):
         product_id = int(kw.get('productID')) if kw.get('productID') else None
         order_id = int(kw.get('orderID')) if kw.get('orderID') else None
