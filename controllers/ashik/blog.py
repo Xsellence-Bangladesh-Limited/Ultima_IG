@@ -56,13 +56,18 @@ class Blog(http.Controller):
 
         all_comments = req.env['ultima.blog.comment'].sudo().search([('blog_id', '=', blog.id)], order='id desc')
 
+        # Retrieving blog page settings (start)
+        blog_page_settings = req.env['ultima.blog.settings'].sudo().search([], order='id desc', limit=1)
+        # Retrieving blog page settings (end)
+
         return req.render('ultima.ultima_blog_details_template', {
             'blog': blog,
             'suggested_blogs': all_suggested_blogs,
             # 'query_submission_successful': query_submission_successful,
             'logged_in_user': logged_in_user,
             'all_comments': all_comments,
-            'logged_in_user_id': req.session.get('uid')
+            'logged_in_user_id': req.session.get('uid'),
+            'blog_page_settings': blog_page_settings
         })
 
     @http.route('/query/user-query', type='http', auth='public', csrf=False)

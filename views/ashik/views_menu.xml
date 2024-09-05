@@ -209,5 +209,11 @@
               parent="ultima_blog_menu_id"
               action="ultima_blog_slider_form"/>
 
+    <menuitem id="ultima_blog_settings_menu_id"
+              name="Settings"
+              sequence="6"
+              parent="ultima_blog_menu_id"
+              action="ultima_blog_settings_form"/>
+
     <!-- Menu items for blog (end)-->
 </odoo>
