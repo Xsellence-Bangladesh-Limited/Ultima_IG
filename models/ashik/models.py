@@ -522,4 +522,20 @@ class BlogSlider(models.Model):
 
 # Models for blog (end)
 
+class BlogSettings(models.Model):
+    _name = 'ultima.blog.settings'
+    _description = 'ultima.blog.settings'
+    _order = 'id desc'
 
+    name = fields.Char(string='Name')
+    query_form_title = fields.Char(string='Query form title')
+    query_form_button_text = fields.Char(string='Query form button text')
+    query_submission_success_modal_title = fields.Char(string='Query submission success modal title')
+    query_submission_success_modal_description = fields.Char(string='Query submission success modal description')
+    query_submission_success_modal_button_text = fields.Char(string='Query submission success modal button text')
+    comment_form_button_text = fields.Char(string='Comment form button text')
+
+    @api.model
+    def create(self, vals):
+        vals['name'] = self.env['ir.sequence'].sudo().next_by_code('ultima.blog.settings.seq')
+        return super(BlogSettings, self).create(vals)

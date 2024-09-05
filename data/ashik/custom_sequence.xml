@@ -225,5 +225,13 @@
             <field name="padding">5</field>
             <field name="number_next">1</field>
         </record>
+
+        <record id="ultima_blog_settings_seq" model="ir.sequence">
+            <field name="name">Ultima blog settings sequence</field>
+            <field name="code">ultima.blog.settings.seq</field>
+            <field name="prefix">SETTINGS</field>
+            <field name="padding">5</field>
+            <field name="number_next">1</field>
+        </record>
     </data>
 </odoo>

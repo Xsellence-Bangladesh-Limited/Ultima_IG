@@ -58,10 +58,31 @@
                     <div class="thanks-div-container mb-5">
                         <div class="thanks-div">
                             <img src="/ultima/static/image/order_completion.png" class="order_completion_icon mb-3"/>
-                            <h6 class="thanks-div-title mb-2">Thanks for submitting the form!</h6>
+                            <h6 class="thanks-div-title mb-2">
+                                <t t-if="blog_page_settings.query_submission_success_modal_title and '&lt;br&gt;' in blog_page_settings.query_submission_success_modal_title">
+                                    <t t-set="query_submission_success_modal_titles"
+                                       t-value="str(blog_page_settings.query_submission_success_modal_title).split('&lt;br&gt;')"/>
+                                    <t t-foreach="query_submission_success_modal_titles" t-as="query_submission_success_modal_title">
+                                        <t t-esc="query_submission_success_modal_title"/>
+                                        <br/>
+                                    </t>
+                                </t>
+                                <t t-else="">
+                                    <t t-esc="blog_page_settings.query_submission_success_modal_title"/>
+                                </t>
+                            </h6>
                             <p class="thanks-div-description mb-3">
-                                Woohoo! Your query was successful, and your order is complete.
-                                A receipt and download instructions are on their way to your inbox.
+                                <t t-if="blog_page_settings.query_submission_success_modal_description and '&lt;br&gt;' in blog_page_settings.query_submission_success_modal_description">
+                                    <t t-set="query_submission_success_modal_descriptions"
+                                       t-value="str(blog_page_settings.query_submission_success_modal_description).split('&lt;br&gt;')"/>
+                                    <t t-foreach="query_submission_success_modal_descriptions" t-as="query_submission_success_modal_description">
+                                        <t t-esc="query_submission_success_modal_description"/>
+                                        <br/>
+                                    </t>
+                                </t>
+                                <t t-else="">
+                                    <t t-esc="blog_page_settings.query_submission_success_modal_description"/>
+                                </t>
                             </p>
                             <img class="form_illustration_icon form_illustration_icon_1"
                                  src="/ultima/static/image/order_completion_illustration_icon_1.png"/>
@@ -140,7 +161,19 @@
                                 <div class="user-query-form mb-5">
                                     <input type="hidden" t-att-value="blog.id" id="blog-id" class="query_blog_id_input"
                                            name="blog_id"/>
-                                    <h4 class="form-heading mb-4 text-center">Do you have any query?</h4>
+                                    <h4 class="form-heading mb-4 text-center">
+                                        <t t-if="blog_page_settings.query_form_title and '&lt;br&gt;' in blog_page_settings.query_form_title">
+                                            <t t-set="query_form_titles"
+                                               t-value="str(blog_page_settings.query_form_title).split('&lt;br&gt;')"/>
+                                            <t t-foreach="query_form_titles" t-as="query_form_title">
+                                                <t t-esc="query_form_title"/>
+                                                <br/>
+                                            </t>
+                                        </t>
+                                        <t t-else="">
+                                            <t t-esc="blog_page_settings.query_form_title"/>
+                                        </t>
+                                    </h4>
                                     <div class="name-input-container">
                                         <label for="name-input" class="input-label">Name*</label>
                                         <input type="text" name="name_input" id="name-input" class="form-input"
@@ -168,7 +201,9 @@
                                     </div>
 
                                     <div class="form-submit-button-container mt-4">
-                                        <button class="form-submit-btn" type="button">Submit</button>
+                                        <button class="form-submit-btn" type="button">
+                                            <t t-esc="blog_page_settings.query_form_button_text"/>
+                                        </button>
                                         <button class="query-submit-loading-btn" disabled="1">
                                             <img src="/ultima/static/image/spinner.svg"/>
                                         </button>
@@ -176,7 +211,11 @@
 
                                 </div>
                                 <div class="blog-comments mb-4">
-                                    <h5 class="blog-comments-heading mb-3">Comments (<span class="number-of-comments"><t t-esc="len(all_comments)"/></span>)
+                                    <h5 class="blog-comments-heading mb-3">Comments (
+                                        <span class="number-of-comments">
+                                            <t t-esc="len(all_comments)"/>
+                                        </span>
+                                        )
                                     </h5>
                                     <t t-if="logged_in_user_id">
                                         <div class="users-comment mb-3">
@@ -200,7 +239,9 @@
                                                     <i class="fa-solid fa-triangle-exclamation"></i>
                                                     Empty comment is not allowed!
                                                 </p>
-                                                <button type="button" class="comment-submit-btn mt-3">Submit</button>
+                                                <button type="button" class="comment-submit-btn mt-3">
+                                                    <t t-esc="blog_page_settings.comment_form_button_text"/>
+                                                </button>
                                             </div>
                                             <button class="comment-submit-loading-btn" disabled="1">
                                                 <img src="/ultima/static/image/spinner.svg"/>
