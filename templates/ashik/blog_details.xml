@@ -21,7 +21,7 @@
                 <!-- Splide CSS (end) -->
 
                 <!-- Custom CSS (start) -->
-                <link rel="stylesheet" href="/ultima/static/ashik/blog_details/css/styles.css?v=1.2"/>
+                <link rel="stylesheet" href="/ultima/static/ashik/blog_details/css/styles.css?v=1.4"/>
                 <!-- Custom CSS (end) -->
 
                 <!-- Fontawesome CDN (start) -->
@@ -49,9 +49,38 @@
                 <!-- Splide JS (end) -->
 
                 <!-- Custom JS (start) -->
-                <script src="/ultima/static/ashik/blog_details/JS/script.js?v=1.2" defer="1"/>
+                <script src="/ultima/static/ashik/blog_details/JS/script.js?v=1.4" defer="1"/>
                 <!-- Custom JS (end) -->
             </head>
+
+            <div class="query-submission-success-modal-parent-container">
+                <div class="query-submission-success-modal-parent">
+                    <div class="thanks-div-container mb-5">
+                        <div class="thanks-div">
+                            <img src="/ultima/static/image/order_completion.png" class="order_completion_icon mb-3"/>
+                            <h6 class="thanks-div-title mb-2">Thanks for submitting the form!</h6>
+                            <p class="thanks-div-description mb-3">
+                                Woohoo! Your query was successful, and your order is complete.
+                                A receipt and download instructions are on their way to your inbox.
+                            </p>
+                            <img class="form_illustration_icon form_illustration_icon_1"
+                                 src="/ultima/static/image/order_completion_illustration_icon_1.png"/>
+                            <img class="form_illustration_icon form_illustration_icon_2"
+                                 src="/ultima/static/image/order_completion_illustration_icon_2.png"/>
+                            <img class="form_illustration_icon form_illustration_icon_3"
+                                 src="/ultima/static/image/order_completion_illustration_icon_3.png"/>
+                            <img class="form_illustration_icon form_illustration_icon_4"
+                                 src="/ultima/static/image/order_completion_illustration_icon_4.png"/>
+                            <img class="form_illustration_icon form_illustration_icon_5"
+                                 src="/ultima/static/image/order_completion_illustration_icon_5.png"/>
+
+                            <div class="payment-success-button-container">
+                                <button class="payment-success-btn">Done</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
             <body>
                 <div class="scroll-to-top-btn-parent">
@@ -63,14 +92,14 @@
                 </div>
                 <div class="main-content mt-4">
                     <div class="my-container">
-                        <t t-if="query_submission_successful">
-                            <div class="alert alert-success mt-2 message-sent-successful-alert">
-                                <p>Query sent successfully!</p>
-                                <span class="message-sent-successful-alert-cancel-btn">
-                                    <i class="fa-solid fa-xmark"></i>
-                                </span>
-                            </div>
-                        </t>
+                        <!-- <t t-if="query_submission_successful">-->
+                        <!-- <div class="alert alert-success mt-2 message-sent-successful-alert">-->
+                        <!-- <p>Query sent successfully!</p>-->
+                        <!-- <span class="message-sent-successful-alert-cancel-btn">-->
+                        <!-- <i class="fa-solid fa-xmark"></i>-->
+                        <!-- </span>-->
+                        <!-- </div>-->
+                        <!-- </t>-->
                         <div class="banner-image">
                             <img t-if="blog.banner_image" t-att-src="image_data_uri(blog.banner_image)"
                                  alt="Banner image"/>
@@ -108,34 +137,46 @@
                                     </div>
                                 </div>
 
-                                <form action="/query/user-query" method="POST" class="user-query-form mb-5">
-                                    <input type="hidden" t-att-value="blog.id" class="query_blog_id_input"
+                                <div class="user-query-form mb-5">
+                                    <input type="hidden" t-att-value="blog.id" id="blog-id" class="query_blog_id_input"
                                            name="blog_id"/>
                                     <h4 class="form-heading mb-4 text-center">Do you have any query?</h4>
-                                    <div class="name-input-container mb-4">
-                                        <label for="name-input" class="input-label">Name</label>
+                                    <div class="name-input-container">
+                                        <label for="name-input" class="input-label">Name*</label>
                                         <input type="text" name="name_input" id="name-input" class="form-input"
                                                required="1"/>
                                     </div>
+                                    <p class="no-name-warning mt-1">
+                                        <i class="fa-solid fa-triangle-exclamation"></i>
+                                        Name is required!
+                                    </p>
 
-                                    <div class="email-input-container mb-4">
-                                        <label for="email-input" class="input-label">Email</label>
+                                    <div class="email-input-container mt-4">
+                                        <label for="email-input" class="input-label">Email*</label>
                                         <input type="email" name="email_input" id="email-input" class="form-input"
                                                required="1"/>
                                     </div>
+                                    <p class="no-email-warning mt-1">
+                                        <i class="fa-solid fa-triangle-exclamation"></i>
+                                        Email is required!
+                                    </p>
 
-                                    <div class="mobile-number-input-container mb-4">
+                                    <div class="mobile-number-input-container mt-4">
                                         <label for="mobile-input" class="input-label">Mobile</label>
                                         <input type="text" name="mobile_input" id="mobile-input" class="form-input"
                                                required="1"/>
                                     </div>
 
-                                    <div class="form-submit-button-container">
-                                        <button class="form-submit-btn">Submit</button>
+                                    <div class="form-submit-button-container mt-4">
+                                        <button class="form-submit-btn" type="button">Submit</button>
+                                        <button class="query-submit-loading-btn" disabled="1">
+                                            <img src="/ultima/static/image/spinner.svg"/>
+                                        </button>
                                     </div>
-                                </form>
+
+                                </div>
                                 <div class="blog-comments mb-4">
-                                    <h5 class="blog-comments-heading mb-3">Comments (<t t-esc="len(all_comments)"/>)
+                                    <h5 class="blog-comments-heading mb-3">Comments (<span class="number-of-comments"><t t-esc="len(all_comments)"/></span>)
                                     </h5>
                                     <t t-if="logged_in_user_id">
                                         <div class="users-comment mb-3">
@@ -149,13 +190,18 @@
                                                 </h6>
                                             </div>
 
-                                            <form class="users-comment-box">
+                                            <div class="users-comment-box">
                                                 <input type="hidden" t-att-value="blog.id" class="blog_id_input"/>
-                                                <textarea class="users-comment-box-text-area mb-3"
+                                                <textarea class="users-comment-box-text-area"
+                                                          rows="6"
                                                           name="users_comment_input" placeholder="Write your comment..."
                                                           required="1"></textarea>
-                                                <button type="button" class="comment-submit-btn">Submit</button>
-                                            </form>
+                                                <p class="no-comment-warning mt-1">
+                                                    <i class="fa-solid fa-triangle-exclamation"></i>
+                                                    Empty comment is not allowed!
+                                                </p>
+                                                <button type="button" class="comment-submit-btn mt-3">Submit</button>
+                                            </div>
                                             <button class="comment-submit-loading-btn" disabled="1">
                                                 <img src="/ultima/static/image/spinner.svg"/>
                                             </button>

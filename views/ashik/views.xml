@@ -1284,6 +1284,7 @@
                 <field name="user_email"/>
                 <field name="user_mobile"/>
                 <field name="blog_id"/>
+                <field name="date"/>
             </tree>
         </field>
     </record>
@@ -1305,8 +1306,9 @@
                         <group>
                             <field name="user_name" required="True"/>
                             <field name="user_email" required="True"/>
-                            <field name="user_mobile" required="True"/>
+                            <field name="user_mobile"/>
                             <field name="blog_id" required="True"/>
+                            <field name="date"/>
                         </group>
                     </group>
                 </sheet>
@@ -1337,6 +1339,7 @@
                 <field name="name" readonly="True"/>
                 <field name="user_id"/>
                 <field name="blog_id"/>
+                <field name="date"/>
             </tree>
         </field>
     </record>
@@ -1359,6 +1362,7 @@
                             <field name="user_id" required="True"/>
                             <field name="comment" required="True"/>
                             <field name="blog_id" required="True"/>
+                            <field name="date"/>
                         </group>
                     </group>
                 </sheet>
