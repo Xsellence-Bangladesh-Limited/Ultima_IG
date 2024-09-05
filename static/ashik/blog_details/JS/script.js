@@ -1,20 +1,99 @@
 $(document).ready(function () {
 
-    // Handling successful query sent alert(start)
+    // --------------------OLD CODE-------------------------
 
-    $('.message-sent-successful-alert-cancel-btn').click(function(){
-        $('.message-sent-successful-alert').fadeOut('slow')
+     // Handling successful query sent alert(start)
+
+     /* $('.message-sent-successful-alert-cancel-btn').click(function(){
+         $('.message-sent-successful-alert').fadeOut('slow')
+     })
+
+     setTimeout(function(){
+         $('.message-sent-successful-alert').fadeOut('slow')
+     }, 3000) */
+
+     // Handling successful query sent alert(end)
+
+    // --------------------OLD CODE-------------------------
+
+    // Handling query form submission AJAX (start)
+
+    $('.form-submit-btn').click(function(){
+
+        if($('#name-input').val().trim() === ''){
+            $('.no-name-warning').fadeIn('slow');
+            $('#name-input').focus();
+            return;
+        }
+
+        else {
+            $('.no-name-warning').fadeOut('slow');
+        }
+
+        if($('#email-input').val().trim() === ''){
+            $('.no-email-warning').fadeIn('slow');
+            $('#email-input').focus();
+            return;
+        }
+
+        else {
+            $('.no-email-warning').fadeOut('slow');
+        }
+
+        $('.form-submit-btn').hide();
+
+        $('.query-submit-loading-btn').show();
+
+        $("body").css("overflow", "hidden");
+
+        $('.query-submission-success-modal-parent-container').fadeIn('slow');
+
+        const nameInput = $('#name-input').val();
+        const emailInput = $('#email-input').val();
+        const mobileInput = $('#mobile-input').val();
+        const blogID = $('#blog-id').val();
+
+        const data = {
+            nameInput, emailInput, mobileInput, blogID
+        }
+
+        $('#name-input').val('');
+        $('#email-input').val('');
+        $('#mobile-input').val('');
+
+        $.post('/query/user-query', data, function(response){
+            const res = JSON.parse(response);
+
+            if(res.code === 200){
+                $('.payment-success-btn').click(function(){
+                    $("body").css("overflow", "auto");
+                    $('.query-submission-success-modal-parent-container').fadeOut('slow');
+                })
+
+                $('.form-submit-btn').show();
+
+                $('.query-submit-loading-btn').hide();
+            }
+        })
     })
 
-    setTimeout(function(){
-        $('.message-sent-successful-alert').fadeOut('slow')
-    }, 3000)
 
-    // Handling successful query sent alert(end)
+
+    // Handling query form submission AJAX (end)
 
     // Handling comment submission (start)
 
     $('.comment-submit-btn').click(function(){
+        if($('.users-comment-box-text-area').val().trim() === ''){
+            $('.no-comment-warning').fadeIn('slow');
+            $('.users-comment-box-text-area').focus();
+            return;
+        }
+
+        else{
+            $('.no-comment-warning').fadeOut('slow');
+        }
+
         const commentSubmitButton = $(this);
         commentSubmitButton.hide();
 
@@ -33,12 +112,17 @@ $(document).ready(function () {
         $.post('/comments/user-comment', data, function(response){
             const res = JSON.parse(response);
 
-            const allComments = res.all_comments;
+            const allComments = res.all_comments_l_5;
+            const totalNumberOfComments = res.total_number_of_comments;
 
-             console.log(allComments);
+            console.log(allComments);
 
             if(res.code){
                 $('.comment-submit-loading-btn').hide();
+
+                $('.number-of-comments').empty();
+
+                $('.number-of-comments').text(totalNumberOfComments);
 
                 let commentsHtml = ``
 
@@ -60,7 +144,7 @@ $(document).ready(function () {
                 })
 
                 $('.other-users-comment-container').empty();
-                if(allComments.length > 5){
+                if(totalNumberOfComments > 5){
                      $('.other-users-comment-container').append(`<button type="button" class="comment-see-more-btn mt-2">See more</button>`)
                 }
                 $('.other-users-comment-container').prepend(commentsHtml);

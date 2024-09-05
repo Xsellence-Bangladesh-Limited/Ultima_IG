@@ -20,9 +20,9 @@
                 <link rel="stylesheet" href="/ultima/static/ashik/contact_us/css/styles.css?v=1.0"/>
                 <!-- Custom CSS (end) -->
 
-                <!-- Jquery CDN (start) -->
+                <!-- Jquery (start) -->
                 <script src="/ultima/static/third_party_UI_library/jQuery/jquery.min.js" defer="1"/>
-                <!-- Jquery CDN (end) -->
+                <!-- Jquery (end) -->
 
                 <!-- Libphonenumber JS (start)-->
                 <script src="/ultima/static/ashik/contact_us/JS/libphonenumber-js.min.js?" defer="1"></script>

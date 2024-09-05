@@ -476,6 +476,7 @@ class BlogQuery(models.Model):
     user_email = fields.Char(string='Email')
     user_mobile = fields.Char(string='Mobile')
     blog_id = fields.Many2one('ultima.blog.blog', string='Blog')
+    date = fields.Datetime(string='Date', default=lambda self: fields.Datetime.now())
 
     @api.model
     def create(self, vals):
@@ -492,6 +493,7 @@ class BlogComment(models.Model):
     user_id = fields.Many2one('res.users', string='User')
     comment = fields.Text(string='Comment')
     blog_id = fields.Many2one('ultima.blog.blog', string='Blog')
+    date = fields.Datetime(string='Date', default=lambda self: fields.Datetime.now())
 
     @api.model
     def create(self, vals):
