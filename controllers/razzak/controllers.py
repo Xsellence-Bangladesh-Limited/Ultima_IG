@@ -76,6 +76,7 @@ class UltimaWebsite(http.Controller):
             'layout': layout,
             'p': page,
             'currency_id': currency_id,
+            'product_extra_images': list(product.product_template_image_ids) + [product]
         })
 
     @http.route('/billing', auth='public', csrf=False)

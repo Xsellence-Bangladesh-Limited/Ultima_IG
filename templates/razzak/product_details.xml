@@ -25,38 +25,14 @@
                     <!-- Left Item -->
                     <div class="left_item">
                         <img id="img_service_kit" class="img_service_kit"
-                             src="/ultima/static/image/filter_cartridge/service_kit.png" alt=""/>
+                             t-if="product.image_1920" t-att-src="image_data_uri(product.image_1920)" alt=""/>
                         <div class="mt-2">
                             <div class="owl-carousel owl-theme">
-
-                                <div class="item">
-                                    <img class="img_owl" src="/ultima/static/image/1.jpg" alt=""/>
-                                </div>
-
-                                <div class="item">
-                                    <img class="img_owl" src="/ultima/static/image/2.jpg" alt=""/>
-                                </div>
-
-                                <div class="item">
-                                    <img class="img_owl" src="/ultima/static/image/3.jpg" alt=""/>
-                                </div>
-
-                                <div class="item">
-                                    <img class="img_owl" src="/ultima/static/image/4.jpg" alt=""/>
-                                </div>
-
-                                <div class="item">
-                                    <img class="img_owl" src="/ultima/static/image/5.jpg" alt=""/>
-                                </div>
-
-                                <div class="item">
-                                    <img class="img_owl" src="/ultima/static/image/5.jpg" alt=""/>
-                                </div>
-
-                                <div class="item">
-                                    <img class="img_owl" src="/ultima/static/image/5.jpg" alt=""/>
-                                </div>
-
+                                <t t-foreach="product_extra_images" t-as="product_extra_image">
+                                    <div class="item">
+                                        <img class="img_owl" t-if="product_extra_image.image_512" t-att-src="image_data_uri(product_extra_image.image_512)" alt=""/>
+                                    </div>
+                                </t>
                             </div>
                         </div>
                     </div>
