@@ -95,7 +95,7 @@ p {
 }
 
 .all-blog-sliders {
-  padding: 3.125rem 0rem 3.125rem 0rem;
+  padding: 1.125rem 0rem 3.125rem 0rem;
   height: fit-content;
 }
 
@@ -200,7 +200,7 @@ p {
 }
 
 .image-slide {
-  height: 17.5rem;
+  height: 12.5rem;
   overflow: hidden;
 }
 
@@ -426,6 +426,10 @@ p {
     align-items: center;
     gap: 0;
   }
+
+  .image-slide {
+      height: 17.5rem;
+  }
 }
 
 /* Medium devices (tablets, 768px and up) */
@@ -441,6 +445,10 @@ p {
 
   .single-blog-image {
     height: 11.563rem;
+  }
+
+  .all-blog-sliders {
+    padding: 3.125rem 0rem 3.125rem 0rem;
   }
 }
 

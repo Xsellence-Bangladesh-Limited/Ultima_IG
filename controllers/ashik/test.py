@@ -1,11 +1,13 @@
-# from odoo import http
-# from odoo.http import request as req
-
+from odoo import http
+from odoo.http import request as req
 
 # OTP practice (start)
 
 # import pyotp
 import time
+
+import json
+
 
 # totp = pyotp.TOTP('base32secret3232')
 # a = totp.now()
@@ -47,3 +49,8 @@ import time
         #     'session': session
         # })
 
+# class TestAttendance(http.Controller):
+#     @http.route(['/test-attendance'], type='json', auth='none')
+#     def test_attendance(self, **kw):
+#         print('called')
+#         return json.dumps({'Success': 200, 'Hmm': 201})

@@ -17,7 +17,7 @@
                     <div class="left">
                         <div class="text-gradient" t-esc="intro.section"></div>
                         <div>
-                            <h3 t-raw="intro.title">
+                            <h3 class="introduction-title" t-raw="intro.title">
                             </h3>
                         </div>
                         <div class="desc" t-raw="intro.desc"></div>
@@ -90,7 +90,7 @@
             </div>
 
             <!-- Best selling products -->
-            <div class="bspd">
+            <div class="bspd my-container">
 
                 <t t-set="products" t-value="p.bsp_ids"/>
 
@@ -143,28 +143,29 @@
 
             <!-- Discover Ultima RO Water Technology -->
             <div class="discover">
-
-                <div class="bsp my-3">
-                    <div class="content">
-                        <div class="text-gradient" t-esc="p.dis_section"></div>
-                        <div>
-                            <h3 t-esc="p.dis_title"></h3>
-                        </div>
-                        <div class="desc" t-esc="p.dis_desc"></div>
-                    </div>
-                </div>
-
-                <div class="_cards">
-
-                    <t t-foreach="p.dis_line_ids" t-as="l">
-                        <div class="_card">
+                <div class="my-container">
+                    <div class="bsp my-3">
+                        <div class="content">
+                            <div class="text-gradient" t-esc="p.dis_section"></div>
                             <div>
-                                <img class="icon" t-if="l.img_128" t-att-src="image_data_uri(l.img_128)" alt=""/>
+                                <h3 t-esc="p.dis_title"></h3>
                             </div>
-                            <div class="title sora-600" t-esc="l.title"></div>
-                            <div class="desc text" t-esc="l.desc"></div>
+                            <div class="desc" t-esc="p.dis_desc"></div>
                         </div>
-                    </t>
+                    </div>
+
+                    <div class="_cards">
+
+                        <t t-foreach="p.dis_line_ids" t-as="l">
+                            <div class="_card">
+                                <div>
+                                    <img class="icon" t-if="l.img_128" t-att-src="image_data_uri(l.img_128)" alt=""/>
+                                </div>
+                                <div class="title sora-600" t-esc="l.title"></div>
+                                <div class="desc text" t-esc="l.desc"></div>
+                            </div>
+                        </t>
+                    </div>
                 </div>
 
             </div>
@@ -250,7 +251,7 @@
 
                 <!-- Content -->
                 <div>
-                    <div class="features">
+                    <div class="features my-container">
 
                         <!-- With Ultima -->
                         <div>
@@ -322,49 +323,50 @@
               End Frequently Asked Question
             -->
             <div class="block faq py-5 bg_light">
-
-                <!-- Header -->
-                <div class="header mb-4">
-                    <div class="content">
-                        <div class="text-gradient" t-raw="p.faq_section"></div>
-                        <div>
-                            <h3 t-raw="p.faq_title"></h3>
+                <div class="my-container">
+                    <!-- Header -->
+                    <div class="header mb-4">
+                        <div class="content">
+                            <div class="text-gradient" t-raw="p.faq_section"></div>
+                            <div>
+                                <h3 t-raw="p.faq_title"></h3>
+                            </div>
                         </div>
                     </div>
-                </div>
 
-                <!-- content -->
-                <div class="faq_content mt-3">
+                    <!-- content -->
+                    <div class="faq_content mt-3">
 
-                    <div></div>
-                    <div class="accordions">
+                        <div></div>
+                        <div class="accordions">
 
-                        <t t-set="acc" t-value="True"/>
+                            <t t-set="acc" t-value="True"/>
 
-                        <t t-foreach="p.faq_ids" t-as="i">
+                            <t t-foreach="p.faq_ids" t-as="i">
 
-                            <t t-if="acc">
-                                <div class="accordion active sora-600" t-raw="i.title"></div>
-                                <div id="panel_active" class="panel">
-                                    <p class="faq_text" t-raw="i.desc"></p>
-                                </div>
-                                <div class="spacer"></div>
-                                <t t-set="acc" t-value="False"/>
+                                <t t-if="acc">
+                                    <div class="accordion active sora-600" t-raw="i.title"></div>
+                                    <div id="panel_active" class="panel">
+                                        <p class="faq_text" t-raw="i.desc"></p>
+                                    </div>
+                                    <div class="spacer"></div>
+                                    <t t-set="acc" t-value="False"/>
+                                </t>
+                                <t t-else="">
+                                    <div class="accordion sora-600" t-raw="i.title"></div>
+                                    <div class="panel">
+                                        <p class="faq_text" t-raw="i.desc"></p>
+                                    </div>
+                                    <div class="spacer"></div>
+                                </t>
                             </t>
-                            <t t-else="">
-                                <div class="accordion sora-600" t-raw="i.title"></div>
-                                <div class="panel">
-                                    <p class="faq_text" t-raw="i.desc"></p>
-                                </div>
-                                <div class="spacer"></div>
-                            </t>
-                        </t>
+
+                        </div>
+                        <div></div>
 
                     </div>
-                    <div></div>
-
+                    <!-- content -->
                 </div>
-                <!-- content -->
 
             </div>
             <!--
