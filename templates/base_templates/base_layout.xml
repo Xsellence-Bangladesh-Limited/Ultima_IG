@@ -19,7 +19,7 @@
                 <link rel="stylesheet" href="/ultima/static/css/short.css"/>
 
                 <!-- Custom stylesheet -->
-                <link rel="stylesheet" href="/ultima/static/css/index.css?v=index1"/>
+                <link rel="stylesheet" href="/ultima/static/css/index.css?v=index4"/>
 
                 <t t-raw="header"></t>
             </head>

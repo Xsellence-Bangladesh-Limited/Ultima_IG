@@ -77,11 +77,19 @@ class UltimaHomeIntroduce(models.Model):
     desc_line_ids = fields.Many2many('ultima.home.introduce.desc.line')
     shop_now_url = fields.Char()
     shop_now_text = fields.Char()
-    video_bg_1920 = fields.Image("Image", max_width=1920, max_height=1920)
-    video_bg_1024 = fields.Image("Image 1024", related="video_bg_1920", max_width=1024, max_height=1024, store=True)
-    video_bg_512 = fields.Image("Image 512", related="video_bg_1920", max_width=512, max_height=512, store=True)
-    video_bg_256 = fields.Image("Image 256", related="video_bg_1920", max_width=256, max_height=256, store=True)
-    video_bg_128 = fields.Image("Image 128", related="video_bg_1920", max_width=128, max_height=128, store=True)
+    video_bg_1920 = fields.Image("Video Background Image", max_width=1920, max_height=1920)
+    video_bg_1024 = fields.Image("Video Image 1024", related="video_bg_1920", max_width=1024, max_height=1024, store=True)
+    video_bg_512 = fields.Image("Video Image 512", related="video_bg_1920", max_width=512, max_height=512, store=True)
+    video_bg_256 = fields.Image("Video Image 256", related="video_bg_1920", max_width=256, max_height=256, store=True)
+    video_bg_128 = fields.Image("Video Image 128", related="video_bg_1920", max_width=128, max_height=128, store=True)
+
+    section_bg_1920 = fields.Image("Section Background Image", max_width=1920, max_height=1920)
+    section_bg_1024 = fields.Image("Section Image 1024", related="section_bg_1920", max_width=1024, max_height=1024, store=True)
+    section_bg_512 = fields.Image("Section Image 512", related="section_bg_1920", max_width=512, max_height=512, store=True)
+    section_bg_256 = fields.Image("Section Image 256", related="section_bg_1920", max_width=256, max_height=256, store=True)
+    section_bg_128 = fields.Image("Section Image 128", related="section_bg_1920", max_width=128, max_height=128, store=True)
+
+    section_bg_opacity = fields.Float(string="Section Background Opacity (0-1)")
 
     video_url = fields.Char()
 

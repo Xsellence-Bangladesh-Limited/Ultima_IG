@@ -4,55 +4,98 @@
             <t t-set="header">
                 <title>Home | Ultima</title>
                 <link rel="stylesheet" href="/ultima/static/css/swiper-bundle.min.css"/>
-                <link rel="stylesheet" href="/ultima/static/css/home.css?v=home2"/>
+                <link rel="stylesheet" href="/ultima/static/css/home.css?v=home4"/>
             </t>
 
             <!--
               Introduce Ultima
             -->
-            <div id="introduce" class="introduce" data_clr="001228">
-                <div class="blocks">
+            <t t-if="intro.section_bg_1920">
+                <div id="introduce" class="introduce mb-5" data_clr="001228" t-attf-style="background-image: url('/web/image/ultima.home.introduce/{{intro.id}}/section_bg_1920'); background-color: transparent;">
+                    <div class="introduce-overlay" t-attf-style="background-color: rgba(0, 0, 0, {{intro.section_bg_opacity}});"></div>
 
-                    <!-- left -->
-                    <div class="left">
-                        <div class="text-gradient" t-esc="intro.section"></div>
-                        <div>
-                            <h3 class="introduction-title" t-raw="intro.title">
-                            </h3>
-                        </div>
-                        <div class="desc" t-raw="intro.desc"></div>
+                    <div class="blocks my-container">
 
-                        <ul class="my-3 pl-4">
-                            <t t-foreach="intro.desc_line_ids" t-as="line">
-                                <li class="text" t-esc="line.name"></li>
-                            </t>
-                        </ul>
+                        <!-- left -->
+                        <div class="left">
+                            <div class="text-gradient" t-esc="intro.section"></div>
+                            <div>
+                                <h3 class="introduction-title" t-raw="intro.title">
+                                </h3>
+                            </div>
+                            <div class="desc" t-raw="intro.desc"></div>
 
-                        <div class="mt-4">
-                            <a class="button" t-att-href="'%s' % intro.shop_now_url" t-esc="intro.shop_now_text"></a>
-                        </div>
-                    </div>
+                            <ul class="my-3 pl-4">
+                                <t t-foreach="intro.desc_line_ids" t-as="line">
+                                    <li class="text" t-esc="line.name"></li>
+                                </t>
+                            </ul>
 
-                    <!-- Right -->
-                    <div class="right">
-                        <div id="introduce_box" class="box" data-toggle="modal" data-target="#modal_introduce_video">
-                            <img t-if="intro.video_bg_512" t-att-src="image_data_uri(intro.video_bg_512)"
-                                 alt="Introducing Ultima"/>
-                            <div id="introduce_play" class="play">
-                                <img src="/ultima/static/image/introduce/play.png" alt=""/>
+                            <div class="mt-4">
+                                <a class="button" t-att-href="'%s' % intro.shop_now_url" t-esc="intro.shop_now_text"></a>
                             </div>
                         </div>
-                    </div>
 
+                        <!-- Right -->
+                        <div class="right">
+                            <div id="introduce_box" class="box" data-toggle="modal" data-target="#modal_introduce_video">
+                                <img t-if="intro.video_bg_512" t-att-src="image_data_uri(intro.video_bg_512)"
+                                     alt="Introducing Ultima"/>
+                                <div id="introduce_play" class="play">
+                                    <img src="/ultima/static/image/introduce/play.png" alt=""/>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
                 </div>
-            </div>
+            </t>
+
+            <t t-else="">
+                <div id="introduce" class="introduce mb-5" data_clr="001228">
+                    <div class="blocks my-container">
+
+                        <!-- left -->
+                        <div class="left">
+                            <div class="text-gradient" t-esc="intro.section"></div>
+                            <div>
+                                <h3 class="introduction-title" t-raw="intro.title">
+                                </h3>
+                            </div>
+                            <div class="desc" t-raw="intro.desc"></div>
+
+                            <ul class="my-3 pl-4">
+                                <t t-foreach="intro.desc_line_ids" t-as="line">
+                                    <li class="text" t-esc="line.name"></li>
+                                </t>
+                            </ul>
+
+                            <div class="mt-4">
+                                <a class="button" t-att-href="'%s' % intro.shop_now_url" t-esc="intro.shop_now_text"></a>
+                            </div>
+                        </div>
+
+                        <!-- Right -->
+                        <div class="right">
+                            <div id="introduce_box" class="box" data-toggle="modal" data-target="#modal_introduce_video">
+                                <img t-if="intro.video_bg_512" t-att-src="image_data_uri(intro.video_bg_512)"
+                                     alt="Introducing Ultima"/>
+                                <div id="introduce_play" class="play">
+                                    <img src="/ultima/static/image/introduce/play.png" alt=""/>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </t>
 
             <!-- The Modal -->
             <div class="introduce_modal modal" id="modal_introduce_video">
                 <div class="modal-dialog m-modal-lg modal-dialog-centered">
-                    <div class="modal-content" style="background:transparent;">
+                    <div class="modal-content introduce-video-container" style="background:transparent; height: 90vh;">
 
-                        <iframe id="introduce_iframe" width="100%" height="400"
+                        <iframe id="introduce_iframe" width="100%" height="100%"
                                 t-att-src="intro.video_url"></iframe>
 
                         <!-- Modal Header -->
@@ -83,9 +126,9 @@
                 <div class="content">
                     <div class="text-gradient" t-esc="p.bsp_section"></div>
                     <div>
-                        <h3 t-esc="p.bsp_title"></h3>
+                        <h3 t-esc="p.bsp_title" class="products-section-title"></h3>
                     </div>
-                    <div class="desc" t-esc="p.bsp_desc"></div>
+                    <div class="desc products-section-desc" t-esc="p.bsp_desc"></div>
                 </div>
             </div>
 
@@ -148,7 +191,7 @@
                         <div class="content">
                             <div class="text-gradient" t-esc="p.dis_section"></div>
                             <div>
-                                <h3 t-esc="p.dis_title"></h3>
+                                <h3 t-esc="p.dis_title" class="discover-section-title"></h3>
                             </div>
                             <div class="desc" t-esc="p.dis_desc"></div>
                         </div>
@@ -178,7 +221,7 @@
                     <div class="content">
                         <div class="text-gradient" t-esc="p.type_section"></div>
                         <div>
-                            <h3 t-raw="p.type_title"></h3>
+                            <h3 class="filtration-section-title" t-raw="p.type_title"></h3>
                         </div>
                     </div>
                 </div>
@@ -187,14 +230,14 @@
 
                     <!-- left Image and right text -->
                     <div t-if="t.style == 'left_img_right_text'" class="con_banner_and_desc">
-                        <div class="banner_and_desc">
-                            <div>
+                        <div class="banner_and_desc my-container">
+                            <div class="banner-image-container">
                                 <img class="banner" t-if="t.img_512" t-att-src="image_data_uri(t.img_512)"
                                      t-att-alt="t.title"/>
                             </div>
                             <div>
                                 <div class="title sora-600" t-raw="t.title"></div>
-                                <ul class="my-4 pl-4">
+                                <ul class="my-4 pl-4 filtration-type-desc">
                                     <t t-foreach="t.line_ids" t-as="l">
                                         <li class="text" t-esc="l.name"></li>
                                     </t>
@@ -206,10 +249,10 @@
 
                     <!-- Left Text and right img 2 -->
                     <div t-else="" class="con_banner_and_desc bg_light">
-                        <div class="banner_and_desc">
-                            <div>
+                        <div class="banner_and_desc my-container">
+                            <div class="con-banner-text-content">
                                 <div class="title sora-600" t-raw="t.title"></div>
-                                <ul class="my-4 pl-4">
+                                <ul class="my-4 pl-4 filtration-type-desc">
                                     <t t-foreach="t.line_ids" t-as="l">
                                         <li class="text" t-esc="l.name"></li>
                                     </t>
@@ -224,7 +267,7 @@
                                     <a class="button" t-att-href="t.button_url" t-esc="t.button_text"></a>
                                 </div>
                             </div>
-                            <div>
+                            <div class="con-banner-image-container">
                                 <img class="banner" t-if="t.img_512" t-att-src="image_data_uri(t.img_512)"
                                      t-att-alt="t.title"/>
                             </div>
@@ -244,7 +287,7 @@
                     <div class="content">
                         <div class="text-gradient" t-esc="p.com_section"></div>
                         <div>
-                            <h3 t-raw="p.com_title"></h3>
+                            <h3 class="block-section-title" t-raw="p.com_title"></h3>
                         </div>
                     </div>
                 </div>
@@ -305,9 +348,9 @@
 
             <!-- Companies -->
             <div class="company py-5 px-2">
-                <div class="text_and_logos">
+                <div class="text_and_logos my-container">
                     <div>
-                        <h3 t-raw="p.client_title"></h3>
+                        <h3 class="text-and-logos-title" t-raw="p.client_title"></h3>
                     </div>
                     <div>
                         <div class="logos">
@@ -329,7 +372,7 @@
                         <div class="content">
                             <div class="text-gradient" t-raw="p.faq_section"></div>
                             <div>
-                                <h3 t-raw="p.faq_title"></h3>
+                                <h3 class="faq-title" t-raw="p.faq_title"></h3>
                             </div>
                         </div>
                     </div>
