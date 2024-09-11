@@ -927,7 +927,8 @@
 
 @media (max-width: 430px){
     .mobile-feature-image{
-        height: 75px;
+        height: 75px;git
+        align-self: center;
     }
 }
 
