@@ -368,15 +368,15 @@
 
                         <div class="features-mobile-feature-container _right">
                             <div class="features-mobile-feature">
-                                <div class="mobile-feature-image">
-                                    <img src="/ultima/static/image/card.png" alt=""/>
-                                </div>
                                 <div class="mobile-feature-icon">
                                     <i class="fa-regular fa-circle-xmark"></i>
                                 </div>
                                 <div class="mobile-feature-text-content">
                                     <p class="mobile-feature-text-content-title">Chemical free filtration</p>
                                     <p class="mobile-feature-text-content-text">Completely chemical free filtration system providing RO (Additional RO+MF+UV) treatment at 6-10 levels.</p>
+                                </div>
+                                <div class="mobile-feature-image">
+                                    <img src="/ultima/static/image/card.png" alt=""/>
                                 </div>
                             </div>
                         </div>
