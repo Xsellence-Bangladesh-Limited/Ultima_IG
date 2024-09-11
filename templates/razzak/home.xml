@@ -4,7 +4,10 @@
             <t t-set="header">
                 <title>Home | Ultima</title>
                 <link rel="stylesheet" href="/ultima/static/css/swiper-bundle.min.css"/>
-                <link rel="stylesheet" href="/ultima/static/css/home.css?v=home4"/>
+                <link rel="stylesheet" href="/ultima/static/css/home.css?v=home5"/>
+                <!-- Fontawesome CDN (start) -->
+                <script src="/ultima/static/third_party_UI_library/Fontawesome/js/all.min.js" defer="1"/>
+                <!-- Fontawesome CDN (end) -->
             </t>
 
             <!--
@@ -12,7 +15,7 @@
             -->
             <t t-if="intro.section_bg_1920">
                 <div id="introduce" class="introduce mb-5" data_clr="001228" t-attf-style="background-image: url('/web/image/ultima.home.introduce/{{intro.id}}/section_bg_1920'); background-color: transparent;">
-                    <div class="introduce-overlay" t-attf-style="background-color: rgba(0, 0, 0, {{intro.section_bg_opacity}});"></div>
+                    <div class="introduce-overlay" t-attf-style="background-color: rgba{{intro_section_bg_color}};"></div>
 
                     <div class="blocks my-container">
 
@@ -280,7 +283,7 @@
             <!-- End Filtration types -->
 
             <!-- Features -->
-            <div class="block feature px-2 py-5">
+            <div class="block feature py-5">
 
                 <!-- Header -->
                 <div class="header">
@@ -310,7 +313,7 @@
                                         <div class="title sora-600 py-2" t-raw="com.title"></div>
                                         <div class="text" t-raw="com.desc"></div>
                                     </div>
-                                    <div>
+                                    <div class="con-img-container">
                                         <div class="con_img"></div>
                                     </div>
                                 </div>
@@ -332,13 +335,80 @@
                                         <div class="title sora-600 py-2" t-raw="com.title"></div>
                                         <div class="text" t-raw="com.desc"></div>
                                     </div>
-                                    <div>
+                                    <div class="con-img-container">
                                         <div class="con_img"></div>
                                     </div>
                                 </div>
                                 <!-- End Without feature -->
                             </t>
 
+                        </div>
+                    </div>
+
+                    <div class="features-mobile mt-3">
+                        <div class="features-mobile-header mb-2">
+                            <p class="_ultima">Ultima</p>
+                            <p class="_others">Others</p>
+                        </div>
+
+                        <div class="features-mobile-feature-container _left">
+                            <div class="features-mobile-feature">
+                                <div class="mobile-feature-icon">
+                                    <i class="fa-regular fa-circle-check"></i>
+                                </div>
+                                <div class="mobile-feature-text-content">
+                                    <p class="mobile-feature-text-content-title">Chemical free filtration</p>
+                                    <p class="mobile-feature-text-content-text">Completely chemical free filtration system providing RO (Additional RO+MF+UV) treatment at 6-10 levels.</p>
+                                </div>
+                                <div class="mobile-feature-image">
+                                    <img src="/ultima/static/image/card.png" alt=""/>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="features-mobile-feature-container _right">
+                            <div class="features-mobile-feature">
+                                <div class="mobile-feature-image">
+                                    <img src="/ultima/static/image/card.png" alt=""/>
+                                </div>
+                                <div class="mobile-feature-icon">
+                                    <i class="fa-regular fa-circle-xmark"></i>
+                                </div>
+                                <div class="mobile-feature-text-content">
+                                    <p class="mobile-feature-text-content-title">Chemical free filtration</p>
+                                    <p class="mobile-feature-text-content-text">Completely chemical free filtration system providing RO (Additional RO+MF+UV) treatment at 6-10 levels.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="features-mobile-feature-container _left">
+                            <div class="features-mobile-feature">
+                                <div class="mobile-feature-icon">
+                                    <i class="fa-regular fa-circle-check"></i>
+                                </div>
+                                <div class="mobile-feature-text-content">
+                                    <p class="mobile-feature-text-content-title">Chemical free filtration</p>
+                                    <p class="mobile-feature-text-content-text">Completely chemical free filtration system providing RO (Additional RO+MF+UV) treatment at 6-10 levels.</p>
+                                </div>
+                                <div class="mobile-feature-image">
+                                    <img src="/ultima/static/image/card.png" alt=""/>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="features-mobile-feature-container _right">
+                            <div class="features-mobile-feature">
+                                 <div class="mobile-feature-image">
+                                    <img src="/ultima/static/image/card.png" alt=""/>
+                                </div>
+                                <div class="mobile-feature-icon">
+                                    <i class="fa-regular fa-circle-xmark"></i>
+                                </div>
+                                <div class="mobile-feature-text-content">
+                                    <p class="mobile-feature-text-content-title">Chemical free filtration</p>
+                                    <p class="mobile-feature-text-content-text">Completely chemical free filtration system providing RO (Additional RO+MF+UV) treatment at 6-10 levels.</p>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>

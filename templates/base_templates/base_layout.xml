@@ -19,7 +19,7 @@
                 <link rel="stylesheet" href="/ultima/static/css/short.css"/>
 
                 <!-- Custom stylesheet -->
-                <link rel="stylesheet" href="/ultima/static/css/index.css?v=index4"/>
+                <link rel="stylesheet" href="/ultima/static/css/index.css?v=index5"/>
 
                 <t t-raw="header"></t>
             </head>
@@ -315,29 +315,59 @@
 
                     <!-- Absolute Components -->
                     <div id="lb_ac">
-                        <div class="d-f fd-c">
-                            <div class="icon">
-                                <a t-att-href="'tel:%s' % layout.contact_no">
-                                    <img src="/ultima/static/image/logo/callicon.png" alt="Contact Number"/>
-                                </a>
-                            </div>
-                        </div>
+                        <!--                        <div class="d-f fd-c">-->
+                        <!--                            <div class="icon">-->
+                        <!--                                <a t-att-href="'tel:%s' % layout.contact_no">-->
+                        <!--                                    <img src="/ultima/static/image/logo/callicon.png" alt="Contact Number"/>-->
+                        <!--                                </a>-->
+                        <!--                            </div>-->
+                        <!--                        </div>-->
                     </div>
 
                     <!-- Bottom right buttons -->
                     <div id="rb_ac">
                         <div class="d-f fd-c">
-                            <div class="icon">
-                                <a target="_blank" href="https://m.me/ultimabd">
-                                    <img src="/ultima/static/image/logo/fbicon.png" alt="Facebook messenger"/>
-                                </a>
+                            <!--                            <div class="icon">-->
+                            <!--                                <a target="_blank" href="https://m.me/ultimabd">-->
+                            <!--                                    <img src="/ultima/static/image/logo/fbicon.png" alt="Facebook messenger"/>-->
+                            <!--                                </a>-->
+                            <!--                            </div>-->
+                            <div class="d-f fd-c">
+                                <div class="icon">
+                                    <a t-att-href="'tel:%s' % layout.contact_no">
+                                        <img src="/ultima/static/image/logo/callicon.png" alt="Contact Number"/>
+                                    </a>
+                                </div>
                             </div>
+
                             <div class="icon mt-2">
                                 <a target="_blank"
                                    t-att-href="'https://api.whatsapp.com/send?phone=+%s&amp;text=Hello!&amp;source=&amp;data=' % layout.whatsapp">
                                     <img src="/ultima/static/image/logo/whaticon.webp" alt="WhatsApp contact Number"/>
                                 </a>
                             </div>
+                        </div>
+                    </div>
+
+                    <div class="mobile-bottom-menu">
+
+                        <div class="mobile-bottom-menu-content">
+
+                            <div class="d-f fd-c">
+                                <div class="icon">
+                                    <a t-att-href="'tel:%s' % layout.contact_no">
+                                        <img src="/ultima/static/image/logo/callicon.png" alt="Contact Number" style="width: 50px;"/>
+                                    </a>
+                                </div>
+                            </div>
+
+                            <div class="icon">
+                                <a target="_blank"
+                                   t-att-href="'https://api.whatsapp.com/send?phone=+%s&amp;text=Hello!&amp;source=&amp;data=' % layout.whatsapp">
+                                    <img src="/ultima/static/image/logo/whaticon.webp" alt="WhatsApp contact Number" style="width: 50px;"/>
+                                </a>
+                            </div>
+
                         </div>
                     </div>
 

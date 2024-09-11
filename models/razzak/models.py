@@ -89,7 +89,8 @@ class UltimaHomeIntroduce(models.Model):
     section_bg_256 = fields.Image("Section Image 256", related="section_bg_1920", max_width=256, max_height=256, store=True)
     section_bg_128 = fields.Image("Section Image 128", related="section_bg_1920", max_width=128, max_height=128, store=True)
 
-    section_bg_opacity = fields.Float(string="Section Background Opacity (0-1)")
+    section_bg_color = fields.Char(string="Section Background Image Color")
+    section_bg_opacity = fields.Float(string="Section Background Image Color Opacity")
 
     video_url = fields.Char()
 

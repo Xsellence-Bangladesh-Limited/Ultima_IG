@@ -176,6 +176,7 @@
                         <group>
                             <field name="video_bg_1920" widget="image" class="oe_avatar"/>
                             <field name="section_bg_1920" widget="image" class="oe_avatar"/>
+                            <field name="section_bg_color" widget="color"/>
                             <field name="section_bg_opacity"/>
                         </group>
                     </group>

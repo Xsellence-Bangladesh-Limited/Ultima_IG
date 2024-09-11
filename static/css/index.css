@@ -379,3 +379,56 @@ wrap wrap
     display: none;
     width: 23px;
 }
+
+.mobile-bottom-menu{
+    padding: 0.938rem;
+    background-color: #F9FAFB;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    border-top-left-radius: 0.938rem;
+    border-top-right-radius: 0.938rem;
+    width: 100%;
+    z-index: 10000000;
+}
+
+.mobile-bottom-menu-content{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2.5rem;
+}
+
+/* responsiveness (start) */
+@media(min-width: 0px){
+    #lb_ac, #rb_ac{
+        display: none;
+    }
+}
+
+@media(min-width: 576px){
+
+}
+
+@media(min-width: 768px){
+    #lb_ac, #rb_ac{
+        display: block;
+    }
+
+    .mobile-bottom-menu{
+        display: none;
+    }
+}
+
+@media(min-width: 992px){
+
+}
+
+@media(min-width: 1200px){
+
+}
+
+@media(min-width: 1400px){
+
+}
+/* responsiveness (end) */

@@ -21,8 +21,23 @@ class UltimaWebsite(http.Controller):
         testimonials = req.env['ultima.testimonial'].sudo().search([])
         layout = req.env['ultima.layout'].sudo().search([], limit=1)
 
+        if intro.section_bg_color:
+            hex_color = intro.section_bg_color.lstrip('#')
+            intro_section_bg_color_rgb = list(int(hex_color[i:i + 2], 16) for i in (0, 2, 4))
+
+            if intro.section_bg_opacity:
+                intro_section_bg_color_rgb.append(intro.section_bg_opacity)
+                intro_section_bg_color = tuple(intro_section_bg_color_rgb)
+
+            else:
+                intro_section_bg_color = intro.section_bg_color
+
+        else:
+            intro_section_bg_color = 'transparent'
+
         return req.render('ultima.home', {
             'intro': intro,
+            'intro_section_bg_color': intro_section_bg_color,
             'p': page,
             # 'products': products,
             'currency_id': currency_id,
