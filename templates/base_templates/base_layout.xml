@@ -18,6 +18,10 @@
                 <link rel="stylesheet" href="/ultima/static/css/bootstrap.min.css"/>
                 <link rel="stylesheet" href="/ultima/static/css/short.css"/>
 
+                <!-- Fontawesome CDN (start) -->
+                <script src="/ultima/static/third_party_UI_library/Fontawesome/js/all.min.js" defer="1"/>
+                <!-- Fontawesome CDN (end) -->
+
                 <!-- Custom stylesheet -->
                 <link rel="stylesheet" href="/ultima/static/css/index.css?v=index7"/>
 
@@ -25,6 +29,27 @@
             </head>
 
             <body>
+
+                <button class="talk-with-expert-button">Talk With Expert</button>
+
+                <div class="talk-with-expert-form">
+                    <div class="expert-form-header mb-1">
+                        <h6 class="expert-form-header-title">Provide Your Information</h6>
+                        <div class="expert-form-close-icon">
+                            <i class="fa-solid fa-xmark"></i>
+                        </div>
+                    </div>
+
+                    <div class="expert-form-body">
+                        <p class="expert-form-label">Name<span class="expert-form-label-required">*</span></p>
+                        <input class="expert-form-input mb-2" id="expert-form-name-input" placeholder="Enter your name"/>
+
+                        <p class="expert-form-label">Number<span class="expert-form-label-required">*</span></p>
+                        <input class="expert-form-input mb-3" id="expert-form-number-input" placeholder="Enter your name"/>
+
+                        <button class="expert-form-submit-btn">Submit</button>
+                    </div>
+                </div>
 
                 <div id="wrap">
 
@@ -318,7 +343,7 @@
                     <script src="/ultima/static/js/font-awesome.js"/>
 
                     <!-- Custom Javascript -->
-                    <script src="/ultima/static/js/index.js?v=1.7"/>
+                    <script src="/ultima/static/js/index.js?v=1.8"/>
 
                     <t t-raw="footer"></t>
 

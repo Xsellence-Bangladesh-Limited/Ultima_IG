@@ -58,4 +58,16 @@ $(document).ready(function () {
         Testimonial Slider (end)
     */
 
+    // Handling talk with expert form toggling (start)
+
+    $('.talk-with-expert-button').click(function(){
+        $('.talk-with-expert-form').fadeIn("slow");
+    })
+
+    $('.expert-form-close-icon').click(function(){
+        $('.talk-with-expert-form').fadeOut("slow");
+    })
+
+    // Handling talk with expert form toggling (end)
+
 });
