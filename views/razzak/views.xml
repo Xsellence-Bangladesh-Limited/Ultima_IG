@@ -283,6 +283,7 @@
 
                         <separator string="Clients"/>
                         <field name="client_title" string="Title"/>
+                        <field name="client_description" string="Description"/>
                         <field name="client_img_1920" widget="image" class="oe_avatar" string="Images"/>
 
                         <separator string="FAQ"/>
@@ -441,7 +442,6 @@
                 <field name="sequence" widget="handle"/>
                 <field name="title"/>
                 <field name="desc"/>
-                <field name="img"/>
                 <field name="sequence"/>
                 <field name="ultima"/>
             </tree>
@@ -459,7 +459,7 @@
                         <group>
                             <field name="title"/>
                             <field name="desc"/>
-                            <field name="img"/>
+                            <field name="image_1920" widget="image" class="oe_avatar"/>
                             <field name="sequence"/>
                             <field name="ultima"/>
                         </group>

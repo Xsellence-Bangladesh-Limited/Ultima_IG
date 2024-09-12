@@ -19,7 +19,7 @@
                 <link rel="stylesheet" href="/ultima/static/css/short.css"/>
 
                 <!-- Custom stylesheet -->
-                <link rel="stylesheet" href="/ultima/static/css/index.css?v=index5"/>
+                <link rel="stylesheet" href="/ultima/static/css/index.css?v=index7"/>
 
                 <t t-raw="header"></t>
             </head>
@@ -41,29 +41,38 @@
                         <!-- Right quick contact -->
                         <div>
                             <div class="options">
+
+
                                 <div class="br">
-
-                                    <t t-foreach="langs" t-as="lang">
-
-                                        <t t-if="lang.code == 'en_US'">
-                                            <img style="display: inline-block;" t-att-id="'flag_image_%s' % lang.code"
-                                                 class="flag_image"
-                                                 t-att-src="lang.flag_image_url" alt=""/>
-                                        </t>
-                                        <t t-else="">
-                                            <img t-att-id="'flag_image_%s' % lang.code" class="flag_image"
-                                                 t-att-src="lang.flag_image_url" alt=""/>
-                                        </t>
+                                    <t t-if="request.session.get('context', {}).get('lang') == 'bn_IN'">
+                                        <a href="/" class="language-option">Eng</a>
                                     </t>
 
-                                    <select class="lang select_lang" name="lang" id="lang">
-                                        <t t-foreach="langs" t-as="lang">
-                                            <option t-att-value="lang.code"
-                                                    t-att-selected="lang.code == 'en_US'"
-                                                    t-att-xx="lang.flag_image_url"
-                                                    t-esc="lang.name"></option>
-                                        </t>
-                                    </select>
+                                    <t t-if="request.session.get('context', {}).get('lang') == 'en_US'">
+                                        <a href="/" class="language-option">বাংলা</a>
+                                    </t>
+
+                                    <!--                                    <t t-foreach="langs" t-as="lang">-->
+
+                                    <!--                                        <t t-if="lang.code == 'en_US'">-->
+                                    <!--                                            <img style="display: inline-block;" t-att-id="'flag_image_%s' % lang.code"-->
+                                    <!--                                                 class="flag_image"-->
+                                    <!--                                                 t-att-src="lang.flag_image_url" alt=""/>-->
+                                    <!--                                        </t>-->
+                                    <!--                                        <t t-else="">-->
+                                    <!--                                            <img t-att-id="'flag_image_%s' % lang.code" class="flag_image"-->
+                                    <!--                                                 t-att-src="lang.flag_image_url" alt=""/>-->
+                                    <!--                                        </t>-->
+                                    <!--                                    </t>-->
+
+                                    <!--                                    <select class="lang select_lang" name="lang" id="lang">-->
+                                    <!--                                        <t t-foreach="langs" t-as="lang">-->
+                                    <!--                                            <option t-att-value="lang.code"-->
+                                    <!--                                                    t-att-selected="lang.code == 'en_US'"-->
+                                    <!--                                                    t-att-xx="lang.flag_image_url"-->
+                                    <!--                                                    t-esc="lang.name"></option>-->
+                                    <!--                                        </t>-->
+                                    <!--                                    </select>-->
                                 </div>
                                 <div class="br">
                                     <a href="#">
@@ -309,7 +318,7 @@
                     <script src="/ultima/static/js/font-awesome.js"/>
 
                     <!-- Custom Javascript -->
-                    <script src="/ultima/static/js/index.js"/>
+                    <script src="/ultima/static/js/index.js?v=1.7"/>
 
                     <t t-raw="footer"></t>
 
@@ -356,7 +365,8 @@
                             <div class="d-f fd-c">
                                 <div class="icon">
                                     <a t-att-href="'tel:%s' % layout.contact_no">
-                                        <img src="/ultima/static/image/logo/callicon.png" alt="Contact Number" style="width: 50px;"/>
+                                        <img src="/ultima/static/image/logo/callicon.png" alt="Contact Number"
+                                             style="width: 50px;"/>
                                     </a>
                                 </div>
                             </div>
@@ -364,7 +374,8 @@
                             <div class="icon">
                                 <a target="_blank"
                                    t-att-href="'https://api.whatsapp.com/send?phone=+%s&amp;text=Hello!&amp;source=&amp;data=' % layout.whatsapp">
-                                    <img src="/ultima/static/image/logo/whaticon.webp" alt="WhatsApp contact Number" style="width: 50px;"/>
+                                    <img src="/ultima/static/image/logo/whaticon.webp" alt="WhatsApp contact Number"
+                                         style="width: 50px;"/>
                                 </a>
                             </div>
 

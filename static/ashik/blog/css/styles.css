@@ -40,6 +40,15 @@ p {
   font-size: 0.875rem;
 }
 
+a{
+    color: inherit !important;
+}
+
+a:hover {
+    text-decoration: none !important;
+    color: inherit !important;
+}
+
 /* Global CSS (end) */
 
 /* Main Content (start) */
