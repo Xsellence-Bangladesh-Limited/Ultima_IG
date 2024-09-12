@@ -7,6 +7,19 @@ class UltimaWebsite(http.Controller):
 
     @http.route('/', auth='public')
     def home(self, **kw):
+
+        # Toggling language in session (start)
+        session = req.session.context
+        cur_lang = session.get('lang')
+        if cur_lang == 'bn_IN':
+            session['lang'] = 'en_US'
+
+        elif cur_lang == 'en_US':
+            session['lang'] = 'bn_IN'
+
+        print(session.get('lang'))
+        # Toggling language in session (end)
+
         intro = req.env['ultima.home.introduce'].sudo().search([], limit=1)
         page = req.env['ultima.home'].sudo().search([], limit=1)
 

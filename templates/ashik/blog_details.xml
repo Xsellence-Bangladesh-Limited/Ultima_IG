@@ -111,7 +111,7 @@
                         </button>
                     </div>
                 </div>
-                <div class="main-content mt-4">
+                <div class="main-content">
                     <div class="my-container">
                         <!-- <t t-if="query_submission_successful">-->
                         <!-- <div class="alert alert-success mt-2 message-sent-successful-alert">-->

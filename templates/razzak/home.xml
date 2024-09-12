@@ -14,8 +14,10 @@
               Introduce Ultima
             -->
             <t t-if="intro.section_bg_1920">
-                <div id="introduce" class="introduce mb-5" data_clr="001228" t-attf-style="background-image: url('/web/image/ultima.home.introduce/{{intro.id}}/section_bg_1920'); background-color: transparent;">
-                    <div class="introduce-overlay" t-attf-style="background-color: rgba{{intro_section_bg_color}};"></div>
+                <div id="introduce" class="introduce mb-5" data_clr="001228"
+                     t-attf-style="background-image: url('/web/image/ultima.home.introduce/{{intro.id}}/section_bg_1920'); background-color: transparent;">
+                    <div class="introduce-overlay"
+                         t-attf-style="background-color: rgba{{intro_section_bg_color}};"></div>
 
                     <div class="blocks my-container">
 
@@ -35,13 +37,15 @@
                             </ul>
 
                             <div class="mt-4">
-                                <a class="button" t-att-href="'%s' % intro.shop_now_url" t-esc="intro.shop_now_text"></a>
+                                <a class="button" t-att-href="'%s' % intro.shop_now_url"
+                                   t-esc="intro.shop_now_text"></a>
                             </div>
                         </div>
 
                         <!-- Right -->
                         <div class="right">
-                            <div id="introduce_box" class="box" data-toggle="modal" data-target="#modal_introduce_video">
+                            <div id="introduce_box" class="box" data-toggle="modal"
+                                 data-target="#modal_introduce_video">
                                 <img t-if="intro.video_bg_512" t-att-src="image_data_uri(intro.video_bg_512)"
                                      alt="Introducing Ultima"/>
                                 <div id="introduce_play" class="play">
@@ -74,13 +78,15 @@
                             </ul>
 
                             <div class="mt-4">
-                                <a class="button" t-att-href="'%s' % intro.shop_now_url" t-esc="intro.shop_now_text"></a>
+                                <a class="button" t-att-href="'%s' % intro.shop_now_url"
+                                   t-esc="intro.shop_now_text"></a>
                             </div>
                         </div>
 
                         <!-- Right -->
                         <div class="right">
-                            <div id="introduce_box" class="box" data-toggle="modal" data-target="#modal_introduce_video">
+                            <div id="introduce_box" class="box" data-toggle="modal"
+                                 data-target="#modal_introduce_video">
                                 <img t-if="intro.video_bg_512" t-att-src="image_data_uri(intro.video_bg_512)"
                                      alt="Introducing Ultima"/>
                                 <div id="introduce_play" class="play">
@@ -303,7 +309,7 @@
                         <div>
 
                             <!-- <div class="button_success">With Ultima</div> -->
-                            <div class="with_ultima sora-600">With Ultima</div>
+                            <div class="with_ultima sora-600">Ultima</div>
 
                             <!-- With feature -->
                             <t t-foreach="p.com_ids" t-as="com">
@@ -314,7 +320,9 @@
                                         <div class="text" t-raw="com.desc"></div>
                                     </div>
                                     <div class="con-img-container">
-                                        <div class="con_img"></div>
+                                        <div class="con_img">
+                                            <img t-if="com.image_512" t-att-src="image_data_uri(com.image_512)"/>
+                                        </div>
                                     </div>
                                 </div>
                             </t>
@@ -325,7 +333,7 @@
                         <!-- Without Ultima -->
                         <div>
                             <!-- <div class="button_danger">Without Ultima</div> -->
-                            <div class="without_ultima sora-600">Without Ultima</div>
+                            <div class="without_ultima sora-600">Others</div>
 
                             <t t-foreach="p.com_ids" t-as="com">
                                 <!-- Without feature -->
@@ -336,7 +344,9 @@
                                         <div class="text" t-raw="com.desc"></div>
                                     </div>
                                     <div class="con-img-container">
-                                        <div class="con_img"></div>
+                                        <div class="con_img">
+                                            <img t-if="com.image_512" t-att-src="image_data_uri(com.image_512)"/>
+                                        </div>
                                     </div>
                                 </div>
                                 <!-- End Without feature -->
@@ -351,65 +361,42 @@
                             <p class="_others">Others</p>
                         </div>
 
-                        <div class="features-mobile-feature-container _left">
-                            <div class="features-mobile-feature">
-                                <div class="mobile-feature-icon">
-                                    <i class="fa-regular fa-circle-check"></i>
+                        <t t-foreach="p.com_ids" t-as="com">
+                            <t t-if="com.ultima">
+                                <div class="features-mobile-feature-container _left">
+                                    <div class="features-mobile-feature">
+                                        <div class="mobile-feature-icon">
+                                            <i class="fa-regular fa-circle-check"></i>
+                                        </div>
+                                        <div class="mobile-feature-text-content">
+                                            <p class="mobile-feature-text-content-title"><t t-esc="com.title"/></p>
+                                            <p class="mobile-feature-text-content-text"><t t-esc="com.desc"/></p>
+                                        </div>
+                                        <div class="mobile-feature-image">
+                                            <img t-if="com.image_512" t-att-src="image_data_uri(com.image_512)" alt="Mobile feature image"/>
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class="mobile-feature-text-content">
-                                    <p class="mobile-feature-text-content-title">Chemical free filtration</p>
-                                    <p class="mobile-feature-text-content-text">Completely chemical free filtration system providing RO (Additional RO+MF+UV) treatment at 6-10 levels.</p>
-                                </div>
-                                <div class="mobile-feature-image">
-                                    <img src="/ultima/static/image/card.png" alt=""/>
-                                </div>
-                            </div>
-                        </div>
+                            </t>
 
-                        <div class="features-mobile-feature-container _right">
-                            <div class="features-mobile-feature">
-                                <div class="mobile-feature-icon">
-                                    <i class="fa-regular fa-circle-xmark"></i>
+                            <t t-else="">
+                                <div class="features-mobile-feature-container _right">
+                                    <div class="features-mobile-feature">
+                                        <div class="mobile-feature-icon">
+                                            <i class="fa-regular fa-circle-xmark"></i>
+                                        </div>
+                                        <div class="mobile-feature-text-content">
+                                            <p class="mobile-feature-text-content-title"><t t-esc="com.title"/></p>
+                                            <p class="mobile-feature-text-content-text"><t t-esc="com.desc"/></p>
+                                        </div>
+                                        <div class="mobile-feature-image">
+                                            <img t-if="com.image_512" t-att-src="image_data_uri(com.image_512)" alt="Mobile feature image"/>
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class="mobile-feature-text-content">
-                                    <p class="mobile-feature-text-content-title">Chemical free filtration</p>
-                                    <p class="mobile-feature-text-content-text">Completely chemical free filtration system providing RO (Additional RO+MF+UV) treatment at 6-10 levels.</p>
-                                </div>
-                                <div class="mobile-feature-image">
-                                    <img src="/ultima/static/image/card.png" alt=""/>
-                                </div>
-                            </div>
-                        </div>
+                            </t>
+                        </t>
 
-                        <div class="features-mobile-feature-container _left">
-                            <div class="features-mobile-feature">
-                                <div class="mobile-feature-icon">
-                                    <i class="fa-regular fa-circle-check"></i>
-                                </div>
-                                <div class="mobile-feature-text-content">
-                                    <p class="mobile-feature-text-content-title">Chemical free filtration</p>
-                                    <p class="mobile-feature-text-content-text">Completely chemical free filtration system providing RO (Additional RO+MF+UV) treatment at 6-10 levels.</p>
-                                </div>
-                                <div class="mobile-feature-image">
-                                    <img src="/ultima/static/image/card.png" alt=""/>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="features-mobile-feature-container _right">
-                            <div class="features-mobile-feature">
-                                 <div class="mobile-feature-image">
-                                    <img src="/ultima/static/image/card.png" alt=""/>
-                                </div>
-                                <div class="mobile-feature-icon">
-                                    <i class="fa-regular fa-circle-xmark"></i>
-                                </div>
-                                <div class="mobile-feature-text-content">
-                                    <p class="mobile-feature-text-content-title">Chemical free filtration</p>
-                                    <p class="mobile-feature-text-content-text">Completely chemical free filtration system providing RO (Additional RO+MF+UV) treatment at 6-10 levels.</p>
-                                </div>
-                            </div>
-                        </div>
                     </div>
                 </div>
 
@@ -421,7 +408,9 @@
                 <div class="text_and_logos my-container">
                     <div>
                         <h3 class="text-and-logos-title" t-raw="p.client_title"></h3>
+                        <p class="text-and-logos-description"><t t-esc="p.client_description"/></p>
                     </div>
+
                     <div>
                         <div class="logos">
                             <img t-if="p.client_img_1024" t-att-src="image_data_uri(p.client_img_1024)"

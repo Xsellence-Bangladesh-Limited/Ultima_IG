@@ -107,29 +107,4 @@ $(document).ready(function () {
         End Introduce
     */
 
-    /*
-        Testimonial Slider (start)
-    */
-    var swiper = new Swiper(".testimonial-slider .mySwiper", {
-        cssMode: true,
-        loop: true,
-        autoplay: {
-            delay: 5000,
-            pauseOnMouseEnter: true,
-        },
-        navigation: {
-            nextEl: ".swiper-button-next",
-            prevEl: ".swiper-button-prev",
-        },
-        pagination: {
-            el: ".swiper-pagination",
-            dynamicBullets: true,
-            clickable: true,
-        },
-    });
-
-    /*
-        Testimonial Slider (end)
-    */
-
 });

@@ -1,49 +1,47 @@
 <odoo>
     <template id="testimonial">
-        <!--
-        Testimonials
-        -->
-        <div class="testimonial py-5">
-            <div class="my-container">
+
+        <!-- Testimonial like prohori (start) -->
+        <div class="testimonial-like-prohori mb-3">
+            <div class="my-container pt-5 pb-5">
                 <div class="testimonial-title-container text-center">
                     <p class="testimonial-title" t-raw="layout.tm_section"></p>
                 </div>
 
                 <h3 class="testimonial-heading text-center" t-raw="layout.tm_title"></h3>
-                <div class="testimonial-slider" style="height: fit-content;">
-                    <div class="swiper mySwiper">
-                        <div class="swiper-wrapper">
-
-                            <t t-foreach="testimonials" t-as="t">
-                                <div class="swiper-slide">
-                                    <div class="testimonial-slide">
-                                        <div class="client-image">
-                                            <img t-if="t.image_512" t-att-src="image_data_uri(t.image_512)"
-                                                 t-att-alt="t.person_name"/>
-                                        </div>
-                                        <div class="client-comment">
-                                            <img src="/ultima/static/image/testimonial/testimonial_icon.png"
-                                                 class="testimonial-icon mb-3"
-                                                 alt="Testimonial Icon"/>
-
-                                            <p class="client-comment-text" t-raw="t.desc"></p>
-                                            <h5 class="client-name mb-1" t-raw="t.person_name"></h5>
-                                            <p class="client-designation" t-raw="t.designation"></p>
+                <div class="swiper mySwiper">
+                    <div class="swiper-wrapper">
+                        <t t-foreach="testimonials" t-as="t">
+                            <div class="swiper-slide">
+                                <div class="tst-pro-card">
+                                    <div class="tst-pro-card-header">
+                                        <div class="tst-pro-card-image">
+                                            <img
+                                                    t-if="t.image_512" t-att-src="image_data_uri(t.image_512)"
+                                                    t-att-alt="t.person_name"
+                                            />
                                         </div>
                                     </div>
+                                    <div class="tst-pro-card-body">
+                                        <h6 class="tst-pro-card-title mb-2" t-raw="t.person_name"></h6>
+                                        <p class="tst-pro-card-designation mb-3" t-raw="t.designation"></p>
+                                        <p class="tst-pro-card-review-text">
+                                            <img
+                                                    src="/ultima/static/image/testimonial/testimonial_icon.png"
+                                                    alt="testimonial icon"
+                                                    class="tst-pro-card-review-text-icon"
+                                            />
+                                           <t t-raw="t.desc"/>
+                                        </p>
+                                    </div>
                                 </div>
-                            </t>
-
-                        </div>
-                        <div class="swiper-button-next"></div>
-                        <div class="swiper-button-prev"></div>
-                        <div class="swiper-pagination"></div>
+                            </div>
+                        </t>
                     </div>
+                    <div class="swiper-pagination"></div>
                 </div>
             </div>
         </div>
-        <!--
-        End Testimonials
-        -->
+        <!-- Testimonial like prohori (end) -->
     </template>
 </odoo>
