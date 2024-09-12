@@ -19,7 +19,7 @@
                 <link rel="stylesheet" href="/ultima/static/css/short.css"/>
 
                 <!-- Custom stylesheet -->
-                <link rel="stylesheet" href="/ultima/static/css/index.css?v=index5"/>
+                <link rel="stylesheet" href="/ultima/static/css/index.css?v=index7"/>
 
                 <t t-raw="header"></t>
             </head>
@@ -318,7 +318,7 @@
                     <script src="/ultima/static/js/font-awesome.js"/>
 
                     <!-- Custom Javascript -->
-                    <script src="/ultima/static/js/index.js"/>
+                    <script src="/ultima/static/js/index.js?v=1.7"/>
 
                     <t t-raw="footer"></t>
 
