@@ -12,6 +12,95 @@
     --img-radius: 17px;
     --primary-color: #0c79f9;
     --color_primary: #0c79f9;
+     --title-font-family: "Sora", sans-serif;
+  --normal-text-font-family: "Poppins", sans-serif;
+  --inter-font-family: "Inter", sans-serif;
+  --heading-font-weight: 600;
+  --normal-title-font-weight: 400;
+}
+
+.talk-with-expert-button{
+    position: fixed;
+    right: -10px;
+    top: 44%;
+    z-index: 10000000;
+    transform: rotate(-90deg);
+    cursor: pointer;
+    padding: 10px;
+    border: none;
+    outline: none !important;
+    background: linear-gradient(360deg, rgba(2,0,36,1) 0%, rgba(12,121,249,1) 0%, rgba(179,103,255,1) 100%);
+    color: #fff;
+    font-family: var(--title-font-family);
+    font-size: 14px;
+    font-weight: var(--normal-title-font-weight);
+    border-radius: 5px;
+}
+
+.talk-with-expert-form{
+    position: absolute;
+    right: 10px;
+    top: 35%;
+    background-color: #fff;
+    z-index: 100000000;
+    width: 330px;
+    border-radius: 10px;
+    display: none;
+}
+
+.expert-form-header{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+    font-family: var(--title-font-family);
+    box-shadow: rgba(33, 35, 38, 0.1) 0px 10px 10px -10px;
+}
+
+.expert-form-header-title{
+    margin-bottom: 0;
+}
+
+.expert-form-close-icon{
+    cursor: pointer;
+}
+
+.expert-form-body{
+    padding: 10px;
+}
+
+.expert-form-label{
+    font-family: var(--normal-text-font-family);
+    font-size: 13px;
+    margin-bottom: 3px !important;
+    font-weight: 500;
+}
+
+.expert-form-label-required{
+    color: red;
+}
+
+.expert-form-input{
+    padding: 5px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    font-family: var(--normal-text-font-family);
+    font-size: 13px;
+    width: 100%;
+    outline: none !important;
+}
+
+.expert-form-submit-btn{
+    outline: none !important;
+    border: none;
+    width: 100%;
+    background-color: var(--primary-color);
+    color: #fff;
+    font-family: var(--title-font-family);
+    font-size: 14px;
+    padding: 5px;
+    border-radius: 5px;
+    cursor: pointer;
 }
 
 .language-option{
