@@ -5,6 +5,7 @@ ultima_social,ultima_social,model_ultima_social,,1,1,1,1
 ultima_home_introduce,ultima_home_introduce,model_ultima_home_introduce,,1,1,1,1
 ultima_home_introduce_desc_line,ultima_home_introduce_desc_line,model_ultima_home_introduce_desc_line,,1,1,1,1
 ultima_home,ultima_home,model_ultima_home,,1,1,1,1
+ultima_expert_message,ultima_expert_message,model_ultima_expert_message,,1,1,1,1
 ultima_home_dis_line,ultima_home_dis_line,model_ultima_home_dis_line,,1,1,1,1
 ultima_home_type_line,ultima_home_type_line,model_ultima_home_type_line,,1,1,1,1
 ultima_home_type_line_line,ultima_home_type_line_line,model_ultima_home_type_line_line,,1,1,1,1
@@ -26,3 +27,4 @@ product_p_detail_hl_line2,product_p_detail_hl_line2,model_product_p_detail_hl_li
 p_detail_desc_line,p_detail_desc_line,model_p_detail_desc_line,,1,1,1,1
 product_spe_line,product_spe_line,model_product_spe_line,,1,1,1,1
 ultima_product_order,ultima_product_order,model_ultima_product_order,,1,1,1,1
+ultima_payment,ultima_payment,model_ultima_payment,,1,1,1,1

@@ -7,9 +7,16 @@
 /* Google Font (end) */
 
 :root {
+    --color-gray: gray;
+    --color-blue: #0C79F9;
+    --text-gray: gray;
+    --hover-opacity: .9;
+    --img-radius: 17px;
     --primary-color: #0c79f9;
+    --color_primary: #0c79f9;
     --title-font-family: "Sora", sans-serif;
     --normal-text-font-family: "Poppins", sans-serif;
+    --inter-font-family: "Inter", sans-serif;
     --heading-font-weight: 600;
     --normal-title-font-weight: 400;
 }
@@ -17,6 +24,12 @@
 /* 
 Page Global 
 */
+
+.my-container {
+    width: 60rem;
+    margin: 0 auto;
+}
+
 .block .header {
     display: flex;
     justify-content: center;
@@ -136,7 +149,7 @@ Our All Products
 }
 
 .oap {
-    margin-top: 80px;
+    margin-top: 40px;
 }
 
 .oapd {
@@ -149,7 +162,9 @@ Our All Products
 }
 
 .text-gradient {
-    background: linear-gradient(263.57deg, #1e9d26 20%, #3144ac 63%);
+    font-family: var(--title-font-family);
+    font-weight: var(--normal-title-font-weight);
+    background: linear-gradient(263.57deg, #62bb46 20%, #0c79f9 63%);
     -webkit-text-fill-color: transparent;
     -webkit-background-clip: text;
     text-align: center;
@@ -161,10 +176,17 @@ Our All Products
     text-align: center;
 }
 
+.all-products-title{
+    font-family: var(--title-font-family);
+    font-weight: var(--heading-font-weight);
+}
+
 .bsp .content .desc {
     color: var(--text-gray);
     line-height: 21px;
     margin-top: 12px;
+    font-family: var(--normal-text-font-family);
+    font-size: 0.875rem;
 }
 
 /* bspd */
@@ -172,11 +194,9 @@ Our All Products
 .bspd {
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
     gap: 24px;
-    margin-top: 50px;
-    /* padding: 0px 10px; */
-    padding: 0px 107px;
+    margin-top: 30px;
+    padding: 0px 10px;
 }
 
 .bspd ._card {
@@ -185,6 +205,11 @@ Our All Products
     width: 300px;
     padding: 10px;
     border-radius: 10px;
+    transition: all 0.3s;
+}
+
+.bspd ._card:hover{
+    transform: scale(1.02);
 }
 
 @media (max-width: 700px) {
@@ -249,6 +274,7 @@ Our All Products
     justify-content: center;
     text-align: center;
     align-items: center;
+    font-family: var(--normal-text-font-family);
 }
 
 ._card .tags {
@@ -268,6 +294,7 @@ Our All Products
     padding: 1px 6px;
     border-radius: 15px;
     font-size: 12px;
+    font-family: var(--normal-text-font-family);
 }
 
 ._card .tags .color1 {
@@ -287,7 +314,7 @@ Our All Products
 }
 
 ._card .button_outline {
-    margin-top: 10px;
+    margin-top: 1.563rem;
     display: block;
     text-align: center;
     border: 1px solid var(--color-blue);
@@ -295,9 +322,15 @@ Our All Products
     padding: 4px 0px;
     box-shadow: 0px 1px 1px rgba(90, 186, 245, 0.405);
     transition: background-color 300ms;
-    outline: none !important;
-    width: 100%;
-    cursor: pointer;
+    font-family: var(--normal-text-font-family);
+    color: var(--primary-color);
+    font-size: 0.875rem;
+    font-weight: var(--heading-font-weight);
+}
+
+._card .button_outline:hover {
+    background-color: var(--color-blue);
+    color: white;
 }
 
 ._card .button_outline:hover {
@@ -318,10 +351,9 @@ End Our All Products
 }
 
 .discover ._cards {
-    margin-top: 50px;
+    margin-top: 30px;
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
     gap: 20px;
 }
 
@@ -331,6 +363,11 @@ End Our All Products
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.064);
     padding: 16px;
     border-radius: 10px;
+    transition: all 0.3s;
+}
+
+.discover ._cards ._card:hover{
+    transform: scale(1.02);
 }
 
 .discover .icon {
@@ -345,7 +382,13 @@ End Our All Products
 .text {
     color: var(--text-gray);
     line-height: 21px;
-    font-size: 15px;
+    font-family: var(--normal-text-font-family);
+    font-size: 0.875rem;
+}
+
+.features-title{
+    font-family: var(--title-font-family);
+    font-weight: var(--heading-font-weight);
 }
 
 @media (max-width: 700px) {
@@ -366,6 +409,11 @@ End Our All Products
 /*
     Frequently Asked Question
 */
+
+.faq-title{
+    font-family: var(--title-font-family);
+    font-weight: var(--heading-font-weight);
+}
 
 .faq .accordion {
     background-color: #fff;
@@ -418,7 +466,7 @@ End Our All Products
 }
 
 .accordions {
-    width: 49%;
+    width: 60%;
 }
 
 @media (max-width: 700px) {
@@ -431,6 +479,8 @@ End Our All Products
     line-height: 21px;
     font-size: 15px;
     margin-top: 1rem;
+    font-family: var(--normal-text-font-family);
+    font-size: 0.813rem;
 }
 
 .faq .faq_content {
@@ -443,11 +493,6 @@ End Our All Products
 */
 
 /* Testimonials (start) */
-
-.my-container {
-    width: 60rem;
-    margin: 0 auto;
-}
 
 .testimonial .swiper-pagination {
     display: none;
@@ -573,6 +618,14 @@ End Our All Products
         padding: 0 0.625rem;
     }
 
+    .bspd ._card {
+        width: 100%;
+    }
+
+    .discover ._cards ._card {
+        width: 100%;
+    }
+
     .testimonial-slide {
         flex-wrap: wrap;
     }
@@ -642,6 +695,14 @@ End Our All Products
         width: 45rem;
     }
 
+    .bspd ._card {
+        width: 48%;
+    }
+
+    .discover ._cards ._card {
+        width: 48%;
+    }
+
     .testimonial .swiper-button-next,
     .testimonial .swiper-button-prev {
         display: flex;
@@ -670,6 +731,14 @@ End Our All Products
 @media (min-width: 992px) {
     .my-container {
         width: 60rem;
+    }
+
+    .bspd ._card {
+        width: 31%;
+    }
+
+    .discover ._cards ._card {
+        width: 31%;
     }
 
     .testimonial-slide {

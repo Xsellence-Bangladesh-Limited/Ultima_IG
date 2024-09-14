@@ -6,6 +6,7 @@
         <t t-set="langs" t-value="request.env['res.lang'].sudo().search([('active', '=', True)])"/>
         <t t-set="layout" t-value="request.env['ultima.layout'].sudo().search([], limit=1)"/>
         <t t-set="menus" t-value="request.env['ultima.website_menu'].sudo().search([])"/>
+        <t t-set="home" t-value="request.env['ultima.home'].sudo().search([], order='id desc', limit=1)"/>
 
         <html lang="en">
             <head>
@@ -30,25 +31,51 @@
 
             <body>
 
-                <button class="talk-with-expert-button">Talk With Expert</button>
+                <button class="talk-with-expert-button"><t t-esc="home.cta_btn_txt"/></button>
 
                 <div class="talk-with-expert-form">
                     <div class="expert-form-header mb-1">
-                        <h6 class="expert-form-header-title">Provide Your Information</h6>
+                        <h6 class="expert-form-header-title"><t t-esc="home.cta_msg_f_t"/></h6>
                         <div class="expert-form-close-icon">
                             <i class="fa-solid fa-xmark"></i>
                         </div>
                     </div>
 
                     <div class="expert-form-body">
-                        <p class="expert-form-label">Name<span class="expert-form-label-required">*</span></p>
-                        <input class="expert-form-input mb-2" id="expert-form-name-input" placeholder="Enter your name"/>
+                        <p class="expert-form-label">Name
+                            <span class="expert-form-label-required">*</span>
+                        </p>
+                        <input class="expert-form-input" id="expert-form-name-input"
+                               placeholder="Enter your name"/>
 
-                        <p class="expert-form-label">Number<span class="expert-form-label-required">*</span></p>
-                        <input class="expert-form-input mb-3" id="expert-form-number-input" placeholder="Enter your name"/>
+                        <p class="no-user-name-warning mt-1">
+                            <i class="fa-solid fa-triangle-exclamation"></i>
+                            Name is required!
+                        </p>
 
-                        <button class="expert-form-submit-btn">Submit</button>
+                        <p class="expert-form-label mt-2">Number
+                            <span class="expert-form-label-required">*</span>
+                        </p>
+
+                        <input class="expert-form-input" id="expert-form-number-input"
+                               placeholder="Enter your phone number"/>
+
+                        <p class="no-phone-number-warning mt-1">
+                            <i class="fa-solid fa-triangle-exclamation"></i>
+                            Phone number is required!
+                        </p>
+
+                        <button class="expert-form-submit-btn mt-3"><t t-esc="home.cta_msg_f_btn_txt"/></button>
+                        <button class="expert-form-submit-loading-btn" disabled="1">
+                            <img src="/ultima/static/image/spinner.svg"/>
+                        </button>
                     </div>
+                </div>
+
+                <div class="talk-with-expert-form-submission-done" style="display: none;">
+                    <img src="/ultima/static/image/order_completion.png" class="talk-with-expert-form-submission-done-icon mb-3"/>
+                    <h6 class="talk-with-expert-form-submission-done-title mb-3"><t t-esc="home.cta_msg_scs_t"/></h6>
+                    <button class="talk-with-expert-form-submission-done-btn"><t t-esc="home.cta_msg_scs_btn_txt"/></button>
                 </div>
 
                 <div id="wrap">

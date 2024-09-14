@@ -19,6 +19,10 @@
                 <!-- Fontawesome CDN (start) -->
                 <script src="/ultima/static/third_party_UI_library/Fontawesome/js/all.min.js" defer="1"/>
                 <!-- Fontawesome CDN (end) -->
+
+                <script src="/ultima/static/js/jquery-3.6.0.min.js"/>
+                <script src="/ultima/static/js/swiper-bundle.min.js"/>
+                <script src="/ultima/static/js/index.js?v=1.8"/>
             </head>
 
             <body>

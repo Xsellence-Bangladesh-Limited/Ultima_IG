@@ -315,7 +315,8 @@
                     <script src="/ultima/static/js/font-awesome.js"/>
 
                     <!-- Custom Javascript -->
-                    <script src="/ultima/static/js/index.js"/>
+                    <script src="/ultima/static/js/swiper-bundle.min.js"/>
+                    <script src="/ultima/static/js/index.js?v=1.8"/>
 
                     <t t-raw="footer">
 

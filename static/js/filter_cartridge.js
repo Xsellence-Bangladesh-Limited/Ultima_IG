@@ -1,11 +1,11 @@
 $(document).ready(function () {
 
     $('.owl-carousel').owlCarousel({
-        loop: true,
+        //loop: true,
         margin: 10,
-        nav: false, // This disables the arrows
-        stagePadding: 10,
         items: 1,
+        nav: true,
+        dots: false,
         responsive: {
             0: {
                 items: 2
@@ -78,7 +78,10 @@ $(document).ready(function () {
 
     // panel_active
     var panel_active = document.getElementById("panel_active");
-    panel_active.style.maxHeight = panel_active.scrollHeight + "px";
+
+    if(panel_active){
+        panel_active.style.maxHeight = panel_active.scrollHeight + "px";
+    }
 
     /*
         End Frequently Asked Question

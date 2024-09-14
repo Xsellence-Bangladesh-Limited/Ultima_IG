@@ -8,7 +8,10 @@
             </t>
 
             <t t-set="footer">
-                <script src="/ultima/static/js/billing.js"/>
+                <script src="/ultima/static/js/jquery-3.6.0.min.js"/>
+                <script src="/ultima/static/js/swiper-bundle.min.js"/>
+                <script src="/ultima/static/js/index.js?v=1.8"/>
+                <script src="/ultima/static/js/billing.js?v=1.8"/>
             </t>
             <!-- Billing -->
             <div class="billing py-5">
@@ -59,8 +62,8 @@
                             <div class="col-12 col-lg-1"></div>
 
                             <!-- Left side -->
-                            <div class="col-12 col-lg-5 d-none">
-                                <div class="billing_box">
+                            <div class="col-12 col-lg-5">
+                                <div class="billing_box d-none">
                                     <div class="title">Have a coupon code?</div>
                                     <div class="content">
                                         <div class="d-f fw-w">
@@ -76,7 +79,7 @@
                                     </div>
                                 </div>
 
-                                <div class="billing_box mt-4">
+                                <div class="billing_box">
                                     <div class="title">Order Summery</div>
                                     <div class="content">
                                         <!-- Order summery -->
@@ -87,17 +90,18 @@
 
                                                     <div class="d-f fd-c">
                                                         <div id="btn_cart_in" class="cart_btn">+</div>
+                                                        <input type="hidden" id="number-of-product-input" name="number_of_product" value="1"/>
                                                         <div id="cart_counter" class="counter">1</div>
                                                         <div id="btn_cart_de" class="cart_btn">-</div>
                                                     </div>
 
                                                     <div class="ml-3 d-f ai-c fw-w">
                                                         <div class="c_cart_img">
-                                                            <img style="width: 100%;" src="/ultima/static/image/1.jpg" alt=""/>
+                                                            <img style="width: 100%;" t-if="product.image_512" t-att-src="image_data_uri(product.image_512)" alt=""/>
                                                         </div>
                                                         <div class="ml-3 cart_text text">
-                                                            Ultima Light Commercial RO Aditional Purifier
-                                                            <div class="font-weight-bold">$27,000</div>
+                                                            <t t-esc="product.name"/>
+                                                            <div class="font-weight-bold"><t t-esc="currency_id.symbol"/><span class="product-original-price"><t t-esc="product.list_price"/></span></div>
                                                         </div>
                                                     </div>
 
@@ -105,8 +109,9 @@
 
                                             </div>
                                             <div class="d-f">
-                                                <div class="font-weight-bold">$27,000</div>
-                                                <div class="text-danger ml-2 item_close font-weight-bold">x</div>
+                                                <input type="hidden" id="product-total-price-input" name="product_total_price" t-att-value="product.list_price"/>
+                                                <div class="font-weight-bold"><t t-esc="currency_id.symbol"/><span class="product-total-price"><t t-esc="product.list_price"/></span></div>
+                                                <div class="text-danger ml-2 item_close font-weight-bold d-none">x</div>
                                             </div>
                                         </div>
                                         <!-- End Order summery -->
@@ -114,8 +119,9 @@
 
                                     <div>
                                         <div class="text-center mt-5 pb-2">
+                                            <input type="hidden" id="cart-total-price-input" name="cart_total_price" t-att-value="product.list_price"/>
                                             <h5 class="mb-0">Cart Total:
-                                                <span id="cart_total">$27,000</span>
+                                                <t t-esc="currency_id.symbol"/><span id="cart_total"><t t-esc="product.list_price"/></span>
                                             </h5>
                                             <div class="text-small text-muted">Shipping cost will be added after
                                                 choosing shipping method
@@ -127,7 +133,7 @@
                             </div>
 
                             <!-- Right side -->
-                            <div class="col-12 col-lg-5 mt-3 mt-lg-0 mx-auto">
+                            <div class="col-12 col-lg-5 mt-3 mt-lg-0">
 
                                 <div class="billing_box">
 
@@ -199,11 +205,11 @@
                                             </select>
                                         </div>
 
-                                        <div class="b_input_group">
-                                            <div class="b_input_label text">OTP <span class="b_required">*</span></div>
-                                            <input type="text" class="b_input"
-                                                   placeholder="Enter the 4 digits OTP (Ex: 4444)" name="otp" required="1"/>
-                                        </div>
+<!--                                        <div class="b_input_group">-->
+<!--                                            <div class="b_input_label text">OTP <span class="b_required">*</span></div>-->
+<!--                                            <input type="text" class="b_input"-->
+<!--                                                   placeholder="Enter the 4 digits OTP (Ex: 4444)" name="otp" required="1"/>-->
+<!--                                        </div>-->
 
 <!--                                        <div class="b_input_group">-->
 <!--                                            <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike"/>-->
