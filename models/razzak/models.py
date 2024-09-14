@@ -140,6 +140,12 @@ class UltimaHome(models.Model):
     faq_title = fields.Char(translate=True)
     faq_ids = fields.Many2many('ultima.home.faq')
 
+    cta_btn_txt = fields.Char(string='CTA button text')
+    cta_msg_f_t = fields.Char(string='CTA message form title')
+    cta_msg_f_btn_txt = fields.Char(string='CTA message form button text')
+    cta_msg_scs_t = fields.Char(string='CTA message success title')
+    cta_msg_scs_btn_txt = fields.Char(string='CTA message success button text')
+
 
 class UltimaHomeDisLine(models.Model):
     _name = 'ultima.home.dis.line'
@@ -462,6 +468,8 @@ class ProductOrder(models.Model):
     shipping_type = fields.Char(string='Shipping type')
     otp = fields.Char(string='OTP')
     product_ids = fields.Many2many('product.product', string='Products')
+    total_price = fields.Float(string='Total price')
+    product_qty = fields.Integer(string='Product quantity')
     created_at = fields.Datetime(default=lambda self: fields.Datetime.now(), string='Created at')
 
     def format_order_date(self):
@@ -472,3 +480,41 @@ class ProductOrder(models.Model):
     def create(self, vals):
         vals['name'] = self.env['ir.sequence'].sudo().next_by_code('ultima.product.order.seq')
         return super(ProductOrder, self).create(vals)
+
+
+class ExpertMessage(models.Model):
+    _name = 'ultima.expert.message'
+    _description = 'ultima.expert.message'
+    _order = 'id desc'
+
+    name = fields.Char(string='Sequence')
+    user_name = fields.Char(string='Name')
+    user_phone_number = fields.Char(string='Phone number')
+
+    @api.model
+    def create(self, vals):
+        vals['name'] = self.env['ir.sequence'].sudo().next_by_code('ultima.expert.message.seq')
+        return super(ExpertMessage, self).create(vals)
+
+class UltimaPayment(models.Model):
+    _name = 'ultima.payment'
+    _description = 'ultima.payment'
+    _order = 'id desc'
+
+    name = fields.Char(string='Sequence')
+    user = fields.Many2one('res.users', string='User')
+    paid_amount = fields.Float(string='Paid amount')
+    card_type = fields.Char(string='Card type')
+    bank_tran_id = fields.Char(string='Bank transaction ID')
+    transaction_date = fields.Char(string='Transaction date')
+    currency = fields.Char(string='Currency')
+    card_issuer = fields.Char(string='Card issuer')
+    card_no = fields.Char(string='Card number')
+    card_brand = fields.Char(string='Card brand')
+    card_issuer_country = fields.Char(string='Card issuer country')
+    store_id = fields.Char(string='Store ID')
+
+    @api.model
+    def create(self, vals):
+        vals['name'] = self.env['ir.sequence'].sudo().next_by_code('ultima.payment.seq')
+        return super(UltimaPayment, self).create(vals)

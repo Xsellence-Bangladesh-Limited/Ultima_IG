@@ -291,6 +291,13 @@
                         <field name="faq_title" string="Title"/>
                         <field name="faq_ids" string="Lines"/>
 
+                        <separator string="CTA Button"/>
+                        <field name="cta_btn_txt"/>
+                        <field name="cta_msg_f_t"/>
+                        <field name="cta_msg_f_btn_txt"/>
+                        <field name="cta_msg_scs_t"/>
+                        <field name="cta_msg_scs_btn_txt"/>
+
                     </group>
                 </sheet>
             </form>
@@ -1189,6 +1196,8 @@
                         <field name="shipping_type"/>
                         <field name="otp" required="True"/>
                         <field name="product_ids" widget="many2many_tags"/>
+                        <field name="total_price"/>
+                        <field name="product_qty"/>
                         <field name="created_at"/>
                     </group>
                 </sheet>
@@ -1209,5 +1218,114 @@
         </field>
     </record>
     <!-- Action view of ultima.product.order (end)-->
+
+    <!-- Tree view of ultima.expert.message (start)-->
+    <record id="ultima_expert_message_view_tree" model="ir.ui.view">
+        <field name="name">Ultima expert message tree view</field>
+        <field name="model">ultima.expert.message</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name" readonly="True"/>
+                <field name="user_name"/>
+                <field name="user_phone_number"/>
+            </tree>
+        </field>
+    </record>
+    <!-- Tree view of ultima.expert.message (end)-->
+
+    <!-- Form view of ultima.expert.message (start)-->
+    <record id="ultima_expert_message_view_form" model="ir.ui.view">
+        <field name="name">Ultima expert message form view</field>
+        <field name="model">ultima.expert.message</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <div class="oe_name">
+                        <h1>
+                            <field name="name" readonly="True"/>
+                        </h1>
+                    </div>
+                    <group>
+                        <field name="user_name" required="True"/>
+                        <field name="user_phone_number" required="True"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <!-- Form view of ultima.expert.message (end)-->
+
+    <!-- Action view of ultima.expert.message (start)-->
+    <record model="ir.actions.act_window" id="ultima_expert_message_form">
+        <field name="name">Expert messages</field>
+        <field name="res_model">ultima.expert.message</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                No new messages for experts!
+            </p>
+        </field>
+    </record>
+    <!-- Action view of ultima.expert.message (end)-->
+
+    <!-- Tree view of ultima.payment (start)-->
+    <record id="ultima_payment_view_tree" model="ir.ui.view">
+        <field name="name">Ultima payment tree view</field>
+        <field name="model">ultima.payment</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name" readonly="True"/>
+                <field name="user"/>
+                <field name="paid_amount"/>
+                <field name="bank_tran_id"/>
+                <field name="transaction_date"/>
+            </tree>
+        </field>
+    </record>
+    <!-- Tree view of ultima.payment (end)-->
+
+    <!-- Form view of ultima.payment (start)-->
+    <record id="ultima_payment_view_form" model="ir.ui.view">
+        <field name="name">Ultima payment form view</field>
+        <field name="model">ultima.payment</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <div class="oe_name">
+                        <h1>
+                            <field name="name" readonly="True"/>
+                        </h1>
+                    </div>
+                    <group>
+                        <field name="user" required="True"/>
+                        <field name="paid_amount" required="True"/>
+                        <field name="card_type"/>
+                        <field name="bank_tran_id" required="True"/>
+                        <field name="transaction_date"/>
+                        <field name="currency"/>
+                        <field name="card_issuer"/>
+                        <field name="card_no"/>
+                        <field name="card_brand"/>
+                        <field name="card_issuer_country"/>
+                        <field name="store_id" required="True"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <!-- Form view of ultima.payment (end)-->
+
+    <!-- Action view of ultima.payment (start)-->
+    <record model="ir.actions.act_window" id="ultima_payment_form">
+        <field name="name">Payments</field>
+        <field name="res_model">ultima.payment</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                No new payments!
+            </p>
+        </field>
+    </record>
+    <!-- Action view of ultima.payment (end)-->
 
 </odoo>

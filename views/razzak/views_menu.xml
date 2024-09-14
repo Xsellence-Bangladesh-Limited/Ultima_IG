@@ -55,10 +55,16 @@
               sequence="1"
               action="ultima_home_action_id"/>
 
+    <menuitem id="ultima_expert_messages_menu_id"
+              name="Expert messages"
+              parent="ultima_home_lbl_menu_id"
+              sequence="2"
+              action="ultima_expert_message_form"/>
+
     <menuitem id="ultima_home_others_menu_id"
               name="Others"
               parent="ultima_home_lbl_menu_id"
-              sequence="2"
+              sequence="3"
               action="ultima_home_introduce_desc_line_action_id"/>
 
     <menuitem id="ultima_home_introduce_desc_line_menu_id"
@@ -207,6 +213,17 @@
               name="Orders"
               parent="ultima_product_orders_root_menu_id"
               action="ultima_product_order_form"
+              sequence="0"/>
+
+    <menuitem id="ultima_payments_root_menu_id"
+              name="Payments"
+              parent="ultima_root_menu_id"
+              sequence="56"/>
+
+    <menuitem id="ultima_payments_menu_id"
+              name="Payments"
+              parent="ultima_payments_root_menu_id"
+              action="ultima_payment_form"
               sequence="0"/>
 
 </odoo>

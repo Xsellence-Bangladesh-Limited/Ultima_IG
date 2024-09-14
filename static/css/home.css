@@ -145,6 +145,7 @@
     justify-content: center;
     text-align: center;
     align-items: center;
+    font-family: var(--normal-text-font-family);
 }
 
 ._card .tags {
@@ -194,6 +195,7 @@
     font-family: var(--normal-text-font-family);
     color: var(--primary-color);
     font-size: 0.875rem;
+    font-weight: var(--heading-font-weight);
 }
 
 ._card .button_outline:hover {
@@ -868,10 +870,6 @@
     width: 100%;
   }
 
-  .testimonial-heading {
-    margin-bottom: 2.188rem;
-  }
-
   .testimonial .swiper-button-next,
   .testimonial .swiper-button-prev {
     top: 97%;
@@ -1048,10 +1046,6 @@
 
   .client-comment {
     width: 65%;
-  }
-
-  .testimonial-heading {
-    margin-bottom: 2.813rem;
   }
 
   .testimonial .swiper-button-next,

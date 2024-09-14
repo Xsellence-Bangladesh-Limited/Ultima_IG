@@ -12,29 +12,30 @@
             </t>
 
             <t t-set="footer">
+                <script src="/ultima/static/js/jquery-3.6.0.min.js"/>
                 <script src="/ultima/static/js/swiper-bundle.min.js"/>
-                <script src="/ultima/static/js/product.js"/>
-                <script src="/ultima/static/js/index.js"/>
+                <script src="/ultima/static/js/product.js?v=1.7"/>
+                <script src="/ultima/static/js/index.js?v=1.8"/>
             </t>
 
             <!-- OTP modal (start)-->
-<!--            <div class="otp-modal-parent-container">-->
-<!--                <div class="otp-modal-parent">-->
-<!--                    <div class="otp-modal">-->
-<!--                        <div class="otp-modal-header mb-2">-->
-<!--                            <i class="fa-solid fa-circle-xmark otp-modal-close-btn"></i>-->
-<!--                        </div>-->
+            <!--            <div class="otp-modal-parent-container">-->
+            <!--                <div class="otp-modal-parent">-->
+            <!--                    <div class="otp-modal">-->
+            <!--                        <div class="otp-modal-header mb-2">-->
+            <!--                            <i class="fa-solid fa-circle-xmark otp-modal-close-btn"></i>-->
+            <!--                        </div>-->
 
-<!--                        <div class="otp-modal-body">-->
-<!--                            <h5 class="text-center mb-3">Enter the OTP</h5>-->
-<!--                            <input id="otp-input" type="text" name="otp_input_value" class="mb-3" required="1"/>-->
-<!--                            <div class="submit-btn-container">-->
-<!--                                <button type="button" class="otp-form-submit-btn mb-4">Submit</button>-->
-<!--                            </div>-->
-<!--                        </div>-->
-<!--                    </div>-->
-<!--                </div>-->
-<!--            </div>-->
+            <!--                        <div class="otp-modal-body">-->
+            <!--                            <h5 class="text-center mb-3">Enter the OTP</h5>-->
+            <!--                            <input id="otp-input" type="text" name="otp_input_value" class="mb-3" required="1"/>-->
+            <!--                            <div class="submit-btn-container">-->
+            <!--                                <button type="button" class="otp-form-submit-btn mb-4">Submit</button>-->
+            <!--                            </div>-->
+            <!--                        </div>-->
+            <!--                    </div>-->
+            <!--                </div>-->
+            <!--            </div>-->
             <!-- OTP modal (end)-->
 
             <!--
@@ -90,16 +91,16 @@
             <!-- Best selling products -->
             <div class="bsp oap">
                 <div class="content">
-                    <!-- <div class="text-gradient">Products</div> -->
+                    <div class="text-gradient">Products</div>
                     <div>
-                        <h3 t-raw="p.oap_title"></h3>
+                        <h3 class="all-products-title" t-raw="p.oap_title"></h3>
                     </div>
                     <div class="desc" t-raw="p.oap_desc"></div>
                 </div>
             </div>
 
             <!-- Best selling products -->
-            <div class="bspd oapd">
+            <div class="bspd oapd my-container">
 
                 <t t-foreach="products" t-as="pd">
                     <!-- _card -->
@@ -154,29 +155,33 @@
             <!-- Discover Ultima RO Water Technology -->
             <div class="discover">
 
-                <div class="bsp my-3">
-                    <div class="content">
-                        <div class="text-gradient" t-raw="p.oaf_section"></div>
-                        <div>
-                            <h3 t-raw="p.oaf_title"></h3>
-                        </div>
-                        <div class="desc" t-raw="p.oaf_desc"></div>
-                    </div>
-                </div>
+                <div class="my-container">
 
-                <div class="_cards">
-
-                    <t t-foreach="p.oaf_ids" t-as="i">
-                        <div class="_card">
+                    <div class="bsp my-3">
+                        <div class="content">
+                            <div class="text-gradient" t-raw="p.oaf_section"></div>
                             <div>
-                                <img class="icon"
-                                     t-if="i.image_128"
-                                     t-att-src="image_data_uri(i.image_128)"/>
+                                <h3 class="features-title" t-raw="p.oaf_title"></h3>
                             </div>
-                            <div class="title sora-600" t-raw="i.title"></div>
-                            <div class="desc text" t-raw="i.desc"></div>
+                            <div class="desc" t-raw="p.oaf_desc"></div>
                         </div>
-                    </t>
+                    </div>
+
+                    <div class="_cards">
+
+                        <t t-foreach="p.oaf_ids" t-as="i">
+                            <div class="_card">
+                                <div>
+                                    <img class="icon"
+                                         t-if="i.image_128"
+                                         t-att-src="image_data_uri(i.image_128)"/>
+                                </div>
+                                <div class="title sora-600" t-raw="i.title"></div>
+                                <div class="desc text" t-raw="i.desc"></div>
+                            </div>
+                        </t>
+
+                    </div>
 
                 </div>
 
@@ -189,48 +194,52 @@
             -->
             <div class="block faq py-5 bg_light">
 
-                <!-- Header -->
-                <div class="header mb-4">
-                    <div class="content">
-                        <div class="text-gradient" t-raw="p.faq_section"></div>
-                        <div>
-                            <h3 t-raw="p.faq_title"></h3>
+                <div class="my-container">
+
+                    <!-- Header -->
+                    <div class="header mb-4">
+                        <div class="content">
+                            <div class="text-gradient" t-raw="p.faq_section"></div>
+                            <div>
+                                <h3 class="faq-title" t-raw="p.faq_title"></h3>
+                            </div>
                         </div>
                     </div>
-                </div>
 
-                <!-- content -->
-                <div class="faq_content mt-3">
+                    <!-- content -->
+                    <div class="faq_content mt-3">
 
-                    <div></div>
-                    <div class="accordions">
+                        <div></div>
+                        <div class="accordions">
 
-                        <t t-set="acc" t-value="True"/>
+                            <t t-set="acc" t-value="True"/>
 
-                        <t t-foreach="p.faq_ids" t-as="i">
+                            <t t-foreach="p.faq_ids" t-as="i">
 
-                            <t t-if="acc">
-                                <div class="accordion active sora-600" t-raw="i.title"></div>
-                                <div id="panel_active" class="panel">
-                                    <p class="faq_text" t-raw="i.desc"></p>
-                                </div>
-                                <div class="spacer"></div>
-                                <t t-set="acc" t-value="False"/>
+                                <t t-if="acc">
+                                    <div class="accordion active sora-600" t-raw="i.title"></div>
+                                    <div id="panel_active" class="panel">
+                                        <p class="faq_text" t-raw="i.desc"></p>
+                                    </div>
+                                    <div class="spacer"></div>
+                                    <t t-set="acc" t-value="False"/>
+                                </t>
+                                <t t-else="">
+                                    <div class="accordion sora-600" t-raw="i.title"></div>
+                                    <div class="panel">
+                                        <p class="faq_text" t-raw="i.desc"></p>
+                                    </div>
+                                    <div class="spacer"></div>
+                                </t>
                             </t>
-                            <t t-else="">
-                                <div class="accordion sora-600" t-raw="i.title"></div>
-                                <div class="panel">
-                                    <p class="faq_text" t-raw="i.desc"></p>
-                                </div>
-                                <div class="spacer"></div>
-                            </t>
-                        </t>
+
+                        </div>
+                        <div></div>
 
                     </div>
-                    <div></div>
+                    <!-- content -->
 
                 </div>
-                <!-- content -->
 
             </div>
             <!--

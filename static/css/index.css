@@ -12,11 +12,11 @@
     --img-radius: 17px;
     --primary-color: #0c79f9;
     --color_primary: #0c79f9;
-     --title-font-family: "Sora", sans-serif;
-  --normal-text-font-family: "Poppins", sans-serif;
-  --inter-font-family: "Inter", sans-serif;
-  --heading-font-weight: 600;
-  --normal-title-font-weight: 400;
+    --title-font-family: "Sora", sans-serif;
+    --normal-text-font-family: "Poppins", sans-serif;
+    --inter-font-family: "Inter", sans-serif;
+    --heading-font-weight: 600;
+    --normal-title-font-weight: 400;
 }
 
 .talk-with-expert-button{
@@ -46,6 +46,43 @@
     width: 330px;
     border-radius: 10px;
     display: none;
+}
+
+.talk-with-expert-form-submission-done{
+    position: absolute;
+    right: 10px;
+    top: 35%;
+    background-color: #fff;
+    z-index: 100000000;
+    width: 330px;
+    border-radius: 10px;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 200px;
+}
+
+.talk-with-expert-form-submission-done-title{
+    font-family: var(--title-font-family);
+}
+
+.talk-with-expert-form-submission-done-btn{
+    border: none;
+    outline: none !important;
+    background-color: var(--primary-color);
+    color: #fff;
+    font-family: var(--title-font-family);
+    font-weight: var(--normal-title-font-weight);
+    border-radius: 5px;
+    font-size: 15px;
+    padding: 8px 30px;
+    cursor: pointer;
+}
+
+.talk-with-expert-form-submission-done-icon{
+    width: 40px;
 }
 
 .expert-form-header{
@@ -90,6 +127,18 @@
     outline: none !important;
 }
 
+.no-user-name-warning, .no-phone-number-warning{
+    width: 100%;
+    font-family: var(--inter-font-family);
+    font-weight: var(--normal-title-font-weight);
+    font-size: 0.813rem;
+    padding: 0.313rem 0.625rem;
+    background-color: #FFEAF8;
+    color: #E10505;
+    border-radius: 0.313rem;
+    display: none;
+}
+
 .expert-form-submit-btn{
     outline: none !important;
     border: none;
@@ -101,6 +150,21 @@
     padding: 5px;
     border-radius: 5px;
     cursor: pointer;
+}
+
+.expert-form-submit-loading-btn{
+  outline: none !important;
+  padding: 7px;
+  background-color: var(--primary-color);
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  font-family: var(--normal-text-font-family);
+  transition: all 0.3s;
+  cursor: not-allowed;
+  border-radius: 5px;
+  width: 100%;
+  display: none;
 }
 
 .language-option{
@@ -505,12 +569,13 @@ wrap wrap
     -webkit-background-clip: text;
     text-align: center;
     display: inline-block;
+
 }
 
 .testimonial-heading {
     font-family: var(--title-font-family);
     font-weight: var(--heading-font-weight);
-    margin-bottom: 2.813rem;
+    margin-bottom: 1.875rem;
 }
 
 .swiper{
