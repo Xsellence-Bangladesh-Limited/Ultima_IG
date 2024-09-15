@@ -169,7 +169,7 @@
                                                         <span class="b_required">*</span>
                                                     </div>
                                                     <input type="text" class="b_input"
-                                                           placeholder="House #20, Road #26, Mirpur, Dhaka 1216" name='address' required="1" t-att-value="logged_in_user.partner_id.street + ', ' + logged_in_user.partner_id.country_id.name"/>
+                                                           placeholder="House #20, Road #26, Mirpur, Dhaka 1216" name='address' required="1" t-att-value="str(logged_in_user.partner_id.street) + ', ' + str(logged_in_user.partner_id.country_id.name)"/>
                                                 </div>
                                             </div>
                                         </div>
