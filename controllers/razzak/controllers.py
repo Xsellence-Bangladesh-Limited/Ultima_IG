@@ -225,7 +225,8 @@ class UltimaWebsite(http.Controller):
         card_brand = kw.get('card_brand')
         card_issuer_country = kw.get('card_issuer_country')
         store_id = kw.get('store_id')
-        if bank_tran_id:
+        existing_payment = req.env['ultima.payment'].sudo().search_count([('bank_tran_id', '=', bank_tran_id)])
+        if bank_tran_id and not existing_payment:
             new_payment = req.env['ultima.payment'].sudo().create({
                 # 'user': req.env.user.id,
                 'paid_amount': paid_amount,
