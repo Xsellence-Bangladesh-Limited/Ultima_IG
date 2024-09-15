@@ -24,7 +24,7 @@
                 <!-- Fontawesome CDN (end) -->
 
                 <!-- Custom stylesheet -->
-                <link rel="stylesheet" href="/ultima/static/css/index.css?v=index7"/>
+                <link rel="stylesheet" href="/ultima/static/css/index.css?v=index9"/>
 
                 <t t-raw="header"></t>
             </head>
@@ -95,7 +95,7 @@
                             <div class="options">
 
 
-                                <div class="br">
+                                <div class="br d-none">
                                     <t t-if="request.session.get('context', {}).get('lang') == 'bn_IN'">
                                         <a href="/" class="language-option">Eng</a>
                                     </t>
@@ -127,7 +127,7 @@
                                     <!--                                    </select>-->
                                 </div>
                                 <div class="br">
-                                    <a href="#">
+                                    <a href="#" class="store-location-link">
                                         <div class="d-f ai-c">
                                             <svg width="15" height="15" viewBox="0 0 20 20" fill="none"
                                                  xmlns="http://www.w3.org/2000/svg">
@@ -370,7 +370,7 @@
                     <script src="/ultima/static/js/font-awesome.js"/>
 
                     <!-- Custom Javascript -->
-                    <script src="/ultima/static/js/index.js?v=1.8"/>
+                    <script src="/ultima/static/js/index.js?v=1.9"/>
 
                     <t t-raw="footer"></t>
 

@@ -4,14 +4,14 @@
 
             <t t-set="header">
                 <title>Billing | Ultima</title>
-                <link rel="stylesheet" href="/ultima/static/css/billing.css?v=1.2"/>
+                <link rel="stylesheet" href="/ultima/static/css/billing.css?v=1.9"/>
             </t>
 
             <t t-set="footer">
                 <script src="/ultima/static/js/jquery-3.6.0.min.js"/>
                 <script src="/ultima/static/js/swiper-bundle.min.js"/>
-                <script src="/ultima/static/js/index.js?v=1.8"/>
-                <script src="/ultima/static/js/billing.js?v=1.8"/>
+                <script src="/ultima/static/js/index.js?v=1.9"/>
+                <script src="/ultima/static/js/billing.js?v=1.9"/>
             </t>
             <!-- Billing -->
             <div class="billing py-5">
@@ -110,7 +110,7 @@
                                             </div>
                                             <div class="d-f">
                                                 <input type="hidden" id="product-total-price-input" name="product_total_price" t-att-value="product.list_price"/>
-                                                <div class="font-weight-bold"><t t-esc="currency_id.symbol"/><span class="product-total-price"><t t-esc="product.list_price"/></span></div>
+                                                <div class="font-weight-bold p-total-p"><t t-esc="currency_id.symbol"/><span class="product-total-price"><t t-esc="product.list_price"/></span></div>
                                                 <div class="text-danger ml-2 item_close font-weight-bold d-none">x</div>
                                             </div>
                                         </div>
@@ -120,10 +120,10 @@
                                     <div>
                                         <div class="text-center mt-5 pb-2">
                                             <input type="hidden" id="cart-total-price-input" name="cart_total_price" t-att-value="product.list_price"/>
-                                            <h5 class="mb-0">Cart Total:
+                                            <h5 class="mb-0 cart-total-title">Cart Total:
                                                 <t t-esc="currency_id.symbol"/><span id="cart_total"><t t-esc="product.list_price"/></span>
                                             </h5>
-                                            <div class="text-small text-muted">Shipping cost will be added after
+                                            <div class="text-small text-muted cart-notice-text">Shipping cost will be added after
                                                 choosing shipping method
                                             </div>
                                         </div>

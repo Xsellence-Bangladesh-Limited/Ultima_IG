@@ -4,7 +4,7 @@
             <t t-set="header">
                 <title>Home | Ultima</title>
                 <link rel="stylesheet" href="/ultima/static/css/swiper-bundle.min.css"/>
-                <link rel="stylesheet" href="/ultima/static/css/home.css?v=home8"/>
+                <link rel="stylesheet" href="/ultima/static/css/home.css?v=home9"/>
                 <!-- Fontawesome CDN (start) -->
                 <script src="/ultima/static/third_party_UI_library/Fontawesome/js/all.min.js" defer="1"/>
                 <!-- Fontawesome CDN (end) -->
@@ -151,42 +151,46 @@
                         <!-- _card -->
                         <div class="_card">
                             <a t-attf-href="/product-details?id={{pd.id}}">
-                            <div class="c_img">
-                                <img t-if="pd.image_512" t-att-src="image_data_uri(pd.image_512)" alt="Product"/>
-                                <div t-if="pd.ribbon_id" class="ribbon"
-                                     t-att-style="'background-color: %s; color: %s' % (pd.ribbon_id.bg_color if pd.ribbon_id else '', pd.ribbon_id.text_color if pd.ribbon_id else '')">
-                                    <t t-esc="pd.ribbon_id.text if pd.ribbon_id else ''"/>
-                                </div>
-                            </div>
-                            <div class="text_content">
-                                <div class="title sora-600" t-esc="pd.name"></div>
-                                <div class="d-f jc-sb">
-                                    <div class="d-f ai-c">
-                                        <div class="amount_big sora-600"
-                                             t-esc="'%s%s' % (currency_id.symbol ,pd.list_price)"></div>
-
-                                        <div t-if="pd.old_list_price" class="ml-2 old_amount"
-                                             t-esc="'%s%s' % (currency_id.symbol ,pd.old_list_price)"></div>
+                                <div class="c_img">
+                                    <img t-if="pd.image_512" t-att-src="image_data_uri(pd.image_512)" alt="Product"/>
+                                    <div t-if="pd.ribbon_id" class="ribbon"
+                                         t-att-style="'background-color: %s; color: %s' % (pd.ribbon_id.bg_color if pd.ribbon_id else '', pd.ribbon_id.text_color if pd.ribbon_id else '')">
+                                        <t t-esc="pd.ribbon_id.text if pd.ribbon_id else ''"/>
                                     </div>
-                                    <div>
-                                        <div t-if="pd.old_list_price" class="percent_off">
-                                            <t t-set="discount_amount" t-value="pd.old_list_price - pd.list_price"/>
-                                            <t t-set="discount_percentage"
-                                               t-value="int((discount_amount / pd.old_list_price) * 100)"/>
-                                            <div class="content" t-esc="'%s%s OFF' % (discount_percentage, '%')"></div>
+                                </div>
+                                <div class="text_content">
+                                    <div class="title sora-600" t-esc="pd.name"></div>
+                                    <div class="d-f jc-sb">
+                                        <div class="d-f ai-c">
+                                            <div class="amount_big sora-600"
+                                                 t-esc="'%s%s' % (currency_id.symbol ,pd.list_price)"></div>
+
+                                            <div t-if="pd.old_list_price" class="ml-2 old_amount"
+                                                 t-esc="'%s%s' % (currency_id.symbol ,pd.old_list_price)"></div>
+                                        </div>
+                                        <div>
+                                            <div t-if="pd.old_list_price" class="percent_off">
+                                                <t t-set="discount_amount" t-value="pd.old_list_price - pd.list_price"/>
+                                                <t t-set="discount_percentage"
+                                                   t-value="int((discount_amount / pd.old_list_price) * 100)"/>
+                                                <div class="content"
+                                                     t-esc="'%s%s OFF' % (discount_percentage, '%')"></div>
+                                            </div>
                                         </div>
                                     </div>
+                                    <div class="tags">
+                                        <t t-foreach="pd.tag_ids" t-as="tag">
+                                            <div class="item color1"
+                                                 t-att-style="'background-color: %s; color: %s' % (tag.bg_color, tag.text_color)"
+                                                 t-esc="tag.name"></div>
+                                        </t>
+                                    </div>
                                 </div>
-                                <div class="tags">
-                                    <t t-foreach="pd.tag_ids" t-as="tag">
-                                        <div class="item color1"
-                                             t-att-style="'background-color: %s; color: %s' % (tag.bg_color, tag.text_color)"
-                                             t-esc="tag.name"></div>
-                                    </t>
-                                </div>
-                            </div>
                             </a>
-                            <a t-attf-href="/billing?product_id={{pd.id}}" class="button_outline" t-esc="p.bsp_btn_text"></a>
+                            <div class="button-outline-container">
+                                <a t-attf-href="/billing?product_id={{pd.id}}" class="button_outline"
+                                   t-esc="p.bsp_btn_text"></a>
+                            </div>
                         </div>
                         <!-- End _card -->
                     </t>
@@ -371,11 +375,16 @@
                                             <i class="fa-regular fa-circle-check"></i>
                                         </div>
                                         <div class="mobile-feature-text-content">
-                                            <p class="mobile-feature-text-content-title"><t t-esc="com.title"/></p>
-                                            <p class="mobile-feature-text-content-text"><t t-esc="com.desc"/></p>
+                                            <p class="mobile-feature-text-content-title">
+                                                <t t-esc="com.title"/>
+                                            </p>
+                                            <p class="mobile-feature-text-content-text">
+                                                <t t-esc="com.desc"/>
+                                            </p>
                                         </div>
                                         <div class="mobile-feature-image">
-                                            <img t-if="com.image_512" t-att-src="image_data_uri(com.image_512)" alt="Mobile feature image"/>
+                                            <img t-if="com.image_512" t-att-src="image_data_uri(com.image_512)"
+                                                 alt="Mobile feature image"/>
                                         </div>
                                     </div>
                                 </div>
@@ -388,11 +397,16 @@
                                             <i class="fa-regular fa-circle-xmark"></i>
                                         </div>
                                         <div class="mobile-feature-text-content">
-                                            <p class="mobile-feature-text-content-title"><t t-esc="com.title"/></p>
-                                            <p class="mobile-feature-text-content-text"><t t-esc="com.desc"/></p>
+                                            <p class="mobile-feature-text-content-title">
+                                                <t t-esc="com.title"/>
+                                            </p>
+                                            <p class="mobile-feature-text-content-text">
+                                                <t t-esc="com.desc"/>
+                                            </p>
                                         </div>
                                         <div class="mobile-feature-image">
-                                            <img t-if="com.image_512" t-att-src="image_data_uri(com.image_512)" alt="Mobile feature image"/>
+                                            <img t-if="com.image_512" t-att-src="image_data_uri(com.image_512)"
+                                                 alt="Mobile feature image"/>
                                         </div>
                                     </div>
                                 </div>
@@ -410,7 +424,9 @@
                 <div class="text_and_logos my-container">
                     <div>
                         <h3 class="text-and-logos-title" t-raw="p.client_title"></h3>
-                        <p class="text-and-logos-description"><t t-esc="p.client_description"/></p>
+                        <p class="text-and-logos-description">
+                            <t t-esc="p.client_description"/>
+                        </p>
                     </div>
 
                     <div>
@@ -482,8 +498,8 @@
             <t t-set="footer">
                 <script src="/ultima/static/js/jquery-3.6.0.min.js"/>
                 <script src="/ultima/static/js/swiper-bundle.min.js"/>
-                <script src="/ultima/static/js/index.js?v=1.8"/>
-                <script src="/ultima/static/js/home.js"/>
+                <script src="/ultima/static/js/index.js?v=1.9"/>
+                <script src="/ultima/static/js/home.js?v=1.9"/>
             </t>
         </t>
     </template>

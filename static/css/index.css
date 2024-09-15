@@ -172,6 +172,13 @@
     padding: 5px 13px !important;
     border-radius: 25px;
     border: 1px solid #7b7b7b;
+    text-decoration: none;
+    color: inherit;
+}
+
+.language-option:hover{
+    text-decoration: none;
+    color: inherit;
 }
 
 .text {
@@ -199,12 +206,12 @@
     background-color: #F9FAFB;
 }
 
-a:hover {
+a:hover, .store-location-link:hover {
     text-decoration: none;
     color: inherit;
 }
 
-a {
+a, .store-location-link {
     color: inherit;
 }
 

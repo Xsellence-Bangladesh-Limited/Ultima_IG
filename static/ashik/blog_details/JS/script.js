@@ -44,9 +44,11 @@ $(document).ready(function () {
 
         $('.query-submit-loading-btn').show();
 
-        $("body").css("overflow", "hidden");
+        //$("body").css("overflow", "hidden");
 
-        $('.query-submission-success-modal-parent-container').fadeIn('slow');
+        $('.user-query-form').hide();
+
+        $('.thanks-div').show();
 
         const nameInput = $('#name-input').val();
         const emailInput = $('#email-input').val();
@@ -66,8 +68,9 @@ $(document).ready(function () {
 
             if(res.code === 200){
                 $('.payment-success-btn').click(function(){
-                    $("body").css("overflow", "auto");
-                    $('.query-submission-success-modal-parent-container').fadeOut('slow');
+                    //$("body").css("overflow", "auto");
+                    $('.thanks-div').hide();
+                    $('.user-query-form').show();
                 })
 
                 $('.form-submit-btn').show();

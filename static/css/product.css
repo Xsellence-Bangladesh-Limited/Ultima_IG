@@ -206,6 +206,8 @@ Our All Products
     padding: 10px;
     border-radius: 10px;
     transition: all 0.3s;
+    display: flex;
+    flex-direction: column;
 }
 
 .bspd ._card:hover{
@@ -331,6 +333,13 @@ Our All Products
 ._card .button_outline:hover {
     background-color: var(--color-blue);
     color: white;
+}
+
+.button-outline-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+    flex: 1;
 }
 
 ._card .button_outline:hover {
