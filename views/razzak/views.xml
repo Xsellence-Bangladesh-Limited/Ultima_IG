@@ -857,9 +857,16 @@
             <form>
                 <sheet>
                     <group>
+                        <separator string="FAQ"/>
                         <field name="faq_section"/>
                         <field name="faq_title"/>
                         <field name="faq_ids"/>
+
+                        <separator string="Features"/>
+                        <field name="feature_section"/>
+                        <field name="feature_title"/>
+                        <field name="feature_short_description"/>
+                        <field name="feature_ids"/>
                     </group>
                 </sheet>
             </form>
@@ -909,6 +916,43 @@
         <field name="res_model">ultima.pd_detail.faq</field>
         <field name="view_mode">tree,form</field>
     </record>
+
+    <!-- Tree view of ultima.pd.detail.feature -->
+    <record model="ir.ui.view" id="ultima_pd_detail_feature_tree_id">
+        <field name="name">Ultima product details feature tree view</field>
+        <field name="model">ultima.pd.detail.feature</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="title"/>
+                <field name="short_description"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Form view of ultima.pd.detail.feature -->
+    <record model="ir.ui.view" id="ultima_pd_detail_feature_form_id">
+        <field name="name">Ultima product details feature form view</field>
+        <field name="model">ultima.pd.detail.feature</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="icon" widget="image" class="oe_avatar"/>
+                        <field name="title" required="True"/>
+                        <field name="short_description"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Action view of ultima.pd.detail.feature -->
+    <record model="ir.actions.act_window" id="ultima_pd_detail_feature_action_id">
+        <field name="name">Features</field>
+        <field name="res_model">ultima.pd.detail.feature</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
 
     <!-- ultima.website_menu, generated on August 18, 2024 -->
     <!-- Tree view of ultima.website_menu -->

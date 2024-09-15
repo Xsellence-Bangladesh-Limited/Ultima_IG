@@ -203,6 +203,12 @@
               sequence="5"
               action="product_spe_line_action_id"/>
 
+    <menuitem id="product_detail_feature_menu_id"
+              name="Features"
+              parent="ultima_pd_detail_lbl2_menu_id"
+              sequence="6"
+              action="ultima_pd_detail_feature_action_id"/>
+
     <!-- Orders-->
     <menuitem id="ultima_product_orders_root_menu_id"
               name="Orders"

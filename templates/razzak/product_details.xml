@@ -32,7 +32,8 @@
                             <div class="owl-carousel owl-theme">
                                 <t t-foreach="product_extra_images" t-as="product_extra_image">
                                     <div class="item">
-                                        <img class="img_owl" t-if="product_extra_image.image_512" t-att-src="image_data_uri(product_extra_image.image_512)" alt=""/>
+                                        <img class="img_owl" t-if="product_extra_image.image_512"
+                                             t-att-src="image_data_uri(product_extra_image.image_512)" alt=""/>
                                     </div>
                                 </t>
                             </div>
@@ -57,9 +58,9 @@
                         </div>
 
                         <div class="d-f ai-c my-4">
-<!--                            <div class="mr-3">-->
-<!--                                <h5>Price:</h5>-->
-<!--                            </div>-->
+                            <!--                            <div class="mr-3">-->
+                            <!--                                <h5>Price:</h5>-->
+                            <!--                            </div>-->
                             <div>
                                 <div class="d-f ai-c">
                                     <div class="amount_big sora-600"
@@ -74,9 +75,9 @@
                             <a t-attf-href="/billing?product_id={{product.id}}" class="button" href="#">Shop Now</a>
                         </div>
 
-<!--                        <div class="mt-2">-->
-<!--                            <a class="button" href="#">Another Button</a>-->
-<!--                        </div>-->
+                        <!--                        <div class="mt-2">-->
+                        <!--                            <a class="button" href="#">Another Button</a>-->
+                        <!--                        </div>-->
 
                     </div>
                 </div>
@@ -84,6 +85,39 @@
             <!--
             End Service Kit
             -->
+
+            <!-- Features (start) -->
+            <div class="features">
+                <div class="my-container">
+                    <div class="features-title-container text-center">
+                        <p class="features-title">
+                            <t t-raw="p.feature_section"/>
+                        </p>
+                    </div>
+
+                    <h3 class="features-heading text-center mb-2">
+                        <t t-raw="p.feature_title"/>
+                    </h3>
+                    <p class="features-short-description text-center">
+                        <t t-raw="p.feature_short_description"/>
+                    </p>
+                    <div class="features-container mt-4">
+                        <t t-foreach="p.feature_ids" t-as="feature">
+                            <div class="feature">
+                                <div class="feature-logo mb-3">
+                                    <img t-if="feature.icon" t-att-src="image_data_uri(feature.icon)"
+                                         alt="Feature Icon"/>
+                                </div>
+                                <h6 class="feature-title mb-1"><t t-raw="feature.title"/></h6>
+                                <p class="feature-text-description">
+                                    <t t-raw="feature.short_description"/>
+                                </p>
+                            </div>
+                        </t>
+                    </div>
+                </div>
+            </div>
+            <!-- Features (end) -->
 
             <!--
             Product Detail
@@ -285,7 +319,7 @@
                     <div class="content">
                         <div class="text-gradient" t-raw="p.faq_section"></div>
                         <div>
-                            <h3 t-raw="p.faq_title"></h3>
+                            <h3 class="faq-title" t-raw="p.faq_title"></h3>
                         </div>
                     </div>
                 </div>

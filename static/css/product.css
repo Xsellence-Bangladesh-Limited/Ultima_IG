@@ -515,7 +515,7 @@ End Our All Products
 .testimonial-heading {
     font-family: var(--title-font-family);
     font-weight: var(--heading-font-weight);
-    margin-bottom: 2.813rem;
+    margin-bottom: 1.875rem;
 }
 
 .testimonial-slide {
@@ -635,10 +635,6 @@ End Our All Products
         width: 100%;
     }
 
-    .testimonial-heading {
-        margin-bottom: 2.188rem;
-    }
-
     .testimonial .swiper-button-next,
     .testimonial .swiper-button-prev {
         top: 97%;
@@ -752,10 +748,6 @@ End Our All Products
 
     .client-comment {
         width: 65%;
-    }
-
-    .testimonial-heading {
-        margin-bottom: 2.813rem;
     }
 
     .testimonial .swiper-button-next,
