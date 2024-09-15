@@ -12,8 +12,8 @@ $(document).ready(function(){
     })
 
     $('.order-details-btn').click(function(){
-        const productID = $('.product-id').val();
-        const orderID = $('.order-id').val();
+        const productID = $(this).data('product-id');
+        const orderID = $(this).data('order-id');
 
         const data = {
             productID,
@@ -27,8 +27,8 @@ $(document).ready(function(){
                 $('.order-product-title').text(productData.product_name);
                 $('.product-main-image img').attr('src', `/web/image/product.template/${productData.product_id}/image_1920`)
                 $('.modal-order-name').text(productData.order_name);
-                $('.modal-order-date').text('test');
-                $('.modal-order-amount').text(productData.product_price);
+                $('.modal-order-date').text(productData.order_date);
+                $('.modal-order-amount').text(productData.total_price);
             }
         })
 
