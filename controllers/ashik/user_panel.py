@@ -21,7 +21,6 @@ class UserPanel(http.Controller):
 
     @http.route('/product-details-ajax', type='http', auth='user', csrf=False)
     def product_details(self, **kw):
-        print('hmm')
         product_id = int(kw.get('productID')) if kw.get('productID') else None
         order_id = int(kw.get('orderID')) if kw.get('orderID') else None
 
@@ -38,7 +37,5 @@ class UserPanel(http.Controller):
             'order_name': order.name,
             'order_date': str(order.created_at)
         }
-
-        print(data)
 
         return json.dumps({'code': 200, 'data': data})

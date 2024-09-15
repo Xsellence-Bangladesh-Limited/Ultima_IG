@@ -317,6 +317,10 @@ body{
   cursor: pointer;
 }
 
+.order-details-btn:hover{
+    text-decoration: underline !important;
+}
+
 .order-status{
   color: #02BE2C;
 }

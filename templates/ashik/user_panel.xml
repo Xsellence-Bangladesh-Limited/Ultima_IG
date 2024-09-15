@@ -13,7 +13,7 @@
                 <!-- Bootstrap (end) -->
 
                 <!-- Custom CSS (start) -->
-                <link rel="stylesheet" href="/ultima/static/ashik/user_panel/css/styles.css?v=1.2"/>
+                <link rel="stylesheet" href="/ultima/static/ashik/user_panel/css/styles.css?v=2.0"/>
                 <!-- Custom CSS (end) -->
 
                 <!-- Fontawesome CDN (start) -->
@@ -25,7 +25,7 @@
                 <!-- Jquery (end) -->
 
                 <!-- Custom JS (start) -->
-                <script src="/ultima/static/ashik/user_panel/JS/script.js?v=1.9" defer="1"/>
+                <script src="/ultima/static/ashik/user_panel/JS/script.js?v=2.0" defer="1"/>
                 <!-- Custom JS (end) -->
 
 
@@ -182,9 +182,9 @@
                                                 <td><t t-esc="order.format_order_date()"/></td>
                                                 <td class="order-status">Completed</td>
                                                 <td><t t-esc="currency"/><t
-                                                        t-esc="order.product_ids[0].list_price"/></td>
+                                                        t-esc="order.total_price"/></td>
                                                 <td>
-                                                    <span>
+                                                    <span class="d-none">
                                                         <a class="order-cancel-link" href="#">Cancel</a>
                                                     </span>
                                                     <span>
