@@ -225,23 +225,25 @@ class UltimaWebsite(http.Controller):
         card_brand = kw.get('card_brand')
         card_issuer_country = kw.get('card_issuer_country')
         store_id = kw.get('store_id')
+        if bank_tran_id:
+            new_payment = req.env['ultima.payment'].sudo().create({
+                # 'user': req.env.user.id,
+                'paid_amount': paid_amount,
+                'card_type': card_type,
+                'bank_tran_id': bank_tran_id,
+                'transaction_date': transaction_date,
+                'currency': currency,
+                'card_issuer': card_issuer,
+                'card_no': card_no,
+                'card_brand': card_brand,
+                'card_issuer_country': card_issuer_country,
+                'store_id': store_id
+            })
 
-        new_payment = req.env['ultima.payment'].sudo().create({
-            # 'user': req.env.user.id,
-            'paid_amount': paid_amount,
-            'card_type': card_type,
-            'bank_tran_id': bank_tran_id,
-            'transaction_date': transaction_date,
-            'currency': currency,
-            'card_issuer': card_issuer,
-            'card_no': card_no,
-            'card_brand': card_brand,
-            'card_issuer_country': card_issuer_country,
-            'store_id': store_id
-        })
-
-        if new_payment:
-            return req.render('ultima.ultima_order_completion_template', {})
+            if new_payment:
+                return req.render('ultima.ultima_order_completion_template', {})
+        else:
+            return 'Something went wrong. Are you trying to repay?'
 
     @http.route('/payment-failed', type='http', auth='public', method=['GET', 'POST'], csrf=False)
     def payment_failed(self, **kw):
