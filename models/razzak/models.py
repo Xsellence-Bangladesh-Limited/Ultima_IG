@@ -381,6 +381,14 @@ class UltimaProductsFaq(models.Model):
     desc = fields.Text(translate=True)
 
 
+class UltimaPdDetailFeature(models.Model):
+    _name = 'ultima.pd.detail.feature'
+    _description = 'ultima.pd.detail.feature'
+
+    icon = fields.Image(string='Icon')
+    title = fields.Char(string='Title')
+    short_description = fields.Text(string='Short description')
+
 class UltimaPd_detail(models.Model):
     _name = 'ultima.pd_detail'
     _description = 'ultima.pd_detail'
@@ -389,6 +397,10 @@ class UltimaPd_detail(models.Model):
     faq_title = fields.Text(translate=True)
     faq_ids = fields.Many2many('ultima.pd_detail.faq')
 
+    feature_section = fields.Char(translate=True)
+    feature_title = fields.Char(translate=True)
+    feature_short_description = fields.Text(translate=True)
+    feature_ids = fields.Many2many('ultima.pd.detail.feature', string='Features')
 
 class UltimaPd_detailFaq(models.Model):
     _name = 'ultima.pd_detail.faq'

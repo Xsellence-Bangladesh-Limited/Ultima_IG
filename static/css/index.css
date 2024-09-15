@@ -186,11 +186,13 @@
 }
 
 .text-gradient {
-    background: linear-gradient(263.57deg, #1e9d26 20%, #3144ac 63%);
+    background: linear-gradient(263.57deg, #62bb46 20%, #0c79f9 63%);
     -webkit-text-fill-color: transparent;
     -webkit-background-clip: text;
     text-align: center;
     display: inline-block;
+    font-family: var(--title-font-family);
+    font-weight: var(--normal-title-font-weight);
 }
 
 .bg_light {

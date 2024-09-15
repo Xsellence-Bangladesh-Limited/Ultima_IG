@@ -18,6 +18,10 @@
   --normal-title-font-weight: 400;
 }
 
+p, h1, h2, h3, h4, h5, h6{
+    margin-bottom: 0;
+}
+
 .my-container {
   width: 60rem;
   margin: 0 auto;
@@ -141,6 +145,84 @@ Product Details
     max-width: 571px;
     text-align: center;
 }
+
+/* Features (start) */
+
+.features {
+  padding: 4.063rem 0;
+  background-color: #f9fafb;
+  margin-bottom: 3.125rem;
+}
+
+.features-title {
+  font-family: var(--title-font-family);
+  font-weight: var(--normal-title-font-weight);
+  background: linear-gradient(263.57deg, #62bb46 20%, #0c79f9 63%);
+  -webkit-text-fill-color: transparent;
+  -webkit-background-clip: text;
+  text-align: center;
+  display: inline-block;
+}
+
+.features-heading {
+  font-family: var(--title-font-family);
+  font-weight: var(--heading-font-weight);
+}
+
+.features-short-description {
+  font-family: var(--normal-text-font-family);
+  font-weight: var(--normal-title-font-weight);
+  font-size: 0.813rem;
+  line-height: 1.4rem;
+  color: #7b7b7b;
+}
+
+.features-container {
+  display: flex;
+  /* justify-content: center; */
+  gap: 1.25rem;
+}
+
+.feature {
+  width: 33%;
+  background-color: #fff;
+  padding: 1.125rem;
+  border-radius: 0.938rem;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  transition: all 0.3s;
+}
+
+.feature:hover {
+  transform: scale(1.03);
+}
+
+.feature-logo {
+  width: 3.125rem;
+  height: 3.125rem;
+  overflow: hidden;
+}
+
+.feature-logo img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.feature-title {
+  font-family: var(--normal-text-font-family);
+  font-weight: 600;
+  font-size: 1rem;
+}
+
+.feature-text-description {
+  font-family: var(--normal-text-font-family);
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 1.125rem;
+  color: #7b7b7b;
+}
+
+/* Features (end) */
 
 /* tabs */
 .pd_details .tabs {
@@ -274,6 +356,11 @@ End Product Details
     Frequently Asked Question
 */
 
+.faq-title{
+    font-family: var(--title-font-family);
+    font-weight: var(--heading-font-weight);
+}
+
 .faq .accordion {
     background-color: #fff;
     color: #444;
@@ -322,6 +409,7 @@ End Product Details
     border-right: 1px solid rgb(242, 242, 242);
     border-bottom-left-radius: 4px;
     border-bottom-right-radius: 4px;
+    height: fit-content;
 }
 
 .accordions {
@@ -336,8 +424,10 @@ End Product Details
 
 .faq_text {
     line-height: 21px;
-    font-size: 15px;
     margin-top: 1rem;
+    font-family: var(--normal-text-font-family);
+    font-size: 0.813rem;
+    padding-bottom: 20px;
 }
 
 .faq .faq_content {
@@ -377,7 +467,7 @@ End Product Details
 .testimonial-heading {
     font-family: var(--title-font-family);
     font-weight: var(--heading-font-weight);
-    margin-bottom: 2.813rem;
+    margin-bottom: 1.875rem;
 }
 
 .testimonial-slide {
@@ -480,6 +570,14 @@ End Product Details
         padding: 0 0.625rem;
     }
 
+    .features-container {
+       flex-wrap: wrap;
+    }
+
+    .feature {
+       width: 100%;
+    }
+
     .testimonial-slide {
         flex-wrap: wrap;
     }
@@ -487,10 +585,6 @@ End Product Details
     .client-image,
     .client-comment {
         width: 100%;
-    }
-
-    .testimonial-heading {
-        margin-bottom: 2.188rem;
     }
 
     .testimonial .swiper-button-next,
@@ -562,6 +656,10 @@ End Product Details
         width: 45rem;
     }
 
+    .feature {
+        width: 48%;
+    }
+
     .testimonial .swiper-button-next,
     .testimonial .swiper-button-prev {
         display: flex;
@@ -612,6 +710,14 @@ End Product Details
         width: 60rem;
     }
 
+    .features-container {
+        flex-wrap: nowrap;
+    }
+
+    .feature {
+        width: 33%;
+    }
+
     .testimonial-slide {
         flex-wrap: nowrap;
     }
@@ -623,10 +729,6 @@ End Product Details
 
     .client-comment {
         width: 65%;
-    }
-
-    .testimonial-heading {
-        margin-bottom: 2.813rem;
     }
 
     .testimonial .swiper-button-next,
