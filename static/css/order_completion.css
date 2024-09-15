@@ -39,7 +39,7 @@
     height: 30px;
     width: 30px;
     border-radius: 50%;
-
+    font-family: var(--normal-text-font-family);
 }
 
 .step .steps .circle_disabled {
@@ -73,7 +73,8 @@
     font-size: 14px;
     color: gray;
     text-align: center;
-    color: var(--color_primary);
+    color: var(--primary-color);
+    font-family: var(--normal-text-font-family);
 }
 
 .step .step_text .step_text_content_disabled {

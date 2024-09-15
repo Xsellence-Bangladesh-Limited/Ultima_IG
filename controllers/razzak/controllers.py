@@ -213,7 +213,7 @@ class UltimaWebsite(http.Controller):
             'currency_id': currency_id
         })
 
-    @http.route('/order-completed', type='http', auth='public', csrf=False)
+    @http.route('/order-completed', type='http', auth='public', method=['GET', 'POST'], csrf=False)
     def complete_order(self, **kw):
         paid_amount = kw.get('amount')
         card_type = kw.get('card_type')
@@ -227,7 +227,7 @@ class UltimaWebsite(http.Controller):
         store_id = kw.get('store_id')
 
         new_payment = req.env['ultima.payment'].sudo().create({
-            'user': req.env.user.id,
+            # 'user': req.env.user.id,
             'paid_amount': paid_amount,
             'card_type': card_type,
             'bank_tran_id': bank_tran_id,
@@ -243,8 +243,8 @@ class UltimaWebsite(http.Controller):
         if new_payment:
             return req.render('ultima.ultima_order_completion_template', {})
 
-    @http.route('/payment-failed', type='http', auth='public', csrf=False)
-    def payment_failed(self):
+    @http.route('/payment-failed', type='http', auth='public', method=['GET', 'POST'], csrf=False)
+    def payment_failed(self, **kw):
         return 'Payment failed.'
 
     @http.route('/send-expert-message', type='http', auth='public', csrf=False)

@@ -514,7 +514,7 @@ class UltimaPayment(models.Model):
     _order = 'id desc'
 
     name = fields.Char(string='Sequence')
-    user = fields.Many2one('res.users', string='User')
+    # user = fields.Many2one('res.users', string='User')
     paid_amount = fields.Float(string='Paid amount')
     card_type = fields.Char(string='Card type')
     bank_tran_id = fields.Char(string='Bank transaction ID')
