@@ -31,52 +31,63 @@
 
             <body>
 
-                <button class="talk-with-expert-button"><t t-esc="home.cta_btn_txt"/></button>
+                <div class="expert-form-container" style="display: none;">
+                    <div class="talk-with-expert-form">
+                        <div class="expert-form-header mb-1">
+                            <h6 class="expert-form-header-title">
+                                <t t-esc="home.cta_msg_f_t"/>
+                            </h6>
+                            <div class="expert-form-close-icon">
+                                <i class="fa-solid fa-xmark"></i>
+                            </div>
+                        </div>
+                        <div class="expert-form-body">
+                            <p class="expert-form-label">Name
+                                <span class="expert-form-label-required">*</span>
+                            </p>
+                            <input class="expert-form-input" id="expert-form-name-input"
+                                   placeholder="Enter your name"/>
 
-                <div class="talk-with-expert-form">
-                    <div class="expert-form-header mb-1">
-                        <h6 class="expert-form-header-title"><t t-esc="home.cta_msg_f_t"/></h6>
-                        <div class="expert-form-close-icon">
-                            <i class="fa-solid fa-xmark"></i>
+                            <p class="no-user-name-warning mt-1">
+                                <i class="fa-solid fa-triangle-exclamation"></i>
+                                Name is required!
+                            </p>
+
+                            <p class="expert-form-label mt-2">Number
+                                <span class="expert-form-label-required">*</span>
+                            </p>
+
+                            <input class="expert-form-input" id="expert-form-number-input"
+                                   placeholder="Enter your phone number"/>
+
+                            <p class="no-phone-number-warning mt-1">
+                                <i class="fa-solid fa-triangle-exclamation"></i>
+                                Phone number is required!
+                            </p>
+
+                            <button class="expert-form-submit-btn mt-3">
+                                <t t-esc="home.cta_msg_f_btn_txt"/>
+                            </button>
+                            <button class="expert-form-submit-loading-btn" disabled="1">
+                                <img src="/ultima/static/image/spinner.svg"/>
+                            </button>
                         </div>
                     </div>
-
-                    <div class="expert-form-body">
-                        <p class="expert-form-label">Name
-                            <span class="expert-form-label-required">*</span>
-                        </p>
-                        <input class="expert-form-input" id="expert-form-name-input"
-                               placeholder="Enter your name"/>
-
-                        <p class="no-user-name-warning mt-1">
-                            <i class="fa-solid fa-triangle-exclamation"></i>
-                            Name is required!
-                        </p>
-
-                        <p class="expert-form-label mt-2">Number
-                            <span class="expert-form-label-required">*</span>
-                        </p>
-
-                        <input class="expert-form-input" id="expert-form-number-input"
-                               placeholder="Enter your phone number"/>
-
-                        <p class="no-phone-number-warning mt-1">
-                            <i class="fa-solid fa-triangle-exclamation"></i>
-                            Phone number is required!
-                        </p>
-
-                        <button class="expert-form-submit-btn mt-3"><t t-esc="home.cta_msg_f_btn_txt"/></button>
-                        <button class="expert-form-submit-loading-btn" disabled="1">
-                            <img src="/ultima/static/image/spinner.svg"/>
+                    <div class="talk-with-expert-form-submission-done" style="display: none;">
+                        <img src="/ultima/static/image/order_completion.png"
+                             class="talk-with-expert-form-submission-done-icon mb-3"/>
+                        <h6 class="talk-with-expert-form-submission-done-title mb-3">
+                            <t t-esc="home.cta_msg_scs_t"/>
+                        </h6>
+                        <button class="talk-with-expert-form-submission-done-btn">
+                            <t t-esc="home.cta_msg_scs_btn_txt"/>
                         </button>
                     </div>
                 </div>
 
-                <div class="talk-with-expert-form-submission-done" style="display: none;">
-                    <img src="/ultima/static/image/order_completion.png" class="talk-with-expert-form-submission-done-icon mb-3"/>
-                    <h6 class="talk-with-expert-form-submission-done-title mb-3"><t t-esc="home.cta_msg_scs_t"/></h6>
-                    <button class="talk-with-expert-form-submission-done-btn"><t t-esc="home.cta_msg_scs_btn_txt"/></button>
-                </div>
+                <button class="talk-with-expert-button">
+                    <t t-esc="home.cta_btn_txt"/>
+                </button>
 
                 <div id="wrap">
 
@@ -429,6 +440,10 @@
                                     <img src="/ultima/static/image/logo/whaticon.webp" alt="WhatsApp contact Number"
                                          style="width: 40px;"/>
                                 </a>
+                            </div>
+
+                            <div class="talk-to-expert-icon-mobile">
+                                <img src="/ultima/static/image/talk-to-expert.svg" alt="talk to expert icon" style="width: 40px;"/>
                             </div>
 
                         </div>

@@ -26,8 +26,11 @@
 
                     <!-- Left Item -->
                     <div class="left_item">
-                        <img id="img_service_kit" class="img_service_kit"
-                             t-if="product.image_1920" t-att-src="image_data_uri(product.image_1920)" alt=""/>
+                        <img id="img_service_kit_2" class="img_service_kit"
+                             t-if="product.image_1920" t-att-src="image_data_uri(product.image_1920)" alt="" style="display: none;"/>
+                        <iframe id="img_service_kit" class="img_service_kit"
+                                src="https://www.youtube.com/embed/IqN3yBF9l-A?si=6anIT2wsexh13JRl&amp;autoplay=1&amp;mute=1" style="border: none; height: 280px; width: 100%; overflow: hidden;">
+                        </iframe>
                         <div class="mt-2">
                             <div class="owl-carousel owl-theme">
                                 <t t-foreach="product_extra_images" t-as="product_extra_image">

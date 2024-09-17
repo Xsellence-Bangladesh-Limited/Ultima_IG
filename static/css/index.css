@@ -35,25 +35,32 @@
     font-size: 14px;
     font-weight: var(--normal-title-font-weight);
     border-radius: 5px;
-}
-
-.talk-with-expert-form{
-    position: fixed;
-    right: 0;
-    top: 35%;
-    background-color: #fff;
-    z-index: 100000000;
-    width: 330px;
-    border-radius: 10px;
     display: none;
 }
 
-.talk-with-expert-form-submission-done{
-    position: absolute;
-    right: 10px;
-    top: 35%;
-    background-color: #fff;
+.expert-form-container{
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(124, 124, 124, 0.6);
+    top: 0;
+    left: 0;
     z-index: 100000000;
+}
+
+.talk-with-expert-form{
+    background-color: #fff;
+    width: 330px;
+    border-radius: 10px;
+    /* display: none; */
+}
+
+.talk-with-expert-form-submission-done{
+    background-color: #fff;
     width: 330px;
     border-radius: 10px;
     padding: 10px;
@@ -565,7 +572,7 @@ wrap wrap
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 2.5rem;
+    gap: 20px;
 }
 
 /* Testimonial like prohori (start) */
@@ -684,6 +691,10 @@ wrap wrap
 
     .mobile-bottom-menu{
         display: none;
+    }
+
+    .talk-with-expert-button{
+        display: block;
     }
 }
 

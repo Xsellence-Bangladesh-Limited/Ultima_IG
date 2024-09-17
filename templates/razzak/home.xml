@@ -46,9 +46,9 @@
                         <div class="right">
                             <div id="introduce_box" class="box" data-toggle="modal"
                                  data-target="#modal_introduce_video">
-                                <img t-if="intro.video_bg_512" t-att-src="image_data_uri(intro.video_bg_512)"
+                                <img t-if="intro.video_bg_512" class="introduce-box-video-image" t-att-src="image_data_uri(intro.video_bg_512)"
                                      alt="Introducing Ultima"/>
-                                <div id="introduce_play" class="play">
+                                <div t-if="intro.video_url" id="introduce_play" class="play">
                                     <img src="/ultima/static/image/introduce/play.png" alt=""/>
                                 </div>
                             </div>

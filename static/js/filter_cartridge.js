@@ -24,8 +24,9 @@ $(document).ready(function () {
 
         let src = $(this).attr('src');
         console.log(src);
-
-        $('#img_service_kit').attr('src', src);
+        $('#img_service_kit').hide();
+        $('#img_service_kit_2').show();
+        $('#img_service_kit_2').attr('src', src);
 
     });
 

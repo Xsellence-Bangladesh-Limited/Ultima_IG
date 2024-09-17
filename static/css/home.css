@@ -708,6 +708,11 @@
     cursor: pointer;
 }
 
+.introduce-box-video-image{
+    height: 290px;
+    object-fit: cover;
+}
+
 .introduce .blocks .right .box img {
     width: 100%;
     border-radius: 15px;

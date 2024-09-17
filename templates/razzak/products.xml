@@ -250,7 +250,49 @@
               End Frequently Asked Question
             -->
 
+            <!-- Sales feature (start) -->
+            <div class="sales-feature-section pt-5">
+                <div class="my-container">
+                    <div class="sales-feature-title-container text-center">
+                        <p class="sales-feature-title">Sales Feature</p>
+                    </div>
+
+                    <h3 class="sales-feature-heading text-center">
+                        Sales Features We <br/> Provide
+                    </h3>
+
+                    <div class="sales-feature-container">
+                        <div class="sales-feature">
+                            <img class="sales-feature-logo mb-3" src="/ultima/static/image/product/kent-advantage.svg"/>
+                            <div class="sales-feature-title-and-description">
+                                <h6 class="single-sales-feature-title">KENT Advantage</h6>
+                                <p class="sales-feature-short-description">Premium Quality Products with Large Sales and Service Network</p>
+                            </div>
+                        </div>
+
+                        <div class="sales-feature">
+                            <img class="sales-feature-logo mb-3" src="/ultima/static/image/product/award-winning.svg"/>
+                            <div class="sales-feature-title-and-description">
+                                <h6 class="single-sales-feature-title">KENT Advantage</h6>
+                                <p class="sales-feature-short-description">Premium Quality Products with Large Sales and Service Network</p>
+                            </div>
+                        </div>
+
+                        <div class="sales-feature">
+                            <img class="sales-feature-logo mb-3" src="/ultima/static/image/product/trusted-million.svg"/>
+                            <div class="sales-feature-title-and-description">
+                                <h6 class="single-sales-feature-title">KENT Advantage</h6>
+                                <p class="sales-feature-short-description">Premium Quality Products with Large Sales and Service Network</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Sales feature (end) -->
+
+            <!-- Testimonial (start) -->
             <t t-call="ultima.testimonial"/>
+            <!-- Testimonial (end) -->
 
         </t>
     </template>
