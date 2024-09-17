@@ -3,7 +3,7 @@
 
         <!-- Testimonial like prohori (start) -->
         <div class="testimonial-like-prohori mb-3">
-            <div class="my-container pt-5 pb-5">
+            <div class="my-container py-5">
                 <div class="testimonial-title-container text-center">
                     <p class="testimonial-title" t-raw="layout.tm_section"></p>
                 </div>

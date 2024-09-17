@@ -501,6 +501,63 @@ End Our All Products
     End Frequently Asked Question
 */
 
+/* Sales Feature (start) */
+
+.sales-feature-title{
+  font-family: var(--title-font-family);
+  font-weight: var(--normal-title-font-weight);
+  background: linear-gradient(263.57deg, #62bb46 20%, #0c79f9 63%);
+  -webkit-text-fill-color: transparent;
+  -webkit-background-clip: text;
+  text-align: center;
+  display: inline-block;
+}
+
+.sales-feature-heading{
+    font-family: var(--title-font-family);
+    font-weight: var(--heading-font-weight);
+    margin-bottom: 1.875rem;
+}
+
+.sales-feature-container{
+    display: flex;
+    gap: 20px;
+    flex-direction: column;
+}
+
+.sales-feature{
+    width: 100%;
+    display: flex;
+    justify-content: start;
+    gap: 20px;
+}
+
+.sales-feature:not(:last-of-type){
+    border-bottom: 1px solid #efeff2;
+}
+
+.sales-feature-logo{
+    width: 40px;
+    border: 1px solid var(--primary-color);
+    border-radius: 5px;
+    align-self: start;
+}
+
+
+.single-sales-feature-title{
+    font-family: var(--title-font-family);
+    font-weight: var(--heading-font-weight);
+}
+
+.sales-feature-short-description{
+    font-family: var(--normal-text-font-family);
+    font-size: 13px;
+    line-height: 1.7;
+    color: #7b7b7b;
+}
+
+/* Sales Feature (end) */
+
 /* Testimonials (start) */
 
 .testimonial .swiper-pagination {
@@ -706,6 +763,29 @@ End Our All Products
 
     .discover ._cards ._card {
         width: 48%;
+    }
+
+    .sales-feature-container{
+        flex-direction: row;
+    }
+    
+    .sales-feature{
+        width: 33%;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        padding: 0 40px;
+        gap: 0;
+    }
+
+    .sales-feature-logo{
+        align-self: center;
+    }
+
+    .sales-feature:not(:last-of-type){
+        border-right: 1px solid #efeff2;
+        border-bottom: none;
     }
 
     .testimonial .swiper-button-next,

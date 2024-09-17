@@ -60,12 +60,25 @@ $(document).ready(function () {
 
     // Handling talk with expert form toggling (start)
 
-    $('.talk-with-expert-button').click(function(){
-        $('.talk-with-expert-form').fadeIn("slow");
+    $('.talk-with-expert-button').click(function(e){
+        $('body').css('overflow', 'hidden');
+        $('.expert-form-container').fadeIn("slow");
+        $('.no-user-name-warning').hide();
+        $('.no-phone-number-warning').hide();
+        $('.talk-with-expert-form').show();
+    })
+
+    $('.talk-to-expert-icon-mobile').click(function(){
+        $('body').css('overflow', 'hidden');
+        $('.expert-form-container').fadeIn("slow");
+        $('.no-user-name-warning').hide();
+        $('.no-phone-number-warning').hide();
+        $('.talk-with-expert-form').show();
     })
 
     $('.expert-form-close-icon').click(function(){
-        $('.talk-with-expert-form').fadeOut("slow");
+        $('body').css('overflow', 'auto');
+        $('.expert-form-container').fadeOut("slow");
     })
 
     // Handling talk with expert form toggling (end)
@@ -109,17 +122,17 @@ $(document).ready(function () {
 
         $.post('/send-expert-message', formData, function(response){
             const res = JSON.parse(response);
-            console.log(res);
-
             if(res.code === 200){
                 $('.expert-form-submit-btn').show();
                 $('.expert-form-submit-loading-btn').hide();
 
-                $('.talk-with-expert-form').fadeOut("slow");
-                $('.talk-with-expert-form-submission-done').fadeIn('slow');
+                $('.talk-with-expert-form').hide();
+                $('.talk-with-expert-form-submission-done').show();
 
                 setTimeout(function(){
-                    $('.talk-with-expert-form-submission-done').fadeOut('slow');
+                    $('body').css('overflow', 'auto');
+                    $('.expert-form-container').fadeOut('slow');
+                    $('.talk-with-expert-form-submission-done').hide();
                 }, 3000);
             }
         })
@@ -129,8 +142,10 @@ $(document).ready(function () {
 
     // Handling expert form submission done (start)
 
-    $('.talk-with-expert-form-submission-done-btn').click(function(){
-        $('.talk-with-expert-form-submission-done').fadeOut('slow');
+    $('.talk-with-expert-form-submission-done-btn').click(function(e){
+        $('body').css('overflow', 'auto');
+        $('.expert-form-container').fadeOut('slow');
+        $('.talk-with-expert-form-submission-done').hide();
     });
 
     // Handling expert form submission done (end)
