@@ -411,14 +411,14 @@ a:hover {
   }
 
   .swiper-button-prev {
-    left: 0;
-    top: 170px;
+    left: 3px;
+    top: 121px;
     transform: translate(0%, -50%);
   }
 
   .swiper-button-next {
-    right: 0;
-    top: 170px;
+    right: 3px;
+    top: 121px;
     transform: translate(0%, -50%);
   }
 }
@@ -459,6 +459,18 @@ a:hover {
   .all-blog-sliders {
     padding: 3.125rem 0rem 3.125rem 0rem;
   }
+
+  .swiper-button-prev {
+    left: 3px;
+    top: 170px;
+    transform: translate(0%, -50%);
+  }
+
+  .swiper-button-next {
+    right: 3px;
+    top: 170px;
+    transform: translate(0%, -50%);
+  }
 }
 
 /* Large devices (desktops, 992px and up) */
@@ -496,13 +508,8 @@ a:hover {
 
   .swiper-button-prev {
     left: 51.08%;
-    top: 170px;
   }
 
-  .swiper-button-next {
-    right: 0;
-    top: 170px;
-  }
 }
 
 /* X-Large devices (large desktops, 1200px and up) */
