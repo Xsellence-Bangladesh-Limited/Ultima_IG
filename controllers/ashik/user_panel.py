@@ -35,7 +35,7 @@ class UserPanel(http.Controller):
             'product_name': product_tmpl.name,
             'total_price': f'{currency_id.symbol}{order.total_price}',
             'order_name': order.name,
-            'order_date': str(order.created_at)
+            'order_date': order.format_order_date()
         }
 
         return json.dumps({'code': 200, 'data': data})

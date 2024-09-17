@@ -21,7 +21,7 @@
 
 .talk-with-expert-button{
     position: fixed;
-    right: -10px;
+    right: -40px;
     top: 44%;
     z-index: 10000000;
     transform: rotate(-90deg);
@@ -38,8 +38,8 @@
 }
 
 .talk-with-expert-form{
-    position: absolute;
-    right: 10px;
+    position: fixed;
+    right: 0;
     top: 35%;
     background-color: #fff;
     z-index: 100000000;
@@ -550,7 +550,7 @@ wrap wrap
 }
 
 .mobile-bottom-menu{
-    padding: 0.938rem;
+    padding: 10px;
     background-color: #F9FAFB;
     position: fixed;
     bottom: 0;
@@ -688,7 +688,13 @@ wrap wrap
 }
 
 @media(min-width: 992px){
+    .talk-with-expert-button{
+        right: -10px;
+    }
 
+    .talk-with-expert-form{
+        right: 10px;
+    }
 }
 
 @media(min-width: 1200px){

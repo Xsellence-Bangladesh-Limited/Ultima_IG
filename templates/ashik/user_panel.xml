@@ -13,7 +13,7 @@
                 <!-- Bootstrap (end) -->
 
                 <!-- Custom CSS (start) -->
-                <link rel="stylesheet" href="/ultima/static/ashik/user_panel/css/styles.css?v=2.0"/>
+                <link rel="stylesheet" href="/ultima/static/ashik/user_panel/css/styles.css?v=2.1"/>
                 <!-- Custom CSS (end) -->
 
                 <!-- Fontawesome CDN (start) -->
@@ -25,7 +25,7 @@
                 <!-- Jquery (end) -->
 
                 <!-- Custom JS (start) -->
-                <script src="/ultima/static/ashik/user_panel/JS/script.js?v=2.0" defer="1"/>
+                <script src="/ultima/static/ashik/user_panel/JS/script.js?v=2.1" defer="1"/>
                 <!-- Custom JS (end) -->
 
 
