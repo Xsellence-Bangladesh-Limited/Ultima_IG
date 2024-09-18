@@ -138,17 +138,35 @@
               sequence="0"
               action="ultima_products_carousel_action_id"/>
 
+    <menuitem id="ultima_products_mobile_carousel_menu_id"
+              name="Mobile carousel"
+              parent="ultima_products_others_menu_id"
+              sequence="1"
+              action="ultima_product_carousel_mobile_form"/>
+
     <menuitem id="ultima_products_feature_menu_id"
               name="Feature"
               parent="ultima_products_others_menu_id"
-              sequence="1"
+              sequence="2"
               action="ultima_products_feature_action_id"/>
 
     <menuitem id="ultima_products_faq_menu_id"
               name="Faq"
               parent="ultima_products_others_menu_id"
-              sequence="2"
+              sequence="3"
               action="ultima_products_faq_action_id"/>
+
+    <menuitem id="ultima_products_sale_feature_menu_id"
+              name="Sales feature"
+              parent="ultima_products_others_menu_id"
+              sequence="4"
+              action="ultima_product_sale_feature_form"/>
+
+    <menuitem id="ultima_product_video_menu_id"
+              name="Product videos"
+              parent="ultima_products_others_menu_id"
+              sequence="5"
+              action="ultima_product_video_form"/>
 
     <!-- Product Detail -->
     <menuitem id="ultima_pd_detail_lbl_menu_id"
@@ -230,6 +248,17 @@
               name="Payments"
               parent="ultima_payments_root_menu_id"
               action="ultima_payment_form"
+              sequence="0"/>
+
+    <menuitem id="ultima_payment_settings_menu_id"
+              name="Settings"
+              parent="ultima_payments_root_menu_id"
+              sequence="1"/>
+
+    <menuitem id="ultima_payment_shipping_type_menu_id"
+              name="Shipping types"
+              parent="ultima_payment_settings_menu_id"
+              action="ultima_payment_shipping_type_form"
               sequence="0"/>
 
 </odoo>

@@ -39,6 +39,9 @@ class UltimaLayout(models.Model):
     tm_section = fields.Char(string='Section', required=True, translate=True)
     tm_title = fields.Char(string='Title', required=True, translate=True)
 
+    show_whatsapp_btn = fields.Boolean(string='Show whatsapp button')
+    show_call_now_btn = fields.Boolean(string='Show call now button')
+
 
 class UltimaQuick_link(models.Model):
     _name = 'ultima.quick_link'
@@ -145,6 +148,7 @@ class UltimaHome(models.Model):
     cta_msg_f_btn_txt = fields.Char(string='CTA message form button text')
     cta_msg_scs_t = fields.Char(string='CTA message success title')
     cta_msg_scs_btn_txt = fields.Char(string='CTA message success button text')
+    show_cta_btn = fields.Boolean(string='Show CTA button')
 
 
 class UltimaHomeDisLine(models.Model):
@@ -227,6 +231,7 @@ class ProTemInherit(models.Model):
     old_list_price = fields.Float()
     ribbon_id = fields.Many2one('ultima.ribbon')
     tag_ids = fields.Many2many('ultima.tag')
+    video_ids = fields.Many2many('ultima.product.video')
     website_publish = fields.Boolean()
 
     # Product Details
@@ -325,6 +330,7 @@ class UltimaProducts(models.Model):
     _description = 'ultima.products'
 
     carousel_ids = fields.Many2many('ultima.products.carousel')
+    mobile_carousel_ids = fields.Many2many('ultima.product.carousel.mobile')
 
     oap_title = fields.Char(translate=True)
     oap_desc = fields.Char(translate=True)
@@ -338,6 +344,9 @@ class UltimaProducts(models.Model):
     faq_title = fields.Char(translate=True)
     faq_ids = fields.Many2many('ultima.products.faq')
 
+    sales_feature_section = fields.Char(translate=True)
+    sales_feature_title = fields.Char(translate=True)
+    sales_feature_ids = fields.Many2many('ultima.product.sale.feature')
 
 class UltimaProductsCarousel(models.Model):
     _name = 'ultima.products.carousel'
@@ -353,6 +362,22 @@ class UltimaProductsCarousel(models.Model):
     image_128 = fields.Image("Image 128", related="image_1920", max_width=128, max_height=128, store=True)
     alt = fields.Char(translate=True)
 
+class UltimaProductCarouselMobile(models.Model):
+    _name = 'ultima.product.carousel.mobile'
+    _description = 'ultima.product.carousel.mobile'
+    _order = 'id desc'
+
+    name = fields.Char(string='Name')
+    image_1920 = fields.Image("Image", max_width=1920, max_height=1920)
+    image_1024 = fields.Image("Image 1024", related="image_1920", max_width=1024, max_height=1024, store=True)
+    image_512 = fields.Image("Image 512", related="image_1920", max_width=512, max_height=512, store=True)
+    image_256 = fields.Image("Image 256", related="image_1920", max_width=256, max_height=256, store=True)
+    image_128 = fields.Image("Image 128", related="image_1920", max_width=128, max_height=128, store=True)
+
+    @api.model
+    def create(self, vals):
+        vals['name'] = self.env['ir.sequence'].sudo().next_by_code('ultima.product.carousel.mobile.seq')
+        return super(UltimaProductCarouselMobile, self).create(vals)
 
 class UltimaProductsFeature(models.Model):
     _name = 'ultima.products.feature'
@@ -424,6 +449,8 @@ class UltimaWebsite_menu(models.Model):
     parent_id = fields.Many2one('ultima.website_menu')
     icon_class = fields.Char()
     new_window = fields.Boolean()
+    icon = fields.Image(string='Icon')
+    show_on_mobile_menu = fields.Boolean(string='Show on mobile menu')
 
 
 # class Def(models.Model):
@@ -478,6 +505,7 @@ class ProductOrder(models.Model):
     order_note = fields.Text(string='Order note')
     shipping_location = fields.Text(string='Shipping location')
     shipping_type = fields.Char(string='Shipping type')
+    payment_method = fields.Char(string='Payment method')
     otp = fields.Char(string='OTP')
     product_ids = fields.Many2many('product.product', string='Products')
     total_price = fields.Float(string='Total price')
@@ -530,3 +558,50 @@ class UltimaPayment(models.Model):
     def create(self, vals):
         vals['name'] = self.env['ir.sequence'].sudo().next_by_code('ultima.payment.seq')
         return super(UltimaPayment, self).create(vals)
+
+
+class UltimaPaymentShippingType(models.Model):
+    _name = 'ultima.payment.shipping.type'
+    _description = 'ultima.payment.shipping.type'
+    _order = 'id desc'
+
+    name = fields.Char(string='Sequence')
+    type_name = fields.Char(string='Type name')
+    shipping_cost = fields.Float(string='Shipping cost')
+
+    @api.model
+    def create(self, vals):
+        vals['name'] = self.env['ir.sequence'].sudo().next_by_code('ultima.payment.shipping.type.seq')
+        return super(UltimaPaymentShippingType, self).create(vals)
+
+
+class UltimaProductSaleFeature(models.Model):
+    _name = 'ultima.product.sale.feature'
+    _description = 'ultima.product.sale.feature'
+    _order = 'id desc'
+
+    name = fields.Char(string='Name')
+    icon = fields.Image(string='Icon')
+    title = fields.Char(string='Title')
+    short_description = fields.Text(string='Short description')
+    show_on_products_page = fields.Boolean(string='Show on products page')
+    show_on_product_detail_page = fields.Boolean(string='Show on product detail page')
+
+    @api.model
+    def create(self, vals):
+        vals['name'] = self.env['ir.sequence'].sudo().next_by_code('ultima.product.sale.feature.seq')
+        return super(UltimaProductSaleFeature, self).create(vals)
+
+class UltimaProductVideo(models.Model):
+    _name = 'ultima.product.video'
+    _description = 'ultima.product.video'
+    _order = 'id desc'
+
+    name = fields.Char(string='Sequence')
+    url = fields.Text(string='Video url')
+    thumbnail = fields.Image(string='Video thumbnail')
+
+    @api.model
+    def create(self, vals):
+        vals['name'] = self.env['ir.sequence'].sudo().next_by_code('ultima.product.video.seq')
+        return super(UltimaProductVideo, self).create(vals)

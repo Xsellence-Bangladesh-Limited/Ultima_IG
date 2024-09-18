@@ -8,7 +8,9 @@
                 <field name="website_publish" widget="boolean_toggle"/>
                 <field name="ribbon_id"/>
                 <field name="tag_ids"/>
+                <field name="video_ids"/>
             </xpath>
+
             <xpath expr="//field[@name='categ_id']" position="after">
                 <field name="old_list_price" string="Old Sales Price"></field>
             </xpath>

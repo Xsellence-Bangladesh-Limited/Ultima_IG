@@ -27,17 +27,25 @@
                     <!-- Left Item -->
                     <div class="left_item">
                         <img id="img_service_kit_2" class="img_service_kit"
-                             t-if="product.image_1920" t-att-src="image_data_uri(product.image_1920)" alt="" style="display: none;"/>
+                             t-if="product.image_1920" t-att-src="image_data_uri(product.image_1920)" alt=""/>
                         <iframe id="img_service_kit" class="img_service_kit"
-                                src="https://www.youtube.com/embed/IqN3yBF9l-A?si=6anIT2wsexh13JRl&amp;autoplay=1&amp;mute=1" style="border: none; height: 280px; width: 100%; overflow: hidden;">
+                                t-if="product_videos" t-attf-src="{{product_videos[0].url}}"
+                                style="border: none; height: 280px; width: 100%; overflow: hidden; display: none;">
                         </iframe>
                         <div class="mt-2">
                             <div class="owl-carousel owl-theme">
                                 <t t-foreach="product_extra_images" t-as="product_extra_image">
                                     <div class="item">
                                         <img class="img_owl" t-if="product_extra_image.image_512"
-                                             t-att-src="image_data_uri(product_extra_image.image_512)" alt=""/>
+                                             t-att-src="image_data_uri(product_extra_image.image_512)" t-att-data-url=""
+                                             t-att-data-is-video="false" alt=""/>
                                     </div>
+                                </t>
+
+                                <t t-foreach="product_videos" t-as="product_video">
+                                    <img class="img_owl" t-if="product_video.thumbnail"
+                                         t-att-src="image_data_uri(product_video.thumbnail)"
+                                         t-att-data-url="product_video.url" t-att-data-is-video="true" alt=""/>
                                 </t>
                             </div>
                         </div>
@@ -367,6 +375,41 @@
             <!--
             End Frequently Asked Question
             -->
+
+            <!-- Sales feature (start) -->
+            <div class="sales-feature-section pt-5">
+                <div class="my-container">
+                    <div class="sales-feature-title-container text-center">
+                        <p class="sales-feature-title">
+                            <t t-raw="pp.sales_feature_section"/>
+                        </p>
+                    </div>
+
+                    <h3 class="sales-feature-heading text-center">
+                        <t t-raw="pp.sales_feature_title"/>
+                    </h3>
+
+                    <div class="sales-feature-container">
+                        <t t-foreach="pp.sales_feature_ids" t-as="sales_feature">
+                            <t t-if="sales_feature.show_on_product_detail_page">
+                                <div class="sales-feature">
+                                    <img class="sales-feature-logo mb-3"
+                                         t-if="sales_feature.icon" t-att-src="image_data_uri(sales_feature.icon)"/>
+                                    <div class="sales-feature-title-and-description">
+                                        <h6 class="single-sales-feature-title">
+                                            <t t-raw="sales_feature.title"/>
+                                        </h6>
+                                        <p class="sales-feature-short-description">
+                                            <t t-raw="sales_feature.short_description"/>
+                                        </p>
+                                    </div>
+                                </div>
+                            </t>
+                        </t>
+                    </div>
+                </div>
+            </div>
+            <!-- Sales feature (end) -->
 
             <t t-call="ultima.testimonial"/>
 

@@ -86,6 +86,7 @@ class UltimaWebsite(http.Controller):
         layout = req.env['ultima.layout'].sudo().search([], limit=1)
         testimonials = req.env['ultima.testimonial'].sudo().search([])
         page = req.env['ultima.pd_detail'].sudo().search([], limit=1)
+        page_products = req.env['ultima.products'].sudo().search([], limit=1)
 
         sale_report = req.env['sale.report'].sudo().search([])
 
@@ -106,15 +107,18 @@ class UltimaWebsite(http.Controller):
             'testimonials': testimonials,
             'layout': layout,
             'p': page,
+            'pp': page_products,
             'currency_id': currency_id,
-            'product_extra_images': list(product.product_template_image_ids) + [product]
+            'product_extra_images': list(product.product_template_image_ids) + [product],
+            'product_videos': product.video_ids
         })
 
-    @http.route('/billing', auth='public', csrf=False)
+    @http.route('/billing', auth='user', csrf=False)
     def billing(self, **kw):
         base_url = http.request.env['ir.config_parameter'].sudo().get_param('web.base.url')
         form_product_id = int(kw.get('product_id')) if kw.get('product_id') else None
         product_obj = req.env['product.product'].sudo().search([('product_tmpl_id', '=', form_product_id)])
+        shipping_types = req.env['ultima.payment.shipping.type'].sudo().search([], order='id asc')
 
         if req.httprequest.method == 'POST':
             product_total_price = float(kw.get('product_total_price')) if kw.get('product_total_price') else 0
@@ -128,40 +132,13 @@ class UltimaWebsite(http.Controller):
             order_note = kw.get('order_note').strip() if kw.get('order_note') else ''
             shipping_location = kw.get('shipping_location').strip() if kw.get('shipping_location') else ''
             shipping_type = kw.get('shipping_type').strip() if kw.get('shipping_type') else ''
+            shipping_cost = float(kw.get('shipping_cost')) if kw.get('shipping_cost') else 0
+            payment_method = kw.get('payment_method').strip() if kw.get('payment_method') else ''
             otp = kw.get('otp').strip() if kw.get('otp') else ''
 
             # [(4, other_guiding_area_id) for other_guiding_area_id in other_guiding_area_ids]
 
-            # Making payment (start)
-            settings = {'store_id': 'ultim66e5881171fa2', 'store_pass': 'ultim66e5881171fa2@ssl', 'issandbox': True}
-            sslcz = SSLCOMMERZ(settings)
-            post_body = {}
-            post_body['total_amount'] = cart_total_price
-            post_body['currency'] = "BDT"
-            post_body['tran_id'] = "12345"
-            post_body['success_url'] = f"{base_url}/order-completed"
-            post_body['fail_url'] = f"{base_url}/payment-failed"
-            post_body['cancel_url'] = f"{base_url}/payment-failed"
-            post_body['emi_option'] = 0
-            post_body['cus_name'] = req.env.user.partner_id.name
-            post_body['cus_email'] = req.env.user.partner_id.email
-            post_body['cus_phone'] = req.env.user.partner_id.phone
-            post_body['cus_add1'] = req.env.user.partner_id.country_id.name
-            post_body['cus_city'] = req.env.user.partner_id.country_id.name
-            post_body['cus_country'] = req.env.user.partner_id.country_id.name
-            post_body['shipping_method'] = "NO"
-            post_body['multi_card_name'] = ""
-            post_body['num_of_item'] = number_of_product
-            post_body['product_name'] = product_obj.name
-            post_body['product_category'] = "Test Category"
-            post_body['product_profile'] = "general"
-
-            response = sslcz.createSession(post_body)
-            # Making payment (end)
-
-            # Creating a new order (start)
-
-            if response.get('status') == 'SUCCESS':
+            if payment_method == 'cash_on_delivery':
                 new_order = req.env['ultima.product.order'].sudo().create({
                     'full_name': full_name,
                     'phone_number': phone_number,
@@ -171,6 +148,7 @@ class UltimaWebsite(http.Controller):
                     'order_note': order_note,
                     'shipping_location': shipping_location,
                     'shipping_type': shipping_type,
+                    'payment_method': 'cash_on_delivery',
                     'otp': otp,
                     'product_ids': [(4, product_obj.id)],
                     'total_price': cart_total_price,
@@ -186,16 +164,81 @@ class UltimaWebsite(http.Controller):
                             (0, 0, {
                                 'product_id': product.id,
                                 'product_uom_qty': number_of_product,
-                                'price_unit': product.list_price
+                                'price_unit': product.list_price,
+                                'price_subtotal': (number_of_product * product.list_price) + shipping_cost
                             }) for product in new_order.product_ids
                         ]
                     })
 
                     if new_sale_order:
-                        return redirect(response.get('GatewayPageURL'))
+                        return redirect('/order-completed?pay=cash')
+
+            else:
+                # Making payment (start)
+                settings = {'store_id': 'ultim66e5881171fa2', 'store_pass': 'ultim66e5881171fa2@ssl', 'issandbox': True}
+                sslcz = SSLCOMMERZ(settings)
+                post_body = {}
+                post_body['total_amount'] = cart_total_price
+                post_body['currency'] = "BDT"
+                post_body['tran_id'] = "12345"
+                post_body['success_url'] = f"{base_url}/order-completed"
+                post_body['fail_url'] = f"{base_url}/payment-failed"
+                post_body['cancel_url'] = f"{base_url}/payment-failed"
+                post_body['emi_option'] = 0
+                post_body['cus_name'] = req.env.user.partner_id.name
+                post_body['cus_email'] = req.env.user.partner_id.email
+                post_body['cus_phone'] = req.env.user.partner_id.phone
+                post_body['cus_add1'] = req.env.user.partner_id.country_id.name
+                post_body['cus_city'] = req.env.user.partner_id.country_id.name
+                post_body['cus_country'] = req.env.user.partner_id.country_id.name
+                post_body['shipping_method'] = "NO"
+                post_body['multi_card_name'] = ""
+                post_body['num_of_item'] = number_of_product
+                post_body['product_name'] = product_obj.name
+                post_body['product_category'] = "Test Category"
+                post_body['product_profile'] = "general"
+
+                response = sslcz.createSession(post_body)
+                # Making payment (end)
+
+                # Creating a new order (start)
+
+                if response.get('status') == 'SUCCESS':
+                    new_order = req.env['ultima.product.order'].sudo().create({
+                        'full_name': full_name,
+                        'phone_number': phone_number,
+                        'email_address': email_address,
+                        'address': address,
+                        'user_id': req.env.user.id,
+                        'order_note': order_note,
+                        'shipping_location': shipping_location,
+                        'shipping_type': shipping_type,
+                        'payment_method': 'sslcommerz',
+                        'otp': otp,
+                        'product_ids': [(4, product_obj.id)],
+                        'total_price': cart_total_price,
+                        'product_qty': number_of_product
+                    })
+
+                    if new_order:
+                        logged_in_user = req.env['res.users'].sudo().search([('id', '=', req.env.user.id)])
+
+                        new_sale_order = req.env['sale.order'].sudo().create({
+                            'partner_id': logged_in_user.partner_id.id,
+                            'order_line': [
+                                (0, 0, {
+                                    'product_id': product.id,
+                                    'product_uom_qty': number_of_product,
+                                    'price_unit': product.list_price,
+                                    'price_subtotal': (number_of_product * product.list_price) + shipping_cost
+                                }) for product in new_order.product_ids
+                            ]
+                        })
+
+                        if new_sale_order:
+                            return redirect(response.get('GatewayPageURL'))
 
             # Creating a new order (end)
-
 
         layout = req.env['ultima.layout'].sudo().search([], limit=1)
 
@@ -210,7 +253,8 @@ class UltimaWebsite(http.Controller):
             'product_id': product_id,
             'layout': layout,
             'logged_in_user': logged_in_user,
-            'currency_id': currency_id
+            'currency_id': currency_id,
+            'shipping_types': shipping_types
         })
 
     @http.route('/order-completed', type='http', auth='public', method=['GET', 'POST'], csrf=False)
@@ -244,7 +288,10 @@ class UltimaWebsite(http.Controller):
             if new_payment:
                 return req.render('ultima.ultima_order_completion_template', {})
         else:
-            return 'Something went wrong. Are you trying to repay?'
+            if kw.get('pay') == 'cash':
+                return req.render('ultima.ultima_order_completion_template', {})
+            else:
+                return 'Something went wrong. Are you trying to repay?'
 
     @http.route('/payment-failed', type='http', auth='public', method=['GET', 'POST'], csrf=False)
     def payment_failed(self, **kw):

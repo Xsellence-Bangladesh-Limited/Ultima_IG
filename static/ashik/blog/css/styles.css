@@ -26,6 +26,27 @@
   --normal-title-font-weight: 400;
 }
 
+.sora-400 {
+    font-family: "Sora", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.sora-600 {
+    font-family: "Sora", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 600;
+    font-style: normal;
+}
+
+.text {
+    color: var(--text-gray);
+    line-height: 21px;
+    font-family: var(--normal-text-font-family);
+    font-size: 0.875rem;
+}
+
 p,
 h1,
 h2,
