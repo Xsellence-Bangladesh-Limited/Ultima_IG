@@ -23,11 +23,20 @@ $(document).ready(function () {
     $('.img_owl').click(function () {
 
         let src = $(this).attr('src');
-        console.log(src);
-        $('#img_service_kit').hide();
-        $('#img_service_kit_2').show();
-        $('#img_service_kit_2').attr('src', src);
+        const isVideo = $(this).data('is-video');
 
+        if(isVideo){
+            const videoUrl = $(this).data('url');
+            $('#img_service_kit').attr('src', videoUrl);
+            $('#img_service_kit_2').hide();
+            $('#img_service_kit').show();
+        }
+
+        else{
+            $('#img_service_kit').hide();
+            $('#img_service_kit_2').show();
+            $('#img_service_kit_2').attr('src', src);
+        }
     });
 
     /*

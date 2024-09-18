@@ -16,8 +16,10 @@ ultima_tag,ultima_tag,model_ultima_tag,,1,1,1,1
 ultima_testimonial,ultima_testimonial,model_ultima_testimonial,,1,1,1,1
 ultima_products,ultima_products,model_ultima_products,,1,1,1,1
 ultima_products_carousel,ultima_products_carousel,model_ultima_products_carousel,,1,1,1,1
+ultima_product_carousel_mobile,ultima_product_carousel_mobile,model_ultima_product_carousel_mobile,,1,1,1,1
 ultima_products_feature,ultima_products_feature,model_ultima_products_feature,,1,1,1,1
 ultima_products_faq,ultima_products_faq,model_ultima_products_faq,,1,1,1,1
+ultima_product_sale_feature,ultima_product_sale_feature,model_ultima_product_sale_feature,,1,1,1,1
 ultima_pd_detail_faq,ultima_pd_detail_faq,model_ultima_pd_detail_faq,,1,1,1,1
 ultima_pd_detail,ultima_pd_detail,model_ultima_pd_detail,,1,1,1,1
 ultima_pd_detail_feature,ultima_pd_detail_feature,model_ultima_pd_detail_feature,,1,1,1,1
@@ -29,3 +31,5 @@ p_detail_desc_line,p_detail_desc_line,model_p_detail_desc_line,,1,1,1,1
 product_spe_line,product_spe_line,model_product_spe_line,,1,1,1,1
 ultima_product_order,ultima_product_order,model_ultima_product_order,,1,1,1,1
 ultima_payment,ultima_payment,model_ultima_payment,,1,1,1,1
+ultima_product_video,ultima_product_video,model_ultima_product_video,,1,1,1,1
+ultima_payment_shipping_type,ultima_payment_shipping_type,model_ultima_payment_shipping_type,,1,1,1,1

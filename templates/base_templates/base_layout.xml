@@ -85,9 +85,11 @@
                     </div>
                 </div>
 
-                <button class="talk-with-expert-button">
-                    <t t-esc="home.cta_btn_txt"/>
-                </button>
+                <t t-if="home.show_cta_btn">
+                    <button class="talk-with-expert-button">
+                        <t t-esc="home.cta_btn_txt"/>
+                    </button>
+                </t>
 
                 <div id="wrap">
 
@@ -346,7 +348,11 @@
                                     <div class="col-12 col-lg-3 mt-5">
                                         <h5 class="sora-600">Find Us</h5>
                                         <ul class="quick_links text">
-                                            <li t-esc="layout.address"></li>
+                                            <li>
+                                                <a t-att-href="layout.map_url" target="_blank">
+                                                    <t t-raw="layout.address"/>
+                                                </a>
+                                            </li>
                                             <li>
                                                 Contact No:
                                                 <b class="text-white" t-esc="layout.contact_no"></b>
@@ -359,7 +365,7 @@
                                     </div>
                                     <div class="col-12 col-lg-3 mt-5">
                                         <h5 class="sora-600">Map</h5>
-                                        <a t-att-href="layout.map_url">
+                                        <a t-att-href="layout.map_url" target="_blank">
                                             <img class="map" t-att-src="image_data_uri(layout.map_256)" alt=""/>
                                         </a>
                                     </div>
@@ -404,48 +410,69 @@
                             <!--                                    <img src="/ultima/static/image/logo/fbicon.png" alt="Facebook messenger"/>-->
                             <!--                                </a>-->
                             <!--                            </div>-->
-                            <div class="d-f fd-c">
-                                <div class="icon">
-                                    <a t-att-href="'tel:%s' % layout.contact_no">
-                                        <img src="/ultima/static/image/logo/callicon.png" alt="Contact Number"/>
+
+                            <t t-if="layout.show_call_now_btn">
+                                <div class="d-f fd-c">
+                                    <div class="icon">
+                                        <a t-att-href="'tel:%s' % layout.contact_no">
+                                            <img src="/ultima/static/image/logo/callicon.png" alt="Contact Number"/>
+                                        </a>
+                                    </div>
+                                </div>
+                            </t>
+
+                            <t t-if="layout.show_whatsapp_btn">
+                                <div class="icon mt-2">
+                                    <a target="_blank"
+                                       t-att-href="'https://api.whatsapp.com/send?phone=+%s&amp;text=Hello!&amp;source=&amp;data=' % layout.whatsapp">
+                                        <img src="/ultima/static/image/logo/whaticon.webp"
+                                             alt="WhatsApp contact Number"/>
                                     </a>
                                 </div>
-                            </div>
-
-                            <div class="icon mt-2">
-                                <a target="_blank"
-                                   t-att-href="'https://api.whatsapp.com/send?phone=+%s&amp;text=Hello!&amp;source=&amp;data=' % layout.whatsapp">
-                                    <img src="/ultima/static/image/logo/whaticon.webp" alt="WhatsApp contact Number"/>
-                                </a>
-                            </div>
+                            </t>
                         </div>
                     </div>
 
                     <div class="mobile-bottom-menu">
 
                         <div class="mobile-bottom-menu-content">
+                            <t t-foreach="menus" t-as="menu">
+                                <t t-if="menu.show_on_mobile_menu">
+                                    <div>
+                                        <a t-att-href="menu.url">
+                                            <img t-if="menu.icon" t-att-src="image_data_uri(menu.icon)"
+                                                 style="width: 40px;"/>
+                                        </a>
+                                    </div>
+                                </t>
+                            </t>
+                            <t t-if="layout.show_call_now_btn">
+                                <div class="d-f fd-c">
+                                    <div class="icon">
+                                        <a t-att-href="'tel:%s' % layout.contact_no">
+                                            <img src="/ultima/static/image/logo/callicon.png" alt="Contact Number"
+                                                 style="width: 40px;"/>
+                                        </a>
+                                    </div>
+                                </div>
+                            </t>
 
-                            <div class="d-f fd-c">
+                            <t t-if="layout.show_whatsapp_btn">
                                 <div class="icon">
-                                    <a t-att-href="'tel:%s' % layout.contact_no">
-                                        <img src="/ultima/static/image/logo/callicon.png" alt="Contact Number"
+                                    <a target="_blank"
+                                       t-att-href="'https://api.whatsapp.com/send?phone=+%s&amp;text=Hello!&amp;source=&amp;data=' % layout.whatsapp">
+                                        <img src="/ultima/static/image/logo/whaticon.webp" alt="WhatsApp contact Number"
                                              style="width: 40px;"/>
                                     </a>
                                 </div>
-                            </div>
+                            </t>
 
-                            <div class="icon">
-                                <a target="_blank"
-                                   t-att-href="'https://api.whatsapp.com/send?phone=+%s&amp;text=Hello!&amp;source=&amp;data=' % layout.whatsapp">
-                                    <img src="/ultima/static/image/logo/whaticon.webp" alt="WhatsApp contact Number"
+                            <t t-if="home.show_cta_btn">
+                                <div class="talk-to-expert-icon-mobile">
+                                    <img src="/ultima/static/image/customer-service.png" alt="talk to expert icon"
                                          style="width: 40px;"/>
-                                </a>
-                            </div>
-
-                            <div class="talk-to-expert-icon-mobile">
-                                <img src="/ultima/static/image/talk-to-expert.svg" alt="talk to expert icon" style="width: 40px;"/>
-                            </div>
-
+                                </div>
+                            </t>
                         </div>
                     </div>
 

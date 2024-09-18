@@ -41,7 +41,7 @@
             <!--
               Carousel
             -->
-            <div>
+            <div id="desktop-carousel">
                 <div id="demo" class="carousel carousel-fade" data-ride="carousel">
 
                     <!-- Indicators -->
@@ -84,6 +84,49 @@
             <!--
               End Carousel
             -->
+
+            <!-- Mobile carousel (start)-->
+            <div id="mobile-carousel">
+                <div id="demo2" class="carousel carousel-fade" data-ride="carousel">
+
+                    <!-- Indicators -->
+                    <ul class="carousel-indicators">
+
+                        <t t-set="indicator_active_2" t-value="'active'"/>
+                        <t t-set="indicator_index_2" t-value="'0'"/>
+
+                        <t t-foreach="p.mobile_carousel_ids" t-as="i">
+                            <li data-target="#demo2" t-att-data-slide-to="indicator_index_2"
+                                t-att-class="'%s' % indicator_active_2"></li>
+                            <t t-set="indicator_active_2" t-value="''"/>
+                            <t t-set="indicator_index_2" t-value="int(indicator_index_2) + 1"/>
+                        </t>
+                    </ul>
+
+                    <!-- The slideshow -->
+                    <div class="carousel-inner">
+
+                        <t t-set="carousel_item_active_2" t-value="'active'"/>
+
+                        <t t-foreach="p.mobile_carousel_ids" t-as="c">
+                            <div t-att-class="'carousel-item %s' % carousel_item_active_2">
+                                <img t-att-src="image_data_uri(c.image_1920)"/>
+                            </div>
+                            <t t-set="carousel_item_active_2" t-value="''"/>
+                        </t>
+
+                    </div>
+
+                    <!-- Left and right controls -->
+                    <a class="carousel-control-prev" href="#demo2" data-slide="prev">
+                        <span class="carousel-control-prev-icon"></span>
+                    </a>
+                    <a class="carousel-control-next" href="#demo2" data-slide="next">
+                        <span class="carousel-control-next-icon"></span>
+                    </a>
+                </div>
+            </div>
+            <!-- Mobile carousel (end)-->
 
             <!--
             All Products
@@ -254,37 +297,30 @@
             <div class="sales-feature-section pt-5">
                 <div class="my-container">
                     <div class="sales-feature-title-container text-center">
-                        <p class="sales-feature-title">Sales Feature</p>
+                        <p class="sales-feature-title"><t t-raw="p.sales_feature_section"/></p>
                     </div>
 
                     <h3 class="sales-feature-heading text-center">
-                        Sales Features We <br/> Provide
+                        <t t-raw="p.sales_feature_title"/>
                     </h3>
 
                     <div class="sales-feature-container">
-                        <div class="sales-feature">
-                            <img class="sales-feature-logo mb-3" src="/ultima/static/image/product/kent-advantage.svg"/>
-                            <div class="sales-feature-title-and-description">
-                                <h6 class="single-sales-feature-title">KENT Advantage</h6>
-                                <p class="sales-feature-short-description">Premium Quality Products with Large Sales and Service Network</p>
-                            </div>
-                        </div>
-
-                        <div class="sales-feature">
-                            <img class="sales-feature-logo mb-3" src="/ultima/static/image/product/award-winning.svg"/>
-                            <div class="sales-feature-title-and-description">
-                                <h6 class="single-sales-feature-title">KENT Advantage</h6>
-                                <p class="sales-feature-short-description">Premium Quality Products with Large Sales and Service Network</p>
-                            </div>
-                        </div>
-
-                        <div class="sales-feature">
-                            <img class="sales-feature-logo mb-3" src="/ultima/static/image/product/trusted-million.svg"/>
-                            <div class="sales-feature-title-and-description">
-                                <h6 class="single-sales-feature-title">KENT Advantage</h6>
-                                <p class="sales-feature-short-description">Premium Quality Products with Large Sales and Service Network</p>
-                            </div>
-                        </div>
+                        <t t-foreach="p.sales_feature_ids" t-as="sales_feature">
+                            <t t-if="sales_feature.show_on_products_page">
+                                <div class="sales-feature">
+                                    <img class="sales-feature-logo mb-3"
+                                         t-if="sales_feature.icon" t-att-src="image_data_uri(sales_feature.icon)"/>
+                                    <div class="sales-feature-title-and-description">
+                                        <h6 class="single-sales-feature-title">
+                                            <t t-raw="sales_feature.title"/>
+                                        </h6>
+                                        <p class="sales-feature-short-description">
+                                            <t t-raw="sales_feature.short_description"/>
+                                        </p>
+                                    </div>
+                                </div>
+                            </t>
+                        </t>
                     </div>
                 </div>
             </div>

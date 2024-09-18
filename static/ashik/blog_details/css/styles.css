@@ -26,6 +26,22 @@
   --normal-title-font-weight: 400;
 }
 
+a{
+    color: inherit !important;
+}
+
+a:hover {
+    text-decoration: none !important;
+    color: inherit !important;
+}
+
+.text {
+    color: var(--text-gray);
+    line-height: 21px;
+    font-family: var(--normal-text-font-family);
+    font-size: 0.875rem;
+}
+
 p,
 h1,
 h2,

@@ -80,7 +80,7 @@
                                 </div>
 
                                 <div class="billing_box">
-                                    <div class="title">Order Summery</div>
+                                    <div class="title">Order Summary</div>
                                     <div class="content">
                                         <!-- Order summery -->
                                         <div class="d-f jc-sb ai-c fw-w order_summery">
@@ -90,18 +90,25 @@
 
                                                     <div class="d-f fd-c">
                                                         <div id="btn_cart_in" class="cart_btn">+</div>
-                                                        <input type="hidden" id="number-of-product-input" name="number_of_product" value="1"/>
+                                                        <input type="hidden" id="number-of-product-input"
+                                                               name="number_of_product" value="1"/>
                                                         <div id="cart_counter" class="counter">1</div>
                                                         <div id="btn_cart_de" class="cart_btn">-</div>
                                                     </div>
 
                                                     <div class="ml-3 d-f ai-c fw-w">
                                                         <div class="c_cart_img">
-                                                            <img style="width: 100%;" t-if="product.image_512" t-att-src="image_data_uri(product.image_512)" alt=""/>
+                                                            <img style="width: 100%;" t-if="product.image_512"
+                                                                 t-att-src="image_data_uri(product.image_512)" alt=""/>
                                                         </div>
                                                         <div class="ml-3 cart_text text">
                                                             <t t-esc="product.name"/>
-                                                            <div class="font-weight-bold"><t t-esc="currency_id.symbol"/><span class="product-original-price"><t t-esc="product.list_price"/></span></div>
+                                                            <div class="font-weight-bold">
+                                                                <t t-esc="currency_id.symbol"/>
+                                                                <span class="product-original-price">
+                                                                    <t t-esc="product.list_price"/>
+                                                                </span>
+                                                            </div>
                                                         </div>
                                                     </div>
 
@@ -109,8 +116,14 @@
 
                                             </div>
                                             <div class="d-f">
-                                                <input type="hidden" id="product-total-price-input" name="product_total_price" t-att-value="product.list_price"/>
-                                                <div class="font-weight-bold p-total-p"><t t-esc="currency_id.symbol"/><span class="product-total-price"><t t-esc="product.list_price"/></span></div>
+                                                <input type="hidden" id="product-total-price-input"
+                                                       name="product_total_price" t-att-value="product.list_price"/>
+                                                <div class="font-weight-bold p-total-p">
+                                                    <t t-esc="currency_id.symbol"/>
+                                                    <span class="product-total-price">
+                                                        <t t-esc="product.list_price"/>
+                                                    </span>
+                                                </div>
                                                 <div class="text-danger ml-2 item_close font-weight-bold d-none">x</div>
                                             </div>
                                         </div>
@@ -119,11 +132,16 @@
 
                                     <div>
                                         <div class="text-center mt-5 pb-2">
-                                            <input type="hidden" id="cart-total-price-input" name="cart_total_price" t-att-value="product.list_price"/>
+                                            <input type="hidden" id="cart-total-price-input" name="cart_total_price"
+                                                   t-att-value="product.list_price"/>
                                             <h5 class="mb-0 cart-total-title">Cart Total:
-                                                <t t-esc="currency_id.symbol"/><span id="cart_total"><t t-esc="product.list_price"/></span>
+                                                <t t-esc="currency_id.symbol"/>
+                                                <span id="cart_total">
+                                                    <t t-esc="product.list_price"/>
+                                                </span>
                                             </h5>
-                                            <div class="text-small text-muted cart-notice-text">Shipping cost will be added after
+                                            <div class="text-small text-muted cart-notice-text">Shipping cost will be
+                                                added after
                                                 choosing shipping method
                                             </div>
                                         </div>
@@ -147,7 +165,9 @@
                                                     <div class="b_input_label text">Full Name
                                                         <span class="b_required">*</span>
                                                     </div>
-                                                    <input type="text" class="b_input" placeholder="Full Name" name="full_name" required="1" t-att-value="logged_in_user.partner_id.name"/>
+                                                    <input type="text" class="b_input" placeholder="Full Name"
+                                                           name="full_name" required="1"
+                                                           t-att-value="logged_in_user.partner_id.name"/>
                                                 </div>
                                             </div>
                                             <div class="col-12 col-md-6">
@@ -155,7 +175,9 @@
                                                     <div class="b_input_label text">Phone Number
                                                         <span class="b_required">*</span>
                                                     </div>
-                                                    <input type="text" class="b_input" placeholder="019xxxxxxxx" name="phone_number" required="1" t-att-value="logged_in_user.partner_id.phone"/>
+                                                    <input type="text" class="b_input" placeholder="019xxxxxxxx"
+                                                           name="phone_number" required="1"
+                                                           t-att-value="logged_in_user.partner_id.phone"/>
                                                 </div>
                                             </div>
                                         </div>
@@ -166,7 +188,9 @@
                                                     <div class="b_input_label text">Email Address
                                                         <span class="b_required">*</span>
                                                     </div>
-                                                    <input type="email" class="b_input" placeholder="Email Address" name="email_address" required="1" t-att-value="logged_in_user.partner_id.email"/>
+                                                    <input type="email" class="b_input" placeholder="Email Address"
+                                                           name="email_address" required="1"
+                                                           t-att-value="logged_in_user.partner_id.email"/>
                                                 </div>
                                             </div>
                                             <div class="col-12 col-md-6">
@@ -175,7 +199,9 @@
                                                         <span class="b_required">*</span>
                                                     </div>
                                                     <input type="text" class="b_input"
-                                                           placeholder="House #20, Road #26, Mirpur, Dhaka 1216" name='address' required="1" t-att-value="str(logged_in_user.partner_id.street) + ', ' + str(logged_in_user.partner_id.country_id.name)"/>
+                                                           placeholder="House #20, Road #26, Mirpur, Dhaka 1216"
+                                                           name='address' required="1"
+                                                           t-att-value="str(logged_in_user.partner_id.street) + ', ' + str(logged_in_user.partner_id.country_id.name)"/>
                                                 </div>
                                             </div>
                                         </div>
@@ -186,7 +212,7 @@
                                                    placeholder="E.g: Call me when you arrive..." name="order_note"/>
                                         </div>
 
-                                        <div class="b_input_group">
+                                        <div class="b_input_group d-none">
                                             <div class="b_input_label text">Shipping Location</div>
                                             <select class="b_input" name="shipping_location">
                                                 <option value="19" selected="1">Bangladesh</option>
@@ -195,28 +221,39 @@
                                             </select>
                                         </div>
 
+                                        <input type="hidden" name="shipping_cost" id="shipping-cost"/>
+
                                         <div class="b_input_group">
                                             <div class="b_input_label text">Shipping Type</div>
-                                            <select class="b_input" name="shipping_type">
+                                            <select class="b_input" id="b_input" name="shipping_type" required="1">
                                                 <option value="" selected="1">Select Shipping Type</option>
-                                                <option value="1">Type 01</option>
-                                                <option value="2">Type 02</option>
-                                                <option value="3">Type 03</option>
+                                                <t t-foreach="shipping_types" t-as="shipping_type">
+                                                    <option t-att-value="shipping_type.type_name" t-att-data-shipping-cost="shipping_type.shipping_cost"><t t-raw="shipping_type.type_name + '(' + 'cost: ' + str(shipping_type.shipping_cost) + ')'"/></option>
+                                                </t>
                                             </select>
                                         </div>
 
-<!--                                        <div class="b_input_group">-->
-<!--                                            <div class="b_input_label text">OTP <span class="b_required">*</span></div>-->
-<!--                                            <input type="text" class="b_input"-->
-<!--                                                   placeholder="Enter the 4 digits OTP (Ex: 4444)" name="otp" required="1"/>-->
-<!--                                        </div>-->
+                                        <div class="b_input_group">
+                                            <div class="b_input_label text">Payment Method</div>
+                                            <select class="b_input" name="payment_method" required="1">
+                                                <option value="" selected="1">Select Payment Method</option>
+                                                <option value="cash_on_delivery">Cash on Delivery</option>
+                                                <option value="sslcommerz">SSLCommerz</option>
+                                            </select>
+                                        </div>
 
-<!--                                        <div class="b_input_group">-->
-<!--                                            <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike"/>-->
-<!--                                            <label class="b_input_label text" for="vehicle1">Ship to a different-->
-<!--                                                address?-->
-<!--                                            </label>-->
-<!--                                        </div>-->
+                                        <!--                                        <div class="b_input_group">-->
+                                        <!--                                            <div class="b_input_label text">OTP <span class="b_required">*</span></div>-->
+                                        <!--                                            <input type="text" class="b_input"-->
+                                        <!--                                                   placeholder="Enter the 4 digits OTP (Ex: 4444)" name="otp" required="1"/>-->
+                                        <!--                                        </div>-->
+
+                                        <!--                                        <div class="b_input_group">-->
+                                        <!--                                            <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike"/>-->
+                                        <!--                                            <label class="b_input_label text" for="vehicle1">Ship to a different-->
+                                        <!--                                                address?-->
+                                        <!--                                            </label>-->
+                                        <!--                                        </div>-->
 
                                         <input type="hidden" t-att-value="product_id" name="product_id"/>
 

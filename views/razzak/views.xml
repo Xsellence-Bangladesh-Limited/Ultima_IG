@@ -38,6 +38,11 @@
                             <field name="map_1920" widget="image" class="oe_avatar"/>
                             <field name="map_url"/>
                         </group>
+
+                        <group>
+                            <field name="show_whatsapp_btn"/>
+                            <field name="show_call_now_btn"/>
+                        </group>
                     </group>
                     <group>
                         <separator string="Testimonials"/>
@@ -297,6 +302,7 @@
                         <field name="cta_msg_f_btn_txt"/>
                         <field name="cta_msg_scs_t"/>
                         <field name="cta_msg_scs_btn_txt"/>
+                        <field name="show_cta_btn"/>
 
                     </group>
                 </sheet>
@@ -685,6 +691,7 @@
                 <sheet>
                     <group>
                         <field name="carousel_ids"/>
+                        <field name="mobile_carousel_ids"/>
 
                         <field name="oap_title"/>
                         <field name="oap_desc"/>
@@ -697,6 +704,10 @@
                         <field name="faq_section"/>
                         <field name="faq_title"/>
                         <field name="faq_ids"/>
+
+                        <field name="sales_feature_section"/>
+                        <field name="sales_feature_title"/>
+                        <field name="sales_feature_ids"/>
                     </group>
                     <div>Add Testimonials In Base Layout</div>
                 </sheet>
@@ -748,6 +759,48 @@
     <record model="ir.actions.act_window" id="ultima_products_carousel_action_id">
         <field name="name">UltimaProductsCarousel</field>
         <field name="res_model">ultima.products.carousel</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- Tree view of ultima.product.carousel.mobile -->
+    <record model="ir.ui.view" id="ultima_product_carousel_mobile_view_tree">
+        <field name="name">Ultima product carousel mobile tree view</field>
+        <field name="model">ultima.product.carousel.mobile</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name" readonly="True"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Form view of ultima.product.carousel.mobile -->
+    <record model="ir.ui.view" id="ultima_product_carousel_mobile_view_form">
+        <field name="name">Ultima product carousel mobile form view</field>
+        <field name="model">ultima.product.carousel.mobile</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <div class="oe_name">
+                        <h1>
+                            <field name="name" readonly="True"/>
+                        </h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="image_1920" widget="image" class="oe_avatar" required="True"/>
+                        </group>
+                        <group>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Action view of ultima.product.carousel.mobile -->
+    <record model="ir.actions.act_window" id="ultima_product_carousel_mobile_form">
+        <field name="name">Mobile carousels</field>
+        <field name="res_model">ultima.product.carousel.mobile</field>
         <field name="view_mode">tree,form</field>
     </record>
 
@@ -967,6 +1020,7 @@
                 <field name="parent_id"/>
                 <field name="new_window"/>
                 <field name="sequence"/>
+                <field name="show_on_mobile_menu"/>
             </tree>
         </field>
     </record>
@@ -980,10 +1034,12 @@
                 <sheet>
                     <group>
                         <group>
-                            <field name="name"/>
-                            <field name="url"/>
+                            <field name="name" required="True"/>
+                            <field name="url" required="True"/>
                             <field name="parent_id"/>
                             <field name="new_window"/>
+                            <field name="icon" widget="image" class="oe_avatar"/>
+                            <field name="show_on_mobile_menu"/>
                         </group>
                         <group>
                         </group>
@@ -1238,6 +1294,7 @@
                         <field name="order_note"/>
                         <field name="shipping_location"/>
                         <field name="shipping_type"/>
+                        <field name="payment_method"/>
                         <field name="otp" required="True"/>
                         <field name="product_ids" widget="many2many_tags"/>
                         <field name="total_price"/>
@@ -1319,7 +1376,6 @@
         <field name="arch" type="xml">
             <tree>
                 <field name="name" readonly="True"/>
-<!--                <field name="user"/>-->
                 <field name="paid_amount"/>
                 <field name="bank_tran_id"/>
                 <field name="transaction_date"/>
@@ -1341,7 +1397,6 @@
                         </h1>
                     </div>
                     <group>
-<!--                        <field name="user" required="True"/>-->
                         <field name="paid_amount" required="True"/>
                         <field name="card_type"/>
                         <field name="bank_tran_id" required="True"/>
@@ -1371,5 +1426,156 @@
         </field>
     </record>
     <!-- Action view of ultima.payment (end)-->
+
+    <!-- Tree view of ultima.product.sale.feature (start)-->
+    <record id="ultima_product_sale_feature_view_tree" model="ir.ui.view">
+        <field name="name">Ultima sales feature tree view</field>
+        <field name="model">ultima.product.sale.feature</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name" readonly="True"/>
+                <field name="title"/>
+                <field name="short_description"/>
+                <field name="show_on_products_page"/>
+                <field name="show_on_product_detail_page"/>
+            </tree>
+        </field>
+    </record>
+    <!-- Tree view of ultima.product.sale.feature (end)-->
+
+    <!-- Form view of ultima.product.sale.feature (start)-->
+    <record id="ultima_product_sale_feature_view_form" model="ir.ui.view">
+        <field name="name">Ultima sales feature form view</field>
+        <field name="model">ultima.product.sale.feature</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <div class="oe_name">
+                        <h1>
+                            <field name="name" readonly="True"/>
+                        </h1>
+                    </div>
+                    <group>
+                        <field name="icon" widget="image" class="oe_avatar"/>
+                        <field name="title" required="True"/>
+                        <field name="short_description"/>
+                        <field name="show_on_products_page"/>
+                        <field name="show_on_product_detail_page"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <!-- Form view of ultima.product.sale.feature (end)-->
+
+    <!-- Action view of ultima.product.sale.feature (start)-->
+    <record model="ir.actions.act_window" id="ultima_product_sale_feature_form">
+        <field name="name">Sales feature</field>
+        <field name="res_model">ultima.product.sale.feature</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Add a new sales feature!
+            </p>
+        </field>
+    </record>
+    <!-- Action view of ultima.product.sale.feature (end)-->
+
+    <!-- Tree view of ultima.product.video (start)-->
+    <record id="ultima_product_video_view_tree" model="ir.ui.view">
+        <field name="name">Ultima product video tree view</field>
+        <field name="model">ultima.product.video</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name" readonly="True"/>
+                <field name="url"/>
+            </tree>
+        </field>
+    </record>
+    <!-- Tree view of ultima.product.video (end)-->
+
+    <!-- Form view of ultima.product.video (start)-->
+    <record id="ultima_product_video_view_form" model="ir.ui.view">
+        <field name="name">Ultima product video form view</field>
+        <field name="model">ultima.product.video</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <div class="oe_name">
+                        <h1>
+                            <field name="name" readonly="True"/>
+                        </h1>
+                    </div>
+                    <group>
+                        <field name="url" required="True"/>
+                        <field name="thumbnail" required="True" widget="image" class="oe_avatar"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <!-- Form view of ultima.product.video (end)-->
+
+    <!-- Action view of ultima.product.video (start)-->
+    <record model="ir.actions.act_window" id="ultima_product_video_form">
+        <field name="name">Product videos</field>
+        <field name="res_model">ultima.product.video</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Add a new product video!
+            </p>
+        </field>
+    </record>
+    <!-- Action view of ultima.product.video (end)-->
+
+    <!-- Tree view of ultima.payment.shipping.type (start)-->
+    <record id="ultima_payment_shipping_type_view_tree" model="ir.ui.view">
+        <field name="name">Ultima payment shipping type tree view</field>
+        <field name="model">ultima.payment.shipping.type</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name" readonly="True"/>
+                <field name="type_name"/>
+                <field name="shipping_cost"/>
+            </tree>
+        </field>
+    </record>
+    <!-- Tree view of ultima.payment.shipping.type (end)-->
+
+    <!-- Form view of ultima.payment.shipping.type (start)-->
+    <record id="ultima_payment_shipping_type_view_form" model="ir.ui.view">
+        <field name="name">Ultima payment shipping type form view</field>
+        <field name="model">ultima.payment.shipping.type</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <div class="oe_name">
+                        <h1>
+                            <field name="name" readonly="True"/>
+                        </h1>
+                    </div>
+                    <group>
+                        <field name="type_name"/>
+                        <field name="shipping_cost" required="True"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <!-- Form view of ultima.payment.shipping.type (end)-->
+
+    <!-- Action view of ultima.payment.shipping.type (start)-->
+    <record model="ir.actions.act_window" id="ultima_payment_shipping_type_form">
+        <field name="name">Shipping types</field>
+        <field name="res_model">ultima.payment.shipping.type</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Add a new shipping type!
+            </p>
+        </field>
+    </record>
+    <!-- Action view of ultima.payment.shipping.type (end)-->
 
 </odoo>

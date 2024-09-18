@@ -130,6 +130,7 @@ End Page Global
 /* 
 Carousel
 */
+
 .carousel-inner img {
     width: 100%;
     /*height: 100%; See Later*/
@@ -523,6 +524,7 @@ End Our All Products
     display: flex;
     gap: 20px;
     flex-direction: column;
+    flex-wrap: wrap;
 }
 
 .sales-feature{
@@ -684,6 +686,10 @@ End Our All Products
         padding: 0 0.625rem;
     }
 
+    #desktop-carousel{
+        display: none;
+    }
+
     .bspd ._card {
         width: 100%;
     }
@@ -761,6 +767,14 @@ End Our All Products
         width: 48%;
     }
 
+    #desktop-carousel{
+        display: block;
+    }
+
+    #mobile-carousel{
+        display: none;
+    }
+
     .discover ._cards ._card {
         width: 48%;
     }
@@ -770,7 +784,7 @@ End Our All Products
     }
     
     .sales-feature{
-        width: 33%;
+        width: 31%;
         flex-direction: column;
         justify-content: center;
         align-items: center;
