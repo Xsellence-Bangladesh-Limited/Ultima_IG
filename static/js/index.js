@@ -150,4 +150,71 @@ $(document).ready(function () {
 
     // Handling expert form submission done (end)
 
+    // Login form validating phone number (start)
+
+    function validatePhoneNumber(phoneNumber, countryCode){
+        if(phoneNumber){
+            try {
+
+                const phoneNumberObj = libphonenumber.parsePhoneNumberFromString(phoneNumber, countryCode)
+                const isValid = phoneNumberObj && phoneNumberObj.isValid() && phoneNumberObj.country === countryCode
+
+                if(!isValid){
+                    $('.invalid-phone-number-warning').fadeIn('slow')
+                    $('#login-form-proceed-btn').fadeOut('slow')
+                }
+
+                else{
+                    $('.invalid-phone-number-warning').fadeOut('slow')
+                    $('#login-form-proceed-btn').fadeIn('slow')
+                }
+            } catch (error) {
+               console.log('Error')
+            }
+        }
+
+        else{
+            $('.invalid-phone-number-warning').fadeOut('slow')
+            $('#login-form-proceed-btn').fadeIn('slow')
+        }
+    }
+
+    $('#login-form-phone-number-input').on('input', function(e){
+        const countryCode = 'BD'
+        let phoneNumber = e.target.value.trim()
+
+        validatePhoneNumber(phoneNumber, countryCode)
+    })
+
+    // Login form validating phone number (end)
+
+    // AJAX for sending OTP (start)
+
+    $('#login-form-proceed-btn').click(function(){
+        const phoneNumber = $('#login-form-phone-number-input').val().trim();
+        if (phoneNumber){
+
+            const data = {phoneNumber}
+
+            const proceedButton = $(this)
+
+            proceedButton.hide();
+
+            $('.login-form-proceed-loading-btn').show();
+
+            $.post('/create-otp', data, function(response){
+                const res = JSON.parse(response);
+                if(res.code === 200){
+                    console.log('ok')
+                    $('#login-form-proceed-btn-otp').show();
+                    $('.login-form-proceed-loading-btn').hide();
+                }
+            })
+
+            $('#login-form-otp-input').fadeIn('slow')
+        }
+    })
+
+    // AJAX for sending OTP (end)
+
 });

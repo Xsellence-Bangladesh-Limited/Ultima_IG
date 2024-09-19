@@ -29,12 +29,10 @@ $(document).ready(function () {
     perMove: 1,
     breakpoints: {
       640: {
-        type: "loop",
         perPage: 1,
         gap: "0.625rem",
       },
       480: {
-        type: "loop",
         perPage: 1,
         gap: "0.625rem",
       },

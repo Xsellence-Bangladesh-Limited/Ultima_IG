@@ -1,4 +1,4 @@
-import json
+import json, random, time, requests
 
 from odoo import http
 from odoo.http import request as req
@@ -7,6 +7,33 @@ from werkzeug.utils import redirect
 from sslcommerz_lib import SSLCOMMERZ
 
 class UltimaWebsite(http.Controller):
+
+    @http.route('/create-otp', type='http', auth='public', csrf=False)
+    def create_otp(self, **kw):
+        session = req.session.context
+
+        phone_number = kw.get('phoneNumber')
+
+        random_generated_otp = ''.join([str(random.randint(0, 9)) for _ in range(4)])
+
+        session['ultima_otp'] = random_generated_otp
+
+        if phone_number:
+            data = {
+                'api_key': 'C200918366ebcc11bc0e03.88783932',
+                'type': 'unicode',
+                'contacts': f"880{phone_number[-10:]}",
+                'senderid': '8809601011978',
+                'msg': f"Hello Dear Customer, Your Ultima Bangladesh One Time PIN is {random_generated_otp}."
+            }
+
+            # r = requests.post(
+            #     f"https://msg.elitbuzz-bd.com/smsapi", json=data)
+            #
+            # if r.status_code == 200:
+            #     return json.dumps({'code': 200})
+
+            return json.dumps({'code': 200})
 
     @http.route('/', auth='public')
     def home(self, **kw):
@@ -197,6 +224,7 @@ class UltimaWebsite(http.Controller):
                 post_body['product_name'] = product_obj.name
                 post_body['product_category'] = "Test Category"
                 post_body['product_profile'] = "general"
+                post_body['csrf_token'] = req.csrf_token()
 
                 response = sslcz.createSession(post_body)
                 # Making payment (end)
