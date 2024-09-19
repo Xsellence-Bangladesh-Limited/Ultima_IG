@@ -24,12 +24,44 @@
                 <!-- Fontawesome CDN (end) -->
 
                 <!-- Custom stylesheet -->
-                <link rel="stylesheet" href="/ultima/static/css/index.css?v=index10"/>
+                <link rel="stylesheet" href="/ultima/static/css/index.css?v=index12"/>
 
                 <t t-raw="header"></t>
             </head>
 
             <body>
+
+                <!-- Login form (start) -->
+
+                <div class="login-form-container">
+                    <div class="login-form">
+                        <div class="login-form-left">
+                            <img class="company-logo" t-att-src="image_data_uri(layout.logo_256)" alt="company logo"/>
+                            <h5 class="login-form-title mt-4">Log in to your Account</h5>
+                            <p class="login-form-short-desc mt-1 mb-3">Welcome back! Provide your information.</p>
+                            <div class="login-form-inputs">
+                                <input type="text" id="login-form-phone-number-input" class="login-form-input" name="login_form_phone_number" placeholder="Enter your phone number*"/>
+                                <input type="text" id="login-form-otp-input" class="login-form-input mt-2" name="login_form_otp" placeholder="OTP Code*"/>
+                            </div>
+                            <p class="invalid-phone-number-warning mt-2">
+                                    <i class="fa-solid fa-circle-exclamation"></i>
+                                    Invalid phone number.
+                            </p>
+                            <button id="login-form-proceed-btn" class="login-form-proceed-btn mt-3">Proceed</button>
+                            <button id="login-form-proceed-btn-otp" class="login-form-proceed-btn mt-3">Proceed</button>
+                            <button class="login-form-proceed-loading-btn mt-3" disabled="1">
+                                <img src="/ultima/static/image/spinner.svg"/>
+                            </button>
+                        </div>
+                        <div class="login-form-right">
+                            <div class="login-form-image">
+                                <img src="/ultima/static/image/product/1.jpg"/>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Login form (end) -->
 
                 <div class="expert-form-container" style="display: none;">
                     <div class="talk-with-expert-form">
@@ -386,8 +418,16 @@
                     <script src="/ultima/static/js/bootstrap.min.js"/>
                     <script src="/ultima/static/js/font-awesome.js"/>
 
+                    <!-- Libphonenumber JS (start)-->
+                    <script src="/ultima/static/ashik/contact_us/JS/libphonenumber-js.min.js?" defer="1"></script>
+                    <!-- Libphonenumber JS (end)-->
+
+                    <!-- Swiper JS (start) -->
+                    <script src="/ultima/static/third_party_UI_library/Swiper_JS/swiper-bundle.min.js"/>
+                    <!-- Swiper JS (end) -->
+
                     <!-- Custom Javascript -->
-                    <script src="/ultima/static/js/index.js?v=1.9"/>
+                    <script src="/ultima/static/js/index.js?v=12"/>
 
                     <t t-raw="footer"></t>
 

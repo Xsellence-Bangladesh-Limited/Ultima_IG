@@ -45,7 +45,7 @@ class TestSession(http.Controller):
         #
         # print(req.default_lang())
 
-        # session['ultima_user'] = 2
+        session['ultima_user'] = 2
 
         return req.render('ultima.test_session_template', {
             'session': session
