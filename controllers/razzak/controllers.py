@@ -17,8 +17,6 @@ class UltimaWebsite(http.Controller):
         random_generated_otp = ''.join([str(random.randint(0, 9)) for _ in range(4)])
 
         req.session['ultima_otp'] = random_generated_otp
-        req.session['ultima_user_phone'] = phone_number
-
         req.session.modified = True
 
         print('hmm', req.session.get('ultima_otp'))
@@ -32,13 +30,13 @@ class UltimaWebsite(http.Controller):
                 'msg': f"Hello Dear Customer, Your Ultima Bangladesh One Time PIN is {random_generated_otp}."
             }
 
-            r = requests.post(
-                f"https://msg.elitbuzz-bd.com/smsapi", json=data)
+            # r = requests.post(
+            #     f"https://msg.elitbuzz-bd.com/smsapi", json=data)
+            #
+            # if r.status_code == 200:
+            #     return json.dumps({'code': 200})
 
-            if r.status_code == 200:
-                return json.dumps({'code': 200})
-
-            # return json.dumps({'code': 200})
+            return json.dumps({'code': 200})
 
     @http.route('/register-user', type='http', auth='public', csrf=False)
     def register_user(self, **kw):
@@ -62,6 +60,7 @@ class UltimaWebsite(http.Controller):
         })
 
         req.session['ultima_partner_user'] = new_partner.id
+        req.session['ultima_user_phone'] = phone_number
 
         req.session.modified = True
 

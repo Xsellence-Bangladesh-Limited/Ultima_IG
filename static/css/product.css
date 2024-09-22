@@ -326,7 +326,7 @@ Our All Products
     box-shadow: 0px 1px 1px rgba(90, 186, 245, 0.405);
     transition: background-color 300ms;
     font-family: var(--normal-text-font-family);
-    color: var(--primary-color);
+    color: var(--primary-color) !important;
     font-size: 0.875rem;
     font-weight: var(--heading-font-weight);
     outline: none !important;
@@ -334,8 +334,8 @@ Our All Products
 }
 
 ._card .button_outline:hover {
-    background-color: var(--color-blue);
-    color: white;
+    background-color: var(--color-blue) !important;
+    color: white !important;
 }
 
 .button-outline-container{

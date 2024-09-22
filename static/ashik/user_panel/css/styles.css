@@ -193,8 +193,8 @@ body{
 }
 
 .ultima-user-log-out-button:hover{
-  color: red;
-  text-decoration: none;
+  color: red !important;
+  text-decoration: none !important;
 }
 
 .ultima-user-log-out-button img{

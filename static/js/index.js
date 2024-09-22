@@ -305,20 +305,28 @@ $(document).ready(function () {
             firstName, lastName, emailAddress, phoneNumber
         }
 
+        $(this).hide();
+
+        $('.create-user-login-form-proceed-loading-btn').show();
+
         $.post('/register-user', data, function(response){
             const res = JSON.parse(response);
 
             if(res.code === 200){
                 window.location.href = '/user-panel'
+                $('#create-account-btn').show();
+                $('.create-user-login-form-proceed-loading-btn').hide();
             }
 
             if (res.code === 400){
                 $('.existing-email-warning').fadeIn('slow');
+                $('#create-account-btn').show();
+                $('.create-user-login-form-proceed-loading-btn').hide();
             }
 
-            else{
-                $('.existing-email-warning').fadeIn('slow');
-            }
+//            else{
+//                $('.existing-email-warning').fadeIn('slow');
+//            }
         })
     })
 
