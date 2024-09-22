@@ -501,7 +501,7 @@ class ProductOrder(models.Model):
     phone_number = fields.Char(string='Phone number')
     email_address = fields.Char(string='Email address')
     address = fields.Char(string='Address')
-    user_id = fields.Many2one('res.users', string='User')
+    user_id = fields.Many2one('res.partner', string='User')
     order_note = fields.Text(string='Order note')
     shipping_location = fields.Text(string='Shipping location')
     shipping_type = fields.Char(string='Shipping type')
@@ -573,6 +573,20 @@ class UltimaPaymentShippingType(models.Model):
     def create(self, vals):
         vals['name'] = self.env['ir.sequence'].sudo().next_by_code('ultima.payment.shipping.type.seq')
         return super(UltimaPaymentShippingType, self).create(vals)
+
+class UltimaSSLCommerzToken(models.Model):
+    _name = 'ultima.sslcommerz.token'
+    _description = 'ultima.sslcommerz.token'
+    _order = 'id desc'
+
+    name = fields.Char(string='Sequence')
+    store_id = fields.Char(string='Store ID')
+    store_pass = fields.Char(string='Store Password')
+
+    @api.model
+    def create(self, vals):
+        vals['name'] = self.env['ir.sequence'].sudo().next_by_code('ultima.sslcommerz.token.seq')
+        return super(UltimaSSLCommerzToken, self).create(vals)
 
 
 class UltimaProductSaleFeature(models.Model):

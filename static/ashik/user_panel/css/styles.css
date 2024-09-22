@@ -55,6 +55,7 @@ body{
   height: 100%;
   background-color: rgba(176, 170, 168, 0.7);
   display: none;
+  z-index: 100;
 }
 
 .order-details-modal-parent{
@@ -68,7 +69,7 @@ body{
 .order-details-modal{
   border-radius: 10px;
   background-color: #fff;
-  width: 35%;
+  width: 95%;
 }
 
 .details-modal-header{
@@ -104,7 +105,7 @@ body{
 
 .product-main-image{
   width: 100%;
-  height: 220px;
+  height: 365px;
   border-radius: 8px;
   overflow: hidden;
 }
@@ -152,6 +153,8 @@ body{
   width: 100%;
   background-color: #fff;
   border-radius: 10px;
+  display: flex;
+  flex-direction: column;
 }
 
 .left-panel-tab:first-of-type{
@@ -171,6 +174,31 @@ body{
 .left-panel-tab p{
   font-family: var(--title-font-family);
   font-weight: var(--normal-title-font-weight);
+}
+
+.ultima-user-log-out-button-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+    flex: 1;
+}
+
+.ultima-user-log-out-button{
+  padding: 7px;
+  font-family: var(--title-font-family);
+  font-weight: var(--normal-title-font-weight);
+  font-size: 14px;
+  color: red !important;
+  text-decoration: none;
+}
+
+.ultima-user-log-out-button:hover{
+  color: red;
+  text-decoration: none;
+}
+
+.ultima-user-log-out-button img{
+    width: 18px;
 }
 
 .left-panel-tab.active p{
@@ -243,10 +271,11 @@ body{
   display: flex;
   gap: 15px;
   margin-bottom: 15px;
+  flex-direction: column;
 }
 
 .name-info, .email-info, .contact-info, .address-info, .state-info, .country-info{
-  width: 40%;
+  width: 100%;
 }
 
 .user-input-label{
@@ -274,6 +303,7 @@ body{
 
 .orders-information-main{
   padding: 15px 20px;
+  overflow-x: scroll;
 }
 
 .orders-table{
@@ -353,6 +383,18 @@ body{
   .my-container {
     width: 45rem;
   }
+
+  .order-details-modal{
+      width: 360px;
+   }
+
+   .product-main-image{
+      width: 100%;
+      height: 220px;
+      border-radius: 8px;
+      overflow: hidden;
+   }
+
 }
 
 /* Large devices (desktops, 992px and up) */
@@ -373,6 +415,18 @@ body{
   .user-panel-right{
     width: 80%;
   }
+
+  .name-and-email, .contact-and-address, .state-and-country{
+    flex-direction: row;
+  }
+
+  .name-info, .email-info, .contact-info, .address-info, .state-info, .country-info{
+      width: 40%;
+  }
+
+  .orders-information-main{
+      overflow-x: auto;
+   }
 }
 
 /* X-Large devices (large desktops, 1200px and up) */

@@ -4,14 +4,14 @@
 
             <t t-set="header">
                 <title>Billing | Ultima</title>
-                <link rel="stylesheet" href="/ultima/static/css/billing.css?v=12"/>
+                <link rel="stylesheet" href="/ultima/static/css/billing.css?v=15"/>
             </t>
 
             <t t-set="footer">
                 <script src="/ultima/static/js/jquery-3.6.0.min.js"/>
                 <script src="/ultima/static/js/swiper-bundle.min.js"/>
-                <script src="/ultima/static/js/index.js?v=12"/>
-                <script src="/ultima/static/js/billing.js?v=12"/>
+<!--                <script src="/ultima/static/js/index.js?v=12"/>-->
+                <script src="/ultima/static/js/billing.js?v=15"/>
             </t>
             <!-- Billing -->
             <div class="billing py-5">
@@ -167,7 +167,7 @@
                                                     </div>
                                                     <input type="text" class="b_input" placeholder="Full Name"
                                                            name="full_name" required="1"
-                                                           t-att-value="logged_in_user.partner_id.name"/>
+                                                           t-att-value="logged_in_user.name"/>
                                                 </div>
                                             </div>
                                             <div class="col-12 col-md-6">
@@ -177,7 +177,7 @@
                                                     </div>
                                                     <input type="text" class="b_input" placeholder="019xxxxxxxx"
                                                            name="phone_number" required="1"
-                                                           t-att-value="logged_in_user.partner_id.phone"/>
+                                                           t-att-value="logged_in_user.phone"/>
                                                 </div>
                                             </div>
                                         </div>
@@ -190,7 +190,7 @@
                                                     </div>
                                                     <input type="email" class="b_input" placeholder="Email Address"
                                                            name="email_address" required="1"
-                                                           t-att-value="logged_in_user.partner_id.email"/>
+                                                           t-att-value="logged_in_user.email"/>
                                                 </div>
                                             </div>
                                             <div class="col-12 col-md-6">
@@ -201,7 +201,7 @@
                                                     <input type="text" class="b_input"
                                                            placeholder="House #20, Road #26, Mirpur, Dhaka 1216"
                                                            name='address' required="1"
-                                                           t-att-value="str(logged_in_user.partner_id.street) + ', ' + str(logged_in_user.partner_id.country_id.name)"/>
+                                                           t-att-value="str(logged_in_user.street if logged_in_user.street else '') + (', ' if logged_in_user.street and logged_in_user.country_id else '') + str(logged_in_user.country_id.name if logged_in_user.country_id else '')"/>
                                                 </div>
                                             </div>
                                         </div>

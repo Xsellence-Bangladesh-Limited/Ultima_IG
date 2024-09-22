@@ -5,9 +5,15 @@ import json
 
 
 class UserPanel(http.Controller):
-    @http.route('/user-panel', type='http', auth='user')
+    @http.route('/user-panel', type='http', auth='public')
     def user_panel(self):
-        logged_in_user = req.env['res.users'].sudo().search([('id', '=', req.env.user.id)])
+        ultima_user = req.session.get('ultima_partner_user')
+
+        logged_in_user = req.env['res.partner'].sudo().search([('id', '=', ultima_user)])
+
+        if not logged_in_user:
+            ultima_user_phone = req.session.get('ultima_user_phone')
+            logged_in_user = req.env['res.partner'].sudo().search([('phone', '=', ultima_user_phone)])
 
         # Retrieving orders (start)
         all_orders = req.env['ultima.product.order'].sudo().search([('user_id', '=', logged_in_user.id)], order='id desc')
@@ -19,7 +25,7 @@ class UserPanel(http.Controller):
             'currency': req.env.company.currency_id.symbol,
         })
 
-    @http.route('/product-details-ajax', type='http', auth='user', csrf=False)
+    @http.route('/product-details-ajax', type='http', auth='public', csrf=False)
     def product_details(self, **kw):
         product_id = int(kw.get('productID')) if kw.get('productID') else None
         order_id = int(kw.get('orderID')) if kw.get('orderID') else None

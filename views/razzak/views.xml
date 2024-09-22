@@ -1578,4 +1578,53 @@
     </record>
     <!-- Action view of ultima.payment.shipping.type (end)-->
 
+    <!-- Tree view of ultima.sslcommerz.token (start)-->
+    <record id="ultima_sslcommerz_token_view_tree" model="ir.ui.view">
+        <field name="name">Ultima sslcommerz token tree view</field>
+        <field name="model">ultima.sslcommerz.token</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name" readonly="True"/>
+                <field name="store_id"/>
+                <field name="store_pass"/>
+            </tree>
+        </field>
+    </record>
+    <!-- Tree view of ultima.sslcommerz.token (end)-->
+
+    <!-- Form view of ultima.sslcommerz.token (start)-->
+    <record id="ultima_sslcommerz_token_view_form" model="ir.ui.view">
+        <field name="name">Ultima sslcommerz token form view</field>
+        <field name="model">ultima.sslcommerz.token</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <div class="oe_name">
+                        <h1>
+                            <field name="name" readonly="True"/>
+                        </h1>
+                    </div>
+                    <group>
+                        <field name="store_id" required="True"/>
+                        <field name="store_pass" required="True"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <!-- Form view of ultima.sslcommerz.token (end)-->
+
+    <!-- Action view of ultima.sslcommerz.token (start)-->
+    <record model="ir.actions.act_window" id="ultima_sslcommerz_token_form">
+        <field name="name">Tokens</field>
+        <field name="res_model">ultima.sslcommerz.token</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                No available tokens!
+            </p>
+        </field>
+    </record>
+    <!-- Action view of ultima.sslcommerz.token (end)-->
+
 </odoo>

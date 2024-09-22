@@ -24,7 +24,7 @@
                 <!-- Fontawesome CDN (end) -->
 
                 <!-- Custom stylesheet -->
-                <link rel="stylesheet" href="/ultima/static/css/index.css?v=index12"/>
+                <link rel="stylesheet" href="/ultima/static/css/index.css?v=index15"/>
 
                 <t t-raw="header"></t>
             </head>
@@ -33,20 +33,58 @@
 
                 <!-- Login form (start) -->
 
-                <div class="login-form-container">
+                <div class="login-form-container" style="display: none;">
                     <div class="login-form">
                         <div class="login-form-left">
                             <img class="company-logo" t-att-src="image_data_uri(layout.logo_256)" alt="company logo"/>
                             <h5 class="login-form-title mt-4">Log in to your Account</h5>
                             <p class="login-form-short-desc mt-1 mb-3">Welcome back! Provide your information.</p>
                             <div class="login-form-inputs">
-                                <input type="text" id="login-form-phone-number-input" class="login-form-input" name="login_form_phone_number" placeholder="Enter your phone number*"/>
-                                <input type="text" id="login-form-otp-input" class="login-form-input mt-2" name="login_form_otp" placeholder="OTP Code*"/>
+                                <input type="text" id="login-form-phone-number-input" class="login-form-input"
+                                       name="login_form_phone_number" placeholder="Enter your phone number*"/>
+                                <input type="text" id="login-form-otp-input" class="login-form-input mt-2"
+                                       name="login_form_otp" placeholder="OTP Code*"/>
+                            </div>
+
+                            <div class="login-form-personal-info mt-4">
+                                <h6 class="login-form-title">Personal Information</h6>
+                                <input type="text" id="personal-info-first-name-input" class="login-form-input mt-2"
+                                       placeholder="First name*"/>
+                                <p class="invalid-first-name-warning mt-2">
+                                    <i class="fa-solid fa-circle-exclamation"></i>
+                                    First name is required.
+                                </p>
+                                <input type="text" id="personal-info-last-name-input" class="login-form-input mt-2"
+                                       placeholder="Last name*"/>
+                                <p class="invalid-last-name-warning mt-2">
+                                    <i class="fa-solid fa-circle-exclamation"></i>
+                                    Last name is required.
+                                </p>
+                                <input type="email" id="personal-info-email-input" class="login-form-input mt-2"
+                                       placeholder="Email address*"/>
+                                <p class="invalid-email-warning mt-2">
+                                    <i class="fa-solid fa-circle-exclamation"></i>
+                                    Email is required.
+                                </p>
+
+                                <p class="existing-email-warning mt-2">
+                                    <i class="fa-solid fa-circle-exclamation"></i>
+                                    Email already exists.
+                                </p>
+
+                                <button id="create-account-btn" class="login-form-proceed-btn mt-3">Create Account
+                                </button>
                             </div>
                             <p class="invalid-phone-number-warning mt-2">
-                                    <i class="fa-solid fa-circle-exclamation"></i>
-                                    Invalid phone number.
+                                <i class="fa-solid fa-circle-exclamation"></i>
+                                Invalid phone number.
                             </p>
+
+                            <p class="invalid-otp-warning mt-2">
+                                <i class="fa-solid fa-circle-exclamation"></i>
+                                Mismatched OTP.
+                            </p>
+
                             <button id="login-form-proceed-btn" class="login-form-proceed-btn mt-3">Proceed</button>
                             <button id="login-form-proceed-btn-otp" class="login-form-proceed-btn mt-3">Proceed</button>
                             <button class="login-form-proceed-loading-btn mt-3" disabled="1">
@@ -201,16 +239,24 @@
                                               stroke-linecap="round" stroke-linejoin="round"/>
                                     </svg>
                                 </div>
-                                <div class="d-f ai-c">
-                                    <a href="/user-panel">
-                                        <svg width="15" height="15" viewBox="0 0 16 20" fill="none"
-                                             xmlns="http://www.w3.org/2000/svg">
-                                            <path
-                                                    d="M11.339 5C11.339 6.87777 9.81673 8.4 7.93897 8.4V9.6C10.4795 9.6 12.539 7.54051 12.539 5H11.339ZM7.93897 8.4C6.0612 8.4 4.53897 6.87777 4.53897 5H3.33897C3.33897 7.54051 5.39846 9.6 7.93897 9.6V8.4ZM4.53897 5C4.53897 3.12223 6.0612 1.6 7.93897 1.6V0.4C5.39846 0.4 3.33897 2.45949 3.33897 5H4.53897ZM7.93897 1.6C9.81673 1.6 11.339 3.12223 11.339 5H12.539C12.539 2.45949 10.4795 0.4 7.93897 0.4V1.6ZM14.339 15.5C14.339 16.1168 13.8234 16.8367 12.6204 17.4382C11.4533 18.0218 9.79901 18.4 7.93897 18.4V19.6C9.94491 19.6 11.7906 19.1947 13.157 18.5115C14.4876 17.8463 15.539 16.8162 15.539 15.5H14.339ZM7.93897 18.4C6.07892 18.4 4.42463 18.0218 3.25755 17.4382C2.05458 16.8367 1.53896 16.1168 1.53896 15.5H0.338965C0.338965 16.8162 1.39036 17.8463 2.72089 18.5115C4.08731 19.1947 5.93302 19.6 7.93897 19.6V18.4ZM1.53896 15.5C1.53896 14.8832 2.05458 14.1633 3.25755 13.5618C4.42463 12.9782 6.07892 12.6 7.93897 12.6V11.4C5.93302 11.4 4.08731 11.8053 2.72089 12.4885C1.39036 13.1537 0.338965 14.1838 0.338965 15.5H1.53896ZM7.93897 12.6C9.79901 12.6 11.4533 12.9782 12.6204 13.5618C13.8234 14.1633 14.339 14.8832 14.339 15.5H15.539C15.539 14.1838 14.4876 13.1537 13.157 12.4885C11.7906 11.8053 9.94491 11.4 7.93897 11.4V12.6Z"
-                                                    fill="#00060B"/>
-                                        </svg>
-                                    </a>
-                                </div>
+                                <t t-if="not request.session.get('ultima_partner_user') and not request.session.get('ultima_user_phone')">
+                                    <div class="d-f ai-c">
+                                        <p class="user-sign-in-button">Sign in</p>
+                                    </div>
+                                </t>
+
+                                <t t-if="request.session.get('ultima_partner_user') or request.session.get('ultima_user_phone')">
+                                    <div class="d-f ai-c">
+                                        <a href="/user-panel">
+                                            <svg width="15" height="15" viewBox="0 0 16 20" fill="none"
+                                                 xmlns="http://www.w3.org/2000/svg">
+                                                <path
+                                                        d="M11.339 5C11.339 6.87777 9.81673 8.4 7.93897 8.4V9.6C10.4795 9.6 12.539 7.54051 12.539 5H11.339ZM7.93897 8.4C6.0612 8.4 4.53897 6.87777 4.53897 5H3.33897C3.33897 7.54051 5.39846 9.6 7.93897 9.6V8.4ZM4.53897 5C4.53897 3.12223 6.0612 1.6 7.93897 1.6V0.4C5.39846 0.4 3.33897 2.45949 3.33897 5H4.53897ZM7.93897 1.6C9.81673 1.6 11.339 3.12223 11.339 5H12.539C12.539 2.45949 10.4795 0.4 7.93897 0.4V1.6ZM14.339 15.5C14.339 16.1168 13.8234 16.8367 12.6204 17.4382C11.4533 18.0218 9.79901 18.4 7.93897 18.4V19.6C9.94491 19.6 11.7906 19.1947 13.157 18.5115C14.4876 17.8463 15.539 16.8162 15.539 15.5H14.339ZM7.93897 18.4C6.07892 18.4 4.42463 18.0218 3.25755 17.4382C2.05458 16.8367 1.53896 16.1168 1.53896 15.5H0.338965C0.338965 16.8162 1.39036 17.8463 2.72089 18.5115C4.08731 19.1947 5.93302 19.6 7.93897 19.6V18.4ZM1.53896 15.5C1.53896 14.8832 2.05458 14.1633 3.25755 13.5618C4.42463 12.9782 6.07892 12.6 7.93897 12.6V11.4C5.93302 11.4 4.08731 11.8053 2.72089 12.4885C1.39036 13.1537 0.338965 14.1838 0.338965 15.5H1.53896ZM7.93897 12.6C9.79901 12.6 11.4533 12.9782 12.6204 13.5618C13.8234 14.1633 14.339 14.8832 14.339 15.5H15.539C15.539 14.1838 14.4876 13.1537 13.157 12.4885C11.7906 11.8053 9.94491 11.4 7.93897 11.4V12.6Z"
+                                                        fill="#00060B"/>
+                                            </svg>
+                                        </a>
+                                    </div>
+                                </t>
                                 <div>
                                     <a t-att-href="'tel:%s' % layout.contact_no">
                                         <div class="contact_button d-f ai-c">
@@ -273,11 +319,11 @@
                                                            class="list-group-item list-group-item-action"
                                                            t-esc="submenu.name"></a>
                                                     </t>
-
                                                 </div>
                                             </div>
 
                                         </li>
+
                                     </t>
                                     <!-- End Dropdown menu -->
 
@@ -291,6 +337,26 @@
 
                                 </t>
                                 <!-- End root foreach -->
+
+                                <t t-if="not request.session.get('ultima_partner_user') and not request.session.get('ultima_user_phone')">
+                                    <li class="nav-item dropdown">
+                                        <p class="user-sign-in-button">Sign in</p>
+                                    </li>
+                                </t>
+
+                                <t t-if="request.session.get('ultima_partner_user') or request.session.get('ultima_user_phone')">
+                                    <li class="nav-item dropdown">
+                                        <a href="/user-panel">
+                                            <svg width="15" height="15" viewBox="0 0 16 20"
+                                                 fill="none"
+                                                 xmlns="http://www.w3.org/2000/svg">
+                                                <path
+                                                        d="M11.339 5C11.339 6.87777 9.81673 8.4 7.93897 8.4V9.6C10.4795 9.6 12.539 7.54051 12.539 5H11.339ZM7.93897 8.4C6.0612 8.4 4.53897 6.87777 4.53897 5H3.33897C3.33897 7.54051 5.39846 9.6 7.93897 9.6V8.4ZM4.53897 5C4.53897 3.12223 6.0612 1.6 7.93897 1.6V0.4C5.39846 0.4 3.33897 2.45949 3.33897 5H4.53897ZM7.93897 1.6C9.81673 1.6 11.339 3.12223 11.339 5H12.539C12.539 2.45949 10.4795 0.4 7.93897 0.4V1.6ZM14.339 15.5C14.339 16.1168 13.8234 16.8367 12.6204 17.4382C11.4533 18.0218 9.79901 18.4 7.93897 18.4V19.6C9.94491 19.6 11.7906 19.1947 13.157 18.5115C14.4876 17.8463 15.539 16.8162 15.539 15.5H14.339ZM7.93897 18.4C6.07892 18.4 4.42463 18.0218 3.25755 17.4382C2.05458 16.8367 1.53896 16.1168 1.53896 15.5H0.338965C0.338965 16.8162 1.39036 17.8463 2.72089 18.5115C4.08731 19.1947 5.93302 19.6 7.93897 19.6V18.4ZM1.53896 15.5C1.53896 14.8832 2.05458 14.1633 3.25755 13.5618C4.42463 12.9782 6.07892 12.6 7.93897 12.6V11.4C5.93302 11.4 4.08731 11.8053 2.72089 12.4885C1.39036 13.1537 0.338965 14.1838 0.338965 15.5H1.53896ZM7.93897 12.6C9.79901 12.6 11.4533 12.9782 12.6204 13.5618C13.8234 14.1633 14.339 14.8832 14.339 15.5H15.539C15.539 14.1838 14.4876 13.1537 13.157 12.4885C11.7906 11.8053 9.94491 11.4 7.93897 11.4V12.6Z"
+                                                        fill="#00060B"/>
+                                            </svg>
+                                        </a>
+                                    </li>
+                                </t>
 
                             </ul>
                         </nav>
@@ -427,7 +493,7 @@
                     <!-- Swiper JS (end) -->
 
                     <!-- Custom Javascript -->
-                    <script src="/ultima/static/js/index.js?v=12"/>
+                    <script src="/ultima/static/js/index.js?v=15"/>
 
                     <t t-raw="footer"></t>
 

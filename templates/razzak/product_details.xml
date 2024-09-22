@@ -7,15 +7,15 @@
                 <link rel="stylesheet" href="/ultima/static/css/owl.carousel.min.css"/>
                 <link rel="stylesheet" href="/ultima/static/css/owl.theme.default.min.css"/>
                 <link rel="stylesheet" href="/ultima/static/css/swiper-bundle.min.css"/>
-                <link rel="stylesheet" href="/ultima/static/css/filter_cartridge.css?filter_cartridge=13"/>
+                <link rel="stylesheet" href="/ultima/static/css/filter_cartridge.css?filter_cartridge=16"/>
             </t>
 
             <t t-set="footer">
                 <script src="/ultima/static/js/jquery-3.6.0.min.js"/>
                 <script src="/ultima/static/js/owl.carousel.min.js"/>
                 <script src="/ultima/static/js/swiper-bundle.min.js"/>
-                <script src="/ultima/static/js/filter_cartridge.js?v=filter_cartridge12"/>
-                <script src="/ultima/static/js/index.js?v=12"/>
+                <script src="/ultima/static/js/filter_cartridge.js?v=filter_cartridge16"/>
+                <!--                <script src="/ultima/static/js/index.js?v=12"/>-->
             </t>
 
             <!--
@@ -43,9 +43,12 @@
                                 </t>
 
                                 <t t-foreach="product_videos" t-as="product_video">
-                                    <img class="img_owl" t-if="product_video.thumbnail"
-                                         t-att-src="image_data_uri(product_video.thumbnail)"
-                                         t-att-data-url="product_video.url" t-att-data-is-video="true" alt=""/>
+                                    <div class="item">
+                                        <img class="img_owl" t-if="product_video.thumbnail"
+                                             t-att-src="image_data_uri(product_video.thumbnail)"
+                                             t-att-data-url="product_video.url" t-att-data-is-video="true" alt=""/>
+                                        <img src="/ultima/static/image/introduce/play.png" class="product-video-icon img_owl" t-att-data-url="product_video.url" t-att-data-is-video="true"/>
+                                    </div>
                                 </t>
                             </div>
                         </div>
@@ -83,7 +86,12 @@
                         </div>
 
                         <div class="">
-                            <a t-attf-href="/billing?product_id={{product.id}}" class="button" href="#">Shop Now</a>
+                            <t t-if="request.session.get('ultima_partner_user') or request.session.get('ultima_user_phone')">
+                                <a t-attf-href="/billing?product_id={{product.id}}" class="button">Shop Now</a>
+                            </t>
+                            <t t-else="">
+                                <button class="button" id="product-buy-btn" href="#">Shop Now</button>
+                            </t>
                         </div>
 
                         <!--                        <div class="mt-2">-->

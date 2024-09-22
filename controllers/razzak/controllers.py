@@ -10,13 +10,18 @@ class UltimaWebsite(http.Controller):
 
     @http.route('/create-otp', type='http', auth='public', csrf=False)
     def create_otp(self, **kw):
-        session = req.session.context
+        # session = req.session.context
 
-        phone_number = kw.get('phoneNumber')
+        phone_number = kw.get('phoneNumber').strip() if kw.get('phoneNumber') else ''
 
         random_generated_otp = ''.join([str(random.randint(0, 9)) for _ in range(4)])
 
-        session['ultima_otp'] = random_generated_otp
+        req.session['ultima_otp'] = random_generated_otp
+        req.session['ultima_user_phone'] = phone_number
+
+        req.session.modified = True
+
+        print('hmm', req.session.get('ultima_otp'))
 
         if phone_number:
             data = {
@@ -27,16 +32,75 @@ class UltimaWebsite(http.Controller):
                 'msg': f"Hello Dear Customer, Your Ultima Bangladesh One Time PIN is {random_generated_otp}."
             }
 
-            # r = requests.post(
-            #     f"https://msg.elitbuzz-bd.com/smsapi", json=data)
-            #
-            # if r.status_code == 200:
-            #     return json.dumps({'code': 200})
+            r = requests.post(
+                f"https://msg.elitbuzz-bd.com/smsapi", json=data)
 
+            if r.status_code == 200:
+                return json.dumps({'code': 200})
+
+            # return json.dumps({'code': 200})
+
+    @http.route('/register-user', type='http', auth='public', csrf=False)
+    def register_user(self, **kw):
+        first_name = kw.get('firstName').strip() if kw.get('firstName') else ''
+        last_name = kw.get('lastName').strip() if kw.get('lastName') else ''
+        email_address = kw.get('emailAddress').strip() if kw.get('emailAddress') else ''
+
+        email_exists = req.env['res.partner'].sudo().search([('email', '=', email_address)])
+
+        if email_exists:
+            return json.dumps({'code': 400})
+
+        phone_number = kw.get('phoneNumber').strip() if kw.get('phoneNumber') else ''
+
+        # Creating a new partner (start)
+        new_partner = req.env['res.partner'].sudo().create({
+            'name': f"{first_name} {last_name}",
+            'phone': phone_number,
+            'mobile': phone_number,
+            'email': email_address,
+        })
+
+        req.session['ultima_partner_user'] = new_partner.id
+
+        req.session.modified = True
+
+        if new_partner:
+            req.session['ultima_otp'] = None
+            req.session.modified = True
             return json.dumps({'code': 200})
+
+        # Creating a new partner (start)
+
+    @http.route('/check-otp', type='http', auth='public', csrf=False)
+    def check_otp(self, **kw):
+        otp = kw.get('otp').strip() if kw.get('otp') else None
+        phone_number = kw.get('phoneNumber').strip() if kw.get('phoneNumber') else ''
+
+        existing_user = req.env['res.partner'].sudo().search([('phone', '=', phone_number)])
+
+        session_otp = req.session.get('ultima_otp')
+
+        if session_otp == otp and not existing_user:
+            return json.dumps({'code': 200})
+
+        elif session_otp == otp and existing_user:
+            return json.dumps({'code': 201})
+        else:
+            return json.dumps({'code': 400})
+
+    @http.route('/log-out-user', type='http', auth='public', csrf=False)
+    def log_out_user(self):
+        req.session['ultima_partner_user'] = None
+        req.session['ultima_user_phone'] = None
+        req.session.modified = True
+
+        return redirect('/')
 
     @http.route('/', auth='public')
     def home(self, **kw):
+
+        # print('hmm-home', req.session.get('ultima_otp'))
 
         # Toggling language in session (start)
         session = req.session.context
@@ -140,8 +204,15 @@ class UltimaWebsite(http.Controller):
             'product_videos': product.video_ids
         })
 
-    @http.route('/billing', auth='user', csrf=False)
+    @http.route('/billing', auth='public', csrf=False)
     def billing(self, **kw):
+        ultima_user = req.session.get('ultima_partner_user')
+        logged_in_user = req.env['res.partner'].sudo().search([('id', '=', ultima_user)])
+
+        if not logged_in_user:
+            ultima_user_phone = req.session.get('ultima_user_phone')
+            logged_in_user = req.env['res.partner'].sudo().search([('phone', '=', ultima_user_phone)])
+
         base_url = http.request.env['ir.config_parameter'].sudo().get_param('web.base.url')
         form_product_id = int(kw.get('product_id')) if kw.get('product_id') else None
         product_obj = req.env['product.product'].sudo().search([('product_tmpl_id', '=', form_product_id)])
@@ -171,7 +242,7 @@ class UltimaWebsite(http.Controller):
                     'phone_number': phone_number,
                     'email_address': email_address,
                     'address': address,
-                    'user_id': req.env.user.id,
+                    'user_id': logged_in_user.id,
                     'order_note': order_note,
                     'shipping_location': shipping_location,
                     'shipping_type': shipping_type,
@@ -183,10 +254,8 @@ class UltimaWebsite(http.Controller):
                 })
 
                 if new_order:
-                    logged_in_user = req.env['res.users'].sudo().search([('id', '=', req.env.user.id)])
-
                     new_sale_order = req.env['sale.order'].sudo().create({
-                        'partner_id': logged_in_user.partner_id.id,
+                        'partner_id': logged_in_user.id,
                         'order_line': [
                             (0, 0, {
                                 'product_id': product.id,
@@ -202,7 +271,12 @@ class UltimaWebsite(http.Controller):
 
             else:
                 # Making payment (start)
-                settings = {'store_id': 'ultim66e5881171fa2', 'store_pass': 'ultim66e5881171fa2@ssl', 'issandbox': True}
+                ultima_sslcommerz_tokens = req.env['ultima.sslcommerz.token'].sudo().search([], order='id desc', limit=1)
+
+                store_id = ultima_sslcommerz_tokens.store_id if ultima_sslcommerz_tokens and ultima_sslcommerz_tokens.store_id else 'ultim66e5881171fa2'
+                store_pass = ultima_sslcommerz_tokens.store_pass if ultima_sslcommerz_tokens and ultima_sslcommerz_tokens.store_pass else 'ultim66e5881171fa2@ssl'
+
+                settings = {'store_id': store_id, 'store_pass': store_pass, 'issandbox': True}
                 sslcz = SSLCOMMERZ(settings)
                 post_body = {}
                 post_body['total_amount'] = cart_total_price
@@ -237,7 +311,7 @@ class UltimaWebsite(http.Controller):
                         'phone_number': phone_number,
                         'email_address': email_address,
                         'address': address,
-                        'user_id': req.env.user.id,
+                        'user_id': logged_in_user.id,
                         'order_note': order_note,
                         'shipping_location': shipping_location,
                         'shipping_type': shipping_type,
@@ -249,10 +323,8 @@ class UltimaWebsite(http.Controller):
                     })
 
                     if new_order:
-                        logged_in_user = req.env['res.users'].sudo().search([('id', '=', req.env.user.id)])
-
                         new_sale_order = req.env['sale.order'].sudo().create({
-                            'partner_id': logged_in_user.partner_id.id,
+                            'partner_id': logged_in_user.id,
                             'order_line': [
                                 (0, 0, {
                                     'product_id': product.id,
@@ -271,8 +343,6 @@ class UltimaWebsite(http.Controller):
         layout = req.env['ultima.layout'].sudo().search([], limit=1)
 
         product_id = int(kw.get('product_id')) if kw.get('product_id') else None
-
-        logged_in_user = req.env['res.users'].sudo().search([('id', '=', req.env.user.id)])
 
         currency_id = req.env.company.currency_id
 

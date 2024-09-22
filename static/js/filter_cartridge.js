@@ -122,5 +122,13 @@ $(document).ready(function () {
         Testimonial Slider (end)
     */
 
+    // Product buy button for logged out user (start)
+
+        $('#product-buy-btn').click(function(){
+            $('.login-form-container').fadeIn('slow');
+        })
+
+    // Product buy button for logged out user (end)
+
 
 });

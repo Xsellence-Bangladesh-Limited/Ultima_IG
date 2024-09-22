@@ -4,7 +4,7 @@
             <t t-set="header">
                 <title>Home | Ultima</title>
                 <link rel="stylesheet" href="/ultima/static/css/swiper-bundle.min.css"/>
-                <link rel="stylesheet" href="/ultima/static/css/home.css?v=home12"/>
+                <link rel="stylesheet" href="/ultima/static/css/home.css?v=home15"/>
                 <!-- Fontawesome CDN (start) -->
                 <script src="/ultima/static/third_party_UI_library/Fontawesome/js/all.min.js" defer="1"/>
                 <!-- Fontawesome CDN (end) -->
@@ -46,7 +46,8 @@
                         <div class="right">
                             <div id="introduce_box" class="box" data-toggle="modal"
                                  data-target="#modal_introduce_video">
-                                <img t-if="intro.video_bg_512" class="introduce-box-video-image" t-att-src="image_data_uri(intro.video_bg_512)"
+                                <img t-if="intro.video_bg_512" class="introduce-box-video-image"
+                                     t-att-src="image_data_uri(intro.video_bg_512)"
                                      alt="Introducing Ultima"/>
                                 <div t-if="intro.video_url" id="introduce_play" class="play">
                                     <img src="/ultima/static/image/introduce/play.png" alt=""/>
@@ -188,8 +189,13 @@
                                 </div>
                             </a>
                             <div class="button-outline-container">
-                                <a t-attf-href="/billing?product_id={{pd.id}}" class="button_outline"
-                                   t-esc="p.bsp_btn_text"></a>
+                                <t t-if="request.session.get('ultima_partner_user') or request.session.get('ultima_user_phone')">
+                                    <a t-attf-href="/billing?product_id={{pd.id}}" class="button_outline"
+                                       t-esc="p.bsp_btn_text"></a>
+                                </t>
+                                <t t-else="">
+                                    <button id="product-buy-btn" class="button_outline" t-esc="p.bsp_btn_text"></button>
+                                </t>
                             </div>
                         </div>
                         <!-- End _card -->
@@ -498,8 +504,8 @@
             <t t-set="footer">
                 <script src="/ultima/static/js/jquery-3.6.0.min.js"/>
                 <script src="/ultima/static/js/swiper-bundle.min.js"/>
-                <script src="/ultima/static/js/index.js?v=12"/>
-                <script src="/ultima/static/js/home.js?v=12"/>
+                <!--                <script src="/ultima/static/js/index.js?v=12"/>-->
+                <script src="/ultima/static/js/home.js?v=15"/>
             </t>
         </t>
     </template>

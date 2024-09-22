@@ -71,6 +71,7 @@ align-content
 /* align-items */
 .ai-c {
     align-items: center;
+    font-size: 14px;
 }
 
 .ai-fs {

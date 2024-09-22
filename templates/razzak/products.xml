@@ -5,7 +5,7 @@
             <t t-set="header">
                 <title>Products | Ultima</title>
                 <link rel="stylesheet" href="/ultima/static/css/swiper-bundle.min.css"/>
-                <link rel="stylesheet" href="/ultima/static/css/product.css?product=12"/>
+                <link rel="stylesheet" href="/ultima/static/css/product.css?product=15"/>
                 <!-- Fontawesome CDN (start) -->
                 <script src="/ultima/static/third_party_UI_library/Fontawesome/js/all.min.js" defer="1"/>
                 <!-- Fontawesome CDN (end) -->
@@ -14,8 +14,8 @@
             <t t-set="footer">
                 <script src="/ultima/static/js/jquery-3.6.0.min.js"/>
                 <script src="/ultima/static/js/swiper-bundle.min.js"/>
-                <script src="/ultima/static/js/product.js?v=12"/>
-                <script src="/ultima/static/js/index.js?v=12"/>
+                <script src="/ultima/static/js/product.js?v=15"/>
+                <!--                <script src="/ultima/static/js/index.js?v=12"/>-->
             </t>
 
             <!-- OTP modal (start)-->
@@ -185,9 +185,17 @@
                             </div>
                         </a>
                         <div class="button-outline-container">
-                            <a t-attf-href="/billing?product_id={{pd.id}}" type="button" class="button_outline">Buy
-                                Now
-                            </a>
+                            <t t-if="request.session.get('ultima_partner_user') or request.session.get('ultima_user_phone')">
+                                <a t-attf-href="/billing?product_id={{pd.id}}" type="button" class="button_outline">Buy
+                                    Now
+                                </a>
+                            </t>
+
+                            <t t-else="">
+                                <button type="button" id="product-buy-btn" class="button_outline">Buy
+                                    Now
+                                </button>
+                            </t>
                         </div>
                     </div>
                     <!-- End _card -->
@@ -297,7 +305,9 @@
             <div class="sales-feature-section pt-5">
                 <div class="my-container">
                     <div class="sales-feature-title-container text-center">
-                        <p class="sales-feature-title"><t t-raw="p.sales_feature_section"/></p>
+                        <p class="sales-feature-title">
+                            <t t-raw="p.sales_feature_section"/>
+                        </p>
                     </div>
 
                     <h3 class="sales-feature-heading text-center">

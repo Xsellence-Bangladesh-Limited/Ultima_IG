@@ -58,7 +58,9 @@ $(document).ready(function () {
 
     // panel_active
     var panel_active = document.getElementById("panel_active");
-    panel_active.style.maxHeight = panel_active.scrollHeight + "px";
+    if (panel_active){
+        panel_active.style.maxHeight = panel_active.scrollHeight + "px";
+    }
 
     /*
         End Frequently Asked Question
@@ -106,5 +108,13 @@ $(document).ready(function () {
     /*
         End Introduce
     */
+
+    // Product buy button for logged out user (start)
+
+        $('#product-buy-btn').click(function(){
+            $('.login-form-container').fadeIn('slow');
+        })
+
+    // Product buy button for logged out user (end)
 
 });

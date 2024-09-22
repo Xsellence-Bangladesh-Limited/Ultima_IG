@@ -205,6 +205,8 @@
     color: var(--primary-color);
     font-size: 0.875rem;
     font-weight: var(--heading-font-weight);
+    outline: none !important;
+    cursor: pointer;
 }
 
 ._card .button_outline:hover {

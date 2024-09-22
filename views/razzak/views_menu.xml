@@ -261,4 +261,10 @@
               action="ultima_payment_shipping_type_form"
               sequence="0"/>
 
+    <menuitem id="ultima_sslcommerz_token_menu_id"
+              name="SSLCommerz tokens"
+              parent="ultima_payment_settings_menu_id"
+              action="ultima_sslcommerz_token_form"
+              sequence="1"/>
+
 </odoo>

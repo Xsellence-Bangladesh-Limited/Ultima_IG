@@ -75,6 +75,20 @@ p, h1, h2, h3, h4, h5, h6{
     position: relative;
 }
 
+.owl-item .item{
+    position: relative;
+    display: flex !important;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.product-video-icon{
+    position: absolute;
+    width: 20px !important;
+    height: 20px !important;
+}
+
 .owl-theme .owl-nav{
     margin-top: 0 !important;
     display: flex;

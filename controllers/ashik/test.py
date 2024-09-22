@@ -20,8 +20,8 @@ import json
 
 
 class TestSession(http.Controller):
-    @http.route('/test-session', type='http', auth='public')
-    def test_session(self):
+    @http.route('/test-session', type='http', auth='public', csrf=False)
+    def test_session(self, **kw):
         # # Selected language
         # selected_language = req.env['res.lang'].sudo().search([('code', '=', 'bn_IN')])
         # selected_language = req.env['res.lang'].sudo().search([('code', '=', 'en_US')])
@@ -45,10 +45,13 @@ class TestSession(http.Controller):
         #
         # print(req.default_lang())
 
-        session['ultima_user'] = 2
+        # session['ultima_user'] = 2
+        # session['ultima_user_2'] = 50
+
+        print(req.session.get('ultima_otp'))
 
         return req.render('ultima.test_session_template', {
-            'session': session
+            'session': req.session.context
         })
 
 # class TestAttendance(http.Controller):

@@ -30,6 +30,10 @@
 
 /* Login form container (start) */
 
+.user-sign-in-button{
+    margin-bottom: 0 !important;
+}
+
 .login-form-container{
     position: fixed;
     display: flex;
@@ -45,13 +49,13 @@
 }
 
 .login-form{
-    width: 600px;
+    width: 95%;
     border-radius: 10px;
     padding: 10px;
     background-color: #fff;
     display: flex;
     gap: 15px;
-    /* align-items: center; */
+    flex-direction: column;
 }
 
 .company-logo{
@@ -59,14 +63,13 @@
 }
 
 .login-form-left, .login-form-right{
-    width: 50%;
+    width: 100%;
 }
 
 .login-form-image{
     width: 100%;
-    height: 100%;
+    height: 340px;
     border-radius: 10px;
-    height: 300px;
     overflow: hidden;
 }
 
@@ -97,7 +100,7 @@
     width: 100%;
 }
 
-.invalid-phone-number-warning{
+.invalid-phone-number-warning, .invalid-otp-warning, .invalid-first-name-warning, .invalid-last-name-warning, .invalid-email-warning, .existing-email-warning{
     width: 100%;
     font-family: var(--inter-font-family);
     font-weight: var(--normal-title-font-weight);
@@ -143,6 +146,10 @@
   border-radius: 4px;
   width: 100%;
   display: none;
+}
+
+.login-form-personal-info{
+    display: none;
 }
 
 /* Login form container (end) */
@@ -336,13 +343,13 @@
     background-color: #F9FAFB;
 }
 
-a:hover, .store-location-link:hover {
-    text-decoration: none;
-    color: inherit;
+a, .store-location-link {
+    color: inherit !important;
 }
 
-a, .store-location-link {
-    color: inherit;
+a:hover, .store-location-link:hover {
+    text-decoration: none;
+    color: inherit !important;
 }
 
 .sora-400 {
@@ -367,10 +374,11 @@ a, .store-location-link {
     padding: 8px 15px;
     border-radius: 5px;
     display: inline-block;
-    outline: none;
     border: none;
     font-family: var(--normal-text-font-family);
     font-size: 0.875rem;
+    outline: none !important;
+    cursor: pointer;
 }
 
 .button:focus {
@@ -810,6 +818,16 @@ wrap wrap
 }
 
 @media(min-width: 768px){
+
+    .login-form{
+        width: 600px;
+        flex-direction: row;
+    }
+
+    .login-form-left, .login-form-right{
+        width: 50%;
+    }
+
     #lb_ac, #rb_ac{
         display: block;
     }
