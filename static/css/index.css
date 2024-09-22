@@ -133,7 +133,7 @@
     display: none;
 }
 
-.login-form-proceed-loading-btn{
+.login-form-proceed-loading-btn, .create-user-login-form-proceed-loading-btn{
   outline: none !important;
   padding: 12.5px 0;
   background-color: var(--primary-color);
@@ -370,7 +370,7 @@ a:hover, .store-location-link:hover {
 /* Button */
 .button {
     background-color: var(--color-blue);
-    color: white;
+    color: white !important;
     padding: 8px 15px;
     border-radius: 5px;
     display: inline-block;
@@ -388,7 +388,7 @@ a:hover, .store-location-link:hover {
 
 .button:hover {
     opacity: .8;
-    color: white;
+    color: white !important;
 }
 
 /* End Components */
@@ -706,6 +706,11 @@ wrap wrap
     align-items: center;
     gap: 20px;
     flex-wrap: wrap;
+}
+
+.mobile-menu-item-name{
+    font-family: var(--normal-text-font-family);
+    font-size: 13px;
 }
 
 /* Testimonial like prohori (start) */
