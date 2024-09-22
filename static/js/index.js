@@ -150,6 +150,22 @@ $(document).ready(function () {
 
     // Handling expert form submission done (end)
 
+    // Toggling login form (start)
+
+    $('.user-sign-in-button').click(function(){
+        $('.login-form-container').fadeIn('slow');
+    })
+
+    $('.login-form-container').click(function(){
+        $(this).fadeOut('slow');
+    })
+
+    $('.login-form').click(function(e){
+        e.stopPropagation();
+    })
+
+    // Toggling login form (end)
+
     // Login form validating phone number (start)
 
     function validatePhoneNumber(phoneNumber, countryCode){
@@ -196,9 +212,7 @@ $(document).ready(function () {
 
             const data = {phoneNumber}
 
-            const proceedButton = $(this)
-
-            proceedButton.hide();
+            $(this).hide();
 
             $('.login-form-proceed-loading-btn').show();
 
@@ -214,6 +228,101 @@ $(document).ready(function () {
             $('#login-form-otp-input').fadeIn('slow')
         }
     })
+
+    $('#login-form-proceed-btn-otp').click(function(){
+        const otp = $('#login-form-otp-input').val().trim();
+        const phoneNumber = $('#login-form-phone-number-input').val().trim();
+
+        if(otp){
+            const data = {otp, phoneNumber};
+
+            $(this).hide();
+
+            $('.login-form-proceed-loading-btn').show();
+
+            $.post('/check-otp', data, function(response){
+                const res = JSON.parse(response);
+                if(res.code === 200){
+                    console.log('Matched');
+                    $('.invalid-otp-warning').fadeOut('slow');
+                    $('#login-form-proceed-btn-otp').hide();
+                    $('#login-form-otp-input').hide();
+                    $('.login-form-proceed-loading-btn').hide();
+                    $('.login-form-personal-info').show();
+                }
+
+                else if(res.code === 201){
+                    $('.invalid-otp-warning').fadeOut('slow');
+                    $('#login-form-proceed-btn-otp').hide();
+                    $('#login-form-otp-input').hide();
+                    $('.login-form-proceed-loading-btn').hide();
+                    window.location.href='/user-panel'
+                }
+
+                else if(res.code === 400){
+                    console.log('Not matched');
+                    $('.invalid-otp-warning').fadeIn('slow');
+                    $('#login-form-proceed-btn-otp').show();
+                    $('.login-form-proceed-loading-btn').hide();
+                }
+            })
+        }
+    })
+
+    // Register a user (start)
+
+    $('#create-account-btn').click(function(){
+        const firstName = $('#personal-info-first-name-input').val().trim();
+        const lastName = $('#personal-info-last-name-input').val().trim();
+        const emailAddress = $('#personal-info-email-input').val().trim();
+        const phoneNumber = $('#login-form-phone-number-input').val().trim();
+
+        if(!firstName){
+            $('.invalid-first-name-warning').fadeIn('slow');
+        }
+
+        else{
+            $('.invalid-first-name-warning').fadeOut('slow');
+        }
+
+        if(!lastName){
+            $('.invalid-last-name-warning').fadeIn('slow');
+        }
+
+        else{
+            $('.invalid-last-name-warning').fadeOut('slow');
+        }
+
+        if(!emailAddress){
+            $('.invalid-email-warning').fadeIn('slow');
+        }
+
+        else{
+            $('.invalid-email-warning').fadeOut('slow');
+        }
+
+        const data = {
+            firstName, lastName, emailAddress, phoneNumber
+        }
+
+        $.post('/register-user', data, function(response){
+            const res = JSON.parse(response);
+
+            if(res.code === 200){
+                window.location.href = '/user-panel'
+            }
+
+            if (res.code === 400){
+                $('.existing-email-warning').fadeIn('slow');
+            }
+
+            else{
+                $('.existing-email-warning').fadeIn('slow');
+            }
+        })
+    })
+
+    // Register a user (end)
 
     // AJAX for sending OTP (end)
 

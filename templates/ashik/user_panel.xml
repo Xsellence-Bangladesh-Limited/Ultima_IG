@@ -13,7 +13,7 @@
                 <!-- Bootstrap (end) -->
 
                 <!-- Custom CSS (start) -->
-                <link rel="stylesheet" href="/ultima/static/ashik/user_panel/css/styles.css?v=2.1"/>
+                <link rel="stylesheet" href="/ultima/static/ashik/user_panel/css/styles.css?v=2.9"/>
                 <!-- Custom CSS (end) -->
 
                 <!-- Fontawesome CDN (start) -->
@@ -25,7 +25,7 @@
                 <!-- Jquery (end) -->
 
                 <!-- Custom JS (start) -->
-                <script src="/ultima/static/ashik/user_panel/JS/script.js?v=2.1" defer="1"/>
+                <script src="/ultima/static/ashik/user_panel/JS/script.js?v=2.9" defer="1"/>
                 <!-- Custom JS (end) -->
 
 
@@ -82,6 +82,12 @@
                                     Orders
                                 </p>
                             </div>
+
+                            <div class="ultima-user-log-out-button-container">
+                                <a href="/log-out-user" class="ultima-user-log-out-button"><img
+                                        src="/ultima/static/image/log-out-icon.png"/>Log Out
+                                </a>
+                            </div>
                         </div>
                         <div class="user-panel-right">
                             <div class="personal-information-tab-content tab-content" id="tab-content-1">
@@ -127,15 +133,15 @@
                                             <div class="contact-info">
                                                 <p class="user-input-label mb-1">Contact Number</p>
                                                 <input type="text" readonly="1"
-                                                       t-att-value="logged_in_user.partner_id.phone"
+                                                       t-att-value="logged_in_user.phone"
                                                        class="user-input"/>
                                             </div>
 
                                             <div class="address-info">
                                                 <p class="user-input-label mb-1">Address</p>
-                                                <input t-if="logged_in_user.partner_id or logged_in_user.partner_id.country_id"
+                                                <input t-if="logged_in_user or logged_in_user.country_id"
                                                        type="text" readonly="1"
-                                                       t-att-value="str(logged_in_user.partner_id.street) + ', ' + str(logged_in_user.partner_id.country_id.name)"
+                                                       t-att-value="str(logged_in_user.street if logged_in_user.street else '') + (', ' if logged_in_user.street and logged_in_user.country_id else '') + str(logged_in_user.country_id.name if logged_in_user.country_id else '')"
                                                        class="user-input"/>
                                             </div>
                                         </div>
@@ -144,14 +150,14 @@
                                             <div class="state-info">
                                                 <p class="user-input-label mb-1">State</p>
                                                 <input type="text" readonly="1"
-                                                       t-att-value="logged_in_user.partner_id.country_id.name"
+                                                       t-att-value="logged_in_user.country_id.name"
                                                        class="user-input"/>
                                             </div>
 
                                             <div class="country-info">
                                                 <p class="user-input-label mb-1">Country</p>
                                                 <input type="text" readonly="1"
-                                                       t-att-value="logged_in_user.partner_id.country_id.name"
+                                                       t-att-value="logged_in_user.country_id.name"
                                                        class="user-input"/>
                                             </div>
                                         </div>
@@ -177,12 +183,21 @@
                                         </tr>
                                         <t t-foreach="all_orders" t-as="order">
                                             <tr class="normal-row">
-                                                <td><t t-esc="order.name"/></td>
-                                                <td><t t-esc="order.product_ids[0].name"/></td>
-                                                <td><t t-esc="order.format_order_date()"/></td>
+                                                <td>
+                                                    <t t-esc="order.name"/>
+                                                </td>
+                                                <td>
+                                                    <t t-esc="order.product_ids[0].name"/>
+                                                </td>
+                                                <td>
+                                                    <t t-esc="order.format_order_date()"/>
+                                                </td>
                                                 <td class="order-status">Completed</td>
-                                                <td><t t-esc="currency"/><t
-                                                        t-esc="order.total_price"/></td>
+                                                <td>
+                                                    <t t-esc="currency"/>
+                                                    <t
+                                                            t-esc="order.total_price"/>
+                                                </td>
                                                 <td>
                                                     <span class="d-none">
                                                         <a class="order-cancel-link" href="#">Cancel</a>
@@ -192,7 +207,10 @@
                                                                t-att-value="order.product_ids[0].id"/>
                                                         <input type="hidden" name="order_id" class="order-id"
                                                                t-att-value="order.id"/>
-                                                        <a class="order-details-btn" t-att-data-product-id="order.product_ids[0].id" t-att-data-order-id="order.id">See details</a>
+                                                        <a class="order-details-btn"
+                                                           t-att-data-product-id="order.product_ids[0].id"
+                                                           t-att-data-order-id="order.id">See details
+                                                        </a>
                                                     </span>
                                                 </td>
                                             </tr>

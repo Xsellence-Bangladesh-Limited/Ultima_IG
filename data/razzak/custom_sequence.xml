@@ -49,5 +49,13 @@
             <field name="padding">3</field>
             <field name="number_next">1</field>
         </record>
+
+        <record id="ultima_sslcommerz_token_seq" model="ir.sequence">
+            <field name="name">Ultima sslcommerz token sequence</field>
+            <field name="code">ultima.sslcommerz.token.seq</field>
+            <field name="prefix">TOKEN</field>
+            <field name="padding">3</field>
+            <field name="number_next">1</field>
+        </record>
     </data>
 </odoo>
