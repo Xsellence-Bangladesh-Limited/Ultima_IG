@@ -490,7 +490,7 @@ class BlogComment(models.Model):
     _order = 'id desc'
 
     name = fields.Char(string='Sequence')
-    user_id = fields.Many2one('res.users', string='User')
+    user_id = fields.Many2one('res.partner', string='User')
     comment = fields.Text(string='Comment')
     blog_id = fields.Many2one('ultima.blog.blog', string='Blog')
     date = fields.Datetime(string='Date', default=lambda self: fields.Datetime.now())

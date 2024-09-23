@@ -21,30 +21,32 @@ class UltimaWebsite(http.Controller):
 
         print('hmm', req.session.get('ultima_otp'))
 
+        sms_settings = req.env['ultima.sms.settings'].sudo().search([], order='id desc', limit=1)
+
         if phone_number:
             data = {
-                'api_key': 'C200918366ebcc11bc0e03.88783932',
+                'api_key': sms_settings.api_key if sms_settings.api_key else 'C200918366ebcc11bc0e03.88783932',
                 'type': 'unicode',
                 'contacts': f"880{phone_number[-10:]}",
                 'senderid': '8809601011978',
-                'msg': f"Hello Dear Customer, Your Ultima Bangladesh One Time PIN is {random_generated_otp}."
+                'msg': sms_settings.message.format(random_generated_otp) if sms_settings.message else f"Hello Dear Customer, Your Ultima Bangladesh One Time PIN is {random_generated_otp}."
             }
 
-            # r = requests.post(
-            #     f"https://msg.elitbuzz-bd.com/smsapi", json=data)
-            #
-            # if r.status_code == 200:
-            #     return json.dumps({'code': 200})
+            r = requests.post(
+                f"https://msg.elitbuzz-bd.com/smsapi", json=data)
+
+            if r.status_code == 200:
+                return json.dumps({'code': 200})
 
             return json.dumps({'code': 200})
 
     @http.route('/register-user', type='http', auth='public', csrf=False)
     def register_user(self, **kw):
         first_name = kw.get('firstName').strip() if kw.get('firstName') else ''
-        last_name = kw.get('lastName').strip() if kw.get('lastName') else ''
+        # last_name = kw.get('lastName').strip() if kw.get('lastName') else ''
         email_address = kw.get('emailAddress').strip() if kw.get('emailAddress') else ''
 
-        email_exists = req.env['res.partner'].sudo().search([('email', '=', email_address)])
+        email_exists = req.env['res.partner'].sudo().search([('email', '=', email_address), ('website_user', '=', True)])
 
         if email_exists:
             return json.dumps({'code': 400})
@@ -53,10 +55,11 @@ class UltimaWebsite(http.Controller):
 
         # Creating a new partner (start)
         new_partner = req.env['res.partner'].sudo().create({
-            'name': f"{first_name} {last_name}",
+            'name': first_name,
             'phone': phone_number,
             'mobile': phone_number,
             'email': email_address,
+            'website_user': True
         })
 
         req.session['ultima_partner_user'] = new_partner.id
@@ -67,7 +70,8 @@ class UltimaWebsite(http.Controller):
         if new_partner:
             req.session['ultima_otp'] = None
             req.session.modified = True
-            return json.dumps({'code': 200})
+            current_page = req.session.get('current_visited_page')
+            return json.dumps({'code': 200, 'current_page': current_page})
 
         # Creating a new partner (start)
 
@@ -75,6 +79,8 @@ class UltimaWebsite(http.Controller):
     def check_otp(self, **kw):
         otp = kw.get('otp').strip() if kw.get('otp') else None
         phone_number = kw.get('phoneNumber').strip() if kw.get('phoneNumber') else ''
+
+        req.session['ultima_user_phone'] = phone_number
 
         existing_user = req.env['res.partner'].sudo().search([('phone', '=', phone_number)])
 
@@ -84,7 +90,8 @@ class UltimaWebsite(http.Controller):
             return json.dumps({'code': 200})
 
         elif session_otp == otp and existing_user:
-            return json.dumps({'code': 201})
+            current_page = req.session.get('current_visited_page')
+            return json.dumps({'code': 201, 'current_page': current_page})
         else:
             return json.dumps({'code': 400})
 
@@ -92,12 +99,16 @@ class UltimaWebsite(http.Controller):
     def log_out_user(self):
         req.session['ultima_partner_user'] = None
         req.session['ultima_user_phone'] = None
+        req.session['current_visited_page'] = '/'
         req.session.modified = True
 
         return redirect('/')
 
     @http.route('/', auth='public')
     def home(self, **kw):
+
+        req.session['current_visited_page'] = '/'
+        req.session.modified = True
 
         # print('hmm-home', req.session.get('ultima_otp'))
 
@@ -153,6 +164,9 @@ class UltimaWebsite(http.Controller):
 
     @http.route('/products', auth='public')
     def products(self, **kw):
+        req.session['current_visited_page'] = '/products'
+        req.session.modified = True
+
         layout = req.env['ultima.layout'].sudo().search([], limit=1)
         page = req.env['ultima.products'].sudo().search([], limit=1)
         currency_id = req.env.company.currency_id
@@ -172,6 +186,10 @@ class UltimaWebsite(http.Controller):
 
     @http.route('/product-details', auth='public')
     def product_details(self, **kw):
+        product_id = kw.get('id')
+
+        req.session['current_visited_page'] = f'/product-details?id={product_id}'
+        req.session.modified = True
 
         layout = req.env['ultima.layout'].sudo().search([], limit=1)
         testimonials = req.env['ultima.testimonial'].sudo().search([])
@@ -181,7 +199,6 @@ class UltimaWebsite(http.Controller):
         sale_report = req.env['sale.report'].sudo().search([])
 
         # Product
-        product_id = kw.get('id')
         if not product_id:
             return 'Product id not passed'
 
@@ -253,17 +270,40 @@ class UltimaWebsite(http.Controller):
                 })
 
                 if new_order:
+                    shipping_service_product = req.env['product.product'].sudo().search([('default_code', '=', 'ULTIMA_WEB_PROD_SHIPPING_COST')])
+
+                    if not shipping_service_product:
+                        shipping_service_product = req.env['product.product'].sudo().create({
+                            'name': 'Ultima web product shipping cost',
+                            'detailed_type': 'service',
+                            'list_price': 0,
+                            'default_code': 'ULTIMA_WEB_PROD_SHIPPING_COST'
+                        })
+
                     new_sale_order = req.env['sale.order'].sudo().create({
                         'partner_id': logged_in_user.id,
                         'order_line': [
                             (0, 0, {
                                 'product_id': product.id,
                                 'product_uom_qty': number_of_product,
-                                'price_unit': product.list_price,
-                                'price_subtotal': (number_of_product * product.list_price) + shipping_cost
+                                'price_unit': product.list_price
                             }) for product in new_order.product_ids
                         ]
                     })
+
+                    shipping_service_product.sudo().write({
+                        'list_price': shipping_cost
+                    })
+
+                    new_sale_order.sudo().write({
+                        'order_line': [(0, 0, {
+                                'product_id': shipping_service_product.id,
+                                'product_uom_qty': 1,
+                                'price_unit': shipping_service_product.list_price
+                            })]
+                    })
+
+                    req.env.cr.commit()
 
                     if new_sale_order:
                         return redirect('/order-completed?pay=cash')
@@ -322,17 +362,41 @@ class UltimaWebsite(http.Controller):
                     })
 
                     if new_order:
+                        shipping_service_product = req.env['product.product'].sudo().search(
+                            [('default_code', '=', 'ULTIMA_WEB_PROD_SHIPPING_COST')])
+
+                        if not shipping_service_product:
+                            shipping_service_product = req.env['product.product'].sudo().create({
+                                'name': 'Ultima web product shipping cost',
+                                'detailed_type': 'service',
+                                'list_price': 0,
+                                'default_code': 'ULTIMA_WEB_PROD_SHIPPING_COST'
+                            })
+
                         new_sale_order = req.env['sale.order'].sudo().create({
                             'partner_id': logged_in_user.id,
                             'order_line': [
                                 (0, 0, {
                                     'product_id': product.id,
                                     'product_uom_qty': number_of_product,
-                                    'price_unit': product.list_price,
-                                    'price_subtotal': (number_of_product * product.list_price) + shipping_cost
+                                    'price_unit': product.list_price
                                 }) for product in new_order.product_ids
                             ]
                         })
+
+                        shipping_service_product.sudo().write({
+                            'list_price': shipping_cost
+                        })
+
+                        new_sale_order.sudo().write({
+                            'order_line': [(0, 0, {
+                                'product_id': shipping_service_product.id,
+                                'product_uom_qty': 1,
+                                'price_unit': shipping_service_product.list_price
+                            })]
+                        })
+
+                        req.env.cr.commit()
 
                         if new_sale_order:
                             return redirect(response.get('GatewayPageURL'))

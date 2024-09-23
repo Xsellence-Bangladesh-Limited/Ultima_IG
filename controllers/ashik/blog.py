@@ -6,6 +6,8 @@ import json
 class Blog(http.Controller):
     @http.route('/blogs', type='http', auth='public')
     def blog(self):
+        req.session['current_visited_page'] = '/blogs'
+        req.session.modified = True
 
         # Retrieving all the blogs (start)
         all_blogs = req.env['ultima.blog.blog'].sudo().search([], order='id asc')
@@ -36,6 +38,9 @@ class Blog(http.Controller):
 
     @http.route('/blog-details/<int:blog_id>', type='http', auth='public')
     def blog_details(self, blog_id):
+        req.session['current_visited_page'] = f'/blog-details/{blog_id}'
+        req.session.modified = True
+
         blog = req.env['ultima.blog.blog'].sudo().search([('id', '=', blog_id)])
 
         suggested_blogs = req.env['ultima.suggested.blog'].sudo().search([('main_blog_id', '=', blog.id)], order='id asc')
@@ -52,7 +57,13 @@ class Blog(http.Controller):
 
         # req.session['query_submission_successful'] = False
 
-        logged_in_user = req.env['res.users'].sudo().search([('id', '=', req.env.user.id)])
+        ultima_user = req.session.get('ultima_partner_user')
+
+        logged_in_user = req.env['res.partner'].sudo().search([('id', '=', ultima_user)])
+
+        if not logged_in_user:
+            ultima_user_phone = req.session.get('ultima_user_phone')
+            logged_in_user = req.env['res.partner'].sudo().search([('phone', '=', ultima_user_phone)])
 
         all_comments = req.env['ultima.blog.comment'].sudo().search([('blog_id', '=', blog.id)], order='id desc')
 
@@ -66,7 +77,7 @@ class Blog(http.Controller):
             # 'query_submission_successful': query_submission_successful,
             'logged_in_user': logged_in_user,
             'all_comments': all_comments,
-            'logged_in_user_id': req.session.get('uid'),
+            'logged_in_user_id': logged_in_user.id,
             'blog_page_settings': blog_page_settings
         })
 
@@ -98,11 +109,19 @@ class Blog(http.Controller):
         comment = form_data.get('comment').strip() if form_data.get('comment') else ''
         blog_id = int(form_data.get('blogId')) if form_data.get('blogId') else None
 
+        ultima_user = req.session.get('ultima_partner_user')
+
+        logged_in_user = req.env['res.partner'].sudo().search([('id', '=', ultima_user)])
+
+        if not logged_in_user:
+            ultima_user_phone = req.session.get('ultima_user_phone')
+            logged_in_user = req.env['res.partner'].sudo().search([('phone', '=', ultima_user_phone)])
+
         # Creating a new comment (start)
 
         new_comment = req.env['ultima.blog.comment'].sudo().create({
             'comment': comment,
-            'user_id': req.env.user.id,
+            'user_id': logged_in_user.id,
             'blog_id': blog_id
         })
 
@@ -119,7 +138,8 @@ class Blog(http.Controller):
             comment_dict_list.append({
                 'user_id': s_comment.user_id.id,
                 'user_name': s_comment.user_id.name,
-                'comment': s_comment.comment
+                'comment': s_comment.comment,
+                'image_available': True if s_comment.user_id.image_1920 else False
             })
 
         # Retrieving all comments (end)

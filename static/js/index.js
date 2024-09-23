@@ -60,6 +60,14 @@ $(document).ready(function () {
 
     // Handling talk with expert form toggling (start)
 
+    $('.expert-form-container').click(function(){
+        $(this).fadeOut('slow');
+    })
+
+    $('.talk-with-expert-form').click(function(e){
+        e.stopPropagation();
+    })
+
     $('.talk-with-expert-button').click(function(e){
         $('body').css('overflow', 'hidden');
         $('.expert-form-container').fadeIn("slow");
@@ -154,6 +162,16 @@ $(document).ready(function () {
 
     $('.user-sign-in-button').click(function(){
         $('.login-form-container').fadeIn('slow');
+
+        // Clicking login buttons pressing enter key (start)
+
+        $(document).keypress(function(e){
+            if(e.which === 13){
+                $('.ultima_login_form_btn:visible').click();
+            }
+        })
+
+        // Clicking login buttons pressing enter key (end)
     })
 
     $('.login-form-container').click(function(){
@@ -256,7 +274,7 @@ $(document).ready(function () {
                     $('#login-form-proceed-btn-otp').hide();
                     $('#login-form-otp-input').hide();
                     $('.login-form-proceed-loading-btn').hide();
-                    window.location.href='/user-panel'
+                    window.location.href = res.current_page;
                 }
 
                 else if(res.code === 400){
@@ -273,7 +291,7 @@ $(document).ready(function () {
 
     $('#create-account-btn').click(function(){
         const firstName = $('#personal-info-first-name-input').val().trim();
-        const lastName = $('#personal-info-last-name-input').val().trim();
+//        const lastName = $('#personal-info-last-name-input').val().trim();
         const emailAddress = $('#personal-info-email-input').val().trim();
         const phoneNumber = $('#login-form-phone-number-input').val().trim();
 
@@ -285,13 +303,13 @@ $(document).ready(function () {
             $('.invalid-first-name-warning').fadeOut('slow');
         }
 
-        if(!lastName){
-            $('.invalid-last-name-warning').fadeIn('slow');
-        }
-
-        else{
-            $('.invalid-last-name-warning').fadeOut('slow');
-        }
+//        if(!lastName){
+//            $('.invalid-last-name-warning').fadeIn('slow');
+//        }
+//
+//        else{
+//            $('.invalid-last-name-warning').fadeOut('slow');
+//        }
 
         if(!emailAddress){
             $('.invalid-email-warning').fadeIn('slow');
@@ -302,7 +320,7 @@ $(document).ready(function () {
         }
 
         const data = {
-            firstName, lastName, emailAddress, phoneNumber
+            firstName, emailAddress, phoneNumber
         }
 
         $(this).hide();
@@ -313,7 +331,8 @@ $(document).ready(function () {
             const res = JSON.parse(response);
 
             if(res.code === 200){
-                window.location.href = '/user-panel'
+                window.location.href = res.current_page;
+                $('.existing-email-warning').fadeOut('slow');
                 $('#create-account-btn').show();
                 $('.create-user-login-form-proceed-loading-btn').hide();
             }
@@ -323,10 +342,6 @@ $(document).ready(function () {
                 $('#create-account-btn').show();
                 $('.create-user-login-form-proceed-loading-btn').hide();
             }
-
-//            else{
-//                $('.existing-email-warning').fadeIn('slow');
-//            }
         })
     })
 

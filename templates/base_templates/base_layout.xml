@@ -24,7 +24,7 @@
                 <!-- Fontawesome CDN (end) -->
 
                 <!-- Custom stylesheet -->
-                <link rel="stylesheet" href="/ultima/static/css/index.css?v=index17"/>
+                <link rel="stylesheet" href="/ultima/static/css/index.css?v=index18"/>
 
                 <t t-raw="header"></t>
             </head>
@@ -49,17 +49,17 @@
                             <div class="login-form-personal-info mt-4">
                                 <h6 class="login-form-title">Personal Information</h6>
                                 <input type="text" id="personal-info-first-name-input" class="login-form-input mt-2"
-                                       placeholder="First name*"/>
+                                       placeholder="Name*"/>
                                 <p class="invalid-first-name-warning mt-2">
                                     <i class="fa-solid fa-circle-exclamation"></i>
-                                    First name is required.
+                                    Name is required.
                                 </p>
-                                <input type="text" id="personal-info-last-name-input" class="login-form-input mt-2"
-                                       placeholder="Last name*"/>
-                                <p class="invalid-last-name-warning mt-2">
-                                    <i class="fa-solid fa-circle-exclamation"></i>
-                                    Last name is required.
-                                </p>
+<!--                                <input type="text" id="personal-info-last-name-input" class="login-form-input mt-2"-->
+<!--                                       placeholder="Last name*"/>-->
+<!--                                <p class="invalid-last-name-warning mt-2">-->
+<!--                                    <i class="fa-solid fa-circle-exclamation"></i>-->
+<!--                                    Last name is required.-->
+<!--                                </p>-->
                                 <input type="email" id="personal-info-email-input" class="login-form-input mt-2"
                                        placeholder="Email address*"/>
                                 <p class="invalid-email-warning mt-2">
@@ -72,7 +72,7 @@
                                     Email already exists.
                                 </p>
 
-                                <button id="create-account-btn" class="login-form-proceed-btn mt-3">Create Account
+                                <button id="create-account-btn" class="login-form-proceed-btn ultima_login_form_btn mt-3">Create Account
                                 </button>
                                 <button class="create-user-login-form-proceed-loading-btn" disabled="1">
                                 <img src="/ultima/static/image/spinner.svg"/>
@@ -88,8 +88,8 @@
                                 Mismatched OTP.
                             </p>
 
-                            <button id="login-form-proceed-btn" class="login-form-proceed-btn mt-3">Proceed</button>
-                            <button id="login-form-proceed-btn-otp" class="login-form-proceed-btn mt-3">Proceed</button>
+                            <button id="login-form-proceed-btn" class="login-form-proceed-btn ultima_login_form_btn mt-3">Proceed</button>
+                            <button id="login-form-proceed-btn-otp" class="login-form-proceed-btn ultima_login_form_btn mt-3">Proceed</button>
                             <button class="login-form-proceed-loading-btn mt-3" disabled="1">
                                 <img src="/ultima/static/image/spinner.svg"/>
                             </button>
@@ -496,7 +496,7 @@
                     <!-- Swiper JS (end) -->
 
                     <!-- Custom Javascript -->
-                    <script src="/ultima/static/js/index.js?v=17"/>
+                    <script src="/ultima/static/js/index.js?v=19"/>
 
                     <t t-raw="footer"></t>
 
@@ -559,9 +559,10 @@
                             <t t-if="layout.show_call_now_btn">
                                 <div class="d-f fd-c">
                                     <div class="icon">
-                                        <a t-att-href="'tel:%s' % layout.contact_no">
+                                        <a t-att-href="'tel:%s' % layout.contact_no" style="display: flex; flex-direction: column; justify-content: center; align-items: center;">
                                             <img src="/ultima/static/image/logo/callicon.png" alt="Contact Number"
                                                  style="width: 40px;"/>
+                                            <p class="mobile-menu-item-name mt-1">Call now</p>
                                         </a>
                                     </div>
                                 </div>
@@ -570,17 +571,19 @@
                             <t t-if="layout.show_whatsapp_btn">
                                 <div class="icon">
                                     <a target="_blank"
-                                       t-att-href="'https://api.whatsapp.com/send?phone=+%s&amp;text=Hello!&amp;source=&amp;data=' % layout.whatsapp">
+                                       t-att-href="'https://api.whatsapp.com/send?phone=+%s&amp;text=Hello!&amp;source=&amp;data=' % layout.whatsapp" style="display: flex; flex-direction: column; justify-content: center; align-items: center;">
                                         <img src="/ultima/static/image/logo/whaticon.webp" alt="WhatsApp contact Number"
                                              style="width: 40px;"/>
+                                        <p class="mobile-menu-item-name mt-1">Whatsapp</p>
                                     </a>
                                 </div>
                             </t>
 
                             <t t-if="home.show_cta_btn">
-                                <div class="talk-to-expert-icon-mobile">
+                                <div class="talk-to-expert-icon-mobile" style="display: flex; flex-direction: column; justify-content: center; align-items: center;">
                                     <img src="/ultima/static/image/customer-service.png" alt="talk to expert icon"
                                          style="width: 40px;"/>
+                                    <p class="mobile-menu-item-name mt-1"><t t-esc="home.cta_btn_txt"/></p>
                                 </div>
                             </t>
                         </div>
