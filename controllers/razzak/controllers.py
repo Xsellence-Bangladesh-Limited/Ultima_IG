@@ -82,7 +82,7 @@ class UltimaWebsite(http.Controller):
 
         req.session['ultima_user_phone'] = phone_number
 
-        existing_user = req.env['res.partner'].sudo().search([('phone', '=', phone_number)])
+        existing_user = req.env['res.partner'].sudo().search([('phone', '=', phone_number), ('website_user', '=', True)])
 
         session_otp = req.session.get('ultima_otp')
 
