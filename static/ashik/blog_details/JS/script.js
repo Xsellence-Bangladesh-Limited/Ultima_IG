@@ -133,7 +133,7 @@ $(document).ready(function () {
                     commentsHtml += `<div class="other-users-comment mb-2">
                                         <div class="other-users-identity mb-2">
                                             <div class="other-users-image">
-                                                <img src="/web/image/res.users/${value.user_id}/image_1920" alt="logged-in user"/>
+                                                ${value.image_available ? '<img src="/web/image/res.partner/${value.user_id}/image_1920" alt="logged-in user"/>' : '<img src="/ultima/static/image/guest_user.png" alt="logged-in user"/>'}
                                             </div>
                                             <h6 class="other-users-name">
                                                 ${value.user_name}
@@ -155,7 +155,7 @@ $(document).ready(function () {
                 const singleCommentHtml = `<div class="other-users-comment mb-2">
                                         <div class="other-users-identity mb-2">
                                             <div class="other-users-image">
-                                                <img src="/web/image/res.users/${allComments[0].user_id}/image_1920" alt="logged-in user"/>
+                                             ${allComments[0].image_available ? '<img src="/web/image/res.users/${allComments[0].user_id}/image_1920" alt="logged-in user"/>' : '<img src="/ultima/static/image/guest_user.png" alt="logged-in user"/>'}
                                             </div>
                                             <h6 class="other-users-name">
                                                 ${allComments[0].user_name}

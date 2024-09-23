@@ -21,7 +21,7 @@
                 <!-- Splide CSS (end) -->
 
                 <!-- Custom CSS (start) -->
-                <link rel="stylesheet" href="/ultima/static/ashik/blog_details/css/styles.css?v=1.9"/>
+                <link rel="stylesheet" href="/ultima/static/ashik/blog_details/css/styles.css?v=2.1"/>
                 <!-- Custom CSS (end) -->
 
                 <!-- Fontawesome CDN (start) -->
@@ -49,7 +49,7 @@
                 <!-- Splide JS (end) -->
 
                 <!-- Custom JS (start) -->
-                <script src="/ultima/static/ashik/blog_details/JS/script.js?v=1.9" defer="1"/>
+                <script src="/ultima/static/ashik/blog_details/JS/script.js?v=2.1" defer="1"/>
                 <!-- Custom JS (end) -->
             </head>
 
@@ -267,8 +267,14 @@
                                         <div class="users-comment mb-3">
                                             <div class="users-identity mb-3">
                                                 <div class="users-image">
-                                                    <img t-att-src="image_data_uri(logged_in_user.image_1920)"
-                                                         alt="logged-in user"/>
+                                                    <t t-if="logged_in_user.image_1920">
+                                                        <img t-att-src="image_data_uri(logged_in_user.image_1920)"
+                                                             alt="logged-in user"/>
+                                                    </t>
+                                                    <t t-else="">
+                                                        <img src="/ultima/static/image/guest_user.png"
+                                                             alt="logged-in user"/>
+                                                    </t>
                                                 </div>
                                                 <h6 class="users-name">
                                                     <t t-esc="logged_in_user.name"/>
@@ -299,8 +305,14 @@
                                             <div class="other-users-comment mb-2">
                                                 <div class="other-users-identity mb-2">
                                                     <div class="other-users-image">
-                                                        <img t-att-src="image_data_uri(comment.user_id.image_1920)"
-                                                             alt="logged-in user"/>
+                                                        <t t-if="comment.user_id.image_1920">
+                                                            <img t-att-src="image_data_uri(comment.user_id.image_1920)"
+                                                                 alt="logged-in user"/>
+                                                        </t>
+                                                        <t t-else="">
+                                                            <img src="/ultima/static/image/guest_user.png"
+                                                                 alt="logged-in user"/>
+                                                        </t>
                                                     </div>
                                                     <h6 class="other-users-name">
                                                         <t t-esc="comment.user_id.name"/>
@@ -322,8 +334,14 @@
                                             <div class="other-users-comment mb-2">
                                                 <div class="other-users-identity mb-2">
                                                     <div class="other-users-image">
-                                                        <img t-att-src="image_data_uri(comment.user_id.image_1920)"
-                                                             alt="logged-in user"/>
+                                                        <t t-if="comment.user_id.image_1920">
+                                                            <img t-att-src="image_data_uri(comment.user_id.image_1920)"
+                                                                 alt="logged-in user"/>
+                                                        </t>
+                                                        <t t-else="">
+                                                            <img src="/ultima/static/image/guest_user.png"
+                                                                 alt="logged-in user"/>
+                                                        </t>
                                                     </div>
                                                     <h6 class="other-users-name">
                                                         <t t-esc="comment.user_id.name"/>

@@ -34,3 +34,4 @@ ultima_payment,ultima_payment,model_ultima_payment,,1,1,1,1
 ultima_product_video,ultima_product_video,model_ultima_product_video,,1,1,1,1
 ultima_payment_shipping_type,ultima_payment_shipping_type,model_ultima_payment_shipping_type,,1,1,1,1
 ultima_sslcommerz_token,ultima_sslcommerz_token,model_ultima_sslcommerz_token,,1,1,1,1
+ultima_sms_settings,ultima_sms_settings,model_ultima_sms_settings,,1,1,1,1

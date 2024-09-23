@@ -619,3 +619,24 @@ class UltimaProductVideo(models.Model):
     def create(self, vals):
         vals['name'] = self.env['ir.sequence'].sudo().next_by_code('ultima.product.video.seq')
         return super(UltimaProductVideo, self).create(vals)
+
+
+class ResPartnerInheritUltima(models.Model):
+    _inherit = 'res.partner'
+
+    website_user = fields.Boolean(string='Website User')
+
+
+class UltimaSMSSettings(models.Model):
+    _name = 'ultima.sms.settings'
+    _description = 'ultima.sms.settings'
+    _order = 'id desc'
+
+    name = fields.Char(string='Sequence')
+    api_key = fields.Char(string='API key')
+    message = fields.Text(string='Message')
+
+    @api.model
+    def create(self, vals):
+        vals['name'] = self.env['ir.sequence'].sudo().next_by_code('ultima.sms.settings.seq')
+        return super(UltimaSMSSettings, self).create(vals)

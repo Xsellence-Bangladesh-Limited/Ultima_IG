@@ -99,9 +99,12 @@
                                     <div class="user-identity mb-3">
                                         <div class="user-identity-left">
                                             <div class="user-image mb-2">
-                                                <img t-if="logged_in_user.image_1920"
-                                                     t-att-src="image_data_uri(logged_in_user.image_1920)"
-                                                     alt="user image"/>
+                                                <t t-if="logged_in_user.image_1920">
+                                                    <img t-att-src="image_data_uri(logged_in_user.image_1920)" alt="user image"/>
+                                                </t>
+                                                <t t-else="">
+                                                    <img src="/ultima/static/image/guest_user.png" alt="user image"/>
+                                                </t>
                                             </div>
                                             <p class="user-name">
                                                 <t t-esc="logged_in_user.name"/>
