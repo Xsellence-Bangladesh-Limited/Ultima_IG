@@ -27,6 +27,21 @@ p, h1, h2, h3, h4, h5, h6{
   margin: 0 auto;
 }
 
+.loading-btn{
+  outline: none !important;
+  padding: 8px 0;
+  background-color: var(--primary-color);
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  font-family: var(--normal-text-font-family);
+  transition: all 0.3s;
+  cursor: not-allowed;
+  border-radius: 5px;
+  width: 100%;
+  display: none;
+}
+
 .service_kit .items {
     display: flex;
     flex-wrap: wrap;
@@ -894,7 +909,7 @@ End Product Details
         width: 40%;
     }
 
-    .service_kit .items .right_item .button{
+    .service_kit .items .right_item .button, .loading-btn{
         width: 300px;
     }
 

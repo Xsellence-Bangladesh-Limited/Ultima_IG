@@ -4,7 +4,7 @@
             <t t-set="header">
                 <title>Home | Ultima</title>
                 <link rel="stylesheet" href="/ultima/static/css/swiper-bundle.min.css"/>
-                <link rel="stylesheet" href="/ultima/static/css/home.css?v=home16"/>
+                <link rel="stylesheet" href="/ultima/static/css/home.css?v=home20"/>
                 <!-- Fontawesome CDN (start) -->
                 <script src="/ultima/static/third_party_UI_library/Fontawesome/js/all.min.js" defer="1"/>
                 <!-- Fontawesome CDN (end) -->
@@ -194,7 +194,11 @@
                                        t-esc="p.bsp_btn_text"></a>
                                 </t>
                                 <t t-else="">
-                                    <button id="product-buy-btn" class="button_outline" t-esc="p.bsp_btn_text"></button>
+                                    <button id="product-buy-btn" class="button_outline" t-esc="p.bsp_btn_text"
+                                            t-att-data-product-id="pd.id"></button>
+                                    <button class="loading-btn" disabled="1">
+                                        <img src="/ultima/static/image/spinner.svg" style="width: auto;"/>
+                                    </button>
                                 </t>
                             </div>
                         </div>
@@ -505,7 +509,7 @@
                 <script src="/ultima/static/js/jquery-3.6.0.min.js"/>
                 <script src="/ultima/static/js/swiper-bundle.min.js"/>
                 <!--                <script src="/ultima/static/js/index.js?v=12"/>-->
-                <script src="/ultima/static/js/home.js?v=15"/>
+                <script src="/ultima/static/js/home.js?v=20"/>
             </t>
         </t>
     </template>

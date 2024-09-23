@@ -38,8 +38,6 @@ class UltimaWebsite(http.Controller):
             if r.status_code == 200:
                 return json.dumps({'code': 200})
 
-            return json.dumps({'code': 200})
-
     @http.route('/register-user', type='http', auth='public', csrf=False)
     def register_user(self, **kw):
         first_name = kw.get('firstName').strip() if kw.get('firstName') else ''
@@ -91,6 +89,7 @@ class UltimaWebsite(http.Controller):
 
         elif session_otp == otp and existing_user:
             current_page = req.session.get('current_visited_page')
+            print(current_page)
             return json.dumps({'code': 201, 'current_page': current_page})
         else:
             return json.dumps({'code': 400})
@@ -107,21 +106,21 @@ class UltimaWebsite(http.Controller):
     @http.route('/', auth='public')
     def home(self, **kw):
 
-        req.session['current_visited_page'] = '/'
-        req.session.modified = True
+        # req.session['current_visited_page'] = '/'
+        # req.session.modified = True
 
         # print('hmm-home', req.session.get('ultima_otp'))
 
         # Toggling language in session (start)
-        session = req.session.context
-        cur_lang = session.get('lang')
-        if cur_lang == 'bn_IN':
-            session['lang'] = 'en_US'
-
-        elif cur_lang == 'en_US':
-            session['lang'] = 'bn_IN'
-
-        print(session.get('lang'))
+        # session = req.session.context
+        # cur_lang = session.get('lang')
+        # if cur_lang == 'bn_IN':
+        #     session['lang'] = 'en_US'
+        #
+        # elif cur_lang == 'en_US':
+        #     session['lang'] = 'bn_IN'
+        #
+        # print(session.get('lang'))
         # Toggling language in session (end)
 
         intro = req.env['ultima.home.introduce'].sudo().search([], limit=1)
@@ -164,8 +163,8 @@ class UltimaWebsite(http.Controller):
 
     @http.route('/products', auth='public')
     def products(self, **kw):
-        req.session['current_visited_page'] = '/products'
-        req.session.modified = True
+        # req.session['current_visited_page'] = '/products'
+        # req.session.modified = True
 
         layout = req.env['ultima.layout'].sudo().search([], limit=1)
         page = req.env['ultima.products'].sudo().search([], limit=1)
@@ -223,11 +222,11 @@ class UltimaWebsite(http.Controller):
     @http.route('/billing', auth='public', csrf=False)
     def billing(self, **kw):
         ultima_user = req.session.get('ultima_partner_user')
-        logged_in_user = req.env['res.partner'].sudo().search([('id', '=', ultima_user)])
+        logged_in_user = req.env['res.partner'].sudo().search([('id', '=', ultima_user), ('website_user', '=', True)])
 
         if not logged_in_user:
             ultima_user_phone = req.session.get('ultima_user_phone')
-            logged_in_user = req.env['res.partner'].sudo().search([('phone', '=', ultima_user_phone)])
+            logged_in_user = req.env['res.partner'].sudo().search([('phone', '=', ultima_user_phone), ('website_user', '=', True)])
 
         base_url = http.request.env['ir.config_parameter'].sudo().get_param('web.base.url')
         form_product_id = int(kw.get('product_id')) if kw.get('product_id') else None
@@ -474,4 +473,11 @@ class UltimaWebsite(http.Controller):
 
         return json.dumps({'code': 200})
 
+    @http.route('/update-current-page-for-buy-now', type='http', auth='public', csrf=False)
+    def update_current_path_for_buy_now(self, **kw):
+        print('buy now called')
+        product_id = kw.get('productId')
+        req.session['current_visited_page'] = f'/billing?product_id={product_id}'
+        req.session.modified = True
 
+        return json.dumps({'code': 200})

@@ -77,7 +77,28 @@ $(document).ready(function () {
 // Product buy button for logged out user (start)
 
     $('#product-buy-btn').click(function(){
-        $('.login-form-container').fadeIn('slow');
+        $(this).hide();
+        $('.loading-btn').show();
+
+        const productId = $(this).data('product-id');
+
+        const data = {productId};
+
+        $.post('/update-current-page-for-buy-now', data, function(response){
+            const res = JSON.parse(response);
+            if(res.code === 200){
+                 $('.login-form-container').fadeIn('slow');
+                 $('.loading-btn').hide();
+                 $('#product-buy-btn').show();
+                // Clicking login buttons pressing enter key (start)
+                    $(document).keypress(function(e){
+                        if(e.which === 13){
+                            $('.ultima_login_form_btn:visible').click();
+                        }
+                    })
+                // Clicking login buttons pressing enter key (end)
+            }
+        })
     })
 
 // Product buy button for logged out user (end)
