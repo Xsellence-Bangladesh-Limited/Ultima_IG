@@ -7,14 +7,14 @@
                 <link rel="stylesheet" href="/ultima/static/css/owl.carousel.min.css"/>
                 <link rel="stylesheet" href="/ultima/static/css/owl.theme.default.min.css"/>
                 <link rel="stylesheet" href="/ultima/static/css/swiper-bundle.min.css"/>
-                <link rel="stylesheet" href="/ultima/static/css/filter_cartridge.css?filter_cartridge=16"/>
+                <link rel="stylesheet" href="/ultima/static/css/filter_cartridge.css?filter_cartridge=20"/>
             </t>
 
             <t t-set="footer">
                 <script src="/ultima/static/js/jquery-3.6.0.min.js"/>
                 <script src="/ultima/static/js/owl.carousel.min.js"/>
                 <script src="/ultima/static/js/swiper-bundle.min.js"/>
-                <script src="/ultima/static/js/filter_cartridge.js?v=filter_cartridge16"/>
+                <script src="/ultima/static/js/filter_cartridge.js?v=filter_cartridge20"/>
                 <!--                <script src="/ultima/static/js/index.js?v=12"/>-->
             </t>
 
@@ -47,7 +47,9 @@
                                         <img class="img_owl" t-if="product_video.thumbnail"
                                              t-att-src="image_data_uri(product_video.thumbnail)"
                                              t-att-data-url="product_video.url" t-att-data-is-video="true" alt=""/>
-                                        <img src="/ultima/static/image/introduce/play.png" class="product-video-icon img_owl" t-att-data-url="product_video.url" t-att-data-is-video="true"/>
+                                        <img src="/ultima/static/image/introduce/play.png"
+                                             class="product-video-icon img_owl" t-att-data-url="product_video.url"
+                                             t-att-data-is-video="true"/>
                                     </div>
                                 </t>
                             </div>
@@ -90,7 +92,12 @@
                                 <a t-attf-href="/billing?product_id={{product.id}}" class="button">Shop Now</a>
                             </t>
                             <t t-else="">
-                                <button class="button" id="product-buy-btn" href="#">Shop Now</button>
+                                <button class="button" id="product-buy-btn" t-att-data-product-id="product.id">Shop
+                                    Now
+                                </button>
+                                <button class="loading-btn" disabled="1">
+                                    <img src="/ultima/static/image/spinner.svg" style="width: auto;"/>
+                                </button>
                             </t>
                         </div>
 

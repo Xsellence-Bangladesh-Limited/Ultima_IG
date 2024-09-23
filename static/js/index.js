@@ -196,6 +196,8 @@ $(document).ready(function () {
                 if(!isValid){
                     $('.invalid-phone-number-warning').fadeIn('slow')
                     $('#login-form-proceed-btn').fadeOut('slow')
+                    $('#login-form-proceed-btn-otp').hide();
+                    $('#login-form-otp-input').hide();
                 }
 
                 else{
@@ -210,10 +212,13 @@ $(document).ready(function () {
         else{
             $('.invalid-phone-number-warning').fadeOut('slow')
             $('#login-form-proceed-btn').fadeIn('slow')
+            $('#login-form-proceed-btn-otp').hide();
+            $('#login-form-otp-input').hide();
         }
     }
 
     $('#login-form-phone-number-input').on('input', function(e){
+
         const countryCode = 'BD'
         let phoneNumber = e.target.value.trim()
 

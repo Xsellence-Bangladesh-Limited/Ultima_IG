@@ -50,6 +50,21 @@
     font-weight: var(--normal-title-font-weight);
 }
 
+.loading-btn{
+  outline: none !important;
+  padding: 7px 0;
+  background-color: var(--primary-color);
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  font-family: var(--normal-text-font-family);
+  transition: all 0.3s;
+  cursor: not-allowed;
+  border-radius: 8px;
+  width: 100%;
+  display: none;
+}
+
 .bsp .content {
     max-width: 400px;
     text-align: center;
