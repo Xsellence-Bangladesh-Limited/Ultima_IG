@@ -59,11 +59,11 @@ class Blog(http.Controller):
 
         ultima_user = req.session.get('ultima_partner_user')
 
-        logged_in_user = req.env['res.partner'].sudo().search([('id', '=', ultima_user)])
+        logged_in_user = req.env['res.partner'].sudo().search([('id', '=', ultima_user), ('website_user', '=', True)])
 
         if not logged_in_user:
             ultima_user_phone = req.session.get('ultima_user_phone')
-            logged_in_user = req.env['res.partner'].sudo().search([('phone', '=', ultima_user_phone)])
+            logged_in_user = req.env['res.partner'].sudo().search([('phone', '=', ultima_user_phone), ('website_user', '=', True)])
 
         all_comments = req.env['ultima.blog.comment'].sudo().search([('blog_id', '=', blog.id)], order='id desc')
 
