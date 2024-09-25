@@ -7,6 +7,8 @@
         <t t-set="layout" t-value="request.env['ultima.layout'].sudo().search([], limit=1)"/>
         <t t-set="menus" t-value="request.env['ultima.website_menu'].sudo().search([])"/>
         <t t-set="home" t-value="request.env['ultima.home'].sudo().search([], order='id desc', limit=1)"/>
+        <t t-set="user"
+           t-value="request.env['res.partner'].sudo().search([('phone', '=', ultima_user_phone), ('website_user', '=', True)])"/>
 
         <html lang="en">
             <head>
@@ -23,8 +25,12 @@
                 <script src="/ultima/static/third_party_UI_library/Fontawesome/js/all.min.js" defer="1"/>
                 <!-- Fontawesome CDN (end) -->
 
+                <script type="text/javascript" src="http://172.16.20.243:8089/im_livechat/loader/3"></script>
+
+                <script type="text/javascript" src="http://172.16.20.243:8089/im_livechat/assets_embed.js"></script>
+
                 <!-- Custom stylesheet -->
-                <link rel="stylesheet" href="/ultima/static/css/index.css?v=index21"/>
+                <link rel="stylesheet" href="/ultima/static/css/index.css?v=index30"/>
 
                 <t t-raw="header"></t>
             </head>
@@ -290,7 +296,15 @@
                                 <img class="logo" t-att-src="image_data_uri(layout.logo_256)" alt="Ultima Logo"/>
                             </a>
                         </div>
-                        <div>
+                        <div class="hamburger-and-user-image">
+                            <t t-if="user.image_1920">
+                                <img class="hamburger-user-image" t-att-src="image_data_uri(user.image_1920)"
+                                     alt="user image"/>
+                            </t>
+                            <t t-else="">
+                                <img class="hamburger-user-image" src="/ultima/static/image/guest_user.png"
+                                     alt="user image"/>
+                            </t>
                             <i id="menu_control_icon_bars" class="fas fa-bars menu_control_icon"></i>
                             <i id="menu_control_icon_times" class="fas fa-times menu_control_icon"
                                style="display: none;"></i>
@@ -544,6 +558,8 @@
                                     </a>
                                 </div>
                             </t>
+
+                            <!--                            <t t-raw="website_livechat.get_livechat_channel_script()"/>-->
                         </div>
                     </div>
 
@@ -556,8 +572,8 @@
                                         <a t-att-href="menu.url"
                                            style="display: flex; flex-direction: column; justify-content: center; align-items: center;">
                                             <img t-if="menu.icon" t-att-src="image_data_uri(menu.icon)"
-                                                 style="width: 40px;"/>
-                                            <p class="mobile-menu-item-name mt-1">
+                                                 style="width: 25px;"/>
+                                            <p class="mobile-menu-item-name mt-1" style="margin-bottom: 0 !important;">
                                                 <t t-esc="menu.name"/>
                                             </p>
                                         </a>
@@ -570,8 +586,10 @@
                                         <a t-att-href="'tel:%s' % layout.contact_no"
                                            style="display: flex; flex-direction: column; justify-content: center; align-items: center;">
                                             <img src="/ultima/static/image/logo/callicon.png" alt="Contact Number"
-                                                 style="width: 40px;"/>
-                                            <p class="mobile-menu-item-name mt-1">Call now</p>
+                                                 style="width: 25px;"/>
+                                            <p class="mobile-menu-item-name mt-1" style="margin-bottom: 0 !important;">
+                                                Call now
+                                            </p>
                                         </a>
                                     </div>
                                 </div>
@@ -583,8 +601,10 @@
                                        t-att-href="'https://api.whatsapp.com/send?phone=+%s&amp;text=Hello!&amp;source=&amp;data=' % layout.whatsapp"
                                        style="display: flex; flex-direction: column; justify-content: center; align-items: center;">
                                         <img src="/ultima/static/image/logo/whaticon.webp" alt="WhatsApp contact Number"
-                                             style="width: 40px;"/>
-                                        <p class="mobile-menu-item-name mt-1">Whatsapp</p>
+                                             style="width: 25px;"/>
+                                        <p class="mobile-menu-item-name mt-1" style="margin-bottom: 0 !important;">
+                                            Whatsapp
+                                        </p>
                                     </a>
                                 </div>
                             </t>
@@ -593,8 +613,8 @@
                                 <div class="talk-to-expert-icon-mobile"
                                      style="display: flex; flex-direction: column; justify-content: center; align-items: center;">
                                     <img src="/ultima/static/image/customer-service.png" alt="talk to expert icon"
-                                         style="width: 40px;"/>
-                                    <p class="mobile-menu-item-name mt-1">
+                                         style="width: 25px;"/>
+                                    <p class="mobile-menu-item-name mt-1" style="margin-bottom: 0 !important;">
                                         <t t-esc="home.cta_btn_txt"/>
                                     </p>
                                 </div>

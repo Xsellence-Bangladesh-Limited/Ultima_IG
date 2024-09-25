@@ -4,7 +4,7 @@
             <t t-set="header">
                 <title>Home | Ultima</title>
                 <link rel="stylesheet" href="/ultima/static/css/swiper-bundle.min.css"/>
-                <link rel="stylesheet" href="/ultima/static/css/home.css?v=home20"/>
+                <link rel="stylesheet" href="/ultima/static/css/home.css?v=home45"/>
                 <!-- Fontawesome CDN (start) -->
                 <script src="/ultima/static/third_party_UI_library/Fontawesome/js/all.min.js" defer="1"/>
                 <!-- Fontawesome CDN (end) -->
@@ -274,7 +274,7 @@
 
                     <!-- Left Text and right img 2 -->
                     <div t-else="" class="con_banner_and_desc bg_light">
-                        <div class="banner_and_desc my-container">
+                        <div class="banner_and_desc con_banner_and_desc_even my-container">
                             <div class="con-banner-text-content">
                                 <div class="title sora-600" t-raw="t.title"></div>
                                 <ul class="my-4 pl-4 filtration-type-desc">
@@ -331,7 +331,7 @@
                             <t t-foreach="p.com_ids" t-as="com">
                                 <div t-if="com.ultima" class="feature">
                                     <div>
-                                        <div class="success_tag">Ultima</div>
+                                        <div class="success_tag"><i class="fa-regular fa-circle-check"></i></div>
                                         <div class="title sora-600 py-2" t-raw="com.title"></div>
                                         <div class="text" t-raw="com.desc"></div>
                                     </div>
@@ -353,9 +353,9 @@
 
                             <t t-foreach="p.com_ids" t-as="com">
                                 <!-- Without feature -->
-                                <div t-if="not com.ultima" class="feature">
+                                <div t-if="not com.ultima" class="feature feature-not-ultima">
                                     <div>
-                                        <div class="danger_tag">Others</div>
+                                        <div class="danger_tag"><i class="fa-regular fa-circle-xmark"></i></div>
                                         <div class="title sora-600 py-2" t-raw="com.title"></div>
                                         <div class="text" t-raw="com.desc"></div>
                                     </div>
