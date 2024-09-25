@@ -338,6 +338,10 @@
     padding: 40px 0px 70px 0px
 }
 
+.con_banner_and_desc_even{
+    flex-direction: column-reverse !important;
+}
+
 .filtration .bg_light {
     background-color: #F9FAFB;
 }
@@ -436,6 +440,11 @@
     padding: 15px;
     margin-top: 18px;
     border-radius: 10px;
+    justify-content: space-between;
+}
+
+.feature-not-ultima{
+    background-color: #e7a9b069 !important;
 }
 
 .feature .features .feature .con_img {
@@ -454,21 +463,17 @@
 
 .feature .success_tag {
     display: inline-block;
-    border: 1px solid var(--primary-color);
     color: var(--primary-color);
     border-radius: 15px;
-    font-size: 11px;
-    padding: 0px 10px;
+    font-size: 20px;
     font-family: var(--normal-text-font-family);
 }
 
 .feature .danger_tag {
     display: inline-block;
-    border: 1px solid #E10505;
     color: #E10505;
     border-radius: 15px;
-    font-size: 11px;
-    padding: 0px 10px;
+    font-size: 20px;
 }
 
 .with_ultima {
@@ -582,9 +587,13 @@
 
 .features-mobile-feature-container._left .features-mobile-feature{
     background-color: #E4F1FF;
+    border-top-right-radius: 8px;
+    border-bottom-right-radius: 8px;
 }
 .features-mobile-feature-container._right .features-mobile-feature{
     background-color: #F6D9DD;
+    border-top-left-radius: 8px;
+    border-bottom-left-radius: 8px;
 }
 
 
@@ -824,6 +833,7 @@
     .company .text_and_logos {
         gap: 20px;
     }
+
 }
 
 .logos {
@@ -1060,6 +1070,10 @@
 @media (min-width: 992px) {
     .my-container {
         width: 60rem;
+    }
+
+    .con_banner_and_desc_even{
+        flex-direction: row !important;
     }
 
     .bspd ._card{
