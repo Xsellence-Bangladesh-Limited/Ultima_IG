@@ -25,10 +25,6 @@
                 <script src="/ultima/static/third_party_UI_library/Fontawesome/js/all.min.js" defer="1"/>
                 <!-- Fontawesome CDN (end) -->
 
-                <script type="text/javascript" src="http://172.16.20.243:8089/im_livechat/loader/3"></script>
-
-                <script type="text/javascript" src="http://172.16.20.243:8089/im_livechat/assets_embed.js"></script>
-
                 <!-- Custom stylesheet -->
                 <link rel="stylesheet" href="/ultima/static/css/index.css?v=index30"/>
 
