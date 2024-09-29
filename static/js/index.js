@@ -1,22 +1,28 @@
 $(document).ready(function () {
 
+    // Mobile bottom menu item bg toggling (start)
+
+    $(document).on('click', '.mobile-bottom-menu-image', function(){
+        $('.mobile-bottom-menu-image').removeClass('mobile-bottom-menu-active');
+        $(this).addClass('mobile-bottom-menu-active');
+    })
+
+    // Mobile bottom menu item bg toggling (end)
+
     // Show / Hide md menu
-    $('#menu_control_icon_bars').click(function () {
+    $(document).on('click', '#menu_control_icon_bars', function(){
+        console.log('hamburger');
 
         $('#menu_control_icon_times').show();
         $('#menu_control_icon_bars').hide();
         $('.sm_menu').slideDown();
+    })
 
-    });
-
-    // Show / Hide md menu
-    $('#menu_control_icon_times').click(function () {
-
+    $(document).on('click', '#menu_control_icon_times', function(){
         $('#menu_control_icon_bars').show();
         $('#menu_control_icon_times').hide();
         $('.sm_menu').slideUp();
-
-    });
+    })
 
     // lang
     $('.select_lang').change(function () {

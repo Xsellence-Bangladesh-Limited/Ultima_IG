@@ -640,3 +640,21 @@ class UltimaSMSSettings(models.Model):
     def create(self, vals):
         vals['name'] = self.env['ir.sequence'].sudo().next_by_code('ultima.sms.settings.seq')
         return super(UltimaSMSSettings, self).create(vals)
+
+
+class UltimaPaymentSuccessFormSettings(models.Model):
+    _name = 'ultima.payment.success.form.settings'
+    _description = 'ultima.payment.success.form.settings'
+    _order = 'id desc'
+
+    name = fields.Char(string='Sequence')
+    icon = fields.Image(string='Icon')
+    title = fields.Char(string='Title')
+    description = fields.Text(string='Description')
+    success_btn_text = fields.Char(string='Success button text')
+
+    @api.model
+    def create(self, vals):
+        vals['name'] = self.env['ir.sequence'].sudo().next_by_code('ultima.payment.success.form.settings.seq')
+        return super(UltimaPaymentSuccessFormSettings, self).create(vals)
+

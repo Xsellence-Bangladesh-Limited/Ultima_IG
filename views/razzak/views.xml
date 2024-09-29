@@ -1676,4 +1676,56 @@
     </record>
     <!-- Action view of ultima.sms.settings (end)-->
 
+    <!-- Tree view of ultima.payment.success.form.settings (start)-->
+    <record id="ultima_payment_success_form_settings_view_tree" model="ir.ui.view">
+        <field name="name">Ultima payment success form settings tree view</field>
+        <field name="model">ultima.payment.success.form.settings</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name" readonly="True"/>
+                <field name="title"/>
+                <field name="description"/>
+                <field name="success_btn_text"/>
+            </tree>
+        </field>
+    </record>
+    <!-- Tree view of ultima.payment.success.form.settings (end)-->
+
+    <!-- Form view of ultima.payment.success.form.settings (start)-->
+    <record id="ultima_payment_success_form_settings_view_form" model="ir.ui.view">
+        <field name="name">Ultima payment success form settings form view</field>
+        <field name="model">ultima.payment.success.form.settings</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <div class="oe_name">
+                        <h1>
+                            <field name="name" readonly="True"/>
+                        </h1>
+                    </div>
+                    <group>
+                        <field name="icon" widget="image" class="oe_avatar"/>
+                        <field name="title" required="True"/>
+                        <field name="description"/>
+                        <field name="success_btn_text"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <!-- Form view of ultima.payment.success.form.settings (end)-->
+
+    <!-- Action view of ultima.payment.success.form.settings (start)-->
+    <record model="ir.actions.act_window" id="ultima_payment_success_form_settings_form">
+        <field name="name">SETTINGS</field>
+        <field name="res_model">ultima.payment.success.form.settings</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                No available settings!
+            </p>
+        </field>
+    </record>
+    <!-- Action view of ultima.payment.success.form.settings (end)-->
+
 </odoo>

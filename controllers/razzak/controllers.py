@@ -89,7 +89,6 @@ class UltimaWebsite(http.Controller):
 
         elif session_otp == otp and existing_user:
             current_page = req.session.get('current_visited_page')
-            print(current_page)
             return json.dumps({'code': 201, 'current_page': current_page})
         else:
             return json.dumps({'code': 400})
@@ -106,8 +105,8 @@ class UltimaWebsite(http.Controller):
     @http.route('/', auth='public')
     def home(self, **kw):
 
-        # req.session['current_visited_page'] = '/'
-        # req.session.modified = True
+        req.session['current_visited_page'] = '/'
+        req.session.modified = True
 
         # print('hmm-home', req.session.get('ultima_otp'))
 
@@ -163,8 +162,8 @@ class UltimaWebsite(http.Controller):
 
     @http.route('/products', auth='public')
     def products(self, **kw):
-        # req.session['current_visited_page'] = '/products'
-        # req.session.modified = True
+        req.session['current_visited_page'] = '/products'
+        req.session.modified = True
 
         layout = req.env['ultima.layout'].sudo().search([], limit=1)
         page = req.env['ultima.products'].sudo().search([], limit=1)
@@ -419,6 +418,8 @@ class UltimaWebsite(http.Controller):
 
     @http.route('/order-completed', type='http', auth='public', method=['GET', 'POST'], csrf=False)
     def complete_order(self, **kw):
+        payment_success_form_settings = req.env['ultima.payment.success.form.settings'].sudo().search([], order='id desc', limit=1)
+
         paid_amount = kw.get('amount')
         card_type = kw.get('card_type')
         bank_tran_id = kw.get('bank_tran_id')
@@ -446,10 +447,14 @@ class UltimaWebsite(http.Controller):
             })
 
             if new_payment:
-                return req.render('ultima.ultima_order_completion_template', {})
+                return req.render('ultima.ultima_order_completion_template', {
+                    'settings': payment_success_form_settings
+                })
         else:
             if kw.get('pay') == 'cash':
-                return req.render('ultima.ultima_order_completion_template', {})
+                return req.render('ultima.ultima_order_completion_template', {
+                    'settings': payment_success_form_settings
+                })
             else:
                 return 'Something went wrong. Are you trying to repay?'
 

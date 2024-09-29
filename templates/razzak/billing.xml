@@ -10,8 +10,7 @@
             <t t-set="footer">
                 <script src="/ultima/static/js/jquery-3.6.0.min.js"/>
                 <script src="/ultima/static/js/swiper-bundle.min.js"/>
-                <script src="/ultima/static/js/index.js?v=21"/>
-                <script src="/ultima/static/js/billing.js?v=15"/>
+                <script src="/ultima/static/js/billing.js?v=15" defer="1"/>
             </t>
             <!-- Billing -->
             <div class="billing py-5">
@@ -276,6 +275,7 @@
 
             </div>
             <!-- End Billing -->
+
         </t>
     </template>
 </odoo>
