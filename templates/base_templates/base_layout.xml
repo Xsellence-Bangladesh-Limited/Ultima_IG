@@ -27,7 +27,7 @@
                 <!-- Fontawesome CDN (end) -->
 
                 <!-- Custom stylesheet -->
-                <link rel="stylesheet" href="/ultima/static/css/index.css?v=index40"/>
+                <link rel="stylesheet" href="/ultima/static/css/index.css?v=index45"/>
 
                 <t t-raw="header"></t>
             </head>
