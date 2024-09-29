@@ -15,7 +15,6 @@
                 <script src="/ultima/static/js/jquery-3.6.0.min.js"/>
                 <script src="/ultima/static/js/swiper-bundle.min.js"/>
                 <script src="/ultima/static/js/product.js?v=20"/>
-                <!--                <script src="/ultima/static/js/index.js?v=12"/>-->
             </t>
 
             <!-- OTP modal (start)-->

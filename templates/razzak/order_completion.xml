@@ -22,7 +22,6 @@
 
                 <script src="/ultima/static/js/jquery-3.6.0.min.js"/>
                 <script src="/ultima/static/js/swiper-bundle.min.js"/>
-<!--                <script src="/ultima/static/js/index.js?v=12"/>-->
             </head>
 
             <body>
@@ -63,11 +62,10 @@
 
                     <div class="thanks-div-container mb-5">
                         <div class="thanks-div">
-                            <img src="/ultima/static/image/order_completion.png" class="order_completion_icon mb-3"/>
-                            <h6 class="thanks-div-title mb-2">Thanks for your order!</h6>
+                            <img t-if="settings.icon" t-att-src="image_data_uri(settings.icon)" class="order_completion_icon mb-3"/>
+                            <h6 class="thanks-div-title mb-2"><t t-raw="settings.title"/></h6>
                             <p class="thanks-div-description mb-3">
-                                Woohoo! Your payment was successful, and your order is complete.
-                                A receipt and download instructions are on their way to your inbox.
+                               <t t-raw="settings.description"/>
                             </p>
                             <img class="form_illustration_icon form_illustration_icon_1" src="/ultima/static/image/order_completion_illustration_icon_1.png"/>
                             <img class="form_illustration_icon form_illustration_icon_2" src="/ultima/static/image/order_completion_illustration_icon_2.png"/>
@@ -76,7 +74,7 @@
                             <img class="form_illustration_icon form_illustration_icon_5" src="/ultima/static/image/order_completion_illustration_icon_5.png"/>
 
                             <div class="payment-success-button-container">
-                                <button class="payment-success-btn">Payment Success</button>
+                                <button class="payment-success-btn"><t t-raw="settings.success_btn_text"/></button>
                             </div>
                         </div>
                     </div>

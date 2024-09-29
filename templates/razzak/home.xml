@@ -508,7 +508,6 @@
             <t t-set="footer">
                 <script src="/ultima/static/js/jquery-3.6.0.min.js"/>
                 <script src="/ultima/static/js/swiper-bundle.min.js"/>
-                <!--                <script src="/ultima/static/js/index.js?v=12"/>-->
                 <script src="/ultima/static/js/home.js?v=20"/>
             </t>
         </t>

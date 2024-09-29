@@ -9,6 +9,7 @@
         <t t-set="home" t-value="request.env['ultima.home'].sudo().search([], order='id desc', limit=1)"/>
         <t t-set="user"
            t-value="request.env['res.partner'].sudo().search([('phone', '=', ultima_user_phone), ('website_user', '=', True)])"/>
+        <t t-set="current_visited_page" t-value="request.session.get('current_visited_page')"/>
 
         <html lang="en">
             <head>
@@ -26,7 +27,7 @@
                 <!-- Fontawesome CDN (end) -->
 
                 <!-- Custom stylesheet -->
-                <link rel="stylesheet" href="/ultima/static/css/index.css?v=index30"/>
+                <link rel="stylesheet" href="/ultima/static/css/index.css?v=index40"/>
 
                 <t t-raw="header"></t>
             </head>
@@ -494,27 +495,6 @@
 
                         </div>
                     </div>
-
-                    <!-- Optional JavaScript -->
-                    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-                    <script src="/ultima/static/js/jquery-3.6.0.min.js"/>
-                    <script src="/ultima/static/js/popper.min.js"/>
-                    <script src="/ultima/static/js/bootstrap.min.js"/>
-                    <script src="/ultima/static/js/font-awesome.js"/>
-
-                    <!-- Libphonenumber JS (start)-->
-                    <script src="/ultima/static/ashik/contact_us/JS/libphonenumber-js.min.js?" defer="1"></script>
-                    <!-- Libphonenumber JS (end)-->
-
-                    <!-- Swiper JS (start) -->
-                    <script src="/ultima/static/third_party_UI_library/Swiper_JS/swiper-bundle.min.js"/>
-                    <!-- Swiper JS (end) -->
-
-                    <!-- Custom Javascript -->
-                    <script src="/ultima/static/js/index.js?v=21"/>
-
-                    <t t-raw="footer"></t>
-
                     <!-- Absolute Components -->
                     <div id="lb_ac">
                         <!--                        <div class="d-f fd-c">-->
@@ -567,8 +547,7 @@
                                     <div>
                                         <a t-att-href="menu.url"
                                            style="display: flex; flex-direction: column; justify-content: center; align-items: center;">
-                                            <img t-if="menu.icon" t-att-src="image_data_uri(menu.icon)"
-                                                 style="width: 25px;"/>
+                                            <img t-if="menu.icon" t-att-src="image_data_uri(menu.icon)" t-att-class="'mobile-bottom-menu-image mobile-bottom-menu-active' if current_visited_page == menu.url else 'mobile-bottom-menu-image'"/>
                                             <p class="mobile-menu-item-name mt-1" style="margin-bottom: 0 !important;">
                                                 <t t-esc="menu.name"/>
                                             </p>
@@ -581,8 +560,7 @@
                                     <div class="icon">
                                         <a t-att-href="'tel:%s' % layout.contact_no"
                                            style="display: flex; flex-direction: column; justify-content: center; align-items: center;">
-                                            <img src="/ultima/static/image/logo/callicon.png" alt="Contact Number"
-                                                 style="width: 25px;"/>
+                                            <img src="/ultima/static/image/logo/callicon.png" alt="Contact Number" class="mobile-bottom-menu-image"/>
                                             <p class="mobile-menu-item-name mt-1" style="margin-bottom: 0 !important;">
                                                 Call now
                                             </p>
@@ -596,8 +574,7 @@
                                     <a target="_blank"
                                        t-att-href="'https://api.whatsapp.com/send?phone=+%s&amp;text=Hello!&amp;source=&amp;data=' % layout.whatsapp"
                                        style="display: flex; flex-direction: column; justify-content: center; align-items: center;">
-                                        <img src="/ultima/static/image/logo/whaticon.webp" alt="WhatsApp contact Number"
-                                             style="width: 25px;"/>
+                                        <img src="/ultima/static/image/logo/whaticon.webp" alt="WhatsApp contact Number" class="mobile-bottom-menu-image"/>
                                         <p class="mobile-menu-item-name mt-1" style="margin-bottom: 0 !important;">
                                             Whatsapp
                                         </p>
@@ -608,8 +585,7 @@
                             <t t-if="home.show_cta_btn">
                                 <div class="talk-to-expert-icon-mobile"
                                      style="display: flex; flex-direction: column; justify-content: center; align-items: center;">
-                                    <img src="/ultima/static/image/customer-service.png" alt="talk to expert icon"
-                                         style="width: 25px;"/>
+                                    <img src="/ultima/static/image/customer-service.png" alt="talk to expert icon" class="mobile-bottom-menu-image"/>
                                     <p class="mobile-menu-item-name mt-1" style="margin-bottom: 0 !important;">
                                         <t t-esc="home.cta_btn_txt"/>
                                     </p>
@@ -619,6 +595,26 @@
                     </div>
 
                 </div> <!-- End wrap -->
+
+                <!-- Optional JavaScript -->
+                <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+                <script src="/ultima/static/js/jquery-3.6.0.min.js"/>
+                <script src="/ultima/static/js/popper.min.js"/>
+                <script src="/ultima/static/js/bootstrap.min.js"/>
+                <script src="/ultima/static/js/font-awesome.js"/>
+
+                <!-- Libphonenumber JS (start)-->
+                <script src="/ultima/static/ashik/contact_us/JS/libphonenumber-js.min.js?" defer="1"></script>
+                <!-- Libphonenumber JS (end)-->
+
+                <!-- Swiper JS (start) -->
+                <script src="/ultima/static/third_party_UI_library/Swiper_JS/swiper-bundle.min.js"/>
+                <!-- Swiper JS (end) -->
+
+                <!-- Custom Javascript -->
+                <script src="/ultima/static/js/index.js?v=30" defer="1"/>
+
+                <t t-raw="footer"></t>
 
             </body>
 
