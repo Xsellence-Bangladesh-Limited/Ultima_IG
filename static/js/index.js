@@ -1,5 +1,27 @@
 $(document).ready(function () {
 
+    // Toggling logged in user account menu (start)
+
+    let arrowClicked = false;
+
+    $('#logged-in-hamburger-user').click(function(){
+        arrowClicked = !arrowClicked;
+        if(arrowClicked){
+            $('.logged-user-account-menu').fadeIn('slow');
+            $(".hamburger-user-arrow").removeClass('fa-chevron-down');
+            $(".hamburger-user-arrow").addClass('fa-chevron-up');
+        }
+
+        else{
+            $('.logged-user-account-menu').fadeOut('slow');
+            $(".hamburger-user-arrow").addClass('fa-chevron-down');
+            $(".hamburger-user-arrow").removeClass('fa-chevron-up');
+        }
+
+    })
+
+    // Toggling logged in user account menu (end)
+
     // Mobile bottom menu item bg toggling (start)
 
     $(document).on('click', '.mobile-bottom-menu-image', function(){

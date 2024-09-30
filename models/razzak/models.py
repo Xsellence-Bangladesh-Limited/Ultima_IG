@@ -149,6 +149,9 @@ class UltimaHome(models.Model):
     cta_msg_scs_t = fields.Char(string='CTA message success title')
     cta_msg_scs_btn_txt = fields.Char(string='CTA message success button text')
     show_cta_btn = fields.Boolean(string='Show CTA button')
+    show_cta_btn_mobile = fields.Boolean(string='Show CTA button on mobile menu')
+    cta_btn_mobile_menu_icon = fields.Image(string='CTA button mobile menu icon')
+    cta_btn_mobile_menu_text = fields.Char(string='CTA button mobile menu text')
 
 
 class UltimaHomeDisLine(models.Model):
