@@ -32,19 +32,64 @@
 
 .hamburger-and-user-image{
     display: flex;
-    gap: 7px;
+    gap: 20px;
     align-items: center;
-    border: 1px solid #ddd;
+    /* border: 1px solid #ddd; */
     padding: 5px 12px;
-    border-radius: 100px;
+    /* border-radius: 100px; */
 }
 
 .hamburger-user-image{
     width: 25px;
+    height: 25px;
+    object-fit: cover;
+    border-radius: 100%;
+}
+
+.hamburger-user{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 7px;
+    position: relative;
+}
+
+.logged-user-account-menu{
+    position: absolute;
+    top: 35px;
+    right: 0;
+    background: #fff;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 5px 0px, rgba(0, 0, 0, 0.1) 0px 0px 1px 0px;
+    border-radius: 5px;
+    z-index: 1000;
+    width: 100px;
+    display: none;
+}
+
+.logged-user-account-menu a{
+    font-family: var(--normal-text-font-family);
+    font-size: 12px;
+    padding: 7px;
+    display: inline-block;
+    width: 100%;
+}
+
+.logged-user-account-menu a:not(:last-of-type){
+    border-bottom: 1px solid #ddd;
+}
+
+.hamburger-user p{
+    margin-bottom: 0;
+    font-family: var(--normal-text-font-family);
+    font-size: 14px;
 }
 
 .user-sign-in-button{
     margin-bottom: 0 !important;
+}
+
+#logged-in-hamburger-user{
+    cursor: pointer;
 }
 
 .login-form-container{
@@ -860,6 +905,7 @@ wrap wrap
     .login-form{
         width: 600px;
         flex-direction: row;
+        overflow-y: auto;
     }
 
     .login-form-left, .login-form-right{

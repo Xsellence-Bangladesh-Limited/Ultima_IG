@@ -303,7 +303,9 @@
                         <field name="cta_msg_scs_t"/>
                         <field name="cta_msg_scs_btn_txt"/>
                         <field name="show_cta_btn"/>
-
+                        <field name="show_cta_btn_mobile"/>
+                        <field name="cta_btn_mobile_menu_icon" widget="image" class="oe_avatar"/>
+                        <field name="cta_btn_mobile_menu_text"/>
                     </group>
                 </sheet>
             </form>
