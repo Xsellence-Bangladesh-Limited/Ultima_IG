@@ -67,7 +67,8 @@
                     <!-- Main Banner Section (start) -->
                     <div
                             class="main-banner"
-                            t-if="service_request_settings.banner_image" t-attf-style="background-image: url('/web/image/ultima.service.request.settings/{{service_request_settings.id}}/banner_image')"
+                            t-if="service_request_settings.banner_image"
+                            t-attf-style="background-image: url('/web/image/ultima.service.request.settings/{{service_request_settings.id}}/banner_image')"
                     >
                         <div class="service-request-form-container">
                             <form action="/users-service-request" method="POST" class="service-request-form">
@@ -95,6 +96,9 @@
                                         required="true"
                                 />
 
+                                <input type="text" name="requester_address" class="service-request-form-input mb-3"
+                                       id="input-requester-address-id" placeholder="Address*" required="true"/>
+
                                 <input
                                         type="text"
                                         name="requester_mobile_number"
@@ -115,16 +119,16 @@
                                         onblur="(this.type='text')"
                                 />
 
-                                <input
-                                        type="text"
-                                        name="requester_preferred_time"
-                                        class="service-request-form-input mb-3"
-                                        id="input-requester-preferred-time-id"
-                                        placeholder="Preferred Time*"
-                                        required="true"
-                                        onfocus="(this.type='time')"
-                                        onblur="(this.type='text')"
-                                />
+<!--                                <input-->
+<!--                                        type="text"-->
+<!--                                        name="requester_preferred_time"-->
+<!--                                        class="service-request-form-input mb-3"-->
+<!--                                        id="input-requester-preferred-time-id"-->
+<!--                                        placeholder="Preferred Time*"-->
+<!--                                        required="true"-->
+<!--                                        onfocus="(this.type='time')"-->
+<!--                                        onblur="(this.type='text')"-->
+<!--                                />-->
 
                                 <button type="submit" class="request-form-submit-btn mb-3">
                                     Request a Call Back
@@ -271,7 +275,7 @@
                                                     </p>
                                                 </div>
                                             </t>
-                                             <div class="spacer"></div>
+                                            <div class="spacer"></div>
                                             <t t-set="counter" t-value="counter + 1"/>
                                         </t>
                                     </div>

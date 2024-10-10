@@ -212,21 +212,76 @@ class AMCServiceSettings(models.Model):
 
 # Models for service request page (start)
 
+# class UltimaServiceRequest(models.Model):
+#     _name = 'ultima.service.request'
+#     _description = 'ultima.service.request'
+#     _order = 'id desc'
+#
+#     name = fields.Char(string='Sequence')
+#     full_name = fields.Char(string='Full name')
+#     registered_mobile_number = fields.Char(string='Registered mobile number')
+#     preferred_date = fields.Char(string='Preferred date')
+#     preferred_time = fields.Char(string='Preferred time')
+#
+#     @api.model
+#     def create(self, vals):
+#         vals['name'] = self.env['ir.sequence'].sudo().next_by_code('ultima.service.request.seq')
+#         return super(UltimaServiceRequest, self).create(vals)
+
 class UltimaServiceRequest(models.Model):
     _name = 'ultima.service.request'
     _description = 'ultima.service.request'
+    _inherit = ['mail.thread', 'mail.activity.mixin']
     _order = 'id desc'
 
-    name = fields.Char(string='Sequence')
-    full_name = fields.Char(string='Full name')
-    registered_mobile_number = fields.Char(string='Registered mobile number')
-    preferred_date = fields.Char(string='Preferred date')
-    preferred_time = fields.Char(string='Preferred time')
+    name = fields.Char(string='Name')
+    full_name = fields.Char(string='Customer Name', required=True)
+    registered_mobile_number = fields.Char(string='Customer Mobile Number', required=True)
+    customer_address = fields.Text("Customer Address", tracking=True)
+    date_deadline = fields.Datetime("Deadline", required=True)
+    # preferred_date = fields.Char(string='Preferred date')
+    # preferred_time = fields.Char(string='Preferred time')
+    task_id = fields.Many2one("project.task", "Task", readonly=True)
+    state = fields.Selection(
+        [('draft', 'Draft'), ('approve', 'Approved')], readonly=True,
+        default='draft', copy=False, string="Status", tracking=True)
 
     @api.model
     def create(self, vals):
         vals['name'] = self.env['ir.sequence'].sudo().next_by_code('ultima.service.request.seq')
         return super(UltimaServiceRequest, self).create(vals)
+
+    def action_approve(self):
+        for rec in self:
+            # Create Customer Record
+
+            customer_env = self.env['res.partner']
+            new_customer = customer_env.create({
+                'name': rec.full_name,
+                'street': rec.customer_address,
+                'mobile': rec.registered_mobile_number,
+            })
+            print("new_customer: ", new_customer)
+
+            # Create Task Record
+
+            task_env = self.env['project.task']
+            new_task = task_env.create({
+                'name': rec.name + " - Service Request",
+                'partner_id': new_customer.id,
+                'date_deadline': rec.date_deadline,
+                'service_request_id': rec.id,
+            })
+            print("new_task: ", new_task)
+
+            rec.task_id = new_task.id
+            rec.state = 'approve'
+
+
+class ProjectTask(models.Model):
+    _inherit = "project.task"
+
+    service_request_id = fields.Many2one("ultima.service.request", "Service Request No", tracking=True)
 
 class ServiceRequestFormPoint(models.Model):
     _name = 'ultima.service.request.form.point'

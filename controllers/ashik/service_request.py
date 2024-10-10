@@ -44,19 +44,20 @@ class ServiceRequest(http.Controller):
     def users_service_request(self, **form_data):
         if req.httprequest.method == 'POST':
             full_name = form_data.get('requester_name').strip() if form_data.get('requester_name') else ''
+            address = form_data.get('requester_address').strip() if form_data.get('requester_address') else ''
             mobile_number = form_data.get('requester_mobile_number').strip() if form_data.get(
                 'requester_mobile_number') else ''
             preferred_date = form_data.get('requester_preferred_date').strip() if form_data.get(
                 'requester_preferred_date') else ''
-            preferred_time = form_data.get('requester_preferred_time').strip() if form_data.get(
-                'requester_preferred_time') else ''
+            # preferred_time = form_data.get('requester_preferred_time').strip() if form_data.get(
+            #     'requester_preferred_time') else ''
 
             # Creating a new record in the ultima.service.request table (start)
             req.env['ultima.service.request'].sudo().create({
                 'full_name': full_name,
+                'customer_address': address,
                 'registered_mobile_number': mobile_number,
-                'preferred_date': preferred_date,
-                'preferred_time': preferred_time
+                'date_deadline': preferred_date,
             })
             # Creating a new record in the ultima.service.request table (end)
 

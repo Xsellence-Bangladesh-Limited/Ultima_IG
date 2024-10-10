@@ -6,7 +6,7 @@
     'description': """Developed by Xsellence Bangladesh Limited.""",
     'category': '',
     'website': '',
-    'depends': ['product'],
+    'depends': ['product', 'project', 'base'],
     'data': [
         'security/ir.model.access.csv',
         'security/razzak/ir.model.access.csv',

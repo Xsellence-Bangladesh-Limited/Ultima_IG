@@ -25,19 +25,19 @@
                 <!-- Custom CSS (end) -->
 
                 <!-- Fontawesome CDN (start) -->
-                <script src="/ultima/static/third_party_UI_library/Fontawesome/js/all.min.js" defer="1"/>
+                <script src="/ultima/static/third_party_UI_library/Fontawesome/js/all.min.js"/>
                 <!-- Fontawesome CDN (end) -->
 
                 <!-- Jquery (start) -->
-                <script src="/ultima/static/third_party_UI_library/jQuery/jquery.min.js" defer="1"/>
+                <script src="/ultima/static/third_party_UI_library/jQuery/jquery.min.js"/>
                 <!-- Jquery (end) -->
 
                 <!-- Popper JS (start) -->
-                <script src="/ultima/static/third_party_UI_library/Bootstrap/js/popper.min.js" defer="1"/>
+                <script src="/ultima/static/third_party_UI_library/Bootstrap/js/popper.min.js"/>
                 <!-- Popper JS (end) -->
 
                 <!-- Bootstrap JS (start) -->
-                <script src="/ultima/static/third_party_UI_library/Bootstrap/js/bootstrap.min.js" defer="1"/>
+                <script src="/ultima/static/third_party_UI_library/Bootstrap/js/bootstrap.min.js"/>
                 <!-- Bootstrap JS (end) -->
 
                 <!-- Swiper JS (start) -->
@@ -47,10 +47,6 @@
                 <!-- Splide JS (start) -->
                 <script src="/ultima/static/third_party_UI_library/splide/dist/js/splide.min.js"/>
                 <!-- Splide JS (end) -->
-
-                <!-- Custom JS (start) -->
-                <script src="/ultima/static/ashik/blog/JS/script.js?v=12" defer="1"/>
-                <!-- Custom JS (end) -->
             </head>
             <body>
                 <div class="main-content">
@@ -157,6 +153,9 @@
                         </div>
                     </t>
                 </div>
+                <!-- Custom JS (start) -->
+                <script src="/ultima/static/ashik/blog/JS/script.js?v=12"/>
+                <!-- Custom JS (end) -->
             </body>
         </t>
     </template>
