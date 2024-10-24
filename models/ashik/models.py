@@ -1,7 +1,12 @@
 from odoo import fields, models, api
 from datetime import datetime
+from odoo.exceptions import ValidationError, UserError
+from odoo.http import request as req
+from odoo.exceptions import ValidationError
+import requests
 
 # Models for contact us page (start)
+
 class ContactWay(models.Model):
     _name = 'ultima.contact.way'
     _description = 'ultima.contact.way'
@@ -208,25 +213,6 @@ class AMCServiceSettings(models.Model):
         vals['name'] = self.env['ir.sequence'].sudo().next_by_code('ultima.amc.service.settings.seq')
         return super(AMCServiceSettings, self).create(vals)
 
-# Models for AMC service page (end)
-
-# Models for service request page (start)
-
-# class UltimaServiceRequest(models.Model):
-#     _name = 'ultima.service.request'
-#     _description = 'ultima.service.request'
-#     _order = 'id desc'
-#
-#     name = fields.Char(string='Sequence')
-#     full_name = fields.Char(string='Full name')
-#     registered_mobile_number = fields.Char(string='Registered mobile number')
-#     preferred_date = fields.Char(string='Preferred date')
-#     preferred_time = fields.Char(string='Preferred time')
-#
-#     @api.model
-#     def create(self, vals):
-#         vals['name'] = self.env['ir.sequence'].sudo().next_by_code('ultima.service.request.seq')
-#         return super(UltimaServiceRequest, self).create(vals)
 
 class UltimaServiceRequest(models.Model):
     _name = 'ultima.service.request'
@@ -238,9 +224,9 @@ class UltimaServiceRequest(models.Model):
     full_name = fields.Char(string='Customer Name', required=True)
     registered_mobile_number = fields.Char(string='Customer Mobile Number', required=True)
     customer_address = fields.Text("Customer Address", tracking=True)
+    planned_date_begin = fields.Datetime("Planned Date Begin", required=True)
     date_deadline = fields.Datetime("Deadline", required=True)
-    # preferred_date = fields.Char(string='Preferred date')
-    # preferred_time = fields.Char(string='Preferred time')
+    partner_id = fields.Many2one('res.partner', "Existing Partner", compute='_compute_partner')
     task_id = fields.Many2one("project.task", "Task", readonly=True)
     state = fields.Selection(
         [('draft', 'Draft'), ('approve', 'Approved')], readonly=True,
@@ -251,26 +237,51 @@ class UltimaServiceRequest(models.Model):
         vals['name'] = self.env['ir.sequence'].sudo().next_by_code('ultima.service.request.seq')
         return super(UltimaServiceRequest, self).create(vals)
 
+    @api.depends('registered_mobile_number')
+    def _compute_partner(self):
+        for rec in self:
+            mobile_code = ''
+            rec.partner_id = False
+
+            if rec.registered_mobile_number:
+                if rec.registered_mobile_number.startswith("01"):
+                    mobile_code = '+88'
+
+                elif rec.registered_mobile_number.startswith("1"):
+                    mobile_code = '+880'
+                rec.registered_mobile_number = mobile_code + rec.registered_mobile_number
+                ext_customer = self.env['res.partner'].search([('mobile', '=', rec.registered_mobile_number)])
+                if ext_customer:
+                    if len(ext_customer) == 1:
+                        rec.partner_id = ext_customer.id
+                    else:
+                        raise ValidationError("Multiple Partners are already created with this mobile Number.")
+
     def action_approve(self):
         for rec in self:
             # Create Customer Record
 
-            customer_env = self.env['res.partner']
-            new_customer = customer_env.create({
-                'name': rec.full_name,
-                'street': rec.customer_address,
-                'mobile': rec.registered_mobile_number,
-            })
-            print("new_customer: ", new_customer)
+            customer = self.env['res.partner'].search([('mobile', '=', rec.registered_mobile_number)])
+            if not customer:
+                customer_env = self.env['res.partner']
+                customer = customer_env.create({
+                    'name': rec.full_name,
+                    'street': rec.customer_address,
+                    'mobile': rec.registered_mobile_number,
+                })
 
             # Create Task Record
 
+            project = self.env['project.project'].search([('name', '=', 'Field Service')])
             task_env = self.env['project.task']
             new_task = task_env.create({
+                'project_id': project.id,
                 'name': rec.name + " - Service Request",
-                'partner_id': new_customer.id,
+                'partner_id': customer.id,
+                'planned_date_begin': rec.planned_date_begin,
                 'date_deadline': rec.date_deadline,
                 'service_request_id': rec.id,
+                'user_ids': False,
             })
             print("new_task: ", new_task)
 
@@ -282,6 +293,7 @@ class ProjectTask(models.Model):
     _inherit = "project.task"
 
     service_request_id = fields.Many2one("ultima.service.request", "Service Request No", tracking=True)
+
 
 class ServiceRequestFormPoint(models.Model):
     _name = 'ultima.service.request.form.point'
@@ -594,3 +606,56 @@ class BlogSettings(models.Model):
     def create(self, vals):
         vals['name'] = self.env['ir.sequence'].sudo().next_by_code('ultima.blog.settings.seq')
         return super(BlogSettings, self).create(vals)
+
+
+class UltimaAccountMoveInherit(models.Model):
+    _inherit = 'account.move'
+
+    is_posted = fields.Boolean(default=False)
+
+    def action_register_payment(self):
+        self.is_posted = True
+        return super(UltimaAccountMoveInherit, self).action_register_payment()
+
+    def send_sms(self):
+        sms_settings = req.env['ultima.sms.settings'].sudo().search([], order='id desc', limit=1)
+
+        if self.partner_id.phone:
+            data = {
+                'api_key': sms_settings.api_key if sms_settings.api_key else 'C200918366ebcc11bc0e03.88783932',
+                'type': 'unicode',
+                'contacts': f"880{self.partner_id.phone[-10:]}",
+                'senderid': '8809601011978',
+                'msg': f"""Dear sir/ma'am, A new invoice has been generated for you.
+                        Invoice: {self.name}
+                        invoice date: {self.invoice_date}
+                        delivery date: {self.delivery_date}
+                        Total amount: {self.amount_total} 
+                        Due amount: {self.amount_residual}
+                        Thanks for purchasing from Ultima Bangladesh LTD.
+                """
+            }
+
+            try:
+
+                r = requests.post(f"https://msg.elitbuzz-bd.com/smsapi", json=data)
+
+                if r.status_code == 200:
+
+                    self.is_posted = False
+
+                    return {
+                        'effect': {
+                            'fadeout': 'slow',
+                            'message': 'SMS has been sent successfully.',
+                            'type': 'rainbow_man'
+                        }
+                    }
+                else:
+                    raise ValidationError("Something went wrong! Looks like the customer's phone number is not correct.")
+
+            except Exception as e:
+                raise ValidationError("Something went wrong! Looks like the customer's phone number is not correct.")
+
+        else:
+            raise ValidationError("Looks like the selected customer doesn't have any phone number.")

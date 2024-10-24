@@ -599,9 +599,9 @@
                 <field name="name" readonly="True"/>
                 <field name="full_name"/>
                 <field name="registered_mobile_number"/>
+                <field name="planned_date_begin"/>
                 <field name="date_deadline"/>
-                <!--                <field name="preferred_date"/>-->
-                <!--                <field name="preferred_time"/>-->
+                <field name="state"/>
             </tree>
         </field>
     </record>
@@ -633,10 +633,10 @@
                             <field name="full_name" readonly="state=='approve'"/>
                             <field name="customer_address" readonly="state=='approve'"/>
                             <field name="registered_mobile_number" readonly="state=='approve'"/>
+                            <field name="planned_date_begin" readonly="state=='approve'"/>
                             <field name="date_deadline" readonly="state=='approve'"/>
+                            <field name="partner_id" invisible="state=='approve'"/>
                             <field name="task_id"/>
-                            <!--                            <field name="preferred_date"/>-->
-                            <!--                            <field name="preferred_time"/>-->
                         </group>
                     </group>
                 </sheet>
@@ -656,7 +656,7 @@
         <field name="inherit_id" ref="project.view_task_form2"/>
         <field name="arch" type="xml">
             <field name="tag_ids" position="before">
-                <field name="service_request_id" readonly="1"/>
+                <field name="service_request_id" readonly="1" invisible="service_request_id == False"/>
             </field>
         </field>
     </record>
@@ -1568,5 +1568,19 @@
         </field>
     </record>
     <!-- Ultima blog settings action (end)-->
+
+    <!-- Adding send sms button to the invoice form view-->
+    <record id="account_move_inherit" model="ir.ui.view">
+        <field name="name">account.move.inherit</field>
+        <field name="model">account.move</field>
+        <field name="priority">32</field>
+        <field name="inherit_id" ref="account.view_move_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//header/button[@name='button_draft']" position="after">
+                <field name="is_posted" invisible="1"/>
+                <button name="send_sms" string="Send SMS" type="object" class="btn-primary" invisible="is_posted == False"/>
+            </xpath>
+        </field>
+    </record>
 
 </odoo>
