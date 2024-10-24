@@ -107,13 +107,25 @@
                                         placeholder="Registered Mobile Number*"
                                         required="true"
                                 />
+                                planned_date_begin
+
+                                <input
+                                        type="text"
+                                        name="planned_date_begin"
+                                        class="service-request-form-input mb-3"
+                                        id="input-requester-preferred-date_begin-id"
+                                        placeholder="Preferred Date Begin*"
+                                        required="true"
+                                        onfocus="(this.type='date')"
+                                        onblur="(this.type='text')"
+                                />
 
                                 <input
                                         type="text"
                                         name="requester_preferred_date"
                                         class="service-request-form-input mb-3"
                                         id="input-requester-preferred-date-id"
-                                        placeholder="Preferred Date*"
+                                        placeholder="Preferred Date End*"
                                         required="true"
                                         onfocus="(this.type='date')"
                                         onblur="(this.type='text')"

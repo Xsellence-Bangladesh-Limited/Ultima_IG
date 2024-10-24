@@ -69,7 +69,7 @@
         <record id="ultima_service_request_seq" model="ir.sequence">
             <field name="name">Ultima service request sequence</field>
             <field name="code">ultima.service.request.seq</field>
-            <field name="prefix">REQUEST</field>
+            <field name="prefix">REQUEST/</field>
             <field name="padding">5</field>
             <field name="number_next">1</field>
         </record>

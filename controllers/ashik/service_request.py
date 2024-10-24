@@ -2,6 +2,7 @@ from odoo import http
 from odoo.http import request as req
 from werkzeug.utils import redirect
 
+
 class ServiceRequest(http.Controller):
     @http.route('/service-request', type='http', auth='public')
     def service_request(self):
@@ -47,6 +48,8 @@ class ServiceRequest(http.Controller):
             address = form_data.get('requester_address').strip() if form_data.get('requester_address') else ''
             mobile_number = form_data.get('requester_mobile_number').strip() if form_data.get(
                 'requester_mobile_number') else ''
+            planned_date_begin = form_data.get('planned_date_begin').strip() if form_data.get(
+                'planned_date_begin') else ''
             preferred_date = form_data.get('requester_preferred_date').strip() if form_data.get(
                 'requester_preferred_date') else ''
             # preferred_time = form_data.get('requester_preferred_time').strip() if form_data.get(
@@ -57,6 +60,7 @@ class ServiceRequest(http.Controller):
                 'full_name': full_name,
                 'customer_address': address,
                 'registered_mobile_number': mobile_number,
+                'planned_date_begin': planned_date_begin,
                 'date_deadline': preferred_date,
             })
             # Creating a new record in the ultima.service.request table (end)
